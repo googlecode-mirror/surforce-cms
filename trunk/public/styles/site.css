@@ -1,0 +1,41 @@
+DIV#contenedor{
+	width: 730px;
+	margin:0 auto;
+}
+
+DIV#menu{
+	width: 150px;
+	float:left;
+	overflow:hidden;
+	border-right:1px solid #CCCCCC;
+}
+
+DIV#menu ul, DIV#menu li{
+	margin-left:10px;
+	padding:0;
+}
+
+DIV#contenido{
+	float:left;
+	width: 550px;
+	padding:15px 0 0 15px;
+
+}
+
+DIV#pie{
+	clear:both;
+	border-top:1px solid #CCCCCC;
+	text-align:center;
+	width: 100%;
+}
+
+TH{
+	background-color:#CCCCCC;
+	padding:0 3px 0 3px;
+}
+
+TD{
+	border-bottom:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	padding:2px;
+}

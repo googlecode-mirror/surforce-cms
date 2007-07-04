@@ -1,5 +1,14 @@
 <?php echo $this->render('header.phtml'); ?>
 
-<h1><?php echo $this->escape($this->title); ?></h1>
+	<h1><?php echo $this->escape($this->title); ?></h1>
+
+	<div id="menu">
+		<?php echo $this->render('menu.phtml'); ?>
+	</div>
+
+	<div id="contenido">
+		Mensaje de bienvenida en index.
+	</div>
+
 
 <?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,32 @@
+<?php echo $this->render('header.phtml'); ?>
+
+	<h1><?php echo $this->escape($this->title); ?></h1>
+
+	<div id="menu">
+		<?php echo $this->render('menu.phtml'); ?>
+	</div>
+
+	<div id="contenido">
+
+		<table>
+		<tr>
+		 	<th>Usuario</th>
+		 	<th>Nombre</th>
+		 	<th>Apellido</th>
+		 	<th>Email</th>
+		</tr>
+		<?php
+		foreach( $this->usuarios as $usuario ) : ?>
+				<tr>
+					<td><?php echo $this->escape($usuario->usuario);?></td>
+					<td><?php echo $this->escape($usuario->nombre);?></td>
+					<td><?php echo $this->escape($usuario->apellido);?></td>
+					<td><?php echo $this->escape($usuario->mail);?></td>
+				</tr>
+		<?php endforeach; ?>
+
+		</table>
+
+	</div>
+
+<?php echo $this->render('footer.phtml'); ?>
