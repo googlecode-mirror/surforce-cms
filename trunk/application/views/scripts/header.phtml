@@ -11,3 +11,11 @@
 
   <body>
 	<div id="contenedor">
+
+	<h1><?php echo $this->escape($this->title); ?></h1>
+
+	<div id="menu">
+		<?php echo $this->render('menu.phtml'); ?>
+	</div>
+
+	<div id="contenido">

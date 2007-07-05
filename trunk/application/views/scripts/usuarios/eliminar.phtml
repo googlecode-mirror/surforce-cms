@@ -1,0 +1,18 @@
+<?php echo $this->render('header.phtml'); ?>
+
+<?php if ($this->usuario) :?>
+	<form action="<?php echo $this->baseUrl ?>/usuarios/eliminar" method="post">
+		<p>¿Esta seguro que quiere eliminar el usuario
+		'<?php echo $this->escape($this->usuario->usuario); ?>'?
+		</p>
+		<div>
+			<input type="hidden" name="id" value="<?php echo $this->usuario->id; ?>" />
+			<input type="submit" name="del" value="Si" />
+			<input type="submit" name="del" value="No" />
+		</div>
+	</form>
+<?php else: ?>
+	<p>No se pudo encontrar el usuario.</p>
+<?php endif;?>
+
+<?php echo $this->render('footer.phtml'); ?>

@@ -1,0 +1,46 @@
+<?php echo $this->render('header.phtml'); ?>
+	<table>
+		<tr>
+			<td><a href="<?php echo $this->baseUrl; ?>/usuarios/modificar/id/<?php echo $this->usuario->id;?>">Modificar</a></td>
+			<td><a href="<?php echo $this->baseUrl; ?>/usuarios/eliminar/id/<?php echo $this->usuario->id;?>">Eliminar</a></td>
+		</tr>
+	</table>
+	<div>
+		<label for="usuario">Id</label>
+		<?php echo $this->escape(trim($this->usuario->id));?>
+	</div>
+	<div>
+		<label for="usuario">Usuario</label>
+		<?php echo $this->escape(trim($this->usuario->usuario));?>
+	</div>
+	<div>
+		<label for="password">Password</label>
+		<?php echo $this->escape($this->usuario->password);?>
+	</div>
+	<div>
+		<label for="nombre">Nombre</label>
+		<?php echo $this->escape($this->usuario->nombre);?>
+	</div>
+	<div>
+		<label for="apellido">Apellido</label>
+		<?php echo $this->escape($this->usuario->apellido);?>
+	</div>
+	<div>
+		<label for="mail">Mail</label>
+		<?php echo $this->escape($this->usuario->mail);?>
+	</div>
+	<div>
+		<label for="estado">Estado</label>
+		<?php echo $this->escape($this->usuario->estado);?>
+	</div>
+	<div>
+		<label for="creado">Creado</label>
+		<?php echo $this->escape($this->usuario->creado);?>
+	</div>
+	<div>
+		<label for="modificado">Modificado</label>
+		<?php echo $this->escape($this->usuario->modificado);?>
+	</div>
+
+
+<?php echo $this->render('footer.phtml'); ?>

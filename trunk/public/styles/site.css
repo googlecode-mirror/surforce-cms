@@ -39,3 +39,13 @@ TD{
 	border-right:1px solid #CCCCCC;
 	padding:2px;
 }
+
+label {
+width: 100px;
+display: block;
+float: left;
+}
+
+DIV#formbutton {
+margin-left: 100px;
+}

@@ -1,32 +1,28 @@
 <?php echo $this->render('header.phtml'); ?>
 
-	<h1><?php echo $this->escape($this->title); ?></h1>
+	<p><a href="<?php echo $this->baseUrl; ?>/usuarios/agregar">Agregar Usuario</a></p>
 
-	<div id="menu">
-		<?php echo $this->render('menu.phtml'); ?>
-	</div>
+	<table>
+	<tr>
+	 	<th>Usuario</th>
+	 	<th>Nombre</th>
+	 	<th>Apellido</th>
+	 	<th>Email</th>
+	</tr>
+	<?php
+	foreach( $this->usuarios as $usuario ) : ?>
+			<tr>
+				<td><?php echo $this->escape($usuario->usuario);?></td>
+				<td><?php echo $this->escape($usuario->nombre);?></td>
+				<td><?php echo $this->escape($usuario->apellido);?></td>
+				<td><?php echo $this->escape($usuario->mail);?></td>
+				<td><a href="<?php echo $this->baseUrl; ?>/usuarios/ver/id/<?php echo $usuario->id;?>">Ver</a></td>
+				<td><a href="<?php echo $this->baseUrl; ?>/usuarios/modificar/id/<?php echo $usuario->id;?>">Modificar</a></td>
+				<td><a href="<?php echo $this->baseUrl; ?>/usuarios/eliminar/id/<?php echo $usuario->id;?>">Eliminar</a></td>
+			</tr>
+	<?php endforeach; ?>
+	</table>
 
-	<div id="contenido">
-
-		<table>
-		<tr>
-		 	<th>Usuario</th>
-		 	<th>Nombre</th>
-		 	<th>Apellido</th>
-		 	<th>Email</th>
-		</tr>
-		<?php
-		foreach( $this->usuarios as $usuario ) : ?>
-				<tr>
-					<td><?php echo $this->escape($usuario->usuario);?></td>
-					<td><?php echo $this->escape($usuario->nombre);?></td>
-					<td><?php echo $this->escape($usuario->apellido);?></td>
-					<td><?php echo $this->escape($usuario->mail);?></td>
-				</tr>
-		<?php endforeach; ?>
-
-		</table>
-
-	</div>
+	<p><a href="<?php echo $this->baseUrl; ?>/usuarios/agregar">Agregar Usuario</a></p>
 
 <?php echo $this->render('footer.phtml'); ?>
