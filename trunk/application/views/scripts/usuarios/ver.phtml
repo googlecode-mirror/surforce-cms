@@ -1,4 +1,10 @@
 <?php echo $this->render('header.phtml'); ?>
+
+<h1><?php echo $this->escape($this->title); ?></h1>
+
+<?php echo $this->render('menu.phtml'); ?>
+
+<div id="contenido">
 	<table>
 		<tr>
 			<td><a href="<?php echo $this->baseUrl; ?>/usuarios/modificar/id/<?php echo $this->usuario->id;?>">Modificar</a></td>
@@ -6,41 +12,41 @@
 		</tr>
 	</table>
 	<div>
-		<label for="usuario">Id</label>
+		<label for="usuario">Id:&nbsp;</label>
 		<?php echo $this->escape(trim($this->usuario->id));?>
 	</div>
 	<div>
-		<label for="usuario">Usuario</label>
+		<label for="usuario">Usuario:&nbsp;</label>
 		<?php echo $this->escape(trim($this->usuario->usuario));?>
 	</div>
 	<div>
-		<label for="password">Password</label>
+		<label for="password">Password:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->password);?>
 	</div>
 	<div>
-		<label for="nombre">Nombre</label>
+		<label for="nombre">Nombre:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->nombre);?>
 	</div>
 	<div>
-		<label for="apellido">Apellido</label>
+		<label for="apellido">Apellido:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->apellido);?>
 	</div>
 	<div>
-		<label for="mail">Mail</label>
+		<label for="mail">Mail:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->mail);?>
 	</div>
 	<div>
-		<label for="estado">Estado</label>
+		<label for="estado">Estado:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->estado);?>
 	</div>
 	<div>
-		<label for="creado">Creado</label>
+		<label for="creado">Creado:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->creado);?>
 	</div>
 	<div>
-		<label for="modificado">Modificado</label>
+		<label for="modificado">Modificado:&nbsp;</label>
 		<?php echo $this->escape($this->usuario->modificado);?>
 	</div>
-
+</div>
 
 <?php echo $this->render('footer.phtml'); ?>

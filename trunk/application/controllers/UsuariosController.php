@@ -5,6 +5,14 @@ class UsuariosController extends Zend_Controller_Action{
 		$this->initView();
 		$this->view->baseUrl = $this->_request->getBaseUrl();
 		Zend_Loader::loadClass('Usuarios');
+		$this->view->user = Zend_Auth::getInstance()->getIdentity();
+	}
+
+	function preDispatch(){
+		$auth = Zend_Auth::getInstance();
+		if (!$auth->hasIdentity()) {
+			$this->_redirect('autenticacion/login');
+		}
 	}
 
 	function indexAction(){
@@ -49,7 +57,6 @@ class UsuariosController extends Zend_Controller_Action{
 		$this->view->usuario->nombre = '';
 		$this->view->usuario->apellido = '';
 		$this->view->usuario->mail = '';
-		// additional view fields required by form
 		$this->view->action = 'agregar';
 		$this->view->buttonText = 'Agregar';
 		$this->render();

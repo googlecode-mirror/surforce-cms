@@ -1,5 +1,11 @@
 <?php echo $this->render('header.phtml'); ?>
 
+<h1><?php echo $this->escape($this->title); ?></h1>
+
+<?php echo $this->render('menu.phtml'); ?>
+
+<div id="contenido">
+
 	<p><a href="<?php echo $this->baseUrl; ?>/usuarios/agregar">Agregar Usuario</a></p>
 
 	<table>
@@ -24,5 +30,7 @@
 	</table>
 
 	<p><a href="<?php echo $this->baseUrl; ?>/usuarios/agregar">Agregar Usuario</a></p>
+
+</div>
 
 <?php echo $this->render('footer.phtml'); ?>

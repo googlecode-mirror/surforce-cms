@@ -1,5 +1,8 @@
 <?php echo $this->render('header.phtml'); ?>
 
+	<h1><?php echo $this->escape($this->title); ?></h1>
+
+	<?php echo $this->render('menu.phtml'); ?>
 
 	<div id="contenido">
 		Mensaje de bienvenida en index.

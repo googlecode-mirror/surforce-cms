@@ -1,25 +1,35 @@
+BODY{
+	margin:5px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+
+H1{
+	font-size:22px;
+}
+
 DIV#contenedor{
-	width: 730px;
 	margin:0 auto;
 }
 
-DIV#menu{
-	width: 150px;
-	float:left;
-	overflow:hidden;
-	border-right:1px solid #CCCCCC;
-}
 
 DIV#menu ul, DIV#menu li{
 	margin-left:10px;
 	padding:0;
 }
 
-DIV#contenido{
-	float:left;
-	width: 550px;
-	padding:15px 0 0 15px;
 
+DIV#menu{
+	width:150px;
+	overflow:hidden;
+	float:left;
+}
+
+DIV#contenido{
+	width: 550px;
+	padding:15px;
+	float:left;
+	border-left:1px solid #CCCCCC;
 }
 
 DIV#pie{
@@ -41,11 +51,26 @@ TD{
 }
 
 label {
-width: 100px;
-display: block;
-float: left;
+	width: 60px;
+	display: block;
+	float: left;
+	text-align:right;
 }
 
 DIV#formbutton {
-margin-left: 100px;
+	margin-left: 100px;
+}
+
+DIV#mensaje{
+	margin: 10px;
+	color:#FF0000;
+}
+DIV#boton_formulario{
+	width:205px;
+}
+DIV#boton_formulario INPUT{
+	float:right;
+}
+
+DIV#logueado{
 }

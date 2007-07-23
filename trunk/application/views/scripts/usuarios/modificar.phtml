@@ -1,30 +1,36 @@
 <?php echo $this->render('header.phtml'); ?>
 
+<h1><?php echo $this->escape($this->title); ?></h1>
+
+<?php echo $this->render('menu.phtml'); ?>
+
+<div id="contenido">
 <form action="<?php echo $this->baseUrl ?>/usuarios/<?php echo $this->action; ?>" method="post">
 	<div>
-		<label for="usuario">Usuario</label>
+		<label for="usuario">Usuario:</label>
 		<input type="text" name="usuario" value="<?php echo $this->escape(trim($this->usuario->usuario));?>"/>
 	</div>
 	<div>
-		<label for="password">Password</label>
+		<label for="password">Password:</label>
 		<input type="password" name="password" value="<?php echo $this->escape($this->usuario->password);?>"/>
 	</div>
 	<div>
-		<label for="nombre">Nombre</label>
+		<label for="nombre">Nombre:</label>
 		<input type="text" name="nombre" value="<?php echo $this->escape($this->usuario->nombre);?>"/>
 	</div>
 	<div>
-		<label for="apellido">Apellido</label>
+		<label for="apellido">Apellido:</label>
 		<input type="text" name="apellido" value="<?php echo $this->escape($this->usuario->apellido);?>"/>
 	</div>
 	<div>
-		<label for="mail">Mail</label>
+		<label for="mail">Mail:</label>
 		<input type="text" name="mail" value="<?php echo $this->escape($this->usuario->mail);?>"/>
 	</div>
-	<div id="formbutton">
+	<div id="boton_formulario">
 		<input type="hidden" name="id" value="<?php echo $this->usuario->id; ?>" />
 		<input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
 	</div>
 </form>
+</div>
 
 <?php echo $this->render('footer.phtml'); ?>
