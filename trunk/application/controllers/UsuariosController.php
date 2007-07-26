@@ -10,8 +10,8 @@ class UsuariosController extends Zend_Controller_Action{
 
 	function preDispatch(){
 		$auth = Zend_Auth::getInstance();
-		if (!$auth->hasIdentity()) {
-			$this->_redirect('autenticacion/login');
+		if ($auth->hasIdentity()) {
+			$this->view->usuarioLogueado = true;
 		}
 	}
 
@@ -23,6 +23,10 @@ class UsuariosController extends Zend_Controller_Action{
 	}
 
 	function agregarAction(){
+		if( !$this->view->usuarioLogueado){
+			die( "Acción no permitida ");
+		}
+
 		$this->view->title = "Agregar Usuario";
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -63,6 +67,11 @@ class UsuariosController extends Zend_Controller_Action{
 	}
 
 	function modificarAction(){
+
+		if( !$this->view->usuarioLogueado){
+			die( "Acción no permitida ");
+		}
+
 		$this->view->title = "Editar Usuario";
 		$eUsuario = new Usuarios();
 		if ($this->_request->isPost()) {
@@ -104,6 +113,10 @@ class UsuariosController extends Zend_Controller_Action{
 	}
 
 	function eliminarAction(){
+		if( !$this->view->usuarioLogueado){
+			die( "Acción no permitida ");
+		}
+
 		$this->view->title = "Eliminar Usuario";
 		$usuario = new Usuarios();
 		if ($this->_request->isPost()) {
