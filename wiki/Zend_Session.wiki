@@ -10,7 +10,7 @@ Zend_Session_Namespace provee una interfase estandarizada orientada a objetos pa
 
 Cada instancia de Zend_Session_Namespace corresponde a una entrada en el array superglobal $_SESSION, donde el namespace es usado como una clave de $_SESSION.
 
- 
+{{{
 <?php
 
 require_once 'Zend/Session/Namespace.php';
@@ -31,8 +31,11 @@ $otroNamespace ->estilo = 'moderno';
 print_r($_SESSION);
 
 ?>
+}}}
+
 Donde la salida de print_r($_SESSION) es:
 
+{{{
 Array
 (
 
@@ -55,6 +58,7 @@ Array
         )
 
 )
+}}}
 
 Una vez que empezamos a utilizar Zend_Session no se deberían modificar los datos de $_SESSION de forma directa, el método recomendado para manipular la información de sesión es a través de las instancias de Zend_Session_Namespace (en el ejemplo anterior llamadas "$miNuevoNamespace" y $otroNamespace).
  
@@ -62,7 +66,7 @@ Una vez que empezamos a utilizar Zend_Session no se deberían modificar los dato
 = NAMESPACE POR DEFECTO =
 
 Si no se especifica un nombre al instanciar Zend_Session_Namespace se creará un namespace llamado 'Default'. Se puede utilizar de esta forma si solo se necesita trabajar con un namespace.
-
+{{{
 <?php
 
 require_once 'Zend/Session/Namespace.php';
@@ -74,8 +78,9 @@ $defaultNamespace->nombre = 'pepe';
 print_r($_SESSION);
 
 ?>
+}}}
 Donde la salida de print_r($_SESSION) es:
-
+{{{
 Array
 
 (
@@ -89,7 +94,7 @@ Array
         )
 
 )
-
+}}}
 = BLOQUEO DE NAMESPACES =
 
 Los namespaces se pueden bloquear para prevenir alteraciones en los datos que alojan aunque el bloqueo no tiene efecto sobre los métodos "setters" de los objetos.
@@ -101,7 +106,7 @@ Se utilizan los métodos:
     * isLocked() para testear si un namespace se encuentra bloqueado o no.
 
 El bloqueo es pasajero, tiene efecto durante la ejecución de la petición y no persiste de una solicitud a otra.
-
+{{{
 <?php
 
 require_once 'Zend/Session/Namespace.php';
@@ -123,3 +128,5 @@ if ($miNamespace->isLocked()) {
 $miNamespace->nombre = 'pepe';
 
 ?>
+}}}
+
