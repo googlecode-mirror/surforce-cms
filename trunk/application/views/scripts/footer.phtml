@@ -3,11 +3,12 @@
 		 if($this->user) : ?>
 			<p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre);?>.
 			<br/>
-			<a href="<?php echo $this->baseUrl ?>/autenticacion/logout">Cerrar sesión</a></p>
+			<a href="<?php echo $this->baseUrl ?>/autenticacion/logout">Cerrar sesion</a></p>
 		<?php else : ?>
-			<a href="<?php echo $this->baseUrl ?>/autenticacion/login">Iniciar sesión</a></p>
+			<a href="<?php echo $this->baseUrl ?>/autenticacion/login">Iniciar sesion</a></p>
 		<?php endif; ?>
     </div>
     </div>
+    <div><img src="PoweredBy_ZF_4LightBG.png" alt="Powered By Zend Framework"></div>
   </body>
 </html>
