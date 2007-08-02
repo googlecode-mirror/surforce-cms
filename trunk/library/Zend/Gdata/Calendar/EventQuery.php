@@ -30,7 +30,7 @@ require_once('Zend/Gdata/App/Util.php');
 require_once('Zend/Gdata/Query.php');
 
 /**
- * Assists in constructing queries for Google Calendar events 
+ * Assists in constructing queries for Google Calendar events
  *
  * @link http://code.google.com/apis/gdata/calendar/
  *
@@ -52,11 +52,16 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     protected $_event = null;
 
     /**
-     * Create Gdata_Calendar_EventQuery object
+     * Create Gdata_Calendar_EventQuery object.  If a URL is provided,
+     * it becomes the base URL, and additional URL components may be
+     * appended.  For instance, if $url is 'http://www.foo.com', the
+     * default URL constructed will be 'http://www.foo.com/default/public/full'
+     *
+     * @param string $url The URL to use as the base path for requests
      */
-    public function __construct()
+    public function __construct($url = null)
     {
-        parent::__construct();
+        parent::__construct($url);
     }
 
     /**
@@ -204,7 +209,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return int start-min 
+     * @return int start-min
      */
     public function getStartMin()
     {
@@ -228,7 +233,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return string sortorder 
+     * @return string sortorder
      */
     public function getSortOrder()
     {
@@ -240,7 +245,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return string sortorder 
+     * @return string sortorder
      */
     public function setSortOrder($value)
     {
@@ -253,7 +258,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @return string recurrence-expansion-start 
+     * @return string recurrence-expansion-start
      */
     public function getRecurrenceExpansionStart()
     {
@@ -279,7 +284,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
 
 
     /**
-     * @return string recurrence-expansion-end 
+     * @return string recurrence-expansion-end
      */
     public function getRecurrenceExpansionEnd()
     {
@@ -311,11 +316,11 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     {
         if (array_key_exists('singleevents', $this->_params)) {
             $value = $this->_params['singleevents'];
-            switch ($value) {            
+            switch ($value) {
                 case 'true':
-                    return true;    
+                    return true;
                     break;
-                case 'false': 
+                case 'false':
                     return false;
                     break;
                 default:
@@ -334,7 +339,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
      * @return Zend_Gdata_Calendar_EventQuery Provides a fluent interface
      */
     public function setSingleEvents($value)
-    {   
+    {
         if (!is_null($value)) {
             if (is_bool($value)) {
                 $this->_params['singleevents'] = ($value?'true':'false');
@@ -361,9 +366,9 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
             $value = $this->_params['futureevents'];
             switch ($value) {
                 case 'true':
-                    return true;    
+                    return true;
                     break;
-                case 'false': 
+                case 'false':
                     return false;
                     break;
                 default:
@@ -378,7 +383,7 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value Also accepts bools. If using a string, must be either "true" or "false" or 
+     * @param string $value Also accepts bools. If using a string, must be either "true" or "false" or
      *                      an exception will be thrown on retrieval.
      * @return Zend_Gdata_Calendar_EventQuery Provides a fluent interface
      */
@@ -406,12 +411,14 @@ class Zend_Gdata_Calendar_EventQuery extends Zend_Gdata_Query
      */
     public function getQueryUrl()
     {
-        if (!isset($uri)) {
+        if (isset($this->_url)) {
+            $uri = $this->_url;
+        } else {
             $uri = $this->_defaultFeedUri;
         }
         if ($this->getUser() != null) {
             $uri .= '/' . $this->getUser();
-        } else { 
+        } else {
             $uri .= '/default';
         }
         if ($this->getVisibility() != null) {

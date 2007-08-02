@@ -17,7 +17,7 @@
  * @package    Zend_Db
  * @copyright  Copyright (c) 2005-2007 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Db.php 5100 2007-06-04 19:02:22Z bkarwin $
+ * @version    $Id: Db.php 5961 2007-08-02 01:55:58Z bkarwin $
  */
 
 
@@ -43,9 +43,22 @@ require_once 'Zend/Db/Exception.php';
 class Zend_Db
 {
 
+    /**
+     * Use the CASE_FOLDING constant in the config of a Zend_Db_Adapter.
+     */
     const CASE_FOLDING = 'caseFolding';
 
+    /**
+     * Use the AUTO_QUOTE_IDENTIFIERS constant in the config of a Zend_Db_Adapter.
+     */
     const AUTO_QUOTE_IDENTIFIERS = 'autoQuoteIdentifiers';
+
+    /**
+     * Use the INT_TYPE, BIGINT_TYPE, and FLOAT_TYPE with the quoteType() method.
+     */
+    const INT_TYPE    = 0;
+    const BIGINT_TYPE = 1;
+    const FLOAT_TYPE  = 2;
 
     /**
      * PDO constant values discovered by this script result:
@@ -165,9 +178,13 @@ class Zend_Db
             throw new Zend_Db_Exception('Adapter name must be specified in a string.');
         }
 
-        $adapterName = strtolower($adapterName); // normalize input
-        $adapterName = 'Zend_Db_Adapter_' .
-            str_replace(' ', '_' , ucwords(str_replace('_', ' ', $adapterName)));
+        $adapterNamespace = 'Zend_Db_Adapter';
+        if (isset($config['adapterNamespace'])) {
+            $adapterNamespace = $config['adapterNamespace'];
+            unset($config['adapterNamespace']);
+        }
+        $adapterName = strtolower($adapterNamespace . '_' . $adapterName);
+        $adapterName = str_replace(' ', '_', ucwords(str_replace('_', ' ', $adapterName)));
 
         Zend_Loader::loadClass($adapterName);
 

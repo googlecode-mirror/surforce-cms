@@ -15,7 +15,7 @@
  * @category   Zend
  * @package    Zend_Mail
  * @subpackage Transport
- * @version    $Id: Smtp.php 3944 2007-03-14 22:13:13Z peptolab $
+ * @version    $Id: Smtp.php 5958 2007-08-02 00:42:22Z peptolab $
  * @copyright  Copyright (c) 2005-2007 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
@@ -25,6 +25,12 @@
  * Zend_Loader
  */
 require_once 'Zend/Loader.php';
+
+
+/**
+ * Zend_Mime
+ */
+require_once 'Zend/Mime.php';
 
 
 /**
@@ -41,7 +47,7 @@ require_once 'Zend/Mail/Transport/Abstract.php';
 
 /**
  * SMTP connection object
- * 
+ *
  * Loads an instance of Zend_Mail_Protocol_Smtp and forwards smtp transactions
  *
  * @category   Zend
@@ -58,32 +64,32 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
      * @var string
      */
     protected $_host;
-    
-    
+
+
     /**
      * Port number
      *
      * @var integer|null
      */
     protected $_port;
-    
-    
+
+
     /**
      * Local client hostname or i.p.
      *
      * @var string
      */
     protected $_name = 'localhost';
-    
-    
+
+
     /**
      * Authentication type OPTIONAL
      *
      * @var string
      */
     protected $_auth;
-    
-    
+
+
     /**
      * Config options for authentication
      *
@@ -91,7 +97,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
      */
     protected $_config;
 
-    
+
     /**
      * Instance of Zend_Mail_Protocol_Smtp
      *
@@ -99,7 +105,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
      */
     protected $_connection;
 
-    
+
     /**
      * Constructor.
      *
@@ -136,11 +142,11 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
             $this->_connection->disconnect();
         }
     }
-    
-    
+
+
     /**
      * Sets the connection protocol instance
-     * 
+     *
      * @param Zend_Mail_Protocol_Abstract $client
      *
      * @return void
@@ -149,11 +155,11 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
     {
         $this->_connection = $connection;
     }
-    
-    
+
+
     /**
      * Gets the connection protocol instance
-     * 
+     *
      * @return Zend_Mail_Protocol|null
      */
     public function getConnection()
@@ -164,7 +170,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
     /**
      * Send an email via the SMTP connection protocol
      *
-     * The connection via the protocol adapter is made just-in-time to allow a 
+     * The connection via the protocol adapter is made just-in-time to allow a
      * developer to add a custom adapter if required before mail is sent.
      *
      * @return void
@@ -177,7 +183,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
             $connectionClass = 'Zend_Mail_Protocol_Smtp';
             if ($this->_auth) {
                 $connectionClass .= '_Auth_' . ucwords($this->_auth);
-            }           
+            }
             Zend_Loader::loadClass($connectionClass);
             $this->setConnection(new $connectionClass($this->_host, $this->_port, $this->_config));
             $this->_connection->connect();
@@ -196,7 +202,7 @@ class Zend_Mail_Transport_Smtp extends Zend_Mail_Transport_Abstract
         }
 
         // Issue DATA command to client
-        $this->_connection->data($this->header . $this->EOL . $this->body);
+        $this->_connection->data($this->header . Zend_Mime::LINEEND . $this->body);
     }
 
 }

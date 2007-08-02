@@ -16,7 +16,7 @@
  * @package    Zend_Locale
  * @subpackage Format
  * @copyright  Copyright (c) 2005-2007 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id: Format.php 5507 2007-06-29 19:57:28Z thomas $
+ * @version    $Id: Format.php 5806 2007-07-21 11:00:12Z thomas $
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
@@ -26,7 +26,6 @@
  */
 require_once 'Zend/Locale/Data.php';
 require_once 'Zend/Locale/Exception.php';
-require_once 'Zend/Locale/Math.php';
 
 
 /**
@@ -308,6 +307,9 @@ class Zend_Locale_Format
      */
     public static function toNumber($value, array $options = array())
     {
+        // load class within method for speed
+        require_once 'Zend/Locale/Math.php';
+
         $value = Zend_Locale_Math::normalize($value);
         $options = array_merge(self::$_Options, self::checkOptions($options));
         if ($options['locale'] instanceof Zend_Locale) {
@@ -357,6 +359,7 @@ class Zend_Locale_Format
                 $value = round($value, 0);
                 $options['precision'] = 0;
             }
+            $value = Zend_Locale_Math::normalize($value);
         }
         // set negative sign
         if (call_user_func(Zend_Locale_Math::$comp, $value, 0) < 0) {
@@ -910,13 +913,20 @@ class Zend_Locale_Format
      *
      * @param  string|Zend_Locale  $locale  OPTIONAL Locale of $number, possibly in string form (e.g. 'de_AT')
      * @return string  format
+     * @throws Zend_Locale_Exception  throws an exception when locale data is broken
      */
     public static function getDateFormat($locale = null)
     {
         $format = Zend_Locale_Data::getContent($locale, 'defdateformat', 'gregorian');
+        if (!array_key_exists('default', $format)) {
+            throw new Zend_Locale_Exception("failed to receive data from locale $locale");
+        }
         $format = $format['default'];
 
         $format = Zend_Locale_Data::getContent($locale, 'dateformat', array('gregorian', $format));
+        if (!array_key_exists('pattern', $format)) {
+            throw new Zend_Locale_Exception("failed to receive data from locale $locale");
+        }
         return $format['pattern'];
     }
 

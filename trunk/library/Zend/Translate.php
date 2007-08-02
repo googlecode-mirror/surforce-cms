@@ -22,9 +22,6 @@
 /** Zend_Translate_Exception */
 require_once 'Zend/Translate/Exception.php';
 
-/** Zend_Locale */
-require_once 'Zend/Locale.php';
-
 
 /**
  * @category   Zend
@@ -55,14 +52,15 @@ class Zend_Translate {
      * Generates the standard translation object
      *
      * @param  string              $adapter  Adapter to use
-     * @param  array               $options  Options for this adapter to set
+     * @param  array               $data     Translation source data for the adapter
      *                                       Depends on the Adapter
      * @param  string|Zend_Locale  $locale   OPTIONAL locale to use
+     * @param  array               $options  OPTIONAL options for the adapter
      * @throws Zend_Translate_Exception
      */
-    public function __construct($adapter, $options, $locale = null)
+    public function __construct($adapter, $data, $locale = null, array $options = array())
     {
-        $this->setAdapter($adapter, $options, $locale);
+        $this->setAdapter($adapter, $data, $locale, $options);
     }
 
 
@@ -234,5 +232,27 @@ class Zend_Translate {
     public function isTranslated($messageId, $original = false, $locale = null)
     {
         return $this->_adapter->isTranslated($messageId, $original, $locale);
+    }
+
+
+    /**
+     * Returns all actual known message ids as array
+     *
+     * @return array
+     */
+    public function getMessageIds()
+    {
+        return $this->_adapter->getMessageIds();
+    }
+
+
+    /**
+     * Returns all known messages with  ids
+     *
+     * @return array
+     */
+    public function getMessages()
+    {
+        return $this->_adapter->getMessages();
     }
 }

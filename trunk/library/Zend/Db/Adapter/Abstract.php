@@ -18,7 +18,7 @@
  * @subpackage Adapter
  * @copyright  Copyright (c) 2005-2007 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 5503 2007-06-29 18:18:06Z bkarwin $
+ * @version    $Id: Abstract.php 5941 2007-07-31 22:27:39Z bkarwin $
  */
 
 
@@ -99,6 +99,23 @@ abstract class Zend_Db_Adapter_Abstract
      * @access protected
      */
     protected $_autoQuoteIdentifiers = true;
+
+    /**
+     * Keys are UPPERCASE SQL datatypes or the constants
+     * Zend_Db::INT_TYPE, Zend_Db::BIGINT_TYPE, or Zend_Db::FLOAT_TYPE.
+     *
+     * Values are:
+     * 0 = 32-bit integer
+     * 1 = 64-bit integer
+     * 2 = float or decimal
+     *
+     * @var array Associative array of datatypes to values 0, 1, or 2.
+     */
+    protected $_numericDataTypes = array(
+        Zend_Db::INT_TYPE    => Zend_Db::INT_TYPE,
+        Zend_Db::BIGINT_TYPE => Zend_Db::BIGINT_TYPE,
+        Zend_Db::FLOAT_TYPE  => Zend_Db::FLOAT_TYPE
+    );
 
     /**
      * Constructor.
@@ -475,7 +492,10 @@ abstract class Zend_Db_Adapter_Abstract
      * Fetches all SQL result rows as an associative array.
      *
      * The first column is the key, the entire row array is the
-     * value.
+     * value.  You should construct the query to be sure that
+     * the first column contains unique values, or else
+     * rows with duplicate values in the first column will
+     * overwrite previous data.
      *
      * @param string|Zend_Db_Select $sql An SQL SELECT statement.
      * @param mixed $bind Data to bind into SELECT placeholders.
@@ -485,7 +505,7 @@ abstract class Zend_Db_Adapter_Abstract
     {
         $stmt = $this->query($sql, $bind);
         $data = array();
-        while ($row = $stmt->fetch($this->_fetchMode)) {
+        while ($row = $stmt->fetch(Zend_Db::FETCH_ASSOC)) {
             $tmp = array_values(array_slice($row, 0, 1));
             $data[$tmp[0]] = $row;
         }
@@ -539,6 +559,7 @@ abstract class Zend_Db_Adapter_Abstract
     {
         $stmt = $this->query($sql, $bind);
         $result = $stmt->fetchColumn(0);
+        $stmt->closeCursor();
         return $result;
     }
 
@@ -554,6 +575,7 @@ abstract class Zend_Db_Adapter_Abstract
     {
         $stmt = $this->query($sql, $bind);
         $result = $stmt->fetch($this->_fetchMode);
+        $stmt->closeCursor();
         return $result;
     }
 
@@ -565,7 +587,7 @@ abstract class Zend_Db_Adapter_Abstract
      */
     protected function _quote($value)
     {
-        if (is_numeric($value)) {
+        if (is_int($value) || is_float($value)) {
             return $value;
         }
         return "'" . addcslashes($value, "\000\n\r\\'\"\032") . "'";
@@ -578,9 +600,10 @@ abstract class Zend_Db_Adapter_Abstract
      * and then returned as a comma-separated string.
      *
      * @param mixed $value The value to quote.
+     * @param mixed $type  OPTIONAL the SQL datatype name, or constant, or null.
      * @return mixed An SQL-safe quoted value (or string of separated values).
      */
-    public function quote($value)
+    public function quote($value, $type = null)
     {
         $this->_connect();
 
@@ -590,9 +613,32 @@ abstract class Zend_Db_Adapter_Abstract
 
         if (is_array($value)) {
             foreach ($value as &$val) {
-                $val = $this->quote($val);
+                $val = $this->quote($val, $type);
             }
             return implode(', ', $value);
+        }
+
+        if ($type !== null && array_key_exists($type = strtoupper($type), $this->_numericDataTypes)) {
+            switch ($this->_numericDataTypes[$type]) {
+                case Zend_Db::INT_TYPE: // 32-bit integer
+                    return (string) intval($value);
+                    break;
+                case Zend_Db::BIGINT_TYPE: // 64-bit integer
+                    if (preg_match('/^([1-9]\d*)/', (string) $value, $matches)) {
+                        return $matches[1];
+                    }
+                    if (preg_match('/^(0x[\dA-F]+)/i', (string) $value, $matches)) {
+                        return $matches[1];
+                    }
+                    if (preg_match('/^(0[0-7]*)/', (string) $value, $matches)) {
+                        return $matches[1];
+                    }
+                    break;
+                case Zend_Db::FLOAT_TYPE: // float or decimal
+                    return (string) floatval($value);
+                    break;
+            }
+            return '0';
         }
 
         return $this->_quote($value);
@@ -611,13 +657,14 @@ abstract class Zend_Db_Adapter_Abstract
      * // $safe = "WHERE date < '2005-01-02'"
      * </code>
      *
-     * @param string $text The text with a placeholder.
-     * @param mixed $value The value to quote.
-     * @return mixed An SQL-safe quoted value placed into the orignal text.
+     * @param string $text  The text with a placeholder.
+     * @param mixed  $value The value to quote.
+     * @param string $type  OPTIONAL SQL datatype
+     * @return string An SQL-safe quoted value placed into the orignal text.
      */
-    public function quoteInto($text, $value)
+    public function quoteInto($text, $value, $type = null)
     {
-        return str_replace('?', $this->quote($value), $text);
+        return str_replace('?', $this->quote($value, $type), $text);
     }
 
     /**
@@ -745,7 +792,7 @@ abstract class Zend_Db_Adapter_Abstract
      * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
      *
      * @param string $sequenceName
-     * @return integer
+     * @return string
      */
     public function lastSequenceId($sequenceName)
     {
@@ -758,7 +805,7 @@ abstract class Zend_Db_Adapter_Abstract
      * (e.g. Oracle, PostgreSQL, DB2).  Other RDBMS brands return null.
      *
      * @param string $sequenceName
-     * @return integer
+     * @return string
      */
     public function nextSequenceId($sequenceName)
     {
@@ -864,7 +911,7 @@ abstract class Zend_Db_Adapter_Abstract
      *
      * @param string $tableName   OPTIONAL Name of table.
      * @param string $primaryKey  OPTIONAL Name of primary key column.
-     * @return integer
+     * @return string
      */
     abstract public function lastInsertId($tableName = null, $primaryKey = null);
 
