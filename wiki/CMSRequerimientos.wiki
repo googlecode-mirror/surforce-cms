@@ -51,3 +51,34 @@ En base a la lista de requerimientos que se extrae de las reuniones se hace un a
   * Página principal de cada sitio / subsitio
   * Una imagen por noticia (opcional: manejo de “tags” por tema)
   * Que el sitio principal pueda incluir las noticias de todos los subsitios (opcional, configurable).
+
+= Planificación: entregables = 
+
+*Inicio del proyecto 1ro de Agosto* - Las fechas y funcionalidades de los productos son estimaciones, podrán sufrir cambios durante el proceso de desarrollo.
+
+Se divide en 3 entregables, 
+
+== 1ra entrega 15 de Agosto - "Implementación de la Funcionalidad Base" ==
+
+Contemplar la primera versión con las funcionalidades base del sistema CMS. En las posteriores entregas se irán completando los pendientes de cada ítem.
+
+  * Inicio implementación sistema base
+  * Inicio implementación manejo de usuarios
+  * Inicio implementación manejo de contenidos 1er nivel (no subsitios)
+    * menús
+    * Noticias
+    * Páginas estáticas.
+    * FAQ
+
+== 2da entrega 31 de agosto - "Implementación de los Subsitios" ==
+
+  * Inicio implementación subsitios
+  * Se continúa con implementación y cierre del manejo de contenidos
+  * Se continúa con implementación y cierre del manejo de usuarios
+
+== 3ra entrega - 30 de setiembre - "Cierre del producto" ==
+
+  * Inicio implementación sistema de administración para el usuario webmaster
+    * manejo de estilos / estética
+  * Instalación / configuración funcionalidades adicionales
+  * Re-work (correcciones o mejoras menores)
