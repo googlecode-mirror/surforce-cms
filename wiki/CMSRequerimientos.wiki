@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Requerimientos base del sistema a desarrollar y un cronograma tentativo de entregables
 #labels Phase-Requirements
 
 = Introduction =
