@@ -15,4 +15,39 @@ _"Crear un CMS base para el sitio de la organización y sus proyectos"_
     * Sección "Proyectos" tiene una introducción a la sección general y un menú interno contendrá opciones como "Proyecto A", "Sub Proyecto B", "Página de Documentos",  etc.
     * Se puede asociar un enlace a un contenido o a un sub-sitio (un concepto distinto, más independiente, recursivo al sitio original).
   # *"Sub-sitios":* en vez de crear un "contenido" o una "sección" con enlaces a contenidos, se podrá armar un sitio con dirección ”http://www.sitio.com/subproyecto” en el cual responderá con su propia estética (si así se desea), pero con la misma funcionalidad, independientemente del sitio "padre" (se creará siempre un enlace (por ej. en el cabezal) que permita ir al sitio base, o que diga "Proyecto del Organismo", etc.).
-  * Por ejemplo: Proyecto Cultura (cabezal nuevo, color distinto, sus propias opciones)
+    * Por ejemplo: Proyecto Cultura (cabezal nuevo, color distinto, sus propias opciones)
+
+= Funcionalidades a Implementar = 
+
+En base a la lista de requerimientos que se extrae de las reuniones se hace un análisis pormenorizado de todas las funcionalidades que se necesitarán implementar para cubrirlas completamente.
+
+== Administración de Usuarios ==
+
+  * Manejo de usuario simple que pueda administrador todo el sitio. Prever el caso de tener que manejar más de un usuario y diferenciar zonas.
+  * Por ej. crear usuarios para ingresar solo noticias.
+
+== Administración de menús ==
+
+  * Principal: menús con enlaces / menús centrales con imágenes (opcional)
+  * Secciones: menús con enlaces / menús con imágenes, posición opcional (centro, arriba, izquierda)
+
+== Administración de Contenidos ==
+
+  * Crear páginas con contenidos que luego serán linkeadas desde los menús.
+  * Permitir subir archivos
+  * Ingresar Decretos (tiene un formato pre-establecido, perfectamente puede ser un contenido estándar que es generado por el usuario).
+  * Permitir que en el pié de cada contenido agregar lista de "documentos relacionados" (opcional: manejo de “tags”)
+
+== Administración de subsitios ==
+
+  * Permitir crear uno o varios subsitios a partir del original, deben ser independientes, el CMS deberá poder trabajar con todos a la vez.
+
+== Administración de configuraciones ==
+  
+  * Fundamentalmente que el usuario pueda controlar la estética, teniendo en cuenta que existen varios sitios, el principal y los subsitios.
+
+== Administración de Noticias ==
+
+  * Página principal de cada sitio / subsitio
+  * Una imagen por noticia (opcional: manejo de “tags” por tema)
+  * Que el sitio principal pueda incluir las noticias de todos los subsitios (opcional, configurable).
