@@ -3,7 +3,7 @@
 
 = Introduction =
 
-_"Crear un CMS base para el sitio de la organización y sus proyectos"_
+_"Crear un CMS base para el sitio de cualquier organización y sus proyectos"_
 
  * La idea es contar con un sitio con contenido dinámico que un usuario “no técnico” pueda mantener fácilmente todo su contenido, que incluye textos, enlaces, menús, imágenes y archivos de documentos.
 
