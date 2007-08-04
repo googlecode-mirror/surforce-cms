@@ -11,8 +11,8 @@ _"Crear un CMS base para el sitio de la organización y sus proyectos"_
 
   # *"Contenidos":* permitir crear dinámicamente todas las páginas de los sitios y sus proyectos. Posteriormente a la creación de las mismas el usuario deberá contar con la posibilidad de seleccionar libremente cómo será el acceso a la página desde el menú (menú dinámico creado por el usuario).
   # *"Secciones":* Cada opción del menú principal (izquierda) permite ingresar a las "secciones" del sitio, donde cada una de estas tendrá su propio menú interno (a continuación de la izquierda, o un menú superior horizontal, a definir).
-  * Cada opción del menú interno enlaza con los contenidos (creados en el punto 1).
-  * Sección "Proyectos" tiene una introducción a la sección general y un menú interno contendrá opciones como "Proyecto A", "Sub Proyecto B", "Página de Documentos",  etc.
-  * Se puede asociar un enlace a un contenido o a un sub-sitio (un concepto distinto, más independiente, recursivo al sitio original).
+    * Cada opción del menú interno enlaza con los contenidos (creados en el punto 1).
+    * Sección "Proyectos" tiene una introducción a la sección general y un menú interno contendrá opciones como "Proyecto A", "Sub Proyecto B", "Página de Documentos",  etc.
+    * Se puede asociar un enlace a un contenido o a un sub-sitio (un concepto distinto, más independiente, recursivo al sitio original).
   # *"Sub-sitios":* en vez de crear un "contenido" o una "sección" con enlaces a contenidos, se podrá armar un sitio con dirección ”http://www.sitio.com/subproyecto” en el cual responderá con su propia estética (si así se desea), pero con la misma funcionalidad, independientemente del sitio "padre" (se creará siempre un enlace (por ej. en el cabezal) que permita ir al sitio base, o que diga "Proyecto del Organismo", etc.).
   * Por ejemplo: Proyecto Cultura (cabezal nuevo, color distinto, sus propias opciones)
