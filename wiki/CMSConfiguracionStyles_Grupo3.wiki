@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Discutimos como solucionar un problema ;) "Administrar el/los diseños del CMS".
 
 = Introducción =
 
@@ -47,7 +47,6 @@ Tenemos una semana y media (15 de agosto) para terminarlo a si que solo nos toma
 
 
 Un saludo, lisandro.
-
 
 
 
