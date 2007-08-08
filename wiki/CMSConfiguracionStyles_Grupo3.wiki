@@ -48,12 +48,27 @@ Tenemos una semana y media (15 de agosto) para terminarlo a si que solo nos toma
 
 Un saludo, lisandro.
 
+===Actualizado el 08/08/07===
 
+Bueno... sacando un poco en limpio lo que tenemos que hacer es un mini y sencillo editor css,
+en un segundo paso será un ABM completo pero por ahora solo nos vamos a concentrar en la "M", o sea
+que solo vamos a permitir editar y las otras dos opciones (A=Alta,B=Baja) seran implementadas
+en la segudna etapa cuando se puedan crear sub-sitios.
 
+1 - Diseño del "default.css" y del formulario para poder editarlo.
+    lisandro
+2 - Diseño de las tablas para guardar las etiquetas, propiedades, valores y unidades de un CSS.
+    Aarón
+3 - Programar el controlador que lea la db y carge los datos en el formulario.
+    Antonio
+4 - Programar la accion para el UPDATE con los datos del formulario, imagino que este es un buen momento para generar el ".css".
+    Marcos
 
+Trate de hacerlo lo mas parejo posible, si alguno termina rapido seria bueno que colabore con otro ya que tenemos solo una semana para que funcione.
 
+Desde ahora en más dudas y comentarios preferiblemente en el grupo3.
 
-
+Saludos, lisandro.
 
 
 
