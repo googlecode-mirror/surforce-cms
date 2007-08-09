@@ -9,7 +9,7 @@ class IndexController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Hola Mundo";
+		$this->view->title = "CMS - Home";
 		$this->render();
 	}
 
