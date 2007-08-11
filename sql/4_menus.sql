@@ -1,0 +1,8 @@
+﻿CREATE TABLE `cms`.`menus` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `item` VARCHAR(45) NOT NULL,
+  `destino` VARCHAR(255) NOT NULL,
+  `estado` CHAR(1) BINARY NOT NULL,
+  PRIMARY KEY(`id`)
+)
+ENGINE = InnoDB;
