@@ -1,0 +1,15 @@
+    <div id="pie">
+		<?php
+		 if($this->user) : ?>
+			<p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre);?>.
+			<br/>
+			<a href="<?php echo $this->baseUrl ?>/autenticacion/logout">Cerrar sesion</a></p>
+		<?php else : ?>
+			<a href="<?php echo $this->baseUrl ?>/autenticacion/login">Iniciar sesion</a></p>
+		<?php endif; ?>
+    </div>
+    <span style="text-align:right;"><a href="http://framework.zend.com" title="Sitio Oficial de Zend Framework"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/PoweredBy_ZF_4LightBG.png" alt="Powered By Zend Framework"></A></span>
+    </div>
+
+  </body>
+</html>
