@@ -1,4 +1,4 @@
-﻿CREATE TABLE `cms`.`menus` (
+﻿CREATE TABLE `cms`.`menu` (
   `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   `item` VARCHAR(45) NOT NULL,
   `destino` VARCHAR(255) NOT NULL,
