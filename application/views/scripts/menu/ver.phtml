@@ -1,0 +1,37 @@
+<?php echo $this->render('header.phtml');?>
+
+<h1><?php echo $this->escape($this->title);  ?></h1>
+
+<?php echo $this->render('menu.phtml'); ?>
+
+<div id="contenido">
+	<?php if ($this->usuarioLogueado): ?>
+	<table>
+		<tr>
+			<td><a href="<?php echo $this->baseUrl; ?>/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a></td>
+			<td><a href="<?php echo $this->baseUrl; ?>/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a></td>
+		</tr>
+	</table>
+	<?php endif; ?>
+
+	<div>
+		<label for="id">Id:&nbsp;</label>
+		<?php echo $this->escape($this->item->id); ?>
+	</div>
+
+	<div>
+		<label for="item">Item:&nbsp;</label>
+		<?php echo $this->escape($this->item->item); ?>
+	</div>
+
+	<div>
+		<label for="destino">Destino:&nbsp;</label>
+		<?php echo $this->escape($this->item->destino); ?>
+	</div>
+
+	<div>
+		<label for="destino">Estado:&nbsp;</label>
+		<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->estado; ?>.png" />
+	</div>
+</div>
+<?php echo $this->render('footer.phtml');?>
