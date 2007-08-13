@@ -28,5 +28,10 @@ $frontController->throwExceptions(true);
 $frontController->setControllerDirectory('./application/controllers');
 
 // run!
-$frontController->dispatch();
+try {
+    $frontController->dispatch();
+} catch (Zend_Exception $e) {
+    echo "Message: " . $e->getMessage() . "\n";
+}
+
 ?>
