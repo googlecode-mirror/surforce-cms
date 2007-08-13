@@ -24,7 +24,7 @@ class PaginasController extends Zend_Controller_Action{
 
 	function agregarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( "Acciï¿½n no permitida ");
 		}
 
 		$this->view->title = "Agregar Pagina";
@@ -33,8 +33,8 @@ class PaginasController extends Zend_Controller_Action{
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
 			$filter 	= new Zend_Filter_StripTags();
 
-			$titulo 		= trim($filter->filter($this->_request->getPost('titulo')));
-			$contenido 	= trim($filter->filter($this->_request->getPost('contenido')));
+			$titulo 	= trim($filter->filter($this->_request->getPost('titulo')));
+			$contenido 	= $this->_request->getPost('contenido');
 
 			if( $titulo != '' && $contenido ) {
 				$data = array(
@@ -47,6 +47,7 @@ class PaginasController extends Zend_Controller_Action{
 				return;
 			}
 		}
+
 		$this->view->pagina = new stdClass();
 		$this->view->pagina->id = null;
 		$this->view->pagina->titulo = '';
@@ -59,7 +60,7 @@ class PaginasController extends Zend_Controller_Action{
 
 	function modificarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( "Acciï¿½n no permitida ");
 		}
 
 		$this->view->title = "Editar Noticia";
@@ -101,7 +102,7 @@ class PaginasController extends Zend_Controller_Action{
 
 	function eliminarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( "Acciï¿½n no permitida ");
 		}
 
 		$this->view->title = "Eliminar Pagina";
