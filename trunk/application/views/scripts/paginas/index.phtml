@@ -25,10 +25,10 @@
 	<?php
 	foreach( $this->paginas as $pagina ) : ?>
 			<tr>
-				<td><?php echo $this->escape($pagina->id);?></td>
+				<td><a href="<?php echo $this->baseUrl . "/paginas/ver/id/" . $pagina->id; ?> "><?php echo $this->escape($pagina->id);?></A></td>
 				<td><?php echo $this->escape($pagina->fecha);?></td>
 				<td><?php echo $this->escape($pagina->titulo);?></td>
-				<td><?php echo $this->escape($pagina->contenido);?></td>
+				<td><?php echo $pagina->contenido;?></td>
 
 				<?php if ($this->usuarioLogueado): ?>
 					<td><a href="<?php echo $this->baseUrl; ?>/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a></td>
