@@ -33,7 +33,7 @@ class NoticiasController extends Zend_Controller_Action{
 			$filter 	= new Zend_Filter_StripTags();
 
 			$titulo 		= trim($filter->filter($this->_request->getPost('titulo')));
-			$contenido 	= trim($filter->filter($this->_request->getPost('contenido')));
+			$contenido 	= trim( $this->_request->getPost('contenido') );
 
 			//$estado 	= "1";
 			//$creado		= date("Y-m-d H:i:s");
@@ -72,7 +72,7 @@ class NoticiasController extends Zend_Controller_Action{
 
 			$id 			= 	(int)$this->_request->getPost('id');
 			$titulo	 	= trim($filter->filter($this->_request->getPost('titulo')));
-			$contenido 	= trim($filter->filter($this->_request->getPost('contenido')));
+			$contenido 	= trim( $this->_request->getPost('contenido') );
 
 			if ($id !== false) {
 				if ($titulo != '' && $contenido != '' ) {

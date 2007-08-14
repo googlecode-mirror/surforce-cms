@@ -72,7 +72,6 @@ class PaginasController extends Zend_Controller_Action{
 
 			$id 			= 	(int)$this->_request->getPost('id');
 			$titulo	 	= trim($filter->filter($this->_request->getPost('titulo')));
-
 			$contenido	= trim( $this->_request->getPost('contenido'));
 
 			if ($id !== false) {
