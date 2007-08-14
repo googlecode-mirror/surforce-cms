@@ -74,3 +74,25 @@ DIV#boton_formulario INPUT{
 
 DIV#logueado{
 }
+
+DIV#noticia-titulo{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-weight:bold;
+	line-height:1.5em;
+	font-size:20px;
+}
+DIV#noticia-fecha{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size: 10px;
+	padding-bottom:6px;
+}
+DIV#pagina-titulo{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-weight:bold;
+	line-height:1.5em;
+	font-size:20px;
+}
+DIV#pagina-contenido{
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	padding-bottom:6px;
+}

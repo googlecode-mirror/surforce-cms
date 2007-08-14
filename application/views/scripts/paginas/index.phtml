@@ -15,7 +15,7 @@
 		<th>id</th>
 		<th>fecha</th>
 	 	<th>titulo</th>
-	 	<th>contenido</th>
+
 
 	<?php if ($this->usuarioLogueado): ?>
 	 	<th colspan="3">Acciones</th>
@@ -27,8 +27,7 @@
 			<tr>
 				<td><a href="<?php echo $this->baseUrl . "/paginas/ver/id/" . $pagina->id; ?> "><?php echo $this->escape($pagina->id);?></A></td>
 				<td><?php echo $this->escape($pagina->fecha);?></td>
-				<td><?php echo $this->escape($pagina->titulo);?></td>
-				<td><?php echo $pagina->contenido;?></td>
+				<td><a href="<?php echo $this->baseUrl . "/paginas/ver/id/" . $pagina->id; ?> "><?php echo $this->escape($pagina->titulo);?></A></td>
 
 				<?php if ($this->usuarioLogueado): ?>
 					<td><a href="<?php echo $this->baseUrl; ?>/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a></td>
