@@ -9,8 +9,8 @@
 <?php if ($this->item) :?>
 
 	<form action="<?php echo $this->baseUrl ?>/menu/eliminar" method="post">
-		<p>¿Esta seguro que quiere eliminar el menu 
-		'<?php echo $this->escape($this->item->id); ?>'?
+		<p>&iquest;Esta seguro que quiere eliminar el menu 
+		'<?php echo $this->escape($this->item->item); ?>'?
 		</p>
 		<div id="boton_formulario">
 			<input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
