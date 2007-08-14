@@ -25,7 +25,7 @@
 	foreach( $this->noticias as $noticia ) : ?>
 			<tr>
 				<td><?php echo $this->escape($noticia->fecha);?></td>
-				<td><?php echo $this->escape($noticia->titulo);?></td>
+				<td><a href="<?php echo $this->baseUrl; ?>/noticias/ver/id/<?php echo $noticia->id;?>"><?php echo $noticia->titulo;?></a></td>
 				<td><?php echo $this->escape($noticia->contenido);?></td>
 
 				<?php if ($this->usuarioLogueado): ?>
