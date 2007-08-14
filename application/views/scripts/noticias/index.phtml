@@ -26,7 +26,7 @@
 			<tr>
 				<td><?php echo $this->escape($noticia->fecha);?></td>
 				<td><a href="<?php echo $this->baseUrl; ?>/noticias/ver/id/<?php echo $noticia->id;?>"><?php echo $noticia->titulo;?></a></td>
-				<td><?php echo $this->escape($noticia->contenido);?></td>
+				<td><?php echo $noticia->contenido;?></td>
 
 				<?php if ($this->usuarioLogueado): ?>
 					<td><a href="<?php echo $this->baseUrl; ?>/noticias/ver/id/<?php echo $noticia->id;?>">Ver</a></td>
