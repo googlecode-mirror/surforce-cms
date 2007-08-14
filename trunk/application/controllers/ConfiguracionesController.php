@@ -24,7 +24,7 @@ class ConfiguracionesController extends Zend_Controller_Action{
 		$this->render();
 	}
 
-function modificarAction(){
+	function modificarAction(){
 		if( !$this->view->usuarioLogueado){
 			die( "Acción no permitida ");
 		}
@@ -74,7 +74,30 @@ function modificarAction(){
 							endif;
 						endif;
 					endforeach;
-					//exit;
+					$Selectores = $eSelector->fetchAll();
+					$contenido = "";
+					foreach($Selectores as $Selector):
+						$contenido .= $Selector->selector;
+						$contenido .= '{';
+						$SelectoresPropiedades = $ePropiedadesSelectores->fetchAll('id_selector = ' . $Selector->id_selector);
+						foreach($SelectoresPropiedades as $SelectorPropiedad):
+							$propiedad =	$ePropiedades->fetchRow('id_propiedad=' . $SelectorPropiedad->id_propiedad);
+							$contenido .= $propiedad->propiedad . ':' . $SelectorPropiedad->valor . ';';
+						endforeach;
+						
+						$contenido .= '}';
+					endforeach;
+					$nombre_archivo = 'public/styles/site.css';
+					if (!$gestor = fopen($nombre_archivo, 'w')) {
+         				echo "No se puede abrir el archivo ($nombre_archivo)";
+         				exit;
+    				}
+
+					if (fwrite($gestor, $contenido) === FALSE) {
+       					echo "No se puede escribir al archivo ($nombre_archivo)";
+        				exit;
+    				}
+    				
 					$this->_redirect('/configuraciones/');
 					return;
 				} else {
@@ -96,6 +119,7 @@ function modificarAction(){
 			$this->view->buttonText = 'Modificar';
 
 			$this->render();
+			
 		}
 		
 	}

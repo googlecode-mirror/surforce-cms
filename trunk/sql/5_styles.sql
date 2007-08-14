@@ -1,14 +1,11 @@
-ï»¿-- phpMyAdmin SQL Dump
--- version 2.10.0.2
+-- phpMyAdmin SQL Dump
+-- version 2.8.1
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generaciÃ³n: 13-08-2007 a las 21:40:59
--- VersiÃ³n del servidor: 5.0.37
--- VersiÃ³n de PHP: 5.2.1
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
+-- Tiempo de generación: 14-08-2007 a las 16:23:42
+-- Versión del servidor: 5.0.21
+-- Versión de PHP: 5.1.4
 -- 
 -- Base de datos: `cms`
 -- 
@@ -24,7 +21,7 @@ CREATE TABLE `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=122 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=122 ;
 
 -- 
 -- Volcar la base de datos para la tabla `styles_propiedades`
@@ -162,9 +159,9 @@ DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
 CREATE TABLE `styles_propiedades_x_selectores` (
   `id_selector` int(11) NOT NULL,
   `id_propiedad` int(11) NOT NULL,
-  `valor` varchar(64) collate latin1_general_ci NOT NULL,
+  `valor` varchar(64) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`id_selector`,`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- 
 -- Volcar la base de datos para la tabla `styles_propiedades_x_selectores`
@@ -174,6 +171,34 @@ INSERT INTO `styles_propiedades_x_selectores` VALUES (1, 62, '5px');
 INSERT INTO `styles_propiedades_x_selectores` VALUES (1, 48, 'Verdana, Arial, Helvetica, sans-serif');
 INSERT INTO `styles_propiedades_x_selectores` VALUES (1, 49, '11px');
 INSERT INTO `styles_propiedades_x_selectores` VALUES (2, 49, '22px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (3, 62, '0 auto');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (4, 66, '10px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (4, 79, '0');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (5, 46, 'left');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (5, 78, 'hidden');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (5, 119, '150px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (6, 16, '1px solid #CCCCCC');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (6, 46, 'left');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (6, 79, '15px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (6, 119, '550px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (7, 13, '1px solid #CCCCCC');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (7, 32, 'both');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (7, 106, 'center');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (7, 119, '100%');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (8, 4, '#CCCC00');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (8, 79, '0 3px 0 3px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (9, 14, '1px solid #f0f0f0');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (9, 15, '1px solid #f0f0f0');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (9, 79, '2px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (10, 43, 'block');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (10, 46, 'left');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (10, 106, 'right');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (10, 119, '150px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (11, 66, '100px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (12, 34, '#FF0000');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (12, 62, '10px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (13, 119, '205px');
+INSERT INTO `styles_propiedades_x_selectores` VALUES (14, 46, 'right');
 
 -- --------------------------------------------------------
 
@@ -187,7 +212,7 @@ CREATE TABLE `styles_selectores` (
   `selector` varchar(64) collate latin1_general_ci NOT NULL,
   `descripcion` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`id_selector`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
 
 -- 
 -- Volcar la base de datos para la tabla `styles_selectores`
@@ -195,16 +220,16 @@ CREATE TABLE `styles_selectores` (
 
 INSERT INTO `styles_selectores` VALUES (1, 'BODY', 'Cuerpo principal de la pagina.');
 INSERT INTO `styles_selectores` VALUES (2, 'H1', 'Titulos');
-INSERT INTO `styles_selectores` VALUES (3, 'DIV#contenedor', NULL);
-INSERT INTO `styles_selectores` VALUES (4, 'DIV#menu ul, DIV#menu li', NULL);
-INSERT INTO `styles_selectores` VALUES (5, 'DIV#menu', NULL);
-INSERT INTO `styles_selectores` VALUES (6, 'DIV#contenido', NULL);
-INSERT INTO `styles_selectores` VALUES (7, 'DIV#pie', NULL);
-INSERT INTO `styles_selectores` VALUES (8, 'TH', NULL);
-INSERT INTO `styles_selectores` VALUES (9, 'TD', NULL);
-INSERT INTO `styles_selectores` VALUES (10, 'label', NULL);
-INSERT INTO `styles_selectores` VALUES (11, 'DIV#formbutton', NULL);
-INSERT INTO `styles_selectores` VALUES (12, 'DIV#mensaje', NULL);
-INSERT INTO `styles_selectores` VALUES (13, 'DIV#boton_formulario', NULL);
+INSERT INTO `styles_selectores` VALUES (3, 'DIV#contenedor', '');
+INSERT INTO `styles_selectores` VALUES (4, 'DIV#menu ul, DIV#menu li', '');
+INSERT INTO `styles_selectores` VALUES (5, 'DIV#menu', '');
+INSERT INTO `styles_selectores` VALUES (6, 'DIV#contenido', '');
+INSERT INTO `styles_selectores` VALUES (7, 'DIV#pie', '');
+INSERT INTO `styles_selectores` VALUES (8, 'TH', '');
+INSERT INTO `styles_selectores` VALUES (9, 'TD', '');
+INSERT INTO `styles_selectores` VALUES (10, 'label', '');
+INSERT INTO `styles_selectores` VALUES (11, 'DIV#formbutton', '');
+INSERT INTO `styles_selectores` VALUES (12, 'DIV#mensaje', '');
+INSERT INTO `styles_selectores` VALUES (13, 'DIV#boton_formulario', '');
 INSERT INTO `styles_selectores` VALUES (14, 'DIV#boton_formulario INPUT', 'Botones de formularios');
 INSERT INTO `styles_selectores` VALUES (15, 'DIV#logueado', NULL);
