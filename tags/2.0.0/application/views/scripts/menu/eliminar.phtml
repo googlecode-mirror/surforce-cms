@@ -1,0 +1,28 @@
+<?php echo $this->render('header.phtml'); ?>
+
+<h1><?php echo $this->escape($this->title); ?></h1>
+
+<?php echo $this->render('menu.phtml'); ?>
+
+<div id="contenido">
+
+<?php if ($this->item) :?>
+
+	<form action="<?php echo $this->baseUrl ?>/menu/eliminar" method="post">
+		<p>¿Esta seguro que quiere eliminar el menu 
+		'<?php echo $this->escape($this->item->id); ?>'?
+		</p>
+		<div id="boton_formulario">
+			<input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
+			<input type="submit" name="del" value="No" />
+			<input type="submit" name="del" value="Si" />
+		</div>
+	</form>
+
+<?php else: ?>
+	<p>Este men&uacute; no existe.</p>
+<?php endif;?>
+</div>
+
+
+<?php echo $this->render('footer.phtml'); ?>
