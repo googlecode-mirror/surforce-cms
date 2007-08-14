@@ -7,39 +7,31 @@
 <div id="contenido">
 
 <?php if ($this->usuarioLogueado): ?>
-	<p><a href="<?php echo $this->baseUrl; ?>/noticias/agregar">Agregar noticia</a></p>
+  <p><a href="<?php echo $this->baseUrl; ?>/noticias/agregar">Agregar noticia</a></p>
 <?php endif; ?>
 
-	<table>
-	<tr>
-		<th>fecha</th>
-	 	<th>titulo</th>
-	 	<th>contenido</th>
+  <?php
+  foreach( $this->noticias as $noticia ) : ?>
 
-	<?php if ($this->usuarioLogueado): ?>
-	 	<th colspan="3">Acciones</th>
-	<?php endif; ?>
+    <div id="noticia-titulo"><?php echo $this->escape($noticia->titulo);?></div>
+    <div id="noticia-fecha"><?php echo $this->escape($noticia->fecha);?></div>
+    <div id="noticia-contenido"><?php echo $noticia->contenido;?></div>
 
-	</tr>
-	<?php
-	foreach( $this->noticias as $noticia ) : ?>
-			<tr>
-				<td><?php echo $this->escape($noticia->fecha);?></td>
-				<td><a href="<?php echo $this->baseUrl; ?>/noticias/ver/id/<?php echo $noticia->id;?>"><?php echo $noticia->titulo;?></a></td>
-				<td><?php echo $noticia->contenido;?></td>
+    <?php if ($this->usuarioLogueado): ?>
+    	<br>
+      <div id="noticia-opciones">
+      	Acciones:
+        <a href="<?php echo $this->baseUrl; ?>/noticias/ver/id/<?php echo $noticia->id;?>">Ver</a> |
+        <a href="<?php echo $this->baseUrl; ?>/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar</a> |
+        <a href="<?php echo $this->baseUrl; ?>/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar</a>
+      </div>
+    <?php endif; ?>
+	<HR>
+  <?php endforeach; ?>
 
-				<?php if ($this->usuarioLogueado): ?>
-					<td><a href="<?php echo $this->baseUrl; ?>/noticias/ver/id/<?php echo $noticia->id;?>">Ver</a></td>
-					<td><a href="<?php echo $this->baseUrl; ?>/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar</a></td>
-					<td><a href="<?php echo $this->baseUrl; ?>/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar</a></td>
-				<?php endif; ?>
-
-			</tr>
-	<?php endforeach; ?>
-	</table>
 
 <?php if ($this->usuarioLogueado): ?>
-	<p><a href="<?php echo $this->baseUrl; ?>/noticias/agregar">Agregar noticia</a></p>
+  <p><a href="<?php echo $this->baseUrl; ?>/noticias/agregar">Agregar noticia</a></p>
 <?php endif; ?>
 
 </div>
