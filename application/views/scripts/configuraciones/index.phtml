@@ -17,7 +17,7 @@
 						<tr>
 						<td><?php echo $this->escape($selector->selector); ?></td>
 						<td><?php echo $this->escape($selector->descripcion);?></td>
-						<td>Agregar</td>
+						<td><a href="<?php echo $this->baseUrl ?>/configuraciones/ver/id/<?php echo $this->escape($selector->id_selector)?>">Ver</a></td>
 						<td><a href="<?php echo $this->baseUrl ?>/configuraciones/modificar/id/<?php echo $this->escape($selector->id_selector)?>">Modificar</a></td>
 						<td>Eliminar</td>
 						</tr>
