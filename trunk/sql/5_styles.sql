@@ -1,20 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 2.8.1
--- http://www.phpmyadmin.net
--- 
--- Servidor: localhost
--- Tiempo de generación: 14-08-2007 a las 16:23:42
--- Versión del servidor: 5.0.21
--- Versión de PHP: 5.1.4
--- 
--- Base de datos: `cms`
--- 
-
--- --------------------------------------------------------
-
--- 
--- Estructura de tabla para la tabla `styles_propiedades`
--- 
 
 DROP TABLE IF EXISTS `styles_propiedades`;
 CREATE TABLE `styles_propiedades` (
@@ -23,9 +6,9 @@ CREATE TABLE `styles_propiedades` (
   PRIMARY KEY  (`id_propiedad`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=122 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `styles_propiedades`
--- 
+--
 
 INSERT INTO `styles_propiedades` VALUES (1, 'azimuth');
 INSERT INTO `styles_propiedades` VALUES (2, 'background');
@@ -151,9 +134,9 @@ INSERT INTO `styles_propiedades` VALUES (121, 'z-index');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `styles_propiedades_x_selectores`
--- 
+--
 
 DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
 CREATE TABLE `styles_propiedades_x_selectores` (
@@ -163,9 +146,9 @@ CREATE TABLE `styles_propiedades_x_selectores` (
   PRIMARY KEY  (`id_selector`,`id_propiedad`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
--- 
+--
 -- Volcar la base de datos para la tabla `styles_propiedades_x_selectores`
--- 
+--
 
 INSERT INTO `styles_propiedades_x_selectores` VALUES (1, 62, '5px');
 INSERT INTO `styles_propiedades_x_selectores` VALUES (1, 48, 'Verdana, Arial, Helvetica, sans-serif');
@@ -202,9 +185,9 @@ INSERT INTO `styles_propiedades_x_selectores` VALUES (14, 46, 'right');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `styles_selectores`
--- 
+--
 
 DROP TABLE IF EXISTS `styles_selectores`;
 CREATE TABLE `styles_selectores` (
@@ -214,9 +197,9 @@ CREATE TABLE `styles_selectores` (
   PRIMARY KEY  (`id_selector`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `styles_selectores`
--- 
+--
 
 INSERT INTO `styles_selectores` VALUES (1, 'BODY', 'Cuerpo principal de la pagina.');
 INSERT INTO `styles_selectores` VALUES (2, 'H1', 'Titulos');
