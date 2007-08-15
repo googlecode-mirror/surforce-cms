@@ -1,11 +1,22 @@
 <div id="menu">
-  <ul>
-    <li><a href="<?php echo $this->baseUrl;?>">Home</a></li>
-    <li><a href="<?php echo $this->baseUrl;?>/noticias/">Noticias</a></li>
-    <li><a href="<?php echo $this->baseUrl;?>/usuarios/">Usuarios</a></li>
-    <li><a href="<?php echo $this->baseUrl;?>/faqs/">FAQs</a></li>
-    <li><a href="<?php echo $this->baseUrl;?>/paginas/">Paginas</a></li>
-    <li><a href="<?php echo $this->baseUrl;?>/menu/">Menues</a></li>
-	<li><a href="<?php echo $this->baseUrl;?>/configuraciones/">Configuraciones</a></li>
-  </ul>
+	<?php
+	$registry = Zend_Registry::getInstance();
+	$r = $registry->get('config');
+	$db = new Zend_Db_Adapter_Pdo_Mysql(array(
+	    'host'     => $r->db->config->host,
+	    'username' => $r->db->config->username,
+	    'password' => $r->db->config->password,
+	    'dbname'   => $r->db->config->dbname
+		));
+
+	$stmt = $db->query('SELECT * FROM menu WHERE estado = 1');
+	$enlaces = $stmt->fetchAll();
+
+	echo "<ul>";
+	foreach($enlaces as $enlace){
+		echo '<li><a href="'.$this->baseUrl.$enlace['destino'].'">'.$enlace['item'].'</a></li>';
+	}
+	echo "</ul>";
+
+	?>
 </div>
