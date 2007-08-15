@@ -35,8 +35,6 @@ class NoticiasController extends Zend_Controller_Action{
 			$titulo 		= trim($filter->filter($this->_request->getPost('titulo')));
 			$contenido 	= trim( $this->_request->getPost('contenido') );
 
-			//$estado 	= "1";
-			//$creado		= date("Y-m-d H:i:s");
 			if( $titulo != '' && $contenido ) {
 				$data = array(
 					'titulo' 	=> $titulo,

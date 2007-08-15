@@ -10,7 +10,9 @@ class IndexController extends Zend_Controller_Action{
 
 	function indexAction(){
 		$this->view->title = "CMS - Home";
-		$this->render();
+		//$this->render();
+		$this->_redirect('/noticias/');
+		return;
 	}
 
 }
