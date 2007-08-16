@@ -112,12 +112,16 @@ class MenuController extends Zend_Controller_Action{
 
 			$item		= trim($filter->filter($this->_request->getPost('item')));
 			$destino	= trim($filter->filter($this->_request->getPost('destino')));
+			$posicion	= trim($filter->filter($this->_request->getPost('posicion')));
+			$privado	= trim($filter->filter($this->_request->getPost('privado')));
 			$estado		= trim($filter->filter($this->_request->getPost('estado')));
 
 			if($item != '' && $destino != '' && $estado != ''){
 				$data = array(
 					'item'		=> $item,
 					'destino'	=> $destino,
+					'posicion'	=> $posicion,
+					'privado'	=> $privado,
 					'estado'	=> $estado
 				);
 
@@ -143,6 +147,8 @@ class MenuController extends Zend_Controller_Action{
 			$this->view->item->id = null;
 			$this->view->item->item = '';
 			$this->view->item->destino = '';
+			$this->view->item->posicion = '';
+			$this->view->item->privado = '0';
 			$this->view->item->estado = '0';
 		}
 		return;

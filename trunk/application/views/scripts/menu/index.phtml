@@ -1,6 +1,8 @@
 <?php echo $this->render('header.phtml'); ?>
 
+<div id="cabecera">
 <h1><?php echo $this->escape($this->title);  ?></h1>
+</div>
 
 <?php echo $this->render('menu.phtml'); ?>
 
@@ -15,7 +17,9 @@
 		<th>id</th>
 		<th>Item</th>
 	 	<th>Destino</th>
+	 	<th>Privado</th>
 	 	<th>Estado</th>
+	 	<th>Posición</th>
 
 	<?php if ($this->usuarioLogueado): ?>
 	 	<th colspan="3">Acciones</th>
@@ -29,7 +33,11 @@
 				<td><?php echo $this->escape($items->item);?></td>
 				<td><a href="<?php echo $this->baseUrl . $this->escape($items->destino);?>"><?php echo $this->escape($items->destino);?></A></td>
 
+				<td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $items->privado; ?>.png" /></td>
+
 				<td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $items->estado; ?>.png" /></td>
+
+				<td><?php echo $this->escape($items->posicion);?></td>
 
 				<?php if ($this->usuarioLogueado): ?>
 					<td><a href="<?php echo $this->baseUrl; ?>/menu/ver/id/<?php echo $items->id;?>">Ver</a></td>
