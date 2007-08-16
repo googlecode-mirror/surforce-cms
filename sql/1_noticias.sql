@@ -4,7 +4,7 @@ CREATE TABLE `noticias` (
 `contenido` TEXT NOT NULL ,
 `fecha` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 `id_usuario` INT NOT NULL
-) ENGINE = MYISAM ;
+) ENGINE = MYISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 INSERT INTO `noticias` VALUES (1, 'primera noticia', 'cuerpo de la primera noticia', '2007-08-01 01:15:13', 1);

@@ -4,4 +4,4 @@ CREATE TABLE `menu` (
   `destino` VARCHAR(255) NOT NULL,
   `estado` CHAR(1) BINARY NOT NULL,
   PRIMARY KEY(`id`)
-) ENGINE = MYISAM ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
