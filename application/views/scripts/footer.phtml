@@ -3,9 +3,9 @@
 		 if($this->user) : ?>
 			<p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre);?>.
 			<br/>
-			<a href="<?php echo $this->baseUrl ?>/autenticacion/logout">[Cerrar sesion]</a></p>
+			<a href="<?php echo $this->baseUrl ?>/autenticacion/logout">[Cerrar sesión]</a></p>
 		<?php else : ?>
-			<a href="<?php echo $this->baseUrl ?>/autenticacion/login">[Iniciar sesion]</a></p>
+			<a href="<?php echo $this->baseUrl ?>/autenticacion/login">[Iniciar sesión]</a></p>
 		<?php endif; ?>
     </div>
     <br>
