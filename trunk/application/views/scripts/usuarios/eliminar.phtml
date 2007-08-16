@@ -9,8 +9,7 @@
 <div id="contenido">
 <?php if ($this->usuario) :?>
 	<form action="<?php echo $this->baseUrl ?>/usuarios/eliminar" method="post">
-		<p>¿Esta seguro que quiere eliminar el usuario
-		'<?php echo $this->escape($this->usuario->usuario); ?>'?
+		<p>¿Esta seguro que quiere eliminar el usuario '<?php echo $this->escape($this->usuario->usuario); ?>'?
 		</p>
 		<div id="boton_formulario">
 			<input type="hidden" name="id" value="<?php echo $this->usuario->id; ?>" />
