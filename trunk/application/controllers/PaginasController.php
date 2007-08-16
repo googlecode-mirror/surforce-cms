@@ -16,7 +16,7 @@ class PaginasController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Paginas";
+		$this->view->title = "Páginas";
 		$paginas = new Paginas();
 		$this->view->paginas = $paginas->fetchAll();
 		$this->render();
@@ -24,10 +24,10 @@ class PaginasController extends Zend_Controller_Action{
 
 	function agregarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Accion no permitida ");
+			die( "Acción no permitida ");
 		}
 
-		$this->view->title = "Agregar Pagina";
+		$this->view->title = "Agregar Página";
 
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -60,10 +60,10 @@ class PaginasController extends Zend_Controller_Action{
 
 	function modificarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acci�n no permitida ");
+			die( "Acción no permitida ");
 		}
 
-		$this->view->title = "Editar Pagina";
+		$this->view->title = "Editar Página";
 		$eNoticia = new Paginas();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -102,10 +102,10 @@ class PaginasController extends Zend_Controller_Action{
 
 	function eliminarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acci�n no permitida ");
+			die( "Acción no permitida ");
 		}
 
-		$this->view->title = "Eliminar Pagina";
+		$this->view->title = "Eliminar Página";
 		$pagina = new Paginas();
 
 		if ($this->_request->isPost()) {

@@ -16,7 +16,7 @@ class MenuController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Menu";
+		$this->view->title = "Menú";
 		$menu = new Menu();
 		$this->view->menu = $menu->fetchAll();
 		$this->render();
@@ -27,7 +27,7 @@ class MenuController extends Zend_Controller_Action{
 			die("Accion no permitida. ");
 		}
 
-		$this->view->title = "Agregar Item al Menu";
+		$this->view->title = "Agregar ítem al Menú";
 
 		$this->agregarModificar();
 
@@ -38,10 +38,10 @@ class MenuController extends Zend_Controller_Action{
 
 	function modificarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acci�n no permitida ");
+			die( "Acción no permitida ");
 		}
 
-		$this->view->title = "Editar Item del Menu";
+		$this->view->title = "Editar ítem del Menú";
 
 		$this->agregarModificar();
 
@@ -53,10 +53,10 @@ class MenuController extends Zend_Controller_Action{
 
 	function eliminarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acci�n no permitida ");
+			die( "Acción no permitida ");
 		}
 
-		$this->view->title = "Eliminar Item del Menu";
+		$this->view->title = "Eliminar ítem del Menú";
 
 		$item = new Menu();
 
@@ -87,7 +87,7 @@ class MenuController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$this->view->title = "Ver Item de Menu";
+		$this->view->title = "Ver ítem de Menú";
 
 		$item = new Menu();
 

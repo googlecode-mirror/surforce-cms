@@ -24,7 +24,7 @@ class UsuariosController extends Zend_Controller_Action{
 
 	function agregarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( "AcciÃ³n no permitida ");
 		}
 
 		$this->view->title = "Agregar Usuario";
@@ -69,7 +69,7 @@ class UsuariosController extends Zend_Controller_Action{
 	function modificarAction(){
 
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( "AcciÃ³n no permitida ");
 		}
 
 		$this->view->title = "Editar Usuario";
@@ -114,7 +114,7 @@ class UsuariosController extends Zend_Controller_Action{
 
 	function eliminarAction(){
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( "AcciÃ³n no permitida ");
 		}
 
 		$this->view->title = "Eliminar Usuario";
