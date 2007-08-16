@@ -18,7 +18,9 @@ class NoticiasController extends Zend_Controller_Action{
 	function indexAction(){
 		$this->view->title = "Noticias";
 		$noticias = new Noticias();
-		$this->view->noticias = $noticias->fetchAll();
+		$where = array();
+		$order = "fecha DESC";
+		$this->view->noticias = $noticias->fetchAll($where, $order);
 		$this->render();
 	}
 
