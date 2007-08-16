@@ -1,17 +1,35 @@
 BODY{
-	margin:5px;
+	margin:0;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:11px;
 }
 
 H1{
-	font-size:22px;
+
+}
+
+A{
+	color:#339933;
 }
 
 DIV#contenedor{
 	margin:0 auto;
 }
 
+DIV#cabecera H1{
+	margin:0;
+	padding:0;
+	font-size:22px;
+	color:#CCCCCC;
+}
+
+DIV#cabecera{
+	width:100%;
+	border:1px solid #cccccc;
+	padding:10px;
+	background-color:#EEEEEE;
+
+}
 
 DIV#menu ul, DIV#menu li{
 	margin-left:10px;
@@ -23,6 +41,7 @@ DIV#menu{
 	width:150px;
 	overflow:hidden;
 	float:left;
+	padding:5px;
 }
 
 DIV#contenido{
@@ -37,10 +56,12 @@ DIV#pie{
 	border-top:1px solid #CCCCCC;
 	text-align:center;
 	width: 100%;
+	background-color:#EEEEEE;
+	padding:5px;
 }
 
 TH{
-	background-color:#CCCCCC;
+	background-color:#EEEEEE;
 	padding:0 3px 0 3px;
 }
 

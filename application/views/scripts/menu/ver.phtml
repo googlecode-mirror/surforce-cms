@@ -1,6 +1,8 @@
 <?php echo $this->render('header.phtml');?>
 
+<div id="cabecera">
 <h1><?php echo $this->escape($this->title);  ?></h1>
+</div>
 
 <?php echo $this->render('menu.phtml'); ?>
 
@@ -15,23 +17,34 @@
 	<?php endif; ?>
 
 	<div>
-		<label for="id">Id:&nbsp;</label>
+		Id:&nbsp;
 		<?php echo $this->escape($this->item->id); ?>
 	</div>
 
 	<div>
-		<label for="item">Item:&nbsp;</label>
+		Item:&nbsp;
 		<?php echo $this->escape($this->item->item); ?>
 	</div>
 
 	<div>
-		<label for="destino">Destino:&nbsp;</label>
+		Destino:&nbsp;
 		<?php echo $this->escape($this->item->destino); ?>
 	</div>
 
 	<div>
-		<label for="destino">Estado:&nbsp;</label>
+		Privado:&nbsp;
+		<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->privado; ?>.png" />
+	</div>
+
+	<div>
+		Estado:&nbsp;
 		<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->estado; ?>.png" />
 	</div>
+
+	<div>
+		Posición:&nbsp;
+		<?php echo $this->escape($this->item->posicion); ?>
+	</div>
+
 </div>
 <?php echo $this->render('footer.phtml');?>
