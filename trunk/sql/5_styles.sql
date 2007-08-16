@@ -4,7 +4,7 @@ CREATE TABLE `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=122 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=122 ;
 
 --
 -- Volcar la base de datos para la tabla `styles_propiedades`
@@ -144,7 +144,7 @@ CREATE TABLE `styles_propiedades_x_selectores` (
   `id_propiedad` int(11) NOT NULL,
   `valor` varchar(64) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`id_selector`,`id_propiedad`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcar la base de datos para la tabla `styles_propiedades_x_selectores`
@@ -195,7 +195,7 @@ CREATE TABLE `styles_selectores` (
   `selector` varchar(64) collate latin1_general_ci NOT NULL,
   `descripcion` varchar(255) collate latin1_general_ci default NULL,
   PRIMARY KEY  (`id_selector`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Volcar la base de datos para la tabla `styles_selectores`
