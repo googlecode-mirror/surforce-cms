@@ -1,0 +1,27 @@
+<div id="menu">
+	<?php
+	$registry = Zend_Registry::getInstance();
+	$r = $registry->get('config');
+	$db = new Zend_Db_Adapter_Pdo_Mysql(array(
+	    'host'     => $r->db->config->host,
+	    'username' => $r->db->config->username,
+	    'password' => $r->db->config->password,
+	    'dbname'   => $r->db->config->dbname
+		));
+
+	$stmt = $db->query('SELECT * FROM menu WHERE estado = 1 ORDER BY posicion');
+	$enlaces = $stmt->fetchAll();
+
+	echo "<ul>";
+	foreach($enlaces as $enlace){
+		if($enlace['privado']){
+			if(!$this->user){
+				continue;
+			}
+		}
+		echo '<li><a href="'.$this->baseUrl.$enlace['destino'].'">'.$enlace['item'].'</a></li>';
+	}
+	echo "</ul>";
+
+	?>
+</div>
