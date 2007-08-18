@@ -117,3 +117,8 @@ DIV#pagina-contenido{
 	font-family:Verdana,Arial,Helvetica,sans-serif;
 	padding-bottom:6px;
 }
+
+DIV#login{
+	text-align:center;
+}
+
