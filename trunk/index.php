@@ -17,6 +17,11 @@ $config = new Zend_Config_Ini('./application/config.ini', 'general');
 $registry = Zend_Registry::getInstance();
 $registry->set('config', $config);
 
+// load personalizacion
+$personalizacion = new Zend_Config_Ini('./application/config.ini', 'personalizacion');
+$registry = Zend_Registry::getInstance();
+$registry->set('personalizacion', $personalizacion);
+
 // setup database
 $db = Zend_Db::factory($config->db->adapter, $config->db->config->toArray());
 Zend_Db_Table::setDefaultAdapter($db);

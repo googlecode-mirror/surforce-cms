@@ -16,6 +16,7 @@ class AutenticacionController extends Zend_Controller_Action {
 	}
 
 	function loginAction(){
+		$info = Zend_Registry::get('personalizacion');
 		$this->view->message = '';
 		if ($this->_request->isPost()) {
 
@@ -25,7 +26,7 @@ class AutenticacionController extends Zend_Controller_Action {
 			$password = $f->filter($this->_request->getPost('password'));
 
 			if (empty($usuario)) {
-				$this->view->message = 'Ingrese un nombre de usuario.';
+				$this->view->message = $info->sitio->autenticacion->login->msgNombreVacio;
 			} else {
 
 				Zend_Loader::loadClass('Zend_Auth_Adapter_DbTable');
@@ -46,12 +47,12 @@ class AutenticacionController extends Zend_Controller_Action {
 					$aut->getStorage()->write($data);
 					$this->_redirect('/');
 				} else {
-					$this->view->message = 'Nombre de usuario y/o clave incorrectos.';
+					$this->view->message = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
 				}
 			}
 		}
 
-		$this->view->title = "Inicio de sesión";
+		$this->view->title = $info->sitio->autenticacion->login->titulo;
 		$this->render();
 
 	}

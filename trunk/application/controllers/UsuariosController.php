@@ -16,18 +16,20 @@ class UsuariosController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Listado de usuarios";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->usuarios->index->titulo;
 		$usuarios = new Usuarios();
 		$this->view->usuarios = $usuarios->fetchAll();
 		$this->render();
 	}
 
 	function agregarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->usuarios->agregar->msgRestringido);
 		}
 
-		$this->view->title = "Agregar Usuario";
+		$this->view->title = $info->sitio->usuarios->agregar->titulo;
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
 			$filter 	= new Zend_Filter_StripTags();
@@ -61,18 +63,18 @@ class UsuariosController extends Zend_Controller_Action{
 		$this->view->usuario->nombre = '';
 		$this->view->usuario->apellido = '';
 		$this->view->usuario->mail = '';
-		$this->view->action = 'agregar';
-		$this->view->buttonText = 'Agregar';
+		$this->view->action = $info->sitio->usuarios->agregar->action;
+		$this->view->buttonText = $info->sitio->usuarios->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
-
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->usuarios->modificar->msgRestringido);
 		}
 
-		$this->view->title = "Editar Usuario";
+		$this->view->title = $info->sitio->usuarios->modificar->titulo;
 		$eUsuario = new Usuarios();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -106,18 +108,19 @@ class UsuariosController extends Zend_Controller_Action{
 				$this->view->usuario = $eUsuario->fetchRow('id='.$id);
 			}
 		}
-		$this->view->action = 'modificar';
-		$this->view->buttonText = 'Modificar';
+		$this->view->action = $info->sitio->usuarios->modificar->action;
+		$this->view->buttonText = $info->sitio->usuarios->modificar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->usuarios->eliminar->msgRestringido);
 		}
 
-		$this->view->title = "Eliminar Usuario";
+		$this->view->title = $info->sitio->usuarios->eliminar->titulo;
 		$usuario = new Usuarios();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_Alpha');
@@ -143,7 +146,8 @@ class UsuariosController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$this->view->title = "Ver Usuario";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->usuarios->ver->titulo;
 		$usuario = new Usuarios();
 		$id = (int)$this->_request->getParam('id', 0);
 		if ($id > 0) {

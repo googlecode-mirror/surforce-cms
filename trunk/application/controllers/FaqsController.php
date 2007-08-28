@@ -16,18 +16,20 @@ class FaqsController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "FAQ";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->faqs->index->titulo;
 		$faqs = new Faqs();
 		$this->view->faqs = $faqs->fetchAll();
 		$this->render();
 	}
 
 	function agregarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->faqs->agregar->msgRestringido );
 		}
 
-		$this->view->title = "Agregar FAQ";
+		$this->view->title = $info->sitio->faqs->agregar->titulo;
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
 			$filter 	= new Zend_Filter_StripTags();
@@ -51,17 +53,18 @@ class FaqsController extends Zend_Controller_Action{
 		$this->view->faq->pregunta = '';
 		$this->view->faq->respuesta = '';
 
-		$this->view->action = 'agregar';
-		$this->view->buttonText = 'Agregar';
+		$this->view->action = $info->sitio->faqs->agregar->action;
+		$this->view->buttonText = $info->sitio->faqs->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->faqs->modificar->msgRestringido );
 		}
 
-		$this->view->title = "Editar FAQ";
+		$this->view->title = $info->sitio->faqs->modificar->titulo;
 		$eFAQ = new Faqs();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -92,18 +95,19 @@ class FaqsController extends Zend_Controller_Action{
 				$this->view->faq = $eFAQ->fetchRow('id='.$id);
 			}
 		}
-		$this->view->action = 'modificar';
-		$this->view->buttonText = 'Modificar';
+		$this->view->action = $info->sitio->faqs->modificar->action;
+		$this->view->buttonText = $info->sitio->faqs->modificar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->faqs->eliminar->msgRestringido);
 		}
 
-		$this->view->title = "Eliminar FAQ";
+		$this->view->title = $info->sitio->faqs->eliminar->titulo;
 		$faq = new Faqs();
 
 		if ($this->_request->isPost()) {
@@ -131,7 +135,8 @@ class FaqsController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$this->view->title = "Ver FAQ";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->faqs->ver->titulo;
 		$faq = new Faqs();
 		$id = (int)$this->_request->getParam('id', 0);
 		if ($id > 0) {

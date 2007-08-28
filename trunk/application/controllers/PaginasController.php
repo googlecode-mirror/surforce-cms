@@ -16,18 +16,20 @@ class PaginasController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Páginas";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->paginas->index->titulo;
 		$paginas = new Paginas();
 		$this->view->paginas = $paginas->fetchAll();
 		$this->render();
 	}
 
 	function agregarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->paginas->agregar->msgRestringido);
 		}
 
-		$this->view->title = "Agregar Página";
+		$this->view->title = $info->sitio->paginas->agregar->titulo;
 
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -53,17 +55,18 @@ class PaginasController extends Zend_Controller_Action{
 		$this->view->pagina->titulo = '';
 		$this->view->pagina->contenido = '';
 
-		$this->view->action = 'agregar';
-		$this->view->buttonText = 'Agregar';
+		$this->view->action = $info->sitio->paginas->agregar->action;
+		$this->view->buttonText = $info->sitio->paginas->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->paginas->modificar->msgRestringido);
 		}
 
-		$this->view->title = "Editar Página";
+		$this->view->title = $info->sitio->paginas->modificar->titulo;
 		$eNoticia = new Paginas();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -94,18 +97,19 @@ class PaginasController extends Zend_Controller_Action{
 				$this->view->pagina = $eNoticia->fetchRow('id='.$id);
 			}
 		}
-		$this->view->action = 'modificar';
-		$this->view->buttonText = 'Modificar';
+		$this->view->action = $info->sitio->paginas->modificar->action;
+		$this->view->buttonText = $info->sitio->paginas->modificar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->paginas->eliminar->msgRestringido);
 		}
 
-		$this->view->title = "Eliminar Página";
+		$this->view->title = $info->sitio->paginas->eliminar->titulo;
 		$pagina = new Paginas();
 
 		if ($this->_request->isPost()) {
@@ -133,7 +137,8 @@ class PaginasController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$this->view->title = "Ver Noticia";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->paginas->ver->titulo;
 		$pagina = new Paginas();
 		$id = (int)$this->_request->getParam('id', 0);
 		if ($id > 0) {

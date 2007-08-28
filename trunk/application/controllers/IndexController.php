@@ -9,7 +9,8 @@ class IndexController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "CMS - Home";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->index->index->titulo;
 		//$this->render();
 		$this->_redirect('/noticias/');
 		return;
