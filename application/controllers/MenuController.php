@@ -16,47 +16,51 @@ class MenuController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Menú";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->menu->index->titulo;
 		$menu = new Menu();
 		$this->view->menu = $menu->fetchAll();
 		$this->render();
 	}
 
 	function agregarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if(!$this->view->usuarioLogueado){
-			die("Accion no permitida. ");
+			die($info->sitio->menu->agregar->msgRestringido);
 		}
 
-		$this->view->title = "Agregar ítem al Menú";
+		$this->view->title = $info->sitio->menu->agregar->titulo;
 
 		$this->agregarModificar();
 
-		$this->view->action = 'agregar';
-		$this->view->buttonText = 'Agregar';
+		$this->view->action = $info->sitio->menu->agregar->action;
+		$this->view->buttonText = $info->sitio->menu->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->menu->modificar->msgRestringido);
 		}
 
-		$this->view->title = "Editar ítem del Menú";
+		$this->view->title = $info->sitio->menu->modificar->titulo;
 
 		$this->agregarModificar();
 
-		$this->view->action = 'modificar';
-		$this->view->buttonText = 'Modificar';
+		$this->view->action = $info->sitio->menu->agregar->action;
+		$this->view->buttonText = $info->sitio->menu->agregar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->menu->eliminar->msgRestringido);
 		}
 
-		$this->view->title = "Eliminar ítem del Menú";
+		$this->view->title = $info->sitio->menu->eliminar->titulo;
 
 		$item = new Menu();
 
@@ -87,7 +91,8 @@ class MenuController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$this->view->title = "Ver ítem de Menú";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->menu->ver->titulo;
 
 		$item = new Menu();
 

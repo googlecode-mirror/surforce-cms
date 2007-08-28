@@ -18,18 +18,20 @@ class ConfiguracionesController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Configuraciones-Styles";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->configuraciones->index->titulo;
 		$selectores = new Selectores();
 		$this->view->selectores = $selectores->fetchAll();
 		$this->render();
 	}
 
 	function modificarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->configuraciones->modificar->msgRestringido );
 		}
 
-		$this->view->title = "Editar Style";
+		$this->view->title = $info->sitio->configuraciones->modificar->titulo;
 		$eSelector = new Selectores();
 		$ePropiedades = new Propiedades();
 		$ePropiedadesSelectores = new PropiedadesSelectores;
@@ -115,8 +117,8 @@ class ConfiguracionesController extends Zend_Controller_Action{
 				$this->view->pSelectores = $ePropiedadesSelectores->fetchAll('id_selector='.$id);
 			}
 			
-			$this->view->action = 'modificar';
-			$this->view->buttonText = 'Modificar';
+			$this->view->action = $info->sitio->configuraciones->modificar->action;
+			$this->view->buttonText = $info->sitio->configuraciones->modificar->buttonText;
 
 			$this->render();
 			

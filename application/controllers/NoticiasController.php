@@ -1,10 +1,11 @@
 <?php
 class NoticiasController extends Zend_Controller_Action{
-
+	
 	function init(){
+		
 		$this->initView();
 		$this->view->baseUrl = $this->_request->getBaseUrl();
-		Zend_Loader::loadClass('Noticias');
+		Zend_Loader::loadClass('noticias');
 		$this->view->user = Zend_Auth::getInstance()->getIdentity();
 	}
 
@@ -16,7 +17,8 @@ class NoticiasController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$this->view->title = "Noticias";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->noticias->index->titulo; 
 		$noticias = new Noticias();
 		$where = array();
 		$order = "fecha DESC";
@@ -25,11 +27,12 @@ class NoticiasController extends Zend_Controller_Action{
 	}
 
 	function agregarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->noticias->agregar->msgRestringido);
 		}
 
-		$this->view->title = "Agregar Noticia";
+		$this->view->title = $info->sitio->noticias->agregar->titulo;
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
 			$filter 	= new Zend_Filter_StripTags();
@@ -53,17 +56,18 @@ class NoticiasController extends Zend_Controller_Action{
 		$this->view->noticia->titulo = '';
 		$this->view->noticia->contenido = '';
 
-		$this->view->action = 'agregar';
-		$this->view->buttonText = 'Agregar';
+		$this->view->action = $info->sitio->noticias->agregar->action;
+		$this->view->buttonText = $info->sitio->noticias->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->noticias->modificar->msgRestringido );
 		}
 
-		$this->view->title = "Editar Noticia";
+		$this->view->title = $info->sitio->noticias->modificar->titulo;
 		$eNoticia = new Noticias();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -94,18 +98,19 @@ class NoticiasController extends Zend_Controller_Action{
 				$this->view->noticia = $eNoticia->fetchRow('id='.$id);
 			}
 		}
-		$this->view->action = 'modificar';
-		$this->view->buttonText = 'Modificar';
+		$this->view->action = $info->sitio->noticias->modificar->action;
+		$this->view->buttonText = $info->sitio->noticias->modificar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
+		$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( "Acción no permitida ");
+			die( $info->sitio->noticias->eliminar->msgRestringido );
 		}
 
-		$this->view->title = "Eliminar Noticia";
+		$this->view->title = $info->sitio->noticias->eliminar->titulo;
 		$noticia = new Noticias();
 
 		if ($this->_request->isPost()) {
@@ -133,7 +138,8 @@ class NoticiasController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$this->view->title = "Ver Noticia";
+		$info = Zend_Registry::get('personalizacion');
+		$this->view->title = $info->sitio->noticias->ver->titulo;
 		$noticia = new Noticias();
 		$id = (int)$this->_request->getParam('id', 0);
 		if ($id > 0) {
