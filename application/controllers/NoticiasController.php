@@ -5,7 +5,7 @@ class NoticiasController extends Zend_Controller_Action{
 		
 		$this->initView();
 		$this->view->baseUrl = $this->_request->getBaseUrl();
-		Zend_Loader::loadClass('noticias');
+		Zend_Loader::loadClass('Noticias');
 		$this->view->user = Zend_Auth::getInstance()->getIdentity();
 	}
 
