@@ -7,11 +7,12 @@
 <?php echo $this->render('menu.phtml'); ?>
 
 <div id="contenido">
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->item) :?>
 
 	<form action="<?php echo $this->baseUrl ?>/menu/eliminar" method="post">
-		<p>¿Está seguro que quiere eliminar el menú '<?php echo $this->escape($this->item->item); ?>'?
+		<p>ï¿½Estï¿½ seguro que quiere eliminar el menï¿½ '<?php echo $this->escape($this->item->item); ?>'?
 		</p>
 		<div id="boton_formulario">
 			<input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
@@ -21,7 +22,7 @@
 	</form>
 
 <?php else: ?>
-	<p>Este menú no existe.</p>
+	<p>Este menï¿½ no existe.</p>
 <?php endif;?>
 </div>
 
