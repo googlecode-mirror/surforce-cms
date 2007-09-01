@@ -6,6 +6,11 @@ class MenuController extends Zend_Controller_Action{
 		$this->view->baseUrl = $this->_request->getBaseUrl();
 		Zend_Loader::loadClass('Menu');
 		$this->view->user = Zend_Auth::getInstance()->getIdentity();
+
+		#factorizando la instancia de 'personalizacion'
+		$this->info = Zend_Registry::get('personalizacion');
+		#asignando el titulo de todo el sitio
+		$this->view->title = $this->info->sitio->index->index->titulo;
 	}
 
 	function preDispatch(){
@@ -16,51 +21,51 @@ class MenuController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$info = Zend_Registry::get('personalizacion');
-		$this->view->title = $info->sitio->menu->index->titulo;
+		//$info = Zend_Registry::get('personalizacion');
+		$this->view->subtitle = $this->info->sitio->menu->index->titulo;
 		$menu = new Menu();
 		$this->view->menu = $menu->fetchAll();
 		$this->render();
 	}
 
 	function agregarAction(){
-		$info = Zend_Registry::get('personalizacion');
+		//$info = Zend_Registry::get('personalizacion');
 		if(!$this->view->usuarioLogueado){
-			die($info->sitio->menu->agregar->msgRestringido);
+			die($this->info->sitio->menu->agregar->msgRestringido);
 		}
 
-		$this->view->title = $info->sitio->menu->agregar->titulo;
+		$this->view->subtitle = $this->info->sitio->menu->agregar->titulo;
 
 		$this->agregarModificar();
 
-		$this->view->action = $info->sitio->menu->agregar->action;
-		$this->view->buttonText = $info->sitio->menu->agregar->buttonText;
+		$this->view->action = $this->info->sitio->menu->agregar->action;
+		$this->view->buttonText = $this->info->sitio->menu->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
-		$info = Zend_Registry::get('personalizacion');
+		//$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( $info->sitio->menu->modificar->msgRestringido);
+			die( $this->info->sitio->menu->modificar->msgRestringido);
 		}
 
-		$this->view->title = $info->sitio->menu->modificar->titulo;
+		$this->view->subtitle = $this->info->sitio->menu->modificar->titulo;
 
 		$this->agregarModificar();
 
-		$this->view->action = $info->sitio->menu->agregar->action;
-		$this->view->buttonText = $info->sitio->menu->agregar->buttonText;
+		$this->view->action = $this->info->sitio->menu->agregar->action;
+		$this->view->buttonText = $this->info->sitio->menu->agregar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
-		$info = Zend_Registry::get('personalizacion');
+		//$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( $info->sitio->menu->eliminar->msgRestringido);
+			die( $this->info->sitio->menu->eliminar->msgRestringido);
 		}
 
-		$this->view->title = $info->sitio->menu->eliminar->titulo;
+		$this->view->subtitle = $this->info->sitio->menu->eliminar->titulo;
 
 		$item = new Menu();
 
@@ -91,8 +96,8 @@ class MenuController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$info = Zend_Registry::get('personalizacion');
-		$this->view->title = $info->sitio->menu->ver->titulo;
+		//$info = Zend_Registry::get('personalizacion');
+		$this->view->subtitle = $this->info->sitio->menu->ver->titulo;
 
 		$item = new Menu();
 
