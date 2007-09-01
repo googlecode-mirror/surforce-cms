@@ -6,6 +6,11 @@ class FaqsController extends Zend_Controller_Action{
 		$this->view->baseUrl = $this->_request->getBaseUrl();
 		Zend_Loader::loadClass('Faqs');
 		$this->view->user = Zend_Auth::getInstance()->getIdentity();
+
+		#factorizando la instancia de 'personalizacion'
+		$this->info = Zend_Registry::get('personalizacion');
+		#asignando el titulo de todo el sitio
+		$this->view->title = $this->info->sitio->index->index->titulo;
 	}
 
 	function preDispatch(){
@@ -16,20 +21,21 @@ class FaqsController extends Zend_Controller_Action{
 	}
 
 	function indexAction(){
-		$info = Zend_Registry::get('personalizacion');
-		$this->view->title = $info->sitio->faqs->index->titulo;
+		//$info = Zend_Registry::get('personalizacion');
+		$this->view->subtitle = $this->info->sitio->faqs->index->titulo;
+
 		$faqs = new Faqs();
 		$this->view->faqs = $faqs->fetchAll();
 		$this->render();
 	}
 
 	function agregarAction(){
-		$info = Zend_Registry::get('personalizacion');
+		//$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( $info->sitio->faqs->agregar->msgRestringido );
+			die( $this->info->sitio->faqs->agregar->msgRestringido );
 		}
+		$this->view->subtitle = $this->info->sitio->faqs->agregar->titulo;
 
-		$this->view->title = $info->sitio->faqs->agregar->titulo;
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
 			$filter 	= new Zend_Filter_StripTags();
@@ -53,18 +59,18 @@ class FaqsController extends Zend_Controller_Action{
 		$this->view->faq->pregunta = '';
 		$this->view->faq->respuesta = '';
 
-		$this->view->action = $info->sitio->faqs->agregar->action;
-		$this->view->buttonText = $info->sitio->faqs->agregar->buttonText;
+		$this->view->action = $this->info->sitio->faqs->agregar->action;
+		$this->view->buttonText = $this->info->sitio->faqs->agregar->buttonText;
 		$this->render();
 	}
 
 	function modificarAction(){
-		$info = Zend_Registry::get('personalizacion');
+		//$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( $info->sitio->faqs->modificar->msgRestringido );
+			die( $this->info->sitio->faqs->modificar->msgRestringido );
 		}
+		$this->view->subtitle = $this->info->sitio->faqs->modificar->titulo;
 
-		$this->view->title = $info->sitio->faqs->modificar->titulo;
 		$eFAQ = new Faqs();
 		if ($this->_request->isPost()) {
 			Zend_Loader::loadClass('Zend_Filter_StripTags');
@@ -95,19 +101,19 @@ class FaqsController extends Zend_Controller_Action{
 				$this->view->faq = $eFAQ->fetchRow('id='.$id);
 			}
 		}
-		$this->view->action = $info->sitio->faqs->modificar->action;
-		$this->view->buttonText = $info->sitio->faqs->modificar->buttonText;
+		$this->view->action = $this->info->sitio->faqs->modificar->action;
+		$this->view->buttonText = $this->info->sitio->faqs->modificar->buttonText;
 
 		$this->render();
 	}
 
 	function eliminarAction(){
-		$info = Zend_Registry::get('personalizacion');
+		//$info = Zend_Registry::get('personalizacion');
 		if( !$this->view->usuarioLogueado){
-			die( $info->sitio->faqs->eliminar->msgRestringido);
+			die( $this->info->sitio->faqs->eliminar->msgRestringido);
 		}
 
-		$this->view->title = $info->sitio->faqs->eliminar->titulo;
+		$this->view->subtitle = $this->info->sitio->faqs->eliminar->titulo;
 		$faq = new Faqs();
 
 		if ($this->_request->isPost()) {
@@ -135,8 +141,8 @@ class FaqsController extends Zend_Controller_Action{
 	}
 
 	function verAction(){
-		$info = Zend_Registry::get('personalizacion');
-		$this->view->title = $info->sitio->faqs->ver->titulo;
+		//$info = Zend_Registry::get('personalizacion');
+		$this->view->subtitle = $this->info->sitio->faqs->ver->titulo;
 		$faq = new Faqs();
 		$id = (int)$this->_request->getParam('id', 0);
 		if ($id > 0) {
