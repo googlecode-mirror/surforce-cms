@@ -1,5 +1,6 @@
 #summary Pruebas relacionadas a la implementación de subsitios
 
-[http://docs.google.com/View?docid=dhs6w2jn_20f7tfq7&pli=1 Enlace a las pruebas realizadas por Zsamer]
+  * [http://framework.zend.com/manual/en/zend.controller.modular.html Artículo sugerido por Pablo Rigazzi]
 
-[http://framework.zend.com/manual/en/zend.controller.modular.html Artículo sugerido por Pablo Rigazzi]
+  * [http://docs.google.com/View?docid=dhs6w2jn_20f7tfq7&pli=1 Enlace a las pruebas realizadas por Zsamer]
+
