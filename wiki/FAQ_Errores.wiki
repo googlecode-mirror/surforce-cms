@@ -7,8 +7,8 @@
 
 Editar el archivo de configuración httpd.conf y descomentar la siguiente línea:
 
+{{{
 LoadModule rewrite_module modules/mod_rewrite.so
+}}}
 
 Luego, reiniciar el servidor.
-
-
