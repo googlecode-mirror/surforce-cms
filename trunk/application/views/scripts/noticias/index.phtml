@@ -28,8 +28,15 @@
                 <br><br>
             <?php endif; ?>
             <div id="noticia-titulo"><?php echo $this->escape($noticia->titulo);?></div>
-            <div id="noticia-fecha"><?php echo $this->escape($noticia->fecha);?></div>
+            <?php
+                // FIXME!
+                $fecha = explode(" ", $noticia->fecha);
+                $hora = $fecha[1];
+                $f = explode("-", $fecha[0] );
+            ?>
+            <div id="noticia-fecha"><?php echo $this->escape($f['2'] . "/" . $f['1'] ."/". $f['0']);?></div>
             <div id="noticia-contenido"><?php echo $noticia->contenido;?></div>
+            <div id="noticia-masinfo"><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/ver/id/<?php echo $noticia->id;?>">Ver más información</a></div>
 
         <div class="div-reset"></div>
         </div>
@@ -38,11 +45,14 @@
 
 
     <?php if ($this->usuarioLogueado): ?>
+
           <div class="menu-opciones">
                    <ul><li><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/agregar">Agregar nueva Noticia</a></li></ul>
             </div>
+            <br><br><br>
     <?php endif; ?>
 
+      <div id="noticia-historico"><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/historico">Noticias anteriores...</a></div>
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>

@@ -29,6 +29,14 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         $noticias = new Noticias();
         $where = array();
         $order = "fecha DESC";
+        $this->view->noticias = $noticias->fetchAll($where, $order, 3);
+        $this->render();
+    }
+    function historicoAction(){
+        $this->view->subtitle = $this->info->sitio->noticias->index->titulo . " histórico ";
+        $noticias = new Noticias();
+        $where = array();
+        $order = "fecha DESC";
         $this->view->noticias = $noticias->fetchAll($where, $order);
         $this->render();
     }
@@ -46,11 +54,13 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
 
             $titulo 		= trim($filter->filter($this->_request->getPost('titulo')));
             $contenido 	= trim( $this->_request->getPost('contenido') );
+            $contenido_ext 	= trim( $this->_request->getPost('contenido_ext') );
 
             if( $titulo != '' && $contenido ) {
                 $data = array(
                     'titulo' 	=> $titulo,
-                    'contenido' 	=> $contenido
+                    'contenido' 	=> $contenido,
+                    'contenido_ext' 	=> $contenido_ext
                 );
                 $noticia = new Noticias();
                 $noticia->insert( $data );
@@ -62,6 +72,7 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         $this->view->noticia->id = null;
         $this->view->noticia->titulo = '';
         $this->view->noticia->contenido = '';
+        $this->view->noticia->contenido_ext = '';
 
         $this->view->action = $this->info->sitio->noticias->agregar->action;
         $this->view->buttonText = $this->info->sitio->noticias->agregar->buttonText;
@@ -81,15 +92,17 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
 
             $filter = new Zend_Filter_StripTags();
 
-            $id 			= 	(int)$this->_request->getPost('id');
+            $id 		= (int)$this->_request->getPost('id');
             $titulo	 	= trim($filter->filter($this->_request->getPost('titulo')));
             $contenido 	= trim( $this->_request->getPost('contenido') );
+            $contenido_ext 	= trim( $this->_request->getPost('contenido_ext') );
 
             if ($id !== false) {
                 if ($titulo != '' && $contenido != '' ) {
                     $data = array(
                         'titulo' 	=> $titulo,
-                        'contenido' 	=> $contenido
+                        'contenido' 	=> $contenido,
+                        'contenido_ext' 	=> $contenido_ext,
                     );
                     $where = 'id = ' . $id;
                     $eNoticia->update($data, $where);

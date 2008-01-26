@@ -2,7 +2,6 @@
 <?php echo $this->render('menu.phtml'); ?>
 
 <div id="contenido">
-  <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
   <?php if ($this->usuarioLogueado): ?>
   <table>
@@ -13,19 +12,18 @@
   </table>
   <?php endif; ?>
 
-  <div>
-    <label for="id">Id:&nbsp;</label>
-    <?php echo $this->escape(trim($this->noticia->id));?>
-  </div>
-  <div>
-    <label for="titulo">titulo:&nbsp;</label>
-    <?php echo $this->escape(trim($this->noticia->titulo));?>
-  </div>
-  <div>
-    <label for="contenido">contenido:&nbsp;</label><br>
-    <?php echo $this->noticia->contenido;?>
-  </div>
-
+ <div id="noticia-titulo"><?php echo $this->escape($this->noticia->titulo);?></div>
+    <?php
+                // FIXME!
+                $fecha = explode(" ", $this->noticia->fecha);
+                $hora = $fecha[1];
+                $f = explode("-", $fecha[0] );
+            ?>
+    <div id="noticia-fecha"><?php echo $this->escape($f['2'] . "/" . $f['1'] ."/". $f['0']);?></div>
+    <div id="noticia-contenido"><?php echo $this->noticia->contenido;?></div>
+    <div id="noticia-contenidoext"><?php echo $this->noticia->contenido_ext;?></div>
+    <br>
+    <div id="noticia-volver"><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/">Volver</a></div>
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>
