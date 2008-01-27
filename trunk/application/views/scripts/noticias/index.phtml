@@ -8,28 +8,27 @@
             <div class="menu-admin">
               <a href="<?php echo $this->baseUrl; ?>/noticias/noticias/agregar">Agregar nueva Noticia</a>                   
             </div>
-            <br/><br/>
+            <br/>
         <?php endif; ?>
 
       <?php
       foreach( $this->noticias as $noticia ) : ?>
 
         <div id="noticia">
+        
              <?php if ($this->usuarioLogueado): ?>
-                <br>
                 <table>
                 	<tr>
                 		<td nowrap="nowrap">
-                		<div class="menu-admin">                	                      
-                      <a href="<?php echo $this->baseUrl; ?>/noticias/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar Noticia</a> 
-                      <a href="<?php echo $this->baseUrl; ?>/noticias/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar Noticia</a>
-                </div>
+                			<div class="menu-admin">                	                      
+                    			<a href="<?php echo $this->baseUrl; ?>/noticias/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar Noticia</a> 
+                      			<a href="<?php echo $this->baseUrl; ?>/noticias/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar Noticia</a>
+                			</div>
                 		</td>
                 	</tr>
                 </table>
-                
-                <br><br>
             <?php endif; ?>
+            
             <div id="noticia-titulo"><?php echo $this->escape($noticia->titulo);?></div>
             
             <div id="noticia-fecha"><?php echo $this->escape( $this->dateFormat( $noticia->fecha ) );?></div>

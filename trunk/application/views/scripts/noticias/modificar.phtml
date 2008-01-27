@@ -12,12 +12,14 @@
     <br>
 
     <div>
-          <?php print $this->formFCKeditor( ' contenido' , $this->noticia->contenido); ?>
+    	contenido breve:
+        <?php print $this->formFCKeditor( 'contenido' , $this->noticia->contenido, '100%', 300); ?>
     </div>
 
     <br>
     <div>
-          <?php print $this->formFCKeditor( ' contenido_ext' , $this->noticia->contenido_ext); ?>
+    	contenido extendido:
+        <?php print $this->formFCKeditor( 'contenido_ext' , $this->noticia->contenido_ext); ?>
     </div>
     <br>
     <div id="boton_formulario">
