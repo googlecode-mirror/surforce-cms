@@ -27,7 +27,7 @@ class Menu_MenuController extends Zend_Controller_Action{
         //$info = Zend_Registry::get('personalizacion');
         $this->view->subtitle = $this->info->sitio->menu->index->titulo;
         $menu = new Menu();
-        $this->view->menu = $menu->fetchAll(NULL, 'posicion');
+        $this->view->menu = $menu->fetchAll(NULL, 'id');
         $this->render();
     }
 
