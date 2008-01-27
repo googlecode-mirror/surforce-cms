@@ -251,7 +251,26 @@ TD.mensaje-informativo{
     background: #F7DECA;
 }
 
+/* FAQ */
 
+
+DIV#faq{
+    border-bottom: 1px dashed #CCCCCC;
+    margin-bottom:2em;
+    /*background:#FEFDFC;*/
+}
+
+DIV#faq-titulo{
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-weight:bold;
+  line-height:1.5em;
+  font-size:20px;
+}
+DIV#faq-fecha{
+  font-family:Verdana,Arial,Helvetica,sans-serif;
+  font-size: 10px;
+  padding-bottom:6px;
+}
 /*Capa para contrasetar los efectos de float y hacer de 'falso contenido' para que el menu opciones quede contenido en la capa noticia.*/
 .div-reset{
     clear:both;
