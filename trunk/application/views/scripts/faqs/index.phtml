@@ -5,37 +5,25 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
   <?php if ($this->usuarioLogueado): ?>
-
-            <div class="menu-opciones">
-                   <ul>
-                       <li><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a></li>
-                   </ul>
-            </div>
-            <br/><br/>
-        <?php endif; ?>
+	  <div class="menu-admin">
+		<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a>                   
+      </div>
+      <br/><br/>
+	<?php endif; ?>
 
     <?php
     foreach( $this->faqs as $faq ) : ?>
          <?php if ($this->usuarioLogueado): ?>
                 <br>
-                <div class="menu-opciones">
-                      <ul>
-                        <li><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/modificar/id/<?php echo $faq->id;?>">Modificar FAQ</a></li>
-                        <li><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar FAQ</a></li>
-                    </ul>
+                <div class="menu-admin">
+ 					<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/modificar/id/<?php echo $faq->id;?>">Modificar FAQ</a>
+                   	<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar FAQ</a>
                 </div>
                 <br><br>
 
         <?php endif; ?>
 
-          <?php
-                // FIXME!
-                $fecha = explode(" ", $faq->fecha);
-                $hora = $fecha[1];
-                $f = explode("-", $fecha[0] );
-                $fecha_form = $f['2'] . "/" . $f['1'] ."/". $f['0'];
-            ?>
-       <div id="faq-titulo"><strong>Pregunta:</strong> <?php echo $this->escape($faq->pregunta), " ({$this->escape($fecha_form)})" ;?></div><br>
+       <div id="faq-titulo"><strong>Pregunta:</strong> <?php echo $this->escape($faq->pregunta), " ({$this->escape($this->dateFormat( $faq->fecha )) })" ;?></div><br>
        <div id="faq-respuesta"><strong>Respuesta:</strong> <?php echo $this->escape($faq->respuesta);?></div>
         <br><br>
 
@@ -44,10 +32,8 @@
 
     <?php if ($this->usuarioLogueado): ?>
 
-            <div class="menu-opciones">
-                   <ul>
-                       <li><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a></li>
-                   </ul>
+            <div class="menu-admin">                   
+	             <a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a>
             </div>
             <br/><br/>
         <?php endif; ?>

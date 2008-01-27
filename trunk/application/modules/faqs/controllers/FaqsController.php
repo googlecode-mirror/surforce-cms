@@ -5,6 +5,7 @@ class Faqs_FaqsController extends Zend_Controller_Action{
 		$this->initView();
 		$this->view->baseUrl = $this->_request->getBaseUrl();
 		$this->view->setScriptPath('./application/views/scripts/');
+		$this->view->setHelperPath('./application/views/helpers/', 'Helper');
 		Zend_Loader::loadClass('Faqs');
 		$this->view->user = Zend_Auth::getInstance()->getIdentity();
 
