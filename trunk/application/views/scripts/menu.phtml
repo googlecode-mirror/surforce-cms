@@ -35,9 +35,14 @@
         echo '<li><a href="'.$this->baseUrl.$enlace['destino'].'" title="'.$tipo_menu_desc.'">'.$enlace['item'].' '.$tipo_menu.'</a></li>';
     }
     echo "</ul>";
-	//---------------------------------------------------------------------------------
+	//- Menú Cuadros--------------------------------------------------------------------------------
 
-	$stmt = $db->query('SELECT * FROM menus WHERE estado = 1 ORDER BY posicion');
+	if( $this->usuarioLogueado){
+		$stmt = $db->query('SELECT * FROM menus WHERE estado = 1 ORDER BY posicion');
+	}else{
+		$stmt = $db->query('SELECT * FROM menus WHERE estado = 1 and privado = 0 ORDER BY posicion');
+	}
+	
 
 	$menus = $stmt->fetchAll();
 
@@ -52,7 +57,12 @@
 			continue;
 		}*/
 
-		$sql = 'SELECT * FROM menus_items WHERE id_menu = '.$menu['id'].' and estado = 1 ORDER BY privado, posicion';		
+		if( $this->usuarioLogueado){
+			$sql = 'SELECT * FROM menus_items WHERE id_menu = '.$menu['id'].' and estado = 1 ORDER BY privado, posicion';
+		}else{
+			$sql = 'SELECT * FROM menus_items WHERE id_menu = '.$menu['id'].' and estado = 1 and privado = 0  ORDER BY privado, posicion';
+		}
+				
 		$stmt = $db->query( $sql );
 		$items = $stmt->fetchAll();
 
