@@ -5,10 +5,8 @@
     <h2><?php echo $this->escape($this->subtitle); ?></h2>
             <?php if ($this->usuarioLogueado): ?>
 
-            <div class="menu-opciones">
-                   <ul>
-                       <li><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/agregar">Agregar nueva Noticia</a></li>
-                   </ul>
+            <div class="menu-admin">
+              <a href="<?php echo $this->baseUrl; ?>/noticias/noticias/agregar">Agregar nueva Noticia</a>                   
             </div>
             <br/><br/>
         <?php endif; ?>
@@ -19,22 +17,22 @@
         <div id="noticia">
              <?php if ($this->usuarioLogueado): ?>
                 <br>
-                <div class="menu-opciones">
-                      <ul>
-                        <li><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar Noticia</a></li>
-                        <li><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar Noticia</a></li>
-                    </ul>
+                <table>
+                	<tr>
+                		<td nowrap="nowrap">
+                		<div class="menu-admin">                	                      
+                      <a href="<?php echo $this->baseUrl; ?>/noticias/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar Noticia</a> 
+                      <a href="<?php echo $this->baseUrl; ?>/noticias/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar Noticia</a>
                 </div>
+                		</td>
+                	</tr>
+                </table>
+                
                 <br><br>
             <?php endif; ?>
             <div id="noticia-titulo"><?php echo $this->escape($noticia->titulo);?></div>
-            <?php
-                // FIXME!
-                $fecha = explode(" ", $noticia->fecha);
-                $hora = $fecha[1];
-                $f = explode("-", $fecha[0] );
-            ?>
-            <div id="noticia-fecha"><?php echo $this->escape($f['2'] . "/" . $f['1'] ."/". $f['0']);?></div>
+            
+            <div id="noticia-fecha"><?php echo $this->escape( $this->dateFormat( $noticia->fecha ) );?></div>
             <div id="noticia-contenido"><?php echo $noticia->contenido;?></div>
             <div id="noticia-masinfo"><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/ver/id/<?php echo $noticia->id;?>">Ver más información</a></div>
 
@@ -46,9 +44,9 @@
 
     <?php if ($this->usuarioLogueado): ?>
 
-          <div class="menu-opciones">
-                   <ul><li><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/agregar">Agregar nueva Noticia</a></li></ul>
-            </div>
+          <div class="menu-admin">
+          	<a href="<?php echo $this->baseUrl; ?>/noticias/noticias/agregar">Agregar nueva Noticia</a>
+          </div>
             <br><br><br>
     <?php endif; ?>
 

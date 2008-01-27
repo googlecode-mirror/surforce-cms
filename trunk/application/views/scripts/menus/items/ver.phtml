@@ -5,48 +5,42 @@
 	<h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 	<?php if ($this->usuarioLogueado): ?>
-	<table>
-		<tr>
-			<td><a href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a></td>
-			<td><a href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a></td>
-		</tr>
-	</table>
+		<div class="menu-admin">
+			<a href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a>
+			<a href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a>
+		</div>	<br>
 	<?php endif; ?>
 
-	<div>
-		Id:&nbsp;
-		<?php echo $this->escape($this->item->id); ?>
-	</div>
-
-	<div>
-		Id Menú:&nbsp;
-		<?php echo $this->escape($this->item->id_menu); ?>
-	</div>
-
-	<div>
-		Item:&nbsp;
-		<?php echo $this->escape($this->item->item); ?>
-	</div>
-
-	<div>
-		Destino:&nbsp;
-		<?php echo $this->escape($this->item->destino); ?>
-	</div>
-
-	<div>
-		Privado:&nbsp;
-		<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->privado; ?>.png" />
-	</div>
-
-	<div>
-		Estado:&nbsp;
-		<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->estado; ?>.png" />
-	</div>
-
-	<div>
-		Posición:&nbsp;
-		<?php echo $this->escape($this->item->posicion); ?>
-	</div>
+<table>
+	<tr>
+		<th>Id:&nbsp;</th>
+		<td><?php echo $this->escape($this->item->id); ?><td>
+	</tr>
+	<tr>
+		<th>Id Menú:&nbsp;</th>
+		<td><?php echo $this->escape($this->item->id_menu); ?><td>
+	</tr>
+	<tr>
+		<th>Item:&nbsp;</th>
+		<td><?php echo $this->escape($this->item->item); ?><td>
+	</tr>
+	<tr>
+		<th>Destino:&nbsp;</th>
+		<td><?php echo $this->escape($this->item->destino); ?><td>
+	</tr>
+	<tr>
+		<th>Privado:&nbsp;</th>
+		<td><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->privado; ?>.png" /><td>
+	</tr>
+	<tr>
+		<th>Estado:&nbsp;</th>
+		<td><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->estado; ?>.png" /><td>
+	</tr>
+	<tr>
+		<th>Posición:&nbsp;</th>
+		<td><?php echo $this->escape($this->item->posicion); ?><td>
+	</tr>
+</table>
 
 </div>
 <?php echo $this->render('../footer.phtml');?>

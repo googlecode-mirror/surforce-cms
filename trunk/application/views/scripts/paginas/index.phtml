@@ -5,7 +5,9 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->usuarioLogueado): ?>
-    <p><a href="<?php echo $this->baseUrl; ?>/paginas/paginas/agregar">Agregar página</a></p>
+    <div class="menu-admin">
+    	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/agregar">Agregar página</a>
+    </div><br>    
 <?php endif; ?>
 
     <table>
@@ -24,14 +26,18 @@
     foreach( $this->paginas as $pagina ) : ?>
             <tr>
                 <td><a href="<?php echo $this->baseUrl . "/paginas/paginas/ver/id/" . $pagina->id; ?> "><?php echo $this->escape($pagina->id);?></A></td>
-                <td nowrap><?php echo $this->escape($pagina->fecha);?></td>
+                <td nowrap><?php echo $this->escape( $this->dateFormat( $pagina->fecha ));?></td>
                 <td><a href="<?php echo $this->baseUrl . "/paginas/paginas/ver/id/" . $pagina->id; ?> "><?php echo $this->escape($pagina->titulo);?></A></td>
 
                 <?php if ($this->usuarioLogueado): ?>
-                    <td><a href="<?php echo $this->baseUrl; ?>/paginas/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a></td>
-                    <td><a href="<?php echo $this->baseUrl; ?>/paginas/paginas/modificar/id/<?php echo $pagina->id;?>">Modificar</a></td>
-                    <td><a href="<?php echo $this->baseUrl; ?>/paginas/paginas/eliminar/id/<?php echo $pagina->id;?>">Eliminar</a></td>
-                    <td><a href="<?php echo $this->baseUrl; ?>/menu/menu/agregar/pagina/<?php echo $pagina->id;?>">Agregar al menú</a></td>
+                    <td nowrap="nowrap">
+                    	<div class="menu-admin">
+      	                	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a>
+                    		<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/modificar/id/<?php echo $pagina->id;?>">Modificar</a>
+                    		<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/eliminar/id/<?php echo $pagina->id;?>">Eliminar</a>
+                    		<a href="<?php echo $this->baseUrl; ?>/menu/menu/agregar/pagina/<?php echo $pagina->id;?>">Agregar al menú</a>
+                    	</div>
+                    </td>
                 <?php endif; ?>
 
             </tr>
@@ -39,9 +45,10 @@
     </table>
 
 <?php if ($this->usuarioLogueado): ?>
-    <p><a href="<?php echo $this->baseUrl; ?>/paginas/paginas/agregar">Agregar página</a></p>
+    <br><div class="menu-admin">
+    	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/agregar">Agregar página</a>
+    </div><br>    
 <?php endif; ?>
-
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>

@@ -162,7 +162,7 @@ TD.mensaje-informativo{
 .titulo_menu{
 	padding:2px;
 	background-color:#EEEEEE;
-	text-align:center;
+	text-align:left;
 }
 
 /*Menu horizontal  */
@@ -177,7 +177,7 @@ TD.mensaje-informativo{
 }
 
 .menu-opciones ul, li {
-    list-style-type: none;
+    /*list-style-type: none;*/
 }
 
 .menu-opciones ul {
@@ -211,6 +211,46 @@ TD.mensaje-informativo{
     background: #F7DECA;
 }
 /*fin menu */
+
+/* menu admin */
+
+.menu-admin {
+    font: 100% "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 200px;
+}
+
+.menu-admin ul, li {
+    /*list-style-type: none;*/
+}
+
+.menu-admin ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-admin li {
+    float: left;
+
+}
+.menu-admin a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #DF7E2F;
+    background: #FDF7F2;    
+    padding: 3px 10px;
+    text-align: left;
+    border: 1px solid #F7DECA;
+    border-width: 1px 1px 1px 0;
+}
+
+.menu-admin a#primero {
+    border-left: 1px solid #F7DECA;
+}
+
+.menu-admin a:hover {
+    background: #F7DECA;
+}
+
 
 /*Capa para contrasetar los efectos de float y hacer de 'falso contenido' para que el menu opciones quede contenido en la capa noticia.*/
 .div-reset{

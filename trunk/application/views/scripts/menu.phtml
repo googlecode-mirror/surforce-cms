@@ -43,17 +43,21 @@
 
 	//var_dump( $menus );
 	//die;
+	
 
 	foreach($menus as $menu){
+		
+		/*
 		if($menu['privado'] and !$this->usuarioLogueado){
 			continue;
-		}
+		}*/
 
-		$stmt = $db->query('SELECT * FROM menus_items WHERE id_menu = '.$menu['id'].' and estado = 1 ORDER BY privado, posicion');
+		$sql = 'SELECT * FROM menus_items WHERE id_menu = '.$menu['id'].' and estado = 1 ORDER BY privado, posicion';		
+		$stmt = $db->query( $sql );
 		$items = $stmt->fetchAll();
 
-
-		if(count($items)){
+		/* si no tiene items, no muestra el menú */
+		//if( count($items) > 0 ){
 			echo '<div style="border:1px solid #cccccc;margin:2px;">';
 
 			echo '<div class="titulo_menu">'.$menu['nombre'].'</div>';
@@ -71,7 +75,8 @@
 
 			echo "</ul>";
 			echo '</div>';
-		}
+		//}
+		
 	}
 
 	?>

@@ -5,12 +5,10 @@
     <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
     <?php if ($this->usuarioLogueado): ?>
-    <table>
-        <tr>
-            <td><a href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a></td>
-            <td><a href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a></td>
-        </tr>
-    </table>
+    	<div class="menu-admin">
+    		<a href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a>
+            <a href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a>
+    	</div><br>
     <?php endif; ?>
 
     <div>

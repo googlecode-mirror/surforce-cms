@@ -29,7 +29,12 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         $noticias = new Noticias();
         $where = array();
         $order = "fecha DESC";
-        $this->view->noticias = $noticias->fetchAll($where, $order, 3);
+        if( $this->view->usuarioLogueado ){
+        	$this->view->noticias = $noticias->fetchAll($where, $order);
+        }else{
+        	$this->view->noticias = $noticias->fetchAll($where, $order, 3);
+        }
+        
         $this->render();
     }
     function historicoAction(){

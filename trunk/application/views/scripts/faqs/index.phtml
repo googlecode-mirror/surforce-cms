@@ -5,7 +5,9 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->usuarioLogueado): ?>
-    <p><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar faq</a></p>
+    <div class="menu-admin">
+    	<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar faq</a>
+    </div><br>
 <?php endif; ?>
 
     <table>
@@ -22,14 +24,18 @@
     <?php
     foreach( $this->faqs as $faq ) : ?>
             <tr>
-                <td nowrap><?php echo $this->escape($faq->fecha);?></td>
+                <td nowrap><?php echo $this->escape( $faq->fecha );?></td>
                 <td><?php echo $this->escape($faq->pregunta);?></td>
                 <td><?php echo $this->escape($faq->respuesta);?></td>
 
                 <?php if ($this->usuarioLogueado): ?>
-                    <td><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/ver/id/<?php echo $faq->id;?>">Ver</a></td>
-                    <td><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/modificar/id/<?php echo $faq->id;?>">Modificar</a></td>
-                    <td><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar</a></td>
+                    <td nowrap="nowrap">
+                    	<div class="menu-admin">
+                    		<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/ver/id/<?php echo $faq->id;?>">Ver</a>
+                    		<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/modificar/id/<?php echo $faq->id;?>">Modificar</a>
+                    		<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar</a>
+                    	</div>
+                    </td>
                 <?php endif; ?>
 
             </tr>
@@ -37,9 +43,11 @@
     </table>
 
 <?php if ($this->usuarioLogueado): ?>
-    <p><a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar faq</a></p>
+    <br><div class="menu-admin">
+    	<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar faq</a>
+    </div>
 <?php endif; ?>
-
+    
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>

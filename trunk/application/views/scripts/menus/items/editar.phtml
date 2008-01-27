@@ -15,7 +15,9 @@
 
 	<p>
 	<?php if ($this->usuarioLogueado): ?>
-		<p><a href="<?php echo $this->baseUrl; ?>/menus/items/agregar/id/<?php echo $this->idMenu;?>">Agregar Item</a></p>
+		<div class="menu-admin">
+			<a href="<?php echo $this->baseUrl; ?>/menus/items/agregar/id/<?php echo $this->idMenu;?>">Agregar Item</a>
+		</div><br>		
 	<?php endif; ?>
 	</p>
 
@@ -51,10 +53,14 @@
 				<td><?php echo $this->escape($item->posicion);?></td>
 
 				<?php if ($this->usuarioLogueado): ?>
-					<td><a href="<?php echo $this->baseUrl; ?>/menus/items/ver/id/<?php echo $item->id;?>">Ver</a></td>
-					<td><a href="<?php echo $this->baseUrl; ?>/menus/items/modificar/id/<?php echo $item->id;?>">Modificar</a></td>
-					<td><a href="<?php echo $this->baseUrl; ?>/menus/items/eliminar/id/<?php echo $item->id;?>">Eliminar</a></td>
-					<td><a href="<?php echo $this->baseUrl; ?>/menus/items/agregar/id/<?php echo $item->id_menu;?>">Agregar Item</a></td>
+					<td nowrap="nowrap">
+						<div class="menu-admin">
+							<!-- <a href="<?php echo $this->baseUrl; ?>/menus/items/ver/id/<?php echo $item->id;?>">Ver</a> -->
+							<a href="<?php echo $this->baseUrl; ?>/menus/items/modificar/id/<?php echo $item->id;?>">Modificar</a>
+							<a href="<?php echo $this->baseUrl; ?>/menus/items/eliminar/id/<?php echo $item->id;?>">Eliminar</a>
+							<a href="<?php echo $this->baseUrl; ?>/menus/items/agregar/id/<?php echo $item->id_menu;?>">Agregar Item</a>
+						</div>
+					</td>
 				<?php endif; ?>
 
 			</tr>
@@ -62,7 +68,9 @@
 	</table>
 
 	<?php if ($this->usuarioLogueado): ?>
-		<p><a href="<?php echo $this->baseUrl; ?>/menus/items/agregar/id/<?php echo $this->idMenu;?>">Agregar Item</a></p>
+		<br><div class="menu-admin">
+			<a href="<?php echo $this->baseUrl; ?>/menus/items/agregar/id/<?php echo $this->idMenu;?>">Agregar Item</a>
+		</div><br>		
 	<?php endif; ?>
 
 </div>
