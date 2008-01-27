@@ -1,5 +1,5 @@
 <?php
-class Helpers_dateFormat 
+class Helper_dateFormat 
 {
 	public function dateFormat( $date )
     {		    
