@@ -18,21 +18,39 @@
     echo "<ul>";
     $tipo_menu = "";
     $tipo_menu_desc = "";
+    $menu_pos = "";
+    $separador_menu_privado = true;
+    $separador_menu_publico = true;
+    
     foreach($enlaces as $enlace){
-        if($enlace['privado']){
-            if(!$this->user){
+        if($enlace['privado']){			
+        	if(!$this->user){
                 continue;
             }else{
                 $tipo_menu = "(-)";
                 $tipo_menu_desc = "ítem privado";
+                $menu_pos = '[' . $enlace['posicion'] . ']';
             }
         }else{
             if($this->user){
                 $tipo_menu = "(+)";
                 $tipo_menu_desc = "ítem público";
+                $menu_pos = '[' . $enlace['posicion'] . ']';
             }
         }
-        echo '<li><a href="'.$this->baseUrl.$enlace['destino'].'" title="'.$tipo_menu_desc.'">'.$enlace['item'].' '.$tipo_menu.'</a></li>';
+    	if( $this->user and !$enlace['privado'] and $separador_menu_publico ){
+        	echo "<li><strong>Opciones Públicas</strong></li>";
+        	$separador_menu_publico = false;
+        }
+        if( $enlace['privado'] and $separador_menu_privado ){
+        	echo "<li><strong>Opciones Privadas</strong></li>";
+        	$separador_menu_privado = false;
+        }
+        echo '<li><a href="' . 
+        	$this->baseUrl.$enlace['destino'] . 
+        	'" title="'.$tipo_menu_desc.'">' . 
+        	$menu_pos . $enlace['item'] . ' ' . $tipo_menu . 
+        	'</a></li>';
     }
     echo "</ul>";
 	//- Menú Cuadros--------------------------------------------------------------------------------
