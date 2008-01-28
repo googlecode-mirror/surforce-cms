@@ -8,62 +8,62 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->usuarioLogueado): ?>
-	<div class="menu-admin">
-		<a href="<?php echo $this->baseUrl; ?>/menus/menus/agregar">Agregar menú</a>
-	</div><br>
+    <div class="menu-admin">
+        <a href="<?php echo $this->baseUrl; ?>/menus/menus/agregar">Agregar menú</a>
+    </div><br>
 <?php endif; ?>
 
-	<table>
-	<tr>
-		<th>id</th>
-		<th>Nombre</th>
-		<th>Título</th>
-	 	<th>Descripción</th>
-	 	<th>Privado</th>
-	 	<th>Estado</th>
-	 	<th>Posición</th>
+    <table>
+    <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Título</th>
+         <th>Descripción</th>
+         <th>Privado</th>
+         <th>Estado</th>
+         <th>Posición</th>
 
-	<?php if ($this->usuarioLogueado): ?>
-	 	<th colspan="4">Acciones</th>
-	<?php endif; ?>
+    <?php if ($this->usuarioLogueado): ?>
+         <th colspan="4">Acciones</th>
+    <?php endif; ?>
 
-	</tr>
-	<?php
-	foreach( $this->menus as $menu ) : ?>
-			<tr>
-				<td><?php echo $this->escape($menu->id);?></td>
-				<td nowrap="nowrap"><?php echo $this->escape($menu->nombre);?></td>
-				<td nowrap="nowrap"><?php echo $this->escape($menu->titulo);?></td>
-				<td><?php echo $this->escape($menu->descripcion);?></td>
+    </tr>
+    <?php
+    foreach( $this->menus as $menu ) : ?>
+            <tr>
+                <td><?php echo $this->escape($menu->id);?></td>
+                <td nowrap="nowrap"><?php echo $this->escape($menu->nombre);?></td>
+                <td nowrap="nowrap"><?php echo $this->escape($menu->titulo);?></td>
+                <td><?php echo $this->escape($menu->descripcion);?></td>
 
-				<td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $menu->privado; ?>.png" /></td>
+                <td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $menu->privado; ?>.png" /></td>
 
-				<td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $menu->estado; ?>.png" /></td>
+                <td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $menu->estado; ?>.png" /></td>
 
-				<td><?php echo $this->escape($menu->posicion);?></td>
+                <td><?php echo $this->escape($menu->posicion);?></td>
 
-				<?php if ($this->usuarioLogueado): ?>
-					<td nowrap="nowrap">
-						<div class="menu-admin">
-							<!--  <a href="<?php echo $this->baseUrl; ?>/menus/menus/ver/id/<?php echo $menu->id;?>">Ver</a> -->
-							<a href="<?php echo $this->baseUrl; ?>/menus/menus/modificar/id/<?php echo $menu->id;?>">Modificar</a>
-							<a href="<?php echo $this->baseUrl; ?>/menus/menus/eliminar/id/<?php echo $menu->id;?>">Eliminar</a>
-							<a href="<?php echo $this->baseUrl; ?>/menus/items/editar/id/<?php echo $menu->id;?>">Editar Items</a>
-						</div>
-					</td>
-				<?php endif; ?>
+                <?php if ($this->usuarioLogueado): ?>
+                    <td nowrap="nowrap">
+                        <div class="menu-admin">
+                            <!--  <a href="<?php echo $this->baseUrl; ?>/menus/menus/ver/id/<?php echo $menu->id;?>">Ver</a> -->
+                            <a href="<?php echo $this->baseUrl; ?>/menus/menus/modificar/id/<?php echo $menu->id;?>">Modificar</a>
+                            <a href="<?php echo $this->baseUrl; ?>/menus/menus/eliminar/id/<?php echo $menu->id;?>">Eliminar</a>
+                            <a href="<?php echo $this->baseUrl; ?>/menus/items/editar/id/<?php echo $menu->id;?>">Agregar Items</a>
+                        </div>
+                    </td>
+                <?php endif; ?>
 
-			</tr>
-	<?php endforeach; ?>
-	</table>
+            </tr>
+    <?php endforeach; ?>
+    </table>
 
 <?php if ($this->usuarioLogueado): ?>
-	<br>
-	<div class="menu-admin">
-		<a href="<?php echo $this->baseUrl; ?>/menus/menus/agregar">Agregar menú</a>
-	</div><br>
+    <br>
+    <div class="menu-admin">
+        <a href="<?php echo $this->baseUrl; ?>/menus/menus/agregar">Agregar menú</a>
+    </div><br>
 <?php endif; ?>
-	
+
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>
