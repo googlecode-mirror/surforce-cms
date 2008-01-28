@@ -25,7 +25,7 @@ class Menus_MenusController extends Zend_Controller_Action{
 	function indexAction(){
 		$this->view->subtitle = $this->info->sitio->menus->index->titulo;
 		$menus = new Menus();
-		$this->view->menus = $menus->fetchAll(NULL, 'posicion');
+		$this->view->menus = $menus->fetchAll(NULL, 'id');
 		$this->render();
 	}
 

@@ -60,13 +60,7 @@
 	}else{
 		$stmt = $db->query('SELECT * FROM menus WHERE estado = 1 and privado = 0 ORDER BY posicion');
 	}
-	
-
 	$menus = $stmt->fetchAll();
-
-	//var_dump( $menus );
-	//die;
-	
 
 	foreach($menus as $menu){
 		
@@ -83,21 +77,43 @@
 				
 		$stmt = $db->query( $sql );
 		$items = $stmt->fetchAll();
-
+		$cuadro_pos = "";
+		$cuadro_tipo = "";
 		/* si no tiene items, no muestra el menú */
 		//if( count($items) > 0 ){
+		
+			if( $this->user ){
+				$cuadro_pos = '[' . $menu['posicion'] . ']';
+				if($menu['privado']){
+					$cuadro_tipo = "(-)";		
+				}else{
+					$cuadro_tipo = "(+)";
+				}
+			}
+			
 			echo '<div style="border:1px solid #cccccc;margin:2px;">';
+			echo '  <div class="titulo_menu">'. $cuadro_pos . $menu['nombre']. $cuadro_tipo . '</div>';
+			echo "    <ul>";
 
-			echo '<div class="titulo_menu">'.$menu['nombre'].'</div>';
-
-			echo "<ul>";
-
+			$cuadro_item_pos = "";
+			$cuadro_item_tipo = "";
+			
 			foreach($items as $item){
+
+				if( $this->user ){
+					$cuadro_item_pos = '[' . $item['posicion'] . ']';
+					if($item['privado']){
+						$cuadro_item_tipo = "(-)";		
+					}else{
+						$cuadro_item_tipo = "(+)";
+					}
+				}
+				
 				// Si es una URL no ponemos el "baseUrl"
 				if(preg_match('%^(.*)://(.*)$%', $item['destino'])){
-					echo '<li><a href="' . $item['destino'].'">' . $item['item'] . '</a></li>';
+					echo '<li><a href="' . $item['destino'].'">' . $cuadro_item_pos . $item['item'] . $cuadro_item_tipo . '</a></li>';
 				}else{
-					echo '<li><a href="' . $this->baseUrl . $item['destino'].'">' . $item['item'] . '</a></li>';
+					echo '<li><a href="' .  $this->baseUrl . $item['destino'].'">' . $cuadro_item_pos . $item['item'] . $cuadro_item_tipo .  '</a></li>';
 				}
 			}
 

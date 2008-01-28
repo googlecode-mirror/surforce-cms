@@ -8,13 +8,13 @@
 	  <div class="menu-admin">
 		<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a>                   
       </div>
-      <br/><br/>
+      <div class="div-reset"></div>
+      <br/>
 	<?php endif; ?>
 
     <?php
     foreach( $this->faqs as $faq ) : ?>
          <?php if ($this->usuarioLogueado): ?>
-                <br>
                 <div class="menu-admin">
  					<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/modificar/id/<?php echo $faq->id;?>">Modificar FAQ</a>
                    	<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar FAQ</a>
@@ -24,7 +24,9 @@
         <?php endif; ?>
 
        <div id="faq-titulo"><strong>Pregunta:</strong> <?php echo $this->escape($faq->pregunta), " ({$this->escape($this->dateFormat( $faq->fecha )) })" ;?></div><br>
-       <div id="faq-respuesta"><strong>Respuesta:</strong> <?php echo $this->escape($faq->respuesta);?></div>
+       <div id="faq-respuesta"><strong>Respuesta:</strong> 
+       	<?php echo $this->escape($faq->respuesta);?>
+       </div>
         <br><br>
 
 

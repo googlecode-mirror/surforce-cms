@@ -43,7 +43,7 @@ class Faqs_FaqsController extends Zend_Controller_Action{
 			$filter 	= new Zend_Filter_StripTags();
 
 			$pregunta 	= trim($filter->filter($this->_request->getPost('pregunta')));
-			$respuesta 	= trim($filter->filter($this->_request->getPost('respuesta')));
+			$respuesta 	= trim( $this->_request->getPost('respuesta') );
 
 			if( $pregunta != '' && $respuesta != '' ) {
 				$data = array(
