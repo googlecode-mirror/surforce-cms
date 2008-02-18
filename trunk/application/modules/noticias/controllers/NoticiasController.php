@@ -34,11 +34,28 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         }else{
         	$this->view->noticias = $noticias->fetchAll($where, $order, 3);
         }
-        
+
         $this->render();
     }
+
+    function adminAction(){
+        //$info = Zend_Registry::get('personalizacion');
+        $this->view->subtitle = $this->info->sitio->noticias->index->titulo;
+        $noticias = new Noticias();
+        $where = array();
+        $order = "fecha DESC";
+        if( $this->view->usuarioLogueado ){
+        	$this->view->noticias = $noticias->fetchAll($where, $order);
+        }else{
+        	$this->view->noticias = $noticias->fetchAll($where, $order, 3);
+        }
+
+        $this->render();
+    }
+
+
     function historicoAction(){
-        $this->view->subtitle = $this->info->sitio->noticias->index->titulo . " histórico ";
+        $this->view->subtitle = $this->info->sitio->noticias->index->titulo . " hist��rico ";
         $noticias = new Noticias();
         $where = array();
         $order = "fecha DESC";
