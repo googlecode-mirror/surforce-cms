@@ -16,7 +16,6 @@
     <tr>
          <th>Id</th>
          <th>Titulo</th>
-         <th>Contenido</th>
         <th>Fecha</th>
          <th colspan="3">Acciones</th>
 
@@ -27,10 +26,8 @@
 		<tr>
 
 			<td><?php echo $this->escape($noticia->id);?></td>
-
 	        <td><?php echo $this->escape($noticia->titulo);?></td>
-	        <td><?php echo $this->escape($noticia->contenido);?></td>
-	        <td><?php echo $this->escape($noticia->fecha);?></td>
+	        <td nowrap="nowrap"><?php echo $this->escape($noticia->fecha);?></td>
 
 		    <td nowrap="nowrap">
 		    	<div class="menu-admin">
