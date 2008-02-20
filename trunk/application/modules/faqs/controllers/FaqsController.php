@@ -23,6 +23,15 @@ class Faqs_FaqsController extends Zcms_Generic_Controller{
         $this->render();
     }
 
+    function adminAction(){
+        //$info = Zend_Registry::get('personalizacion');
+        $this->view->subtitle = $this->info->sitio->faqs->index->titulo;
+
+        $faqs = new Faqs();
+        $this->view->faqs = $faqs->fetchAll();
+        $this->render();
+    }
+
     function agregarAction(){
         //$info = Zend_Registry::get('personalizacion');
         if( !$this->view->usuarioLogueado){
@@ -44,7 +53,7 @@ class Faqs_FaqsController extends Zcms_Generic_Controller{
                 );
                 $faq = new Faqs();
                 $faq->insert( $data );
-                $this->_redirect('/faqs/faqs/');
+                $this->_redirect('/faqs/faqs/admin');
                 return;
             }
         }
@@ -83,7 +92,7 @@ class Faqs_FaqsController extends Zcms_Generic_Controller{
                     );
                     $where = 'id = ' . $id;
                     $eFAQ->update($data, $where);
-                    $this->_redirect('/faqs/faqs/');
+                    $this->_redirect('/faqs/faqs/admin');
                     return;
                 } else {
                     $this->view->faq = $eFAQ->fetchRow('id='.$id);
@@ -131,7 +140,7 @@ class Faqs_FaqsController extends Zcms_Generic_Controller{
                 }
             }
         }
-        $this->_redirect('/faqs/faqs/');
+        $this->_redirect('/faqs/faqs/admin');
     }
 
     function verAction(){
