@@ -1,6 +1,12 @@
 <?php
-class Noticias_NoticiasController extends Zend_Controller_Action{
+class Noticias_NoticiasController extends Zcms_Generic_Controller{
 
+    function init()
+    {
+        parent::init();
+        Zend_Loader::loadClass('Noticias');
+    }
+/*
     function init(){
 
         $this->initView();
@@ -15,7 +21,7 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         #asignando el titulo de todo el sitio
         $this->view->title = $this->info->sitio->index->index->titulo;
     }
-
+*/
     function preDispatch(){
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
@@ -30,9 +36,9 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         $where = array();
         $order = "fecha DESC";
         if( $this->view->usuarioLogueado ){
-        	$this->view->noticias = $noticias->fetchAll($where, $order);
+            $this->view->noticias = $noticias->fetchAll($where, $order);
         }else{
-        	$this->view->noticias = $noticias->fetchAll($where, $order, 3);
+            $this->view->noticias = $noticias->fetchAll($where, $order, 3);
         }
 
         $this->render();
@@ -45,9 +51,9 @@ class Noticias_NoticiasController extends Zend_Controller_Action{
         $where = array();
         $order = "fecha DESC";
         if( $this->view->usuarioLogueado ){
-        	$this->view->noticias = $noticias->fetchAll($where, $order);
+            $this->view->noticias = $noticias->fetchAll($where, $order);
         }else{
-        	$this->view->noticias = $noticias->fetchAll($where, $order, 3);
+            $this->view->noticias = $noticias->fetchAll($where, $order, 3);
         }
 
         $this->render();

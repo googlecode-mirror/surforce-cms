@@ -16,20 +16,7 @@ DIV#contenedor{
   margin:0 auto;
 }
 
-DIV#cabecera H1{
-  margin:0;
-  padding:0;
-  font-size:22px;
-  color:gray;
-}
 
-DIV#cabecera{
-  width:100%;
-  border:1px solid #cccccc;
-  padding:10px;
-  background-color:#EEEEEE;
-
-}
 
 DIV#menu ul, DIV#menu li{
   margin-left:10px;
@@ -53,14 +40,7 @@ DIV#contenido{
   border-left:1px solid #CCCCCC;
 }
 
-DIV#pie{
-  clear:both;
-  border-top:1px solid #CCCCCC;
-  text-align:center;
-  width: 100%;
-  background-color:#EEEEEE;
-  padding:5px;
-}
+
 
 TH{
   background-color:#EEEEEE;
@@ -136,33 +116,33 @@ DIV#login-form{
 }
 
 TABLE.mensaje{
-	margin:0 auto;
-	text-align:center;
+    margin:0 auto;
+    text-align:center;
 }
 
 TD.mensaje-error{
-	padding:3px 8px 3px 8px;
-	border:1px solid #ff0000;
-	background-color:#ffecec;
+    padding:3px 8px 3px 8px;
+    border:1px solid #ff0000;
+    background-color:#ffecec;
 }
 
 TD.mensaje-exito{
-	padding:3px 8px 3px 8px;
-	border:1px solid #89cb59;
-	background-color:#c3f89c;
+    padding:3px 8px 3px 8px;
+    border:1px solid #89cb59;
+    background-color:#c3f89c;
 }
 
 TD.mensaje-informativo{
-	padding:3px 8px 3px 8px;
-	border:1px solid #c9c54d;
-	background-color:#fffb96;
+    padding:3px 8px 3px 8px;
+    border:1px solid #c9c54d;
+    background-color:#fffb96;
 }
 
 
 .titulo_menu{
-	padding:2px;
-	background-color:#EEEEEE;
-	text-align:left;
+    padding:2px;
+    background-color:#EEEEEE;
+    text-align:left;
 }
 
 /*Menu horizontal  */
@@ -236,7 +216,7 @@ TD.mensaje-informativo{
     text-decoration: none;
     font-weight: bold;
     color: #DF7E2F;
-    background: #FDF7F2;    
+    background: #FDF7F2;
     padding: 3px 10px;
     text-align: left;
     border: 1px solid #F7DECA;

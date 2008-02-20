@@ -1,21 +1,19 @@
 <?php
 
-class IndexController extends Zend_Controller_Action{
+class IndexController extends Zcms_Generic_Controller{
 
-	function init(){
-		$this->initView();
-		$this->view->baseUrl = $this->_request->getBaseUrl();
-		$this->view->setScriptPath('./application/views/scripts/');
-		$this->view->user = Zend_Auth::getInstance()->getIdentity();
-	}
+    function indexAction(){
+        $info = Zend_Registry::get('personalizacion');
+        Zend_Loader::loadClass('Configuracion');
 
-	function indexAction(){
-		$info = Zend_Registry::get('personalizacion');
-		$this->view->title = $info->sitio->index->index->titulo;
-		//$this->render();
-		$this->_redirect('/noticias/noticias');
-		return;
-	}
+        $configuracion = new Configuracion();
+        $where = array();
+        $order = "id";
+        $conf_arr = $configuracion->fetchAll($where, $order);
+        $this->view->title = $conf_arr->sitio_titulo;
 
+        $this->_redirect('/noticias/noticias');
+        return;
+    }
 }
 ?>

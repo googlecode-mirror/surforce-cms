@@ -1,0 +1,23 @@
+    <h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+    <form action="<?php echo $this->baseUrl ?>/admin/configuracion/<?php echo $this->action; ?>" method="post">
+         <table >
+            <tr>
+                <th nowrap>color fondo:</th>
+                <td><input type="text" name="sitio_color_fondo" size="32" value="<?php echo $this->escape(trim($this->configuracion->sitio_color_fondo));?>"/></td>
+            </tr>
+            <tr>
+                <th nowrap>color cabezal:</th>
+                <td><input type="text" name="sitio_color_cabezal" size="32" value="<?php echo $this->escape(trim($this->configuracion->sitio_color_cabezal));?>"/></td>
+            </tr>
+            <tr>
+                <th nowrap>color pie:</th>
+                <td><input type="text" name="sitio_color_pie" size="32" value="<?php echo $this->escape(trim($this->configuracion->sitio_color_pie));?>"/></td>
+            </tr>
+        </table>
+
+        <div id="boton_formulario">
+            <input type="hidden" name="id" value="<?php echo $this->configuracion->id; ?>" />
+            <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
+        </div>
+    </form>

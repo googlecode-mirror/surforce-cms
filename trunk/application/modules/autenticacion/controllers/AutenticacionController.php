@@ -1,12 +1,13 @@
 <?php
-class Autenticacion_AutenticacionController extends Zend_Controller_Action {
+class Autenticacion_AutenticacionController extends Zcms_Generic_Controller {
 
+/*
     function init(){
         $this->initView();
         $this->view->baseUrl = $this->_request->getBaseUrl();
         $this->view->setScriptPath('./application/views/scripts/');
     }
-
+*/
     function indexAction(){
         $this->_redirect('/');
     }

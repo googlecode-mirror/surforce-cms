@@ -1,19 +1,9 @@
 <?php
-class Paginas_PaginasController extends Zend_Controller_Action{
+class Paginas_PaginasController extends Zcms_Generic_Controller{
 
     function init(){
-        $this->initView();
-        $this->view->baseUrl = $this->_request->getBaseUrl();
-        $this->view->setScriptPath('./application/views/scripts/');
-        $this->view->setHelperPath('./application/views/helpers/', 'Helper');
-
+        parent::init();
         Zend_Loader::loadClass('Paginas');
-        $this->view->user = Zend_Auth::getInstance()->getIdentity();
-
-        #factorizando la instancia de 'personalizacion'
-        $this->info = Zend_Registry::get('personalizacion');
-        #asignando el titulo de todo el sitio
-        $this->view->title = $this->info->sitio->index->index->titulo;
     }
 
     function preDispatch(){

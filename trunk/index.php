@@ -17,6 +17,9 @@ Zend_Loader::loadClass('Zend_Db');
 Zend_Loader::loadClass('Zend_Db_Table');
 Zend_Loader::loadClass('Zend_Auth');
 
+// Zcms
+Zend_Loader::loadClass('Zcms_Generic_Controller');
+
 // load configuration
 $config = new Zend_Config_Ini('./application/config.ini', 'general');
 $registry = Zend_Registry::getInstance();

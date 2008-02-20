@@ -1,17 +1,9 @@
 <?php
-class Menu_MenuController extends Zend_Controller_Action{
+class Menu_MenuController extends Zcms_Generic_Controller{
 
     function init(){
-        $this->initView();
-        $this->view->baseUrl = $this->_request->getBaseUrl();
-        $this->view->setScriptPath('./application/views/scripts/');
+        parent::init();
         Zend_Loader::loadClass('Menu');
-        $this->view->user = Zend_Auth::getInstance()->getIdentity();
-
-        #factorizando la instancia de 'personalizacion'
-        $this->info = Zend_Registry::get('personalizacion');
-        #asignando el titulo de  todo el sitio
-        $this->view->title = $this->info->sitio->index->index->titulo;
     }
 
     function preDispatch(){
