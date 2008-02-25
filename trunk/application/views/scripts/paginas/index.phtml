@@ -7,7 +7,7 @@
 <?php if ($this->usuarioLogueado): ?>
     <div class="menu-admin">
     	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/agregar">Agregar página</a>
-    </div><br>    
+    </div><br>
 <?php endif; ?>
 
     <table>
@@ -22,8 +22,7 @@
     <?php endif; ?>
 
     </tr>
-    <?php
-    foreach( $this->paginas as $pagina ) : ?>
+    <?php foreach( $this->paginas as $pagina ) : ?>
             <tr>
                 <td><a href="<?php echo $this->baseUrl . "/paginas/paginas/ver/id/" . $pagina->id; ?> "><?php echo $this->escape($pagina->id);?></A></td>
                 <td nowrap><?php echo $this->escape( $this->dateFormat( $pagina->fecha ));?></td>
@@ -47,7 +46,7 @@
 <?php if ($this->usuarioLogueado): ?>
     <br><div class="menu-admin">
     	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/agregar">Agregar página</a>
-    </div><br>    
+    </div><br>
 <?php endif; ?>
 </div>
 

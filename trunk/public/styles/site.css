@@ -33,6 +33,9 @@ DIV#menu{
   border:1px dashed #CCCCCC;
 }
 
+DIV#menu-pagina{background:#FDF7F2	; border:1px dashed #CCCCCC;width: 100%;}
+
+
 DIV#contenido{
   width: 600px;
   padding:15px;
