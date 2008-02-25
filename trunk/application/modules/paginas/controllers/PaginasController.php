@@ -4,6 +4,7 @@ class Paginas_PaginasController extends Zcms_Generic_Controller{
     function init(){
         parent::init();
         Zend_Loader::loadClass('Paginas');
+        Zend_Loader::loadClass('PaginasMenu');
     }
 
     function preDispatch(){
@@ -138,10 +139,15 @@ class Paginas_PaginasController extends Zcms_Generic_Controller{
         //$info = Zend_Registry::get('personalizacion');
         $this->view->subtitle = $this->info->sitio->paginas->ver->titulo;
         $pagina = new Paginas();
+
+        $paginasMenues = new PaginasMenu();
         $id = (int)$this->_request->getParam('id', 0);
         if ($id > 0) {
             $this->view->pagina = $pagina->fetchRow('id='.$id);
+            //Creo el array con los datos de la DB de la tabla del menú de páginas
+            $this->view->paginasMenues = $paginasMenues->fetchAll('id_pagina='.$id);
         }
+
         $this->render();
     }
 }
