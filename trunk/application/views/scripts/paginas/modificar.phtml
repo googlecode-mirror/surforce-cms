@@ -11,9 +11,39 @@
   </div>
   <br>
 
+  <div>	Menúes de la página:
+  		<?php if($this->paginasMenues): ?>
+	  		<?php //C.Serrón: Comienza listado de menues personalizados por páginas ?>
+	  		 <table class="menu-admin">
+	  		 	<tr>
+        			<th>Id</th>
+        			<th>Título</th>
+         			<th>Link</th>
+         			<th>Alt</th>
+         			<th colspan="2">Opciones</th>
+         		</tr>
+
+
+	  			<?php foreach($this->paginasMenues as $paginaMenu):?>
+	  				<tr>
+	  					<td nowrap><?php echo $paginaMenu->id_menu; ?></td>
+						<td nowrap><?php echo $paginaMenu->titulo; ?></td>
+						<td nowrap><?php echo $paginaMenu->link; ?></td>
+						<td nowrap><?php echo $paginaMenu->alt; ?></td>
+						<td nowrap><a href="<?php echo $this->baseUrl; ?>/paginas/menupag/modificar/id_menu/<?php echo $paginaMenu->id_menu;?>/id_pag/<?php echo $paginaMenu->id_pagina;?>">Modificar</a></td>
+						<td nowrap><a href="<?php echo $this->baseUrl; ?>/paginas/menupag/eliminar/id_menu/<?php echo $paginaMenu->id_menu;?>/id_pag/<?php echo $paginaMenu->id_pagina;?>">Eliminar</a></td>
+					</tr>
+			<?php endforeach; ?>
+			</table>
+		<?php endif; ?>
+
+  <a href="<?php echo $this->baseUrl; ?>/paginas/menupag/agregar/id/<?php echo $this->pagina->id; ?>">Agregar Menú</a>
+  </div>
+<br/>
+
   <div>
       <?php print $this->formFCKeditor( ' contenido' , $this->pagina->contenido); ?>
-    </div>
+  </div>
   <br>
 
 
@@ -24,4 +54,4 @@
 </form>
 </div>
 
-<?php echo $this->render('footer.phtml'); ?>
+<?php  echo $this->render('footer.phtml'); ?>

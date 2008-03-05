@@ -67,15 +67,21 @@ class Paginas_PaginasController extends Zcms_Generic_Controller{
 
         $this->view->subtitle = $this->info->sitio->paginas->modificar->titulo;
         $eNoticia = new Paginas();
+        $paginasMenues = new PaginasMenu();
         if ($this->_request->isPost()) {
             Zend_Loader::loadClass('Zend_Filter_StripTags');
 
             $filter = new Zend_Filter_StripTags();
 
+			//Valores traidos para la tabla de la página
             $id 			= 	(int)$this->_request->getPost('id');
             $titulo	 	= trim($filter->filter($this->_request->getPost('titulo')));
             $contenido	= trim( $this->_request->getPost('contenido'));
 
+			//Valores traidos para la tabla de menúes de página
+			$menu_id = (int)$this->_request->getPost('id');
+			$menu_titulo = (int)$this->_request->getPost('id');
+			$menu_link = (int)$this->_request->getPost('menu_link');
             if ($id !== false) {
                 if ($titulo != '' && $contenido != '' ) {
                     $data = array(
@@ -88,12 +94,14 @@ class Paginas_PaginasController extends Zcms_Generic_Controller{
                     return;
                 } else {
                     $this->view->paginas = $eNoticia->fetchRow('id='.$id);
+                    $this->view->paginasMenues = $paginasMenues->fetchAll('id_pagina='.$id);
                 }
             }
         } else {
             $id = (int)$this->_request->getParam('id', 0);
             if ($id > 0) {
                 $this->view->pagina = $eNoticia->fetchRow('id='.$id);
+                $this->view->paginasMenues = $paginasMenues->fetchAll('id_pagina='.$id);
             }
         }
         $this->view->action = $this->info->sitio->paginas->modificar->action;
