@@ -1,1 +1,0 @@
- ALTER TABLE `faqs` CHANGE `respuesta` `respuesta` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL  
