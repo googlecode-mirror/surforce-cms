@@ -65,30 +65,32 @@ class Paginas_MenupagController extends Zcms_Generic_Controller{
         }
 
         $this->view->subtitle = $this->info->sitio->paginas->eliminar->titulo;
-		$menus = new PaginasMenu();
+        $menupag = new PaginasMenu();
+
         if ($this->_request->isPost()) {
             Zend_Loader::loadClass('Zend_Filter_Alpha');
             $filter = new Zend_Filter_Alpha();
-			$id_menu	= (int)$this->_request->getPost('id_menu');
-            $id_pag	= (int)$this->_request->getPost('id_pag');
+
+            $id 	= (int)$this->_request->getPost('id');
+            $id_menu	=	(int)$this->_request->getPost('menu');
             $del 	= $filter->filter($this->_request->getPost('del'));
 
-            if ($del == 'Si' && $id_pag > 0) {
-                $where = 'id_pagina='.$id_pag.' and id_menu='.$id_menu;
-                $rows_affected = $menus->delete($where);
+            if ($del == 'Si' && $id) {
+                $where = 'id_pagina = ' . $id . ' and id_menu= '. $id_menu;
+                $rows_affected = $menupag->delete($where);
             }
         } else {
-            $id_pag = (int)$this->_request->getParam('id_pag');
-            $id_menu = (int)$this->_request->getParam('id_menu');
-            if ($id_pag > 0 && $id_menu) {
-                $this->view->menus = $menus->fetchRow('id_pagina='.$id_pag.' and id_menu='.$id_menu);
-                if ($this->view->pagina->id > 0) {
+            $id = (int)$this->_request->getParam('id');
+            $id_menu	=	(int)$this->_request->getParam('menu');
+            if ($id) {
+                $this->view->menupag = $menupag->fetchRow('id_pagina='.$id.' and id_menu= '.$id_menu);
+                if ($this->view->menupag->id_menu) {
                     $this->render();
                     return;
                 }
             }
         }
-        $this->_redirect('/paginas/paginas/modificar/id/'.$id_pag);
+        $this->_redirect('/paginas/paginas/modificar/id/'.$id);
     }
 
 
