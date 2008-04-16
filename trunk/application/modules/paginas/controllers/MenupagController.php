@@ -93,7 +93,66 @@ class Paginas_MenupagController extends Zcms_Generic_Controller{
         $this->_redirect('/paginas/paginas/modificar/id/'.$id);
     }
 
+    function modificarAction(){
+        //$info = Zend_Registry::get('personalizacion');
+        if( !$this->view->usuarioLogueado){
+            die( $this->info->sitio->paginas->modificar->msgRestringido);
+        }
 
+        $this->view->subtitle = $this->info->sitio->paginas->modificar->titulo;
+        $menupag = new PaginasMenu();
+        if ($this->_request->isPost()) {
+            Zend_Loader::loadClass('Zend_Filter_StripTags');
+
+            $filter = new Zend_Filter_StripTags();
+
+			$id	= (int)$this->_request->getPost('id');
+			$id_menu	= (int)$this->_request->getPost('menu');
+			$link	=	$this->_request->getPost('link');
+            $titulo 	= trim($this->_request->getPost('titulo'));
+            $alt 	= $this->_request->getPost('alt');
+
+            if ($titulo!='' and $link) {
+	            	$data = array(
+	                    'titulo' 	=> $titulo,
+	                    'id_pagina' 	=> $id,
+	                    'id_menu'	=> $id_menu,
+	                    'link'	=> $link,
+	                    'alt' => $alt
+	                );
+                    $where = 'id_pagina = ' . $id;
+                    $menupag->update($data, $where);
+                    $this->_redirect('/paginas/paginas/modificar/id/'.$id);
+                    return;
+                } else {
+                    $this->view->menupag = $menupag->fetchAll('id_pagina='.$id);
+
+            }
+        } else {
+			$id	= (int)$this->_request->getParam('id');
+			$id_menu	= (int)$this->_request->getParam('menu');
+			$link	=	$this->_request->getParam('link');
+            $titulo 	= trim($this->_request->getParam('titulo'));
+            $alt 	= $this->_request->getParam('alt');
+
+
+            if ($id > 0 and $link) {
+
+            	 $data = array(
+                    'titulo' 	=> $titulo,
+                    'id_pagina' 	=> $id,
+                    'id_menu'	=> $id_menu,
+                    'link'	=> $link,
+                    'alt' => $alt );
+
+                $this->view->menupag = $menupag->fetchAll('id_pagina='.$id);
+            }
+        }
+        $this->view->action = $this->info->sitio->paginas->modificar->action;
+        $this->view->buttonText = $this->info->sitio->paginas->modificar->buttonText;
+
+        $this->render();
+    }
 
 }
 ?>
