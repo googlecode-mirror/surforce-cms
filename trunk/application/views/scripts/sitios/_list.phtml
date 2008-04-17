@@ -1,0 +1,22 @@
+<h2>Listado de los sitios del sistema</h2>
+
+<?php echo $this->render('sitios/_opcion_agregar.phtml'); ?>
+<table>
+  <tr>
+    <th>id</th>
+    <th>nombre</th>    
+    <th>descripción</th>
+    <th>creación</th>
+  </tr>
+
+<?php foreach( $this->sitios as $sitio): ?>
+	<tr>
+    	<td><?php echo $sitio->id;?></td>
+    	<td><?php echo $sitio->nombre;?></td>    	
+    	<td><?php echo $sitio->descripcion; ?></td>
+    	<td><?php echo $sitio->fecha_creacion;?></td>    	
+  	</tr>
+<?php endforeach; ?>
+
+</table>
+<?php echo $this->render('sitios/_opcion_agregar.phtml'); ?>
