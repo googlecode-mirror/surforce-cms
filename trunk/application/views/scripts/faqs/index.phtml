@@ -7,11 +7,13 @@
     <?php
     foreach( $this->faqs as $faq ) : ?>
 
-       <div id="faq-titulo"><strong>Pregunta:</strong> <?php echo $this->escape($faq->pregunta), " ({$this->escape($this->dateFormat( $faq->fecha )) })" ;?></div><br>
-       <div id="faq-respuesta"><strong>Respuesta:</strong>
+       <div id="faq-titulo"><strong>Pregunta:</strong> <?php echo $this->escape($faq->pregunta), " ({$this->escape($this->dateFormat( $faq->fecha )) })" ;?></div>
+<br>
+<div id="faq-respuesta"><strong>Respuesta:</strong>
        	<?php echo $this->escape($faq->respuesta);?>
        </div>
-        <br><br>
+<br>
+<br>
 
 
     <?php endforeach; ?>

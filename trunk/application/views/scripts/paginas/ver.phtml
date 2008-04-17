@@ -3,15 +3,17 @@
 
 <div id="contenido">
 
-	<h2><?php echo $this->escape($this->subtitle); ?></h2>
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 	<?php if( $this->pagina ): ?>
 
 	  <?php if ($this->usuarioLogueado): ?>
-	      <div class="menu-admin">
-	    	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/modificar/id/<?php echo $this->pagina->id;?>">Modificar</a>
-	      	<a href="<?php echo $this->baseUrl; ?>/paginas/paginas/eliminar/id/<?php echo $this->pagina->id;?>">Eliminar</a>
-	    </div><br>
+	      <div class="menu-admin"><a
+	href="<?php echo $this->baseUrl; ?>/paginas/paginas/modificar/id/<?php echo $this->pagina->id;?>">Modificar</a>
+<a
+	href="<?php echo $this->baseUrl; ?>/paginas/paginas/eliminar/id/<?php echo $this->pagina->id;?>">Eliminar</a>
+</div>
+<br>
 	  <?php endif; ?>
 	    <br />
 
@@ -19,7 +21,8 @@
 		<div id="menu-pagina">
 			<?php foreach($this->paginasMenues as $paginaMenu):?>
 
-		  		|<a alt="<?php echo $paginaMenu->alt; ?>" href="<?php echo $paginaMenu->link; ?>"><?php echo$paginaMenu->titulo ;?></a>|
+		  		|<a alt="<?php echo $paginaMenu->alt; ?>"
+	href="<?php echo $paginaMenu->link; ?>"><?php echo$paginaMenu->titulo ;?></a>|
 
 			<?php endforeach; ?>
 		</div>
@@ -29,7 +32,7 @@
 		<div id="pagina-titulo">
 			<?php echo $this->escape(trim($this->pagina->titulo)); ?>
 		</div>
-		<div id="pagina-contenido">
+<div id="pagina-contenido">
 	    	<?php echo $this->pagina->contenido;?>
 	  	</div>
 	<?php else: ?>

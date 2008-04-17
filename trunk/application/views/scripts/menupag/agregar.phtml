@@ -1,40 +1,17 @@
-<?php echo $this->render('header.phtml'); ?>
-<?php echo $this->render('menu.phtml'); ?>
+<?php
+echo $this->render ( 'header.phtml' );
+?>
+
+<?php
+echo $this->render ( 'menu.phtml' );
+?>
 
 <div id="contenido">
-  <h2><?php echo $this->escape($this->subtitle); ?></h2>
-
-  <form action="<?php echo $this->baseUrl ?>/paginas/menupag/agregar<?php echo $this->action; ?>" method="post">
-     <div>
-      Id menu:
-      <input type="text" name="id_menu" size="2" value=""/>
-    </div>
-    <br>
-
-    <div>
-      Título:
-      <input type="text" name="titulo" size="40" value=""/>
-    </div>
-    <br>
-
-    <div>
-    	Link:
- 		<input type="text" name="link" value="" size="40" maxlength="40"/>
-    </div>
-	<br>
-
-	<div>
-    Texto alternativo
- 		<input type="text" name="alt" value="" size="40" maxlength="40"/>
-    </div>
-	<br>
-
-    <br>
-    <div>
-      <input type="hidden" name="id_pag" value="<?php echo $this->id; ?>" />
-      <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
-    </div>
-
-  </form>
+  <?php
+		echo $this->render ( 'menupag/_form.phtml' );
+		?>
 </div>
-<?php var_dump($this->id);echo $this->render('footer.phtml'); ?>
+
+<?php
+echo $this->render ( 'footer.phtml' );
+?>

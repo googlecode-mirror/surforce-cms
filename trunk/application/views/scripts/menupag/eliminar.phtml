@@ -6,16 +6,17 @@
 
 <?php if ($this->menupag) :?>
 
-  <form action="<?php echo $this->baseUrl ?>/paginas/menupag/eliminar" method="post">
-    <p>¿Está seguro que quiere eliminar el menu de la pagina '<?php echo $this->escape($this->menupag->titulo); ?>'?</p>
+  <form action="<?php echo $this->baseUrl ?>/paginas/menupag/eliminar"
+	method="post">
+<p>¿Está seguro que quiere eliminar el menu de la pagina '<?php echo $this->escape($this->menupag->titulo); ?>'?</p>
 
-    <div id="boton_formulario">
-      <input type="hidden" name="id" value="<?php echo $this->menupag->id_pagina; ?>" />
-      <input type="hidden" name="menu" value="<?php echo $this->menupag->id_menu; ?>" />
-      <input type="submit" name="del" value="Si" />
-      <input type="submit" name="del" value="No" />
-    </div>
-  </form>
+<div id="boton_formulario"><input type="hidden" name="id"
+	value="<?php echo $this->menupag->id_pagina; ?>" /> <input
+	type="hidden" name="menu"
+	value="<?php echo $this->menupag->id_menu; ?>" /> <input type="submit"
+	name="del" value="Si" /> <input type="submit" name="del" value="No" />
+</div>
+</form>
 
 <?php else: ?>
   <p>No se pudo encontrar la página.</p>

@@ -8,26 +8,27 @@
     <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
     <?php if ($this->usuarioLogueado): ?>
-        <div class="menu-admin">
-            <a href="<?php echo $this->baseUrl; ?>/admin/configuracion/modificar/id/<?php echo $c->id;?>">Modificar</a>
-        </div><br>
+        <div class="menu-admin"><a
+	href="<?php echo $this->baseUrl; ?>/admin/configuracion/modificar/id/<?php echo $c->id;?>">Modificar</a>
+</div>
+<br>
     <?php endif; ?>
 
     <table>
-        <tr>
-            <th nowrap>color fondo:</th>
-            <td><?php echo $this->escape(trim($c->sitio_color_fondo));?></td>
-        </tr>
-        <tr>
-            <th nowrap>color cabezal:</th>
-            <td><?php echo $this->escape(trim($c->sitio_color_cabezal));?></td>
-        </tr>
-        <tr>
-            <th nowrap>color pie:</th>
-            <td><?php echo $this->escape(trim($c->sitio_color_pie));?></td>
-        </tr>
+	<tr>
+		<th nowrap>color fondo:</th>
+		<td><?php echo $this->escape(trim($c->sitio_color_fondo));?></td>
+	</tr>
+	<tr>
+		<th nowrap>color cabezal:</th>
+		<td><?php echo $this->escape(trim($c->sitio_color_cabezal));?></td>
+	</tr>
+	<tr>
+		<th nowrap>color pie:</th>
+		<td><?php echo $this->escape(trim($c->sitio_color_pie));?></td>
+	</tr>
 
-    </table>
+</table>
 
  <?php endforeach; ?>
 </div>

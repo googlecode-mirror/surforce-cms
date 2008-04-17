@@ -5,19 +5,20 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->usuarioLogueado): ?>
-	<div class="menu-admin">
-		<a href="<?php echo $this->baseUrl; ?>/menu/menu/agregar">Agregar ítem</a><br><br>
-	</div>    
+	<div class="menu-admin"><a
+	href="<?php echo $this->baseUrl; ?>/menu/menu/agregar">Agregar ítem</a><br>
+<br>
+</div>    
 <?php endif; ?>
 
     <table width="100%">
-    <tr>
-        <th>id</th>
-        <th>Item</th>
-         <th>Destino</th>
-         <th>Privado</th>
-         <th>Estado</th>
-         <th>Posición</th>
+	<tr>
+		<th>id</th>
+		<th>Item</th>
+		<th>Destino</th>
+		<th>Privado</th>
+		<th>Estado</th>
+		<th>Posición</th>
 
     <?php if ($this->usuarioLogueado): ?>
          <th>Acciones</th>
@@ -27,25 +28,29 @@
     <?php
     foreach( $this->menu as $items ) : ?>
             <tr>
-                <td><?php echo $this->escape($items->id);?></td>
-                <td nowrap="nowrap"><?php echo $this->escape($items->item);?></td>
-                <td nowrap="nowrap"><a href="<?php echo $this->baseUrl . $this->escape($items->destino);?>"><?php echo $this->escape($items->destino);?></A></td>
+		<td><?php echo $this->escape($items->id);?></td>
+		<td nowrap="nowrap"><?php echo $this->escape($items->item);?></td>
+		<td nowrap="nowrap"><a
+			href="<?php echo $this->baseUrl . $this->escape($items->destino);?>"><?php echo $this->escape($items->destino);?></A></td>
 
-                <td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $items->privado; ?>.png" /></td>
+		<td align="center"><img border="0"
+			src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $items->privado; ?>.png" /></td>
 
-                <td align="center"><img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $items->estado; ?>.png" /></td>
+		<td align="center"><img border="0"
+			src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $items->estado; ?>.png" /></td>
 
-                <td><?php echo $this->escape($items->posicion);?></td>
+		<td><?php echo $this->escape($items->posicion);?></td>
 
                 <?php if ($this->usuarioLogueado): ?>
                 	
                     <td nowrap="nowrap">
-                    	<div class="menu-admin">
-                    		<!--   <a href="<?php echo $this->baseUrl; ?>/menu/menu/ver/id/<?php echo $items->id;?>">Ver</a>-->
-                    		<a href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $items->id;?>">Modificar</a>
-                    		<a href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $items->id;?>">Eliminar</a>
-                    	</div>
-                    </td>
+		<div class="menu-admin"><!--   <a href="<?php echo $this->baseUrl; ?>/menu/menu/ver/id/<?php echo $items->id;?>">Ver</a>-->
+		<a
+			href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $items->id;?>">Modificar</a>
+		<a
+			href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $items->id;?>">Eliminar</a>
+		</div>
+		</td>
                 <?php endif; ?>
 
             </tr>
@@ -53,9 +58,9 @@
     </table>
 
 <?php if ($this->usuarioLogueado): ?>
-	<div class="menu-admin">
-		<br><a href="<?php echo $this->baseUrl; ?>/menu/menu/agregar">Agregar ítem</a><br>
-	</div>    
+	<div class="menu-admin"><br>
+<a href="<?php echo $this->baseUrl; ?>/menu/menu/agregar">Agregar ítem</a><br>
+</div>    
 <?php endif; ?>
     
 </div>

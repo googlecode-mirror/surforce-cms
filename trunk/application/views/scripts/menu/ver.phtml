@@ -2,13 +2,15 @@
 <?php echo $this->render('menu.phtml'); ?>
 
 <div id="contenido">
-    <h2><?php echo $this->escape($this->subtitle); ?></h2>
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
 
     <?php if ($this->usuarioLogueado): ?>
-    	<div class="menu-admin">
-    		<a href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a>
-            <a href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a>
-    	</div><br>
+    	<div class="menu-admin"><a
+	href="<?php echo $this->baseUrl; ?>/menu/menu/modificar/id/<?php echo $this->item->id;?>">Modificar</a>
+<a
+	href="<?php echo $this->baseUrl; ?>/menu/menu/eliminar/id/<?php echo $this->item->id;?>">Eliminar</a>
+</div>
+<br>
     <?php endif; ?>
 
     <div>
@@ -16,27 +18,25 @@
         <?php echo $this->escape($this->item->id); ?>
     </div>
 
-    <div>
+<div>
         Item:&nbsp;
         <?php echo $this->escape($this->item->item); ?>
     </div>
 
-    <div>
+<div>
         Destino:&nbsp;
         <?php echo $this->escape($this->item->destino); ?>
     </div>
 
-    <div>
-        Privado:&nbsp;
-        <img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->privado; ?>.png" />
-    </div>
+<div>Privado:&nbsp; <img border="0"
+	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->privado; ?>.png" />
+</div>
 
-    <div>
-        Estado:&nbsp;
-        <img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->estado; ?>.png" />
-    </div>
+<div>Estado:&nbsp; <img border="0"
+	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->item->estado; ?>.png" />
+</div>
 
-    <div>
+<div>
         Posición:&nbsp;
         <?php echo $this->escape($this->item->posicion); ?>
     </div>
