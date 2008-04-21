@@ -4,10 +4,11 @@
 <div id="contenido">
 
   <?php if ($this->usuarioLogueado): ?>
-      <div class="menu-admin">
-      	<a href="<?php echo $this->baseUrl; ?>/noticias/noticias/modificar/id/<?php echo $this->noticia->id;?>">Modificar</a>
-      	<a href="<?php echo $this->baseUrl; ?>/noticias/noticias/eliminar/id/<?php echo $this->noticia->id;?>">Eliminar</a>
-      </div>
+      <div class="menu-admin"><a
+	href="<?php echo $this->baseUrl; ?>/noticias/noticias/modificar/id/<?php echo $this->noticia->id;?>">Modificar</a>
+<a
+	href="<?php echo $this->baseUrl; ?>/noticias/noticias/eliminar/id/<?php echo $this->noticia->id;?>">Eliminar</a>
+</div>
   <?php endif; ?>
 
  <div id="noticia-titulo"><?php echo $this->escape($this->noticia->titulo);?></div>
@@ -18,10 +19,11 @@
                 $f = explode("-", $fecha[0] );
             ?>
     <div id="noticia-fecha"><?php echo $this->escape($f['2'] . "/" . $f['1'] ."/". $f['0']);?></div>
-    <div id="noticia-contenido"><?php echo $this->noticia->contenido;?></div>
-    <div id="noticia-contenidoext"><?php echo $this->noticia->contenido_ext;?></div>
-    <br>
-    <div id="noticia-volver"><a href="<?php echo $this->baseUrl; ?>/noticias/noticias/">Volver</a></div>
+<div id="noticia-contenido"><?php echo $this->noticia->contenido;?></div>
+<div id="noticia-contenidoext"><?php echo $this->noticia->contenido_ext;?></div>
+<br>
+<div id="noticia-volver"><a
+	href="<?php echo $this->baseUrl; ?>/noticias/noticias/">Volver</a></div>
 </div>
 
 <?php echo $this->render('footer.phtml'); ?>
