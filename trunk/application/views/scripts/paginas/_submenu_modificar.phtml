@@ -1,0 +1,32 @@
+<div>
+	<strong>Menú de la página:</strong>
+  
+	<?php if($this->paginasMenues): ?>
+	  		
+		 <table class="menu-admin">
+			<tr>
+				<th>Id</th><th>Título</th><th>Link</th><th>Alt</th>
+				<th colspan="2">Opciones</th>
+			</tr>
+
+	  		<?php foreach($this->paginasMenues as $paginaMenu):?>
+				<?php
+				$url_menu_pag_modificar = $this->baseUrl . '/paginas/menupag/modificar/menu/' . $paginaMenu->id_menu . '/pagina/' . $paginaMenu->id_pagina; 
+				$url_menu_pag_eliminar  = $this->baseUrl . '/paginas/menupag/eliminar/menu/' . $paginaMenu->id_menu . '/pagina/' . $paginaMenu->id_pagina;
+				 ?>
+					 
+				<tr>
+					<td nowrap><?php echo $paginaMenu->id_menu; ?></td>
+					<td nowrap><?php echo $paginaMenu->titulo; ?></td>
+					<td nowrap><?php echo $paginaMenu->link; ?></td>
+					<td nowrap><?php echo $paginaMenu->alt; ?></td>
+					<td nowrap><a href="<?php echo $url_menu_pag_modificar;?>">Modificar</a></td>
+					<td nowrap><a href="<?php echo $url_menu_pag_eliminar;?>">Eliminar</a></td>
+				</tr>
+			<?php endforeach; ?>
+		</table>
+	<?php endif; ?>
+	<br>
+	<?php  echo $this->render('paginas/_agregar_submenu.phtml'); ?>
+	<br>
+<div>

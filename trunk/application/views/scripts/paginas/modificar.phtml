@@ -1,60 +1,27 @@
 <?php echo $this->render('header.phtml'); ?>
 <?php echo $this->render('menu.phtml'); ?>
 
+<?php
+$url_action = $this->baseUrl . '/paginas/paginas/' . $this->action;
+$titulo = $this->escape( trim( $this->subtitle ) );
+?>
+
 <div id="contenido">
-<h2><?php echo $this->escape($this->subtitle); ?></h2>
-
-<form
-	action="<?php echo $this->baseUrl ?>/paginas/paginas/<?php echo $this->action; ?>"
-	method="post">
-<div><label for="titulo">titulo:</label> <input type="text"
-	name="titulo" size="100"
-	value="<?php echo $this->escape(trim($this->pagina->titulo));?>" /></div>
-<br>
-
-<div><strong>Menúes de la página:</strong>
-  		<?php if($this->paginasMenues): ?>
-	  		<?php //C.Serrón: Comienza listado de menues personalizados por páginas ?>
-	  		 <table class="menu-admin">
-	<tr>
-		<th>Id</th>
-		<th>Título</th>
-		<th>Link</th>
-		<th>Alt</th>
-		<th colspan="2">Opciones</th>
-	</tr>
-
-
-	  			<?php foreach($this->paginasMenues as $paginaMenu):?>
-	  				<tr>
-		<td nowrap><?php echo $paginaMenu->id_menu; ?></td>
-		<td nowrap><?php echo $paginaMenu->titulo; ?></td>
-		<td nowrap><?php echo $paginaMenu->link; ?></td>
-		<td nowrap><?php echo $paginaMenu->alt; ?></td>
-		<td nowrap><a
-			href="<?php echo $this->baseUrl; ?>/paginas/menupag/modificar/menu/<?php echo $paginaMenu->id_menu;?>/pagina/<?php echo $paginaMenu->id_pagina;?>">Modificar</a></td>
-		<td nowrap><a
-			href="<?php echo $this->baseUrl; ?>/paginas/menupag/eliminar/menu/<?php echo $paginaMenu->id_menu;?>/pagina/<?php echo $paginaMenu->id_pagina;?>">Eliminar</a></td>
-	</tr>
-			<?php endforeach; ?>
-			</table>
-		<?php endif; ?>
-
-  <a
-	href="<?php echo $this->baseUrl; ?>/paginas/menupag/agregar/id/<?php echo $this->pagina->id; ?>">Agregar
-Menú</a></div>
-<br />
-
-<div>
-      <?php print $this->formFCKeditor( ' contenido' , $this->pagina->contenido); ?>
-  </div>
-<br>
-
-
-<div id="boton_formulario"><input type="hidden" name="id"
-	value="<?php echo $this->pagina->id; ?>" /> <input type="submit"
-	name="add" value="<?php echo $this->escape($this->buttonText); ?>" /></div>
-</form>
+	<?php echo $this->PaginaTitulo( $titulo );?>
+	
+	<form action="<?php echo $url_action ?>" method="post">
+		<div>
+			<label for="titulo">titulo:</label> 
+			<input type="text" name="titulo" size="100" value="<?php echo $titulo ?>" />
+		</div>		
+		<br>
+		<?php echo $this->render('paginas/_submenu_modificar.phtml'); ?>	
+      	<?php print $this->formFCKeditor( ' contenido' , $this->pagina->contenido); ?>
+		<?php echo $this->render('paginas/_boton_formulario.phtml'); ?>
+	</form>
 </div>
+<br>
+
+</div> <!-- externo -->
 
 <?php  echo $this->render('footer.phtml'); ?>

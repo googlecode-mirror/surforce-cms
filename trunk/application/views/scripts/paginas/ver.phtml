@@ -1,44 +1,40 @@
 <?php echo $this->render('header.phtml'); ?>
 <?php echo $this->render('menu.phtml'); ?>
-
+<?php
+$url_modificar = array(
+	"url"  => $this->baseUrl . '/paginas/paginas/modificar/id/'. $this->pagina->id, 
+	"text" => "Modificar",
+	"alt" => "Modificar"	
+);
+$url_eliminar  = array( 
+	"url"  => $this->baseUrl . '/paginas/paginas/eliminar/id/' . $this->pagina->id, 
+	"text" => "Eliminar",
+	"alt"	=> "Eliminar"
+);	      		
+?>
 <div id="contenido">
-
-<h2><?php echo $this->escape($this->subtitle); ?></h2>
+	<?php echo $this->paginaTitulo($this->subtitle);?>
 
 	<?php if( $this->pagina ): ?>
-
-	  <?php if ($this->usuarioLogueado): ?>
-	      <div class="menu-admin"><a
-	href="<?php echo $this->baseUrl; ?>/paginas/paginas/modificar/id/<?php echo $this->pagina->id;?>">Modificar</a>
-<a
-	href="<?php echo $this->baseUrl; ?>/paginas/paginas/eliminar/id/<?php echo $this->pagina->id;?>">Eliminar</a>
-</div>
-<br>
-	  <?php endif; ?>
-	    <br />
-
-	<?php if($this->paginasMenues): ?>
-		<div id="menu-pagina">
-			<?php foreach($this->paginasMenues as $paginaMenu):?>
-
-		  		|<a alt="<?php echo $paginaMenu->alt; ?>"
-	href="<?php echo $paginaMenu->link; ?>"><?php echo$paginaMenu->titulo ;?></a>|
-
-			<?php endforeach; ?>
-		</div>
-	<?php endif; ?>
-
+	
+		<?php if ($this->usuarioLogueado): ?> 
+			<div class="menu-admin">			
+	      		<?php echo $this->htmlLinkArray( $url_modificar );?>
+	      		<?php echo $this->htmlLinkArray( $url_eliminar );?>
+			</div>			
+	  	<?php endif; ?>
+	    <br/>
+		<?php echo $this->render('paginas/_submenu.phtml'); ?>
 
 		<div id="pagina-titulo">
 			<?php echo $this->escape(trim($this->pagina->titulo)); ?>
 		</div>
-<div id="pagina-contenido">
+
+		<div id="pagina-contenido">
 	    	<?php echo $this->pagina->contenido;?>
 	  	</div>
 	<?php else: ?>
 	  	Página no existente
 	<?php endif; ?>
-
 </div>
-
 <?php echo $this->render('footer.phtml'); ?>
