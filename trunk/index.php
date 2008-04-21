@@ -16,9 +16,10 @@ Zend_Loader::loadClass('Zend_Registry');
 Zend_Loader::loadClass('Zend_Db');
 Zend_Loader::loadClass('Zend_Db_Table');
 Zend_Loader::loadClass('Zend_Auth');
-
+Zend_Loader::loadClass('Zend_Filter_StripTags');
 // Zcms
 Zend_Loader::loadClass('Zcms_Generic_Controller');
+Zend_Loader::loadClass('Zcms_Generic_ControllerAdmin');
 
 // load configuration
 $config = new Zend_Config_Ini('./application/config.ini', 'general');
