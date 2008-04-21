@@ -1,5 +1,5 @@
 <?php
-class Admin_ArchivosController extends Zcms_Generic_Controller 
+class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin 
 {
 	function indexAction() 
 	{
@@ -10,12 +10,6 @@ class Admin_ArchivosController extends Zcms_Generic_Controller
 		$this->view->archivos = $Archivos->fetchAll();
 		$this->render();	
 	}
-	function preDispatch() 
-	{
-		$auth = Zend_Auth::getInstance ();
-		if ($auth->hasIdentity ()) {
-			$this->view->usuarioLogueado = true;
-		}
-	}
+	
 }
 ?>

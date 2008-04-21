@@ -1,5 +1,6 @@
 <?php
-class Admin_ConfiguracionController extends Zcms_Generic_Controller {
+class Admin_ConfiguracionController extends Zcms_Generic_ControllerAdmin 
+{
 	
 	/*
     function init(){
@@ -11,14 +12,7 @@ class Admin_ConfiguracionController extends Zcms_Generic_Controller {
         $this->info = Zend_Registry::get('personalizacion');
          $this->view->title = $this->info->sitio->index->index->titulo;
     }
-*/
-	function preDispatch() {
-		$auth = Zend_Auth::getInstance ();
-		if ($auth->hasIdentity ()) {
-			$this->view->usuarioLogueado = true;
-		}
-	}
-	
+	*/	
 	function indexAction() {
 		$this->view->subtitle = "ABM Configuración";
 		$configuracion = new Configuracion ( );
