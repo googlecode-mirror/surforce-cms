@@ -1,20 +1,30 @@
-<h2>Listado de los sitios del sistema</h2>
-
+<?php echo $this->paginaTitulo( "Listado de los sitios del sistema" ); ?>
 <?php echo $this->render('sitios/_opcion_agregar.phtml'); ?>
+
+<?php $url_base = $this->baseUrl . '/admin/sitios';?>
+
 <table>
   <tr>
     <th>id</th>
     <th>nombre</th>    
     <th>descripción</th>
     <th>creación</th>
+    <th colspan="3">Acciones</th>
   </tr>
 
 <?php foreach( $this->sitios as $sitio): ?>
 	<tr>
     	<td><?php echo $sitio->id;?></td>
-    	<td><?php echo $sitio->nombre;?></td>    	
-    	<td><?php echo $sitio->descripcion; ?></td>
-    	<td><?php echo $sitio->fecha_creacion;?></td>    	
+    	<td><?php echo htmlentities($sitio->nombre);?></td>    	
+    	<td><?php echo htmlentities($sitio->descripcion); ?></td>
+    	<td><?php echo $this->dateFormat( $sitio->fecha_creacion );?></td>
+    	<td>
+    		<div class="menu-admin">
+    			<?php echo $this->htmlLink($url_base.'/ver/id/'.$sitio->id, "Ver");?>
+    			<?php echo $this->htmlLink($url_base.'/modificar/id/'.$sitio->id, "Modificar");?>
+    			<?php echo $this->htmlLink($url_base.'/eliminar/id/'.$sitio->id, "Eliminar");?>
+			</div>
+    	</td>    	    	
   	</tr>
 <?php endforeach; ?>
 
