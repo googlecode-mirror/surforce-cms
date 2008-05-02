@@ -1,16 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.1
+-- version 2.11.2.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 02-05-2008 a las 02:43:10
--- Versión del servidor: 5.0.45
--- Versión de PHP: 5.2.4
+-- Servidor: mysql.surforce.com
+-- Tiempo de generación: 02-05-2008 a las 12:10:49
+-- Versión del servidor: 5.0.24
+-- Versión de PHP: 4.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Base de datos: `surforce-cms`
+-- Base de datos: `surforce_cms`
 --
 
 -- --------------------------------------------------------
@@ -20,7 +20,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 DROP TABLE IF EXISTS `archivos`;
-CREATE TABLE `archivos` (
+CREATE TABLE IF NOT EXISTS `archivos` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `fecha_mod` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
@@ -47,7 +47,7 @@ INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) 
 --
 
 DROP TABLE IF EXISTS `configuracion`;
-CREATE TABLE `configuracion` (
+CREATE TABLE IF NOT EXISTS `configuracion` (
   `id` int(10) NOT NULL,
   `sitio_titulo_color` varchar(10) collate utf8_spanish_ci NOT NULL,
   `sitio_color_fondo` varchar(10) collate utf8_spanish_ci NOT NULL,
@@ -75,7 +75,7 @@ INSERT INTO `configuracion` (`id`, `sitio_titulo_color`, `sitio_color_fondo`, `s
 --
 
 DROP TABLE IF EXISTS `contacto`;
-CREATE TABLE `contacto` (
+CREATE TABLE IF NOT EXISTS `contacto` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci default NULL,
   `email` varchar(50) collate utf8_spanish_ci NOT NULL,
@@ -102,7 +102,7 @@ INSERT INTO `contacto` (`id`, `nombre`, `email`, `comentario`, `fecha`, `telefon
 --
 
 DROP TABLE IF EXISTS `faqs`;
-CREATE TABLE `faqs` (
+CREATE TABLE IF NOT EXISTS `faqs` (
   `id` int(50) NOT NULL auto_increment,
   `pregunta` varchar(250) character set utf8 collate utf8_unicode_ci NOT NULL,
   `respuesta` text character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -126,13 +126,13 @@ INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
 --
 
 DROP TABLE IF EXISTS `menu`;
-CREATE TABLE `menu` (
+CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `item` varchar(45) collate utf8_spanish_ci NOT NULL,
   `destino` varchar(255) collate utf8_spanish_ci NOT NULL,
   `posicion` smallint(4) NOT NULL default '0',
   `privado` char(1) collate utf8_spanish_ci NOT NULL default '1',
-  `estado` char(1) NOT NULL,
+  `estado` char(1) collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=68 ;
@@ -145,13 +145,13 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (1, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 1),
 (2, 'FAQ', '/faqs/faqs/', 30, '0', '1', 1),
 (65, 'home', '/paginas/paginas/ver/id/18', 0, '0', '1', 2),
-(6, 'Introducción', '/paginas/paginas/ver/id/7', 4, '0', '1', 1),
-(7, 'Investigación', '/paginas/paginas/ver/id/8', 5, '0', '1', 1),
-(8, 'ABM Menú Principal', '/admin/menu/', 9, '1', '1', 1),
+(6, 'IntroducciÃ³n', '/paginas/paginas/ver/id/7', 4, '0', '1', 1),
+(7, 'InvestigaciÃ³n', '/paginas/paginas/ver/id/8', 5, '0', '1', 1),
+(8, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 1),
 (9, 'prueba item deshabilitado', '/noticias/noticias/', 8, '1', '0', 1),
-(10, 'ABM Páginas', '/admin/paginas/', 7, '1', '1', 1),
+(10, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 1),
 (11, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 1),
-(14, 'ABM Menú Cuadros', '/admin/menus/', 10, '1', '1', 1),
+(14, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 1),
 (15, 'Contacto', '/contacto/contacto/', 50, '0', '1', 1),
 (18, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 1),
 (19, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 1),
@@ -161,10 +161,10 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (24, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 2),
 (25, 'FAQ', '/faqs/faqs/', 30, '0', '1', 2),
 (66, 'home', '/paginas/paginas/ver/id/19', 0, '0', '1', 3),
-(27, 'ABM Menú Principal', '/admin/menu/', 9, '1', '1', 2),
-(28, 'ABM Páginas', '/admin/paginas/', 7, '1', '1', 2),
+(27, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 2),
+(28, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 2),
 (29, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 2),
-(30, 'ABM Menú Cuadros', '/admin/menus/', 10, '1', '1', 2),
+(30, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 2),
 (31, 'Contacto', '/contacto/contacto/', 50, '0', '1', 2),
 (32, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 2),
 (33, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 2),
@@ -174,10 +174,10 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (37, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 3),
 (38, 'FAQ', '/faqs/faqs/', 30, '0', '1', 3),
 (67, 'home', '/paginas/paginas/ver/id/20', 0, '0', '1', 6),
-(40, 'ABM Menú Principal', '/admin/menu/', 9, '1', '1', 3),
-(41, 'ABM Páginas', '/admin/paginas/', 7, '1', '1', 3),
+(40, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 3),
+(41, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 3),
 (42, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 3),
-(43, 'ABM Menú Cuadros', '/admin/menus/', 10, '1', '1', 3),
+(43, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 3),
 (44, 'Contacto', '/contacto/contacto/', 50, '0', '1', 3),
 (45, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 3),
 (46, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 3),
@@ -186,10 +186,10 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (49, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 3),
 (50, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 6),
 (51, 'FAQ', '/faqs/faqs/', 30, '0', '1', 6),
-(53, 'ABM Menú Principal', '/admin/menu/', 9, '1', '1', 6),
-(54, 'ABM Páginas', '/admin/paginas/', 7, '1', '1', 6),
+(53, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 6),
+(54, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 6),
 (55, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 6),
-(56, 'ABM Menú Cuadros', '/admin/menus/', 10, '1', '1', 6),
+(56, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 6),
 (57, 'Contacto', '/contacto/contacto/', 50, '0', '1', 6),
 (58, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 6),
 (59, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 6),
@@ -205,7 +205,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 --
 
 DROP TABLE IF EXISTS `menus`;
-CREATE TABLE `menus` (
+CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_sitio` int(10) unsigned NOT NULL,
   `nombre` varchar(150) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -222,9 +222,9 @@ CREATE TABLE `menus` (
 
 INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `descripcion`, `posicion`, `privado`, `estado`) VALUES
 (1, 1, 'Administrador', 'menu admin', 2, '1', '1'),
-(2, 1, 'Subsitios', 'descripción subsitios', 1, '0', '1'),
+(2, 1, 'Subsitios', 'descripciÃ³n subsitios', 1, '0', '1'),
 (3, 1, 'Ayudas', 'Esta es la ayuda principal del sitio de Dinara', 10, '0', '1'),
-(4, 2, 'Apoyo Acuífero', 'esta es la descripción', 1, '0', '1'),
+(4, 2, 'Apoyo AcuÃ­fero', 'esta es la descripciÃ³n', 1, '0', '1'),
 (5, 6, 'SVNs', 'Los repositorios sVN', 1, '0', '1');
 
 -- --------------------------------------------------------
@@ -234,7 +234,7 @@ INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `descripcion`, `posicion`, `pri
 --
 
 DROP TABLE IF EXISTS `menus_items`;
-CREATE TABLE `menus_items` (
+CREATE TABLE IF NOT EXISTS `menus_items` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_menu` int(10) unsigned NOT NULL,
   `item` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -243,7 +243,7 @@ CREATE TABLE `menus_items` (
   `privado` char(1) character set utf8 collate utf8_unicode_ci NOT NULL,
   `estado` char(1) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
 
 --
 -- Volcar la base de datos para la tabla `menus_items`
@@ -255,7 +255,8 @@ INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `priv
 (3, 1, 'Usuarios', '/usuarios/usuarios', 2, '1', '1'),
 (4, 2, 'Inmobiliarias', 'http://rtnils.com', 5, '0', '1'),
 (5, 3, 'prueba', 'http://www.php.net/', 1, '0', '1'),
-(6, 4, 'pruebas seguras', '/admin/', 1, '0', '1');
+(6, 4, 'pruebas seguras', '/admin/', 1, '0', '1'),
+(8, 5, 'home site', 'http://www.surforce.com', 1, '0', '1');
 
 -- --------------------------------------------------------
 
@@ -264,7 +265,7 @@ INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `priv
 --
 
 DROP TABLE IF EXISTS `noticias`;
-CREATE TABLE `noticias` (
+CREATE TABLE IF NOT EXISTS `noticias` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -296,7 +297,7 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `contenido_ext`, `contenido
 --
 
 DROP TABLE IF EXISTS `paginas`;
-CREATE TABLE `paginas` (
+CREATE TABLE IF NOT EXISTS `paginas` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -315,17 +316,17 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 (3, 'pagina2', 'contenido de la segunda pagina', '2007-08-01 01:25:40', 0, 0),
 (5, 'Primer página con TinyMCE', 'Mmm... c&oacute;mo se ve esto?', '2007-08-13 20:32:18', 0, 0),
 (6, 'Sin festejos, Fidel cumple añs', '<img src="http://www.elpais.com.uy/07/08/13/33742_298.JPG" alt="Fidel" title="Fidel Castro" width="298" height="255" align="right" />La Habana', '2007-08-14 01:23:57', 0, 0),
-(7, 'Introducción', '<p>Uruguay explota recursos naturales pesqueros del Oc&eacute;ano Atl&aacute;ntico Sud Occidental</p>', '2007-08-16 02:22:55', 0, 0),
-(8, 'Investigación', '<p>La Investigaci&oacute;n Cient&iacute;fica de los Recursos Pesqueros</p>', '2007-08-16 02:28:01', 0, 0),
+(7, 'IntroducciÃ³n', '<p>Uruguay explota recursos naturales pesqueros del Oc&eacute;ano Atl&aacute;ntico Sud Occidental.</p>\r\n<p>Viva moviclips. :P</p>', '2007-08-16 02:22:55', 0, 1),
+(8, 'InvestigaciÃ³n', '<p>La Investigaci&oacute;n Cient&iacute;fica de los Recursos Pesqueros</p>', '2007-08-16 02:28:01', 0, 1),
 (9, 'Página de 14/10/2007', '<p><em>Nueva p&aacute;gina del d&iacute;a de hoy<img alt="" src="/surforce-cms/public/scripts/fckeditor/editor/images/smiley/msn/cry_smile.gif" /></em></p>', '2007-10-14 00:29:37', 0, 0),
 (11, 'home', '<p>Bienvenido a la home del sitio web</p>', '2008-04-16 23:33:04', 0, 0),
 (12, 'currículum vitae', '<p>el curr&iacute;culum vitae</p>', '2008-04-19 20:07:26', 0, 0),
 (13, 'Pagina de Surforce', '<p>P&aacute;gina de surforce</p>', '2008-05-01 18:57:25', 0, 6),
-(14, 'Nueva página de la Dinara', '<p>contenido de dinara</p>', '2008-05-01 19:00:25', 0, 1),
-(15, 'Página de Acuífero', '<p>contenido de acu&iacute;fero</p>', '2008-05-01 19:00:55', 0, 2),
-(16, 'Nueva página de FAO', '<p>Contenido de la p&aacute;gina de FAO <img src="/surforce-cms/public/scripts/fckeditor/editor/images/smiley/msn/shades_smile.gif" alt="" /></p>', '2008-05-01 19:02:16', 0, 3),
+(14, 'Nueva pÃ¡gina de la Dinara', '<p>contenido de dinara</p>', '2008-05-01 19:00:25', 0, 1),
+(15, 'PÃ¡gina de AcuÃ­fero', '<p>contenido de acu&iacute;fero</p>', '2008-05-01 19:00:55', 0, 2),
+(16, 'Nueva pÃ¡gina de FAO', '<p>Contenido de la p&aacute;gina de FAO <img alt="" src="/surforce-cms/public/scripts/fckeditor/editor/images/smiley/msn/shades_smile.gif" /></p>', '2008-05-01 19:02:16', 0, 3),
 (17, 'Bienvenido a la Dinara', '<p>Esta es la p&aacute;gina de bienvenida</p>', '2008-05-02 02:14:03', 0, 1),
-(18, 'Bienvenido al Acuífero', '<p>texto de bienvenida</p>', '2008-05-02 02:22:11', 0, 2),
+(18, 'Bienvenido al AcuÃ­fero', '<p>texto de bienvenida</p>', '2008-05-02 02:22:11', 0, 2),
 (19, 'Bienvenido a FAO', '<p>Bienvenido a FAO</p>', '2008-05-02 02:25:53', 0, 3),
 (20, 'Bienvenido a Surforce', '<p>Bienvenido a Surforce</p>', '2008-05-02 02:26:48', 0, 6);
 
@@ -336,7 +337,7 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 --
 
 DROP TABLE IF EXISTS `paginas_archivos`;
-CREATE TABLE `paginas_archivos` (
+CREATE TABLE IF NOT EXISTS `paginas_archivos` (
   `id_pagina` tinyint(10) NOT NULL,
   `id_archivo` tinyint(10) NOT NULL,
   PRIMARY KEY  (`id_pagina`,`id_archivo`)
@@ -358,7 +359,7 @@ INSERT INTO `paginas_archivos` (`id_pagina`, `id_archivo`) VALUES
 --
 
 DROP TABLE IF EXISTS `paginas_menu`;
-CREATE TABLE `paginas_menu` (
+CREATE TABLE IF NOT EXISTS `paginas_menu` (
   `id_pagina` int(255) NOT NULL,
   `id_menu` int(255) NOT NULL,
   `link` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -375,7 +376,7 @@ INSERT INTO `paginas_menu` (`id_pagina`, `id_menu`, `link`, `titulo`, `alt`) VAL
 (6, 1, 'http://infouruguay.codigolibre.net/serron', 'Quieres saber más?', 'Link a ver más'),
 (6, 2, 'http://enriqueplace.blogspot.com', 'Artículos de interés', 'más info'),
 (1, 1, 'http://localhost', 'prueba', 'texto alternativo'),
-(1, 2, 'http://localhost/surforce-cms/', 'menú dos', 'alternativo dos cms dos'),
+(1, 2, 'http://localhost/surforce-cms/', 'menÃº dos', 'alternativo dos cms dos'),
 (0, 1, '1', '1', '1'),
 (14, 1, 'uno', 'uno', 'uno');
 
@@ -386,7 +387,7 @@ INSERT INTO `paginas_menu` (`id_pagina`, `id_menu`, `link`, `titulo`, `alt`) VAL
 --
 
 DROP TABLE IF EXISTS `sitios`;
-CREATE TABLE `sitios` (
+CREATE TABLE IF NOT EXISTS `sitios` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `titulo` varchar(100) collate utf8_spanish_ci NOT NULL,
@@ -404,7 +405,7 @@ CREATE TABLE `sitios` (
 INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`, `por_defecto`) VALUES
 (3, 'fao', 'F.A.O', 'Sitio institucional de FAO', '2008-04-20 14:22:33', 0),
 (1, 'dinara', 'Di.Na.R.A.', 'Sitio web de la Dinara', '2008-04-27 10:28:44', 1),
-(2, 'acuifero', 'Acuífero', 'Sitio Proyecto Acuífero', '2008-04-27 10:30:43', 0),
+(2, 'acuifero', 'AcuÃ­fero', 'Sitio Proyecto AcuÃ­fero', '2008-04-27 10:30:43', 0),
 (6, 'surforce', 'SurForce', 'Sitio de prueba de surforce', '2008-05-01 12:55:53', 0);
 
 -- --------------------------------------------------------
@@ -414,7 +415,7 @@ INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`,
 --
 
 DROP TABLE IF EXISTS `styles_propiedades`;
-CREATE TABLE `styles_propiedades` (
+CREATE TABLE IF NOT EXISTS `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
@@ -554,7 +555,7 @@ INSERT INTO `styles_propiedades` (`id_propiedad`, `propiedad`) VALUES
 --
 
 DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
-CREATE TABLE `styles_propiedades_x_selectores` (
+CREATE TABLE IF NOT EXISTS `styles_propiedades_x_selectores` (
   `id_selector` int(11) NOT NULL,
   `id_propiedad` int(11) NOT NULL,
   `valor` varchar(64) collate utf8_spanish_ci default NULL,
@@ -606,7 +607,7 @@ INSERT INTO `styles_propiedades_x_selectores` (`id_selector`, `id_propiedad`, `v
 --
 
 DROP TABLE IF EXISTS `styles_selectores`;
-CREATE TABLE `styles_selectores` (
+CREATE TABLE IF NOT EXISTS `styles_selectores` (
   `id_selector` int(11) NOT NULL auto_increment,
   `selector` varchar(64) collate utf8_spanish_ci NOT NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
@@ -641,7 +642,7 @@ INSERT INTO `styles_selectores` (`id_selector`, `selector`, `descripcion`) VALUE
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `usuario` varchar(32) collate utf8_spanish_ci NOT NULL,
   `password` varchar(32) collate utf8_spanish_ci NOT NULL,
@@ -662,5 +663,5 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nombre`, `apellido`, `mail`, `estado`, `creado`, `modificado`, `id_sitio`) VALUES
 (6, 'eplace', 'pepe', 'Enrique', 'Place de Cuadro', 'enriqueplace@gmail.com', 1, '2007-07-25 23:45:28', '2008-05-02 02:03:29', 6),
-(7, 'admin', 'pepe', 'Admin', 'Admins', 'admin@surforce.com', 1, '2008-01-26 21:38:25', '2008-05-02 02:11:46', 1),
+(7, 'admin', 'admin', 'Admin', 'Admins', 'admin@surforce.com', 1, '2008-01-26 21:38:25', '2008-05-02 10:37:15', 1),
 (8, 'pepe', 'pepe', 'Pepe', 'Perez', 'pepe@perez.com', 1, '2008-05-02 02:10:35', '2008-05-02 02:10:35', 6);
