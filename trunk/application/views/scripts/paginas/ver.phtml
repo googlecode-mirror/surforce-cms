@@ -1,0 +1,26 @@
+<?php echo $this->paginaTitulo($this->subtitle);?>
+
+<?php if( $this->pagina ): ?>
+	<?php echo $this->render('paginas/_submenu.phtml'); ?>
+
+	<div id="pagina-titulo">
+		<?php echo $this->escape(trim($this->pagina->titulo)); ?>
+	</div>
+
+	<div id="pagina-contenido">
+    	<?php echo $this->pagina->contenido;?>
+  	</div>
+  	
+  	<div id="pagina-archivos">
+    	<?php if($this->archivos): // Aquí hay que traer el obj Archivos!?>
+    		<strong>Archivos relacionados</strong>
+    		<ul>
+    		<?php foreach($this->archivos as $archivo): ?>
+    			<li><a href="/admin/archivos/ver/id/<?php echo $archivo->id_archivo;?>"><?php echo $archivo->id_archivo;?></a></li>
+    		<?php endforeach; ?>
+    		</ul>
+    	<?php endif; ?>
+  	</div>
+<?php else: ?>
+  	Página no existente
+<?php endif; ?>

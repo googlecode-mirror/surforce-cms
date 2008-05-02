@@ -1,0 +1,19 @@
+<div id="noticia-titulo">
+	<?php echo $this->escape($this->noticia->titulo);?>
+</div>
+<?php
+// FIXME!
+$fecha = explode(" ", $this->noticia->fecha);
+$hora = $fecha[1];
+$f = explode("-", $fecha[0] );
+?>
+<div id="noticia-fecha">
+	<?php echo $this->escape($f['2'] . "/" . $f['1'] ."/". $f['0']);?>
+</div>
+<div id="noticia-contenido">
+	<?php echo $this->noticia->contenido;?>
+</div>
+<div id="noticia-contenidoext">
+	<?php echo $this->noticia->contenido_ext;?>
+</div>
+<br>

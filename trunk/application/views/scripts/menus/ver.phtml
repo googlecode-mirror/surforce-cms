@@ -1,0 +1,20 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<table>
+	<tr>
+		<td>
+			<a href="<?php echo $this->baseUrl; ?>/admin/menus/modificar/id/<?php echo $this->menu->id;?>">Modificar</a>
+		</td>
+		<td>
+			<a href="<?php echo $this->baseUrl; ?>/admin/menus/eliminar/id/<?php echo $this->menu->id;?>">Eliminar</a>
+		</td>
+	</tr>
+</table>
+
+<div>Id:&nbsp;<?php echo $this->escape($this->menu->id); ?></div>
+<div>Id Sitio:&nbsp;<?php echo $this->escape($this->menu->id_sitio); ?></div>
+<div>Nombre:&nbsp;<?php echo $this->escape($this->menu->nombre); ?></div>
+<div>Descripción:&nbsp;<?php echo $this->escape($this->menu->descripcion);?></div>
+<div>Privado:&nbsp; <img border="0"	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->menu->privado; ?>.png" /></div>
+<div>Estado:&nbsp; <img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->menu->estado; ?>.png" /></div>
+<div>Posición:&nbsp;<?php echo $this->escape($this->menu->posicion); ?></div>

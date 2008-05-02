@@ -1,0 +1,34 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+    <div class="menu-admin">
+    	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar Usuario</a><br><br>
+    </div>    
+
+    <table>
+    <tr>
+         <th>Usuario</th>
+         <th>Nombre</th>
+         <th>Apellido</th>
+        <th>Email</th>
+         <th colspan="3">Acciones</th>
+    </tr>
+    <?php foreach( $this->usuarios as $usuario ) : ?>
+            <tr>
+                <td><?php echo $this->escape($usuario->usuario);?></td>
+                <td><?php echo $this->escape($usuario->nombre);?></td>
+                <td><?php echo $this->escape($usuario->apellido);?></td>
+                <td><?php echo $this->escape($usuario->mail);?></td>
+                <td nowrap="nowrap">
+                	<div class="menu-admin">
+	                	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/ver/id/<?php echo $usuario->id;?>">Ver</a>
+    	            	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/modificar/id/<?php echo $usuario->id;?>">Modificar</a>
+        	        	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/eliminar/id/<?php echo $usuario->id;?>">Eliminar</a>
+        	        </div>
+        	    </td>
+            </tr>
+    <?php endforeach; ?>
+    </table>
+    <div class="menu-admin">
+    	<br><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar Usuario</a><br><br>
+    </div>    
+</div>

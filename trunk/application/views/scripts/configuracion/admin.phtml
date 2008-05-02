@@ -1,0 +1,21 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/configuracion/modificar/id/<?php echo $this->configuracion->id;?>">Modificar</a>
+</div>
+<br>
+
+<table>
+	<tr>
+		<th nowrap>color fondo:</th>
+		<td><?php echo $this->escape(trim($this->configuracion->sitio_color_fondo));?></td>
+	</tr>
+	<tr>
+		<th nowrap>color cabezal:</th>
+		<td><?php echo $this->escape(trim($this->configuracion->sitio_color_cabezal));?></td>
+	</tr>
+	<tr>
+		<th nowrap>color pie:</th>
+		<td><?php echo $this->escape(trim($this->configuracion->sitio_color_pie));?></td>
+	</tr>
+</table>

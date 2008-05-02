@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+    	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    	<title><?php echo $this->escape($this->title); ?></title>
+		<?php echo $this->render('_scripts.phtml'); ?>
+		<?php echo $this->render('_configuracion.phtml'); ?>	
+  	</head>
+  	<body bgcolor="<?php echo $this->configuracion->sitio_color_fondo;?>">
+
+		<div id="contenedor">
+		
+		    <div id="cabecera">
+    
+				<h1><?php echo $this->sitio_actual->titulo;?></h1>			
+				<?php echo $this->sitio_actual->descripcion;?><br><br>			
+				<?php echo $this->htmlMenuHorizontal(
+					$this->menuHorizontalOpciones,
+					"Secciones",
+					$this->baseUrl
+				);?>
+				<?php // if( $this->user ) echo "usuario: ".$this->escape($this->user->usuario);?>
+			</div>
