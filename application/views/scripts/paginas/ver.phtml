@@ -10,9 +10,9 @@
 	<div id="pagina-contenido">
     	<?php echo $this->pagina->contenido;?>
   	</div>
-  	
+
   	<div id="pagina-archivos">
-    	<?php if($this->archivos): // Aquí hay que traer el obj Archivos!?>
+    	<?php if( count($this->archivos) > 0 ): // Aquí hay que traer el obj Archivos!?>
     		<strong>Archivos relacionados</strong>
     		<ul>
     		<?php foreach($this->archivos as $archivo): ?>
