@@ -1,0 +1,48 @@
+<?php echo $this->render('mensaje.phtml');?>
+
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/menus/agregar">Agregar menú</a>
+</div>
+<br>
+
+<table>
+	<tr>
+		<th>id</th>
+		<th>Nombre</th>
+		<th>Descripción</th>
+		<th>Privado</th>
+		<th>Estado</th>
+		<th>Posición</th>
+        <th colspan="4">Acciones</th>
+    </tr>
+    <?php
+    foreach( $this->menus as $menu ) : ?>
+	    <tr>
+			<td><?php echo $this->escape($menu->id);?></td>
+			<td nowrap="nowrap"><?php echo $this->escape($menu->nombre);?></td>
+			<td><?php echo $this->escape($menu->descripcion);?></td>
+
+			<td align="center">
+				<img border="0"	src="<?php echo $this->baseUrl?>/public/images/estado_<?php echo $menu->privado; ?>.png" />
+			</td>
+			<td align="center">
+				<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $menu->estado; ?>.png" />
+			</td>
+			<td><?php echo $this->escape($menu->posicion);?></td>
+            <td nowrap="nowrap">
+				<div class="menu-admin">
+					<a href="<?php echo $this->baseUrl; ?>/admin/menus/modificar/id/<?php echo $menu->id;?>">Modificar</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/menus/eliminar/id/<?php echo $menu->id;?>">Eliminar</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/items/editar/id/<?php echo $menu->id;?>">Agregar Items</a>
+				</div>
+			</td>
+		</tr>
+    <?php endforeach; ?>
+</table>
+<br>
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/menus/agregar">Agregar menú</a>
+</div>
+<br>

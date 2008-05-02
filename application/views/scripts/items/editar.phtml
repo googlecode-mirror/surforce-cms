@@ -1,0 +1,49 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<p><a href="<?php echo $this->baseUrl; ?>/admin/menus/">Volver a menús</a></p>
+
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/items/agregar/id/<?php echo $this->idMenu;?>">
+		Agregar Item
+	</a>
+</div>
+<br>
+
+<table>
+	<tr>
+		<th>id</th>			
+		<th>Item</th>
+		<th>Destino</th>
+		<th>Privado</th>
+		<th>Estado</th>
+		<th>Posición</th>
+		<th colspan="4">Acciones</th>
+   	</tr>
+    <?php
+    foreach( $this->items as $item ) : ?>
+		<tr>
+			<td><?php echo $this->escape($item->id);?></td>			
+			<td><?php echo $this->escape($item->item);?></td>
+			<td nowrap="nowrap"><?php echo $this->escape($item->destino);?></td>
+			<td align="center">
+				<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $item->privado; ?>.png" />
+			</td>
+			<td align="center">
+				<img border="0" src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $item->estado; ?>.png" />
+			</td>
+			<td><?php echo $this->escape($item->posicion);?></td>
+           	<td nowrap="nowrap">
+				<div class="menu-admin">						
+					<a href="<?php echo $this->baseUrl; ?>/admin/items/modificar/id/<?php echo $item->id;?>">Modificar</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/items/eliminar/id/<?php echo $item->id;?>">Eliminar</a>						
+				</div>
+			</td>
+		</tr>
+    <?php endforeach; ?>
+</table>
+<br>
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/items/agregar/id/<?php echo $this->idMenu;?>">
+		Agregar Item
+	</a>
+</div>

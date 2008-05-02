@@ -1,0 +1,44 @@
+<?php echo $this->paginaTitulo( $this->subtitle ); ?>
+
+<?php
+$url_action = $this->baseUrl . '/admin/sitios/' . $this->action;
+$pars_campo_nombre =  array(
+	'label' => 'nombre',
+	'text' => 'Nombre',
+	'size' => '50',
+	'value' => $this->escape ( trim ( $this->sitio->nombre ) )		
+);
+$pars_campo_titulo =  array(
+	'label' => 'titulo',
+	'text' => 'titulo',
+	'size' => '50',
+	'value' => $this->escape ( trim ( $this->sitio->titulo ) )		
+);
+$pars_campo_descripcion =  array(
+	'label' => 'descripcion',
+	'text' => 'descripcion',
+	'size' => '50',
+	'value' => $this->escape ( trim ( $this->sitio->descripcion ) )		
+);
+$pars_campo_por_defecto =  array(
+	'label' => 'por_defecto',
+	'text' => 'por defecto',
+	'size' => '1',
+	'value' => $this->escape ( trim ( $this->sitio->por_defecto ) )		
+);
+$pars_submit = array(
+	'value'  => $this->sitio->id,
+	'submit' => $this->escape ( $this->buttonText )
+);		
+?>
+
+<form action="<?php	echo $url_action;?>" method="post">
+
+	<?php echo $this->formularioCampo( $pars_campo_nombre );?>	
+	<?php echo $this->formularioCampo( $pars_campo_titulo );?>
+	<?php echo $this->formularioCampo( $pars_campo_descripcion );?>
+	<?php echo $this->formularioCampo( $pars_campo_por_defecto );?>
+	
+	<?php echo $this->formularioSubmit( $pars_submit );?>
+
+</form>

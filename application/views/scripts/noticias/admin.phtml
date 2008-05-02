@@ -1,0 +1,31 @@
+<?php echo $this->paginaTitulo($this->subtitle);?>
+
+<?php echo $this->render('noticias/_opcion_agregar.phtml'); ?><br/>
+
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Titulo</th>
+		<th>sitio</th>
+		<th>Fecha</th>
+		<th colspan="3">Acciones</th>
+	</tr>
+
+	<? foreach( $this->noticias as $noticia ) : ?>
+		<tr>
+			<td><?php echo $this->escape($noticia->id);?></td>
+			<td><?php echo $this->escape($noticia->titulo);?></td>
+			<td><?php echo $this->escape($noticia->id_sitio);?></td>
+			<td nowrap="nowrap"><?php echo $this->escape($noticia->fecha);?></td>
+			<td nowrap="nowrap">
+				<div class="menu-admin">
+					<a href="<?php echo $this->baseUrl; ?>/noticias/noticias/ver/id/<?php echo $noticia->id;?>">Ver</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/noticias/modificar/id/<?php echo $noticia->id;?>">Modificar</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/noticias/eliminar/id/<?php echo $noticia->id;?>">Eliminar</a>
+				</div>
+			</td>
+		</tr>
+	<?php endforeach;?>
+</table>
+<br />
+<?php echo $this->render('noticias/_opcion_agregar.phtml'); ?><br/>
