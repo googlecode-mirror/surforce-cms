@@ -1,16 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.2.1
+-- version 2.11.4
 -- http://www.phpmyadmin.net
 --
--- Servidor: mysql.surforce.com
--- Tiempo de generación: 02-05-2008 a las 12:10:49
--- Versión del servidor: 5.0.24
--- Versión de PHP: 4.4.7
+-- Servidor: localhost
+-- Tiempo de generación: 05-05-2008 a las 11:10:50
+-- Versión del servidor: 5.0.51
+-- Versión de PHP: 5.2.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Base de datos: `surforce_cms`
+-- Base de datos: `surforce-cms`
 --
 
 -- --------------------------------------------------------
@@ -34,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `archivos` (
 --
 
 INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) VALUES
-(1, 'curriculum.pdf', '2008-05-01 15:53:39', 'Primer currículum del sistema', 1),
+(1, 'curriculum.pdf', '2008-05-05 10:51:21', 'Primer currÃ­culum del sistema', 1),
 (2, 'novela.doc', '2008-05-01 15:53:54', 'La segunda novela', 2),
-(3, 'cv.ppt', '0000-00-00 00:00:00', 'Nueva presentación ppt', 1),
+(3, 'cv.ppt', '2008-05-05 10:51:28', 'Nueva presentaciÃ³n ppt', 1),
 (4, 'surforce.jpg', '0000-00-00 00:00:00', 'nuevo archivo de surforce', 6),
 (5, 'surforce.doc', '0000-00-00 00:00:00', 'surforce doc', 6);
 
@@ -116,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `faqs` (
 --
 
 INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
-(4, '¿por qué?', 'Por esto', '2008-04-15 09:21:47', 0),
-(5, '¿Se puede hacer todo esto en Zend?', 'Sí, es viable hacerlo con Zend, tiene toda la información necesaria para cumplir con todos los requerimientos.', '2008-04-28 22:17:59', 0);
+(4, 'Â¿por quÃ©?', 'Por esto', '2008-05-05 10:52:50', 1),
+(5, 'Â¿Se puede hacer todo esto en Zend?', 'S&iacute;, es viable hacerlo con Zend, tiene toda la informaci&oacute;n necesaria para cumplir con todos los requerimientos.', '2008-05-05 10:52:38', 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +154,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (14, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 1),
 (15, 'Contacto', '/contacto/contacto/', 50, '0', '1', 1),
 (18, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 1),
-(19, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 1),
+(19, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 1),
 (20, 'Noticias', '/noticias/noticias/', 1, '0', '1', 1),
 (21, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 1),
 (22, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 1),
@@ -394,19 +394,21 @@ CREATE TABLE IF NOT EXISTS `sitios` (
   `descripcion` text collate utf8_spanish_ci NOT NULL,
   `fecha_creacion` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `por_defecto` tinyint(1) NOT NULL,
+  `orden` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcar la base de datos para la tabla `sitios`
 --
 
-INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`, `por_defecto`) VALUES
-(3, 'fao', 'F.A.O', 'Sitio institucional de FAO', '2008-04-20 14:22:33', 0),
-(1, 'dinara', 'Di.Na.R.A.', 'Sitio web de la Dinara', '2008-04-27 10:28:44', 1),
-(2, 'acuifero', 'AcuÃ­fero', 'Sitio Proyecto AcuÃ­fero', '2008-04-27 10:30:43', 0),
-(6, 'surforce', 'SurForce', 'Sitio de prueba de surforce', '2008-05-01 12:55:53', 0);
+INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`, `por_defecto`, `orden`) VALUES
+(3, 'fao', 'F.A.O', 'Sitio institucional de FAO', '2008-04-20 14:22:33', 0, 3),
+(1, 'dinara', 'Di.Na.R.A.', 'Sitio web de la Dinara', '2008-04-27 10:28:44', 0, 5),
+(2, 'acuifero', 'AcuÃ­fero', 'Sitio Proyecto AcuÃ­fero', '2008-04-27 10:30:43', 0, 4),
+(6, 'surforce', 'SurForce', 'Sitio de prueba de surforce', '2008-05-01 12:55:53', 1, 1),
+(7, 'ibm', 'I.B.M.', 'Sitio de pruebas de IBM', '2008-05-05 11:01:20', 0, 2);
 
 -- --------------------------------------------------------
 
