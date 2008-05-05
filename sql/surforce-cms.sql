@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-05-2008 a las 11:10:50
+-- Tiempo de generación: 05-05-2008 a las 11:23:21
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.5
 
@@ -167,7 +167,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (30, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 2),
 (31, 'Contacto', '/contacto/contacto/', 50, '0', '1', 2),
 (32, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 2),
-(33, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 2),
+(33, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 2),
 (34, 'Noticias', '/noticias/noticias/', 1, '0', '1', 2),
 (35, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 2),
 (36, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 2),
@@ -180,7 +180,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (43, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 3),
 (44, 'Contacto', '/contacto/contacto/', 50, '0', '1', 3),
 (45, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 3),
-(46, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 3),
+(46, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 3),
 (47, 'Noticias', '/noticias/noticias/', 1, '0', '1', 3),
 (48, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 3),
 (49, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 3),
@@ -192,7 +192,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (56, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 6),
 (57, 'Contacto', '/contacto/contacto/', 50, '0', '1', 6),
 (58, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 6),
-(59, 'ABM FAQ', '/faqs/faqs/admin', 15, '1', '1', 6),
+(59, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 6),
 (60, 'Noticias', '/noticias/noticias/', 1, '0', '1', 6),
 (61, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 6),
 (62, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 6),
