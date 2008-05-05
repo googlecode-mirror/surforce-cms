@@ -16,5 +16,8 @@ $subtitulo = $this->escape(trim($this->subtitle));
 	<br>
 	<?php echo $this->render('paginas/_submenu_modificar.phtml'); ?>	
     <?php echo $this->formFCKeditor('contenido',$this->pagina->contenido);?>
+   	<?php echo $this->render('paginas/_boton_asociar_archivo.phtml');?>
 	<?php echo $this->render('paginas/_boton_formulario.phtml');?>
+	
+</div>
 </form>

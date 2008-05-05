@@ -11,7 +11,8 @@
 	</div>		
 	<div>
 		<?php echo $this->formFCKeditor('contenido', $this->pagina->contenido );?>
-	</div>		
+	</div>
+	<?php echo $this->render('paginas/_boton_asociar_archivo.phtml');?>		
 	<div>
 		<input type="hidden" name="id" value="<?php echo $this->pagina->id;?>"/> 
 		<input type="submit" name="add" value="<?php echo $this->escape($this->buttonText);?>"/>

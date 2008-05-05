@@ -1,0 +1,14 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<?php if ($this->archivo) :?>
+  <form action="<?php echo $this->baseUrl ?>/admin/archivos/eliminar" method="post">
+    <p>¿Esta seguro que quiere eliminar el archivo '<?php echo $this->escape($this->archivo->nombre); ?>'?</p>
+    <div id="boton_formulario">
+      <input type="hidden" name="id" value="<?php echo $this->archivo->id; ?>" />
+      <input type="submit" name="del" value="Si" />
+      <input type="submit" name="del" value="No" />
+    </div>
+  </form>
+<?php else: ?>
+  <p>No se pudo encontrar el archivo.</p>
+<?php endif;?>

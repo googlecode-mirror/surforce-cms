@@ -1,0 +1,26 @@
+<h2>Listado de archivos en el sistema</h2>
+ <form action="<?php echo $this->baseUrl ?>/archivos/archivos/<?php echo $this->action; ?>" method="post">
+	<table>
+	  <tr>
+	    <th>#</th>
+	    <th>nombre</th>
+	    <th>modif</th>
+	    <th>descripción</th>	    
+	  </tr>
+	
+	<?php foreach( $this->archivos as $archivo): ?>
+		<tr>
+	    	<td>	    		
+	    		<input type="checkbox" name="asociar<?php echo $archivo->id ?>" value="<?php echo $archivo->id ?>">	    		
+	    	</td>	    	
+	    	<td><?php echo $archivo->nombre;?></td>
+	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>
+	    	<td><?php echo $archivo->descripcion; ?></td>
+	  	</tr>
+	<?php endforeach; ?>
+	</table>	
+	<div id="boton_formulario">
+          <input type="hidden" name="pagina" value="<?php echo $this->pagina; ?>" />
+          <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
+    </div>	
+</form> 	

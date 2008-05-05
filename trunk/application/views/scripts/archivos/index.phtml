@@ -8,14 +8,21 @@
 	    <th>nombre</th>
 	    <th>modif</th>
 	    <th>descripción</th>
+	    <th>Acciones</th>
 	  </tr>
 	
 	<?php foreach( $this->archivos as $archivo): ?>
 		<tr>
 	    	<td><?php echo $archivo->id;?></td>
 	    	<td><?php echo $archivo->nombre;?></td>
-	    	<td><?php echo $archivo->fecha_mod;?></td>
-	    	<td><?php echo $archivo->descripcion; ?></td>    	
+	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>
+	    	<td><?php echo $archivo->descripcion; ?></td>
+	    	<td nowrap="nowrap">
+                	<div class="menu-admin">
+    	            	<a href="<?php echo $this->baseUrl; ?>/admin/archivos/modificar/id/<?php echo $archivo->id;?>">Modificar</a>
+        	        	<a href="<?php echo $this->baseUrl; ?>/admin/archivos/eliminar/id/<?php echo $archivo->id;?>">Eliminar</a>
+        	        </div>
+			</td>    	
 	  	</tr>
 	<?php endforeach; ?>
 	</table>

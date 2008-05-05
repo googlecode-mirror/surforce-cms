@@ -15,7 +15,7 @@
         <input 
         	type="text" 
         	name="destino" 
-        	size="80"
+        	size="60"
 			value="<?php echo $this->escape($this->item->destino);?>"/>
 	</div>
 	<div>
@@ -26,21 +26,16 @@
 			size="4"
 			value="<?php echo $this->escape($this->item->posicion);?>"/>
 	</div>
-
 	<div>
 		<label for="privado">Privado:</label>
-		<select name="privado">
-			<option value="1" <?php if ($this->escape($this->item->privado) == 1) echo 'selected'; ?>>Si</option>
-			<option value="0" <?php if ($this->escape($this->item->privado) == 0) echo 'selected'; ?>>No</option>
-		</select>
+		<input type='radio' name="privado" value="1" <?php if ($this->escape($this->item->privado) == 1) echo 'checked="checked"'; ?>>Si
+		<input type='radio' name="privado" value="0" <?php if ($this->escape($this->item->privado) == 0) echo 'checked="checked"'; ?>>No
 	</div>
 
 	<div>
 		<label for="estado">Estado:</label> 
-		<select name="estado">
-			<option value="1" <?php if ($this->escape($this->item->estado) == 1) echo 'selected'; ?>>Activo</option>
-			<option value="0" <?php if ($this->escape($this->item->estado) == 0) echo 'selected'; ?>>Inactivo</option>
-		</select>
+		<input type='radio' name="estado" value="1" <?php if ($this->escape($this->item->estado) == 1) echo 'checked="checked"'; ?>>Activo
+		<input type='radio' name="estado" value="0" <?php if ($this->escape($this->item->estado) == 0) echo 'checked="checked"'; ?>>Inactivo
 	</div>
 	<br>
 	<div id="boton_formulario">
