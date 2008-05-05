@@ -60,7 +60,7 @@ TD {
 }
 
 label {
-	width: 60px;
+	width: 100px;
 	display: block;
 	float: left;
 	text-align: left;
@@ -198,11 +198,14 @@ TD.mensaje-informativo {
 .menu-opciones a:hover {
 	background: #F7DECA;
 }
-
-/*fin menu */ /* menu admin */
+/*fin menu */
+ 
+/* menu admin */
 .menu-admin {
 	font: 100% "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 200px;
+	width: 250px;
+	text-align: left;
+	padding: 3px;
 }
 
 .menu-admin ul,li { 

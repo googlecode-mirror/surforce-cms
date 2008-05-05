@@ -43,11 +43,9 @@
 	</div>
 	<div>
 		<label for="privado">Privado:</label>
-		<select name="privado">
-			<option value="1" <?php if ($this->escape ( $this->menu->privado ) == 1) echo 'selected="selected"';?>>Si</option>
-			<option value="0" <?php if ($this->escape ( $this->menu->privado ) == 0) echo 'selected="selected"';?>>No</option>
-		</select>
-    	<?php
+		<input type='radio' name="privado" value="1" <?php if ($this->escape($this->menu->privado) == 1) echo 'checked="checked"'; ?>>Si
+		<input type='radio' name="privado" value="0" <?php if ($this->escape($this->menu->privado) == 0) echo 'checked="checked"'; ?>>No
+   	<?php
 		if (isset ( $this->messages ['privado'] )) {
 			echo '<span class="error-campo-formulario">' . $this->messages ['privado'] . '</span>';
 		}
@@ -55,10 +53,8 @@
 	</div>
 	<div>
 		<label for="estado">Estado:</label> 
-		<select name="estado">
-			<option value="1" <?php if ($this->escape ( $this->menu->estado ) == 1) echo 'selected="selected"';?>>Activo</option>
-			<option value="0" <?php	if ($this->escape ( $this->menu->estado ) == 0)	echo 'selected="selected"';?>>Inactivo</option>
-		</select>
+		<input type='radio' name="estado" value="1" <?php if ($this->escape($this->menu->estado) == 1) echo 'checked="checked"'; ?>>Activo
+		<input type='radio' name="estado" value="0" <?php if ($this->escape($this->menu->estado) == 0) echo 'checked="checked"'; ?>>Inactivo
     	<?php
 		if (isset ( $this->messages ['estado'] )) {
 			echo '<span class="error-campo-formulario">' . $this->messages ['estado'] . '</span>';

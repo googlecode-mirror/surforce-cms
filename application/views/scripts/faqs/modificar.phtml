@@ -1,7 +1,7 @@
 
 	<h2><?php echo $this->escape ( $this->subtitle );?></h2>
 
-	<form action="<?php	echo $this->baseUrl?>/faqs/faqs/<?php echo $this->action;?>" method="post">
+	<form action="<?php	echo $this->baseUrl?>/admin/faqs/<?php echo $this->action;?>" method="post">
 		<div>
 			<label for="pregunta">Pregunta</label>
 			<input 
@@ -11,14 +11,10 @@
 				value="<?php echo $this->escape ( trim ( $this->faq->pregunta ) );?>" />
 		</div>
 		<br>
-		<div>
-			<label for="respuesta">Respuesta</label> 
-			<input 
-				type="text"
-				name="respuesta" 
-				size="100"
-				value="<?php echo $this->escape ( $this->faq->respuesta );?>" />
-		</div>
+		<div>			
+			<label for="respuesta">Respuesta</label>
+    		<?php echo $this->formFCKeditor('respuesta', $this->faq->respuesta, '100%', 300 );?>
+    	</div> 
 
 		<div id="boton_formulario">
 			<input type="hidden" name="id" value="<?php	echo $this->faq->id;?>" /> 

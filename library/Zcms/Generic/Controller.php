@@ -35,9 +35,12 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
         $this->view->debug = $this->debug;
 
 		/* información de sitios y subsitios */
-		$this->view->sitios = Sitios::getAll()->toArray();
-		$this->view->configuracion = Configuracion::getConfiguracion($this->session->sitio->id);
-
+		$this->view->sitios = Sitios::getAll(null,null,"orden")->toArray();
+		if( isset($this->session->sitio->id)){
+			$this->view->configuracion = Configuracion::getConfiguracion($this->session->sitio->id);
+		}else{
+			$this->view->configuracion = Configuracion::getConfiguracionDefault();
+		}
 		$this->registrarSitio();
 		$this->cargarMenuHorizontal();
 
@@ -63,7 +66,7 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
     	 * FIXME: eliminar los tildes para las urls ( url => nombre)
     	 */
 
-		foreach( Sitios::getAll()->toArray() as $op ){
+		foreach( Sitios::getAll(null, null, "orden")->toArray() as $op ){
 			$opciones[] = array(
 				'url' => '/default/index/index/sitio/'.strtolower($op['nombre']),
 				'alt' =>  strtolower($op['nombre']),

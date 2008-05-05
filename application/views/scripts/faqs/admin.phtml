@@ -1,53 +1,35 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
 
-	<h2><?php echo $this->escape($this->subtitle); ?></h2>
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/faqs/agregar">Agregar FAQ</a>
+</div>
+<div class="div-reset"></div>
+<br />
 
-  	<?php if ($this->usuarioLogueado): ?>
-		<div class="menu-admin">
-			<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a>
-		</div>
-		<div class="div-reset"></div>
-		<br />
-
-		<table>
-			<tr>
-				<th>Id</th><th>Pregunta</th><th>Respuesta</th><th>Fecha</th><th colspan="3">Acciones</th>
-			</tr>
-
-			<? foreach( $this->faqs as $faq ) : ?>
-			<tr>
-				<td><?php echo $this->escape($faq->id);?></td>
-				<td nowrap="nowrap"><?php echo $this->escape($faq->pregunta);?></td>
-				<td nowrap="nowrap"><?php echo $this->escape($faq->respuesta);?></td>
-				<td nowrap="nowrap"><?php echo $this->escape($faq->fecha);?></td>
-				<td nowrap="nowrap">
-					<div class="menu-admin">
-						<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/ver/id/<?php echo $faq->id;?>">Ver</a>
-						<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/modificar/id/<?php echo $faq->id;?>">Modificar</a>
-						<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar</a>
-					</div>
-				</td>
-			</tr>
-			<?php endforeach;?>
-    	</table>
-		<br />
-
-		<div class="menu-admin">
-			<a href="<?php echo $this->baseUrl; ?>/faqs/faqs/agregar">Agregar FAQ</a>
-		</div>
-		<div class="div-reset"></div>
-	<br>
-<?php else: ?>
-
-     <?php foreach( $this->faqs as $faq ) : ?>
-
-		<div id="faq-titulo">
-			<strong>Pregunta:</strong><?php echo $this->escape($faq->pregunta), " ({$this->escape($this->dateFormat( $faq->fecha )) })" ;?>
-		</div>
-		<br>
-		<div id="faq-respuesta">
-			<strong>Respuesta:</strong>
-       		<?php echo $this->escape($faq->respuesta);?>
-       	</div>
-		<br><br>
-	<?php endforeach; ?>
-<?php endif; ?>
+<table>
+	<tr>
+		<th>Id</th>
+		<th>Pregunta</th>		
+		<th>Fecha</th>
+		<th colspan="3">Acciones</th>
+	</tr>
+	<?php foreach( $this->faqs as $faq ): ?>
+		<tr>
+			<td><?php echo $this->escape($faq->id);?></td>
+			<td nowrap="nowrap"><?php echo $this->escape($faq->pregunta);?></td>
+			<td nowrap="nowrap"><?php echo $this->escape($faq->fecha);?></td>
+			<td nowrap="nowrap">
+				<div class="menu-admin">
+					<a href="<?php echo $this->baseUrl; ?>/admin/faqs/ver/id/<?php echo $faq->id;?>">Ver</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/faqs/modificar/id/<?php echo $faq->id;?>">Modificar</a>
+					<a href="<?php echo $this->baseUrl; ?>/admin/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar</a>
+				</div>
+			</td>
+		</tr>
+	<?php endforeach;?>
+</table>
+<br />
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/faqs/agregar">Agregar FAQ</a>
+</div>
+<div class="div-reset"></div>

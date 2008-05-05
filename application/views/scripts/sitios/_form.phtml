@@ -6,39 +6,52 @@ $pars_campo_nombre =  array(
 	'label' => 'nombre',
 	'text' => 'Nombre',
 	'size' => '50',
-	'value' => $this->escape ( trim ( $this->sitio->nombre ) )		
+	'value' => $this->escape ( trim ( $this->sitio->nombre ) )
 );
 $pars_campo_titulo =  array(
 	'label' => 'titulo',
 	'text' => 'titulo',
 	'size' => '50',
-	'value' => $this->escape ( trim ( $this->sitio->titulo ) )		
+	'value' => $this->escape ( trim ( $this->sitio->titulo ) )
 );
 $pars_campo_descripcion =  array(
 	'label' => 'descripcion',
 	'text' => 'descripcion',
 	'size' => '50',
-	'value' => $this->escape ( trim ( $this->sitio->descripcion ) )		
+	'value' => $this->escape ( trim ( $this->sitio->descripcion ) )
+);
+$pars_orden =  array(
+	'label' => 'orden',
+	'text' => 'orden',
+	'size' => '1',
+	'value' => $this->escape ( trim ( $this->sitio->orden ) )
 );
 $pars_campo_por_defecto =  array(
 	'label' => 'por_defecto',
 	'text' => 'por defecto',
 	'size' => '1',
-	'value' => $this->escape ( trim ( $this->sitio->por_defecto ) )		
+	'value' => $this->escape ( trim ( $this->sitio->por_defecto ) )
 );
 $pars_submit = array(
 	'value'  => $this->sitio->id,
 	'submit' => $this->escape ( $this->buttonText )
-);		
+);
 ?>
 
 <form action="<?php	echo $url_action;?>" method="post">
 
-	<?php echo $this->formularioCampo( $pars_campo_nombre );?>	
+	<?php echo $this->formularioCampo( $pars_campo_nombre );?>
 	<?php echo $this->formularioCampo( $pars_campo_titulo );?>
 	<?php echo $this->formularioCampo( $pars_campo_descripcion );?>
-	<?php echo $this->formularioCampo( $pars_campo_por_defecto );?>
-	
+	<?php echo $this->formularioCampo( $pars_orden );?>
+	<?php //echo $this->formularioCampo( $pars_campo_por_defecto );?>
+
+	<div>
+		<label for="privado">por defecto:</label>
+		<input type='radio' name="por_defecto" value="1" <?php if ($this->escape($this->sitio->por_defecto) == 1) echo 'checked="checked"'; ?>>Si
+		<input type='radio' name="por_defecto" value="0" <?php if ($this->escape($this->sitio->por_defecto) == 0) echo 'checked="checked"'; ?>>No
+	</div>
+
 	<?php echo $this->formularioSubmit( $pars_submit );?>
 
 </form>

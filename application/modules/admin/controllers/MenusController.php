@@ -7,7 +7,7 @@ class Admin_MenusController extends Zcms_Generic_ControllerAdmin
 	}
 	public function indexAction()
 	{
-		$this->view->subtitle = $this->info->sitio->menus->index->titulo;	
+		$this->view->subtitle = "Menú Cuadros";	
 		$limit = 0;
 		$this->view->menus = Menus::getAll(
 			$this->session->sitio->id, 

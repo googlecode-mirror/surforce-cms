@@ -1,4 +1,8 @@
 <?php
+/*
+ * FIXME: los Sitios deben estar asociados a sus Configuraciones.
+ * Modificar el Model Sitios.
+ */
 class Configuracion extends Zend_Db_Table_Abstract
 {
 	protected $_name = 'configuracion';
@@ -16,6 +20,16 @@ class Configuracion extends Zend_Db_Table_Abstract
 	{
 		$configuracion = new Configuracion();		
 		return $configuracion->fetchRow("id = '$id'");
+	}
+	public static function getConfiguracionDefault()
+	{
+		$sitio = Sitios::getSitioDefault();
+		
+		if( $sitio == NULL){
+			$sitio = Sitios::getAll(null, 1);			
+		}		
+		$configuracion = new Configuracion();
+		$configuracion->fetchRow("id = '$sitio->id'");
 	}
 }
 ?>

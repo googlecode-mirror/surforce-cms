@@ -16,7 +16,7 @@
     		<strong>Archivos relacionados</strong>
     		<ul>
     		<?php foreach($this->archivos as $archivo): ?>
-    			<li><a href="/admin/archivos/ver/id/<?php echo $archivo->id_archivo;?>"><?php echo $archivo->id_archivo;?></a></li>
+    			<li><a href="<?php echo $this->baseUrl; ?>/archivos/archivos/ver/id/<?php echo $archivo->id_archivo;?>"><?php echo $archivo->id_archivo;?></a></li>
     		<?php endforeach; ?>
     		</ul>
     	<?php endif; ?>
