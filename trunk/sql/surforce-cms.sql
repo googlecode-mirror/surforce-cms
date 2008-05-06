@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.4
+-- version 2.11.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-05-2008 a las 11:23:21
--- Versión del servidor: 5.0.51
--- Versión de PHP: 5.2.5
+-- Tiempo de generación: 05-05-2008 a las 23:46:28
+-- Versión del servidor: 5.0.45
+-- Versión de PHP: 5.2.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -20,14 +20,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 DROP TABLE IF EXISTS `archivos`;
-CREATE TABLE IF NOT EXISTS `archivos` (
+CREATE TABLE `archivos` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `fecha_mod` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
   `descripcion` text collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `archivos`
@@ -38,7 +38,7 @@ INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) 
 (2, 'novela.doc', '2008-05-01 15:53:54', 'La segunda novela', 2),
 (3, 'cv.ppt', '2008-05-05 10:51:28', 'Nueva presentaciÃ³n ppt', 1),
 (4, 'surforce.jpg', '0000-00-00 00:00:00', 'nuevo archivo de surforce', 6),
-(5, 'surforce.doc', '0000-00-00 00:00:00', 'surforce doc', 6);
+(5, 'surforce.doc', '2008-05-05 23:28:54', 'documento de surforce', 6);
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) 
 --
 
 DROP TABLE IF EXISTS `configuracion`;
-CREATE TABLE IF NOT EXISTS `configuracion` (
+CREATE TABLE `configuracion` (
   `id` int(10) NOT NULL,
   `sitio_titulo_color` varchar(10) collate utf8_spanish_ci NOT NULL,
   `sitio_color_fondo` varchar(10) collate utf8_spanish_ci NOT NULL,
@@ -75,7 +75,7 @@ INSERT INTO `configuracion` (`id`, `sitio_titulo_color`, `sitio_color_fondo`, `s
 --
 
 DROP TABLE IF EXISTS `contacto`;
-CREATE TABLE IF NOT EXISTS `contacto` (
+CREATE TABLE `contacto` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci default NULL,
   `email` varchar(50) collate utf8_spanish_ci NOT NULL,
@@ -102,7 +102,7 @@ INSERT INTO `contacto` (`id`, `nombre`, `email`, `comentario`, `fecha`, `telefon
 --
 
 DROP TABLE IF EXISTS `faqs`;
-CREATE TABLE IF NOT EXISTS `faqs` (
+CREATE TABLE `faqs` (
   `id` int(50) NOT NULL auto_increment,
   `pregunta` varchar(250) character set utf8 collate utf8_unicode_ci NOT NULL,
   `respuesta` text character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `faqs` (
 --
 
 INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
-(4, 'Â¿por quÃ©?', 'Por esto', '2008-05-05 10:52:50', 1),
+(4, 'Â¿por quÃ©?', 'Por esto', '2008-05-05 22:21:25', 6),
 (5, 'Â¿Se puede hacer todo esto en Zend?', 'S&iacute;, es viable hacerlo con Zend, tiene toda la informaci&oacute;n necesaria para cumplir con todos los requerimientos.', '2008-05-05 10:52:38', 1);
 
 -- --------------------------------------------------------
@@ -126,7 +126,7 @@ INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
 --
 
 DROP TABLE IF EXISTS `menu`;
-CREATE TABLE IF NOT EXISTS `menu` (
+CREATE TABLE `menu` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `item` varchar(45) collate utf8_spanish_ci NOT NULL,
   `destino` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `estado` char(1) collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=68 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=71 ;
 
 --
 -- Volcar la base de datos para la tabla `menu`
@@ -143,60 +143,63 @@ CREATE TABLE IF NOT EXISTS `menu` (
 
 INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `id_sitio`) VALUES
 (1, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 1),
-(2, 'FAQ', '/faqs/faqs/', 30, '0', '1', 1),
-(65, 'home', '/paginas/paginas/ver/id/18', 0, '0', '1', 2),
-(6, 'IntroducciÃ³n', '/paginas/paginas/ver/id/7', 4, '0', '1', 1),
-(7, 'InvestigaciÃ³n', '/paginas/paginas/ver/id/8', 5, '0', '1', 1),
+(2, 'FAQ', '/frontend/faqs/', 30, '0', '1', 1),
+(65, 'home', '/frontend/paginas/ver/id/18', 0, '0', '1', 2),
+(6, 'IntroducciÃ³n', '/frontend/paginas/ver/id/7', 4, '0', '1', 1),
+(7, 'InvestigaciÃ³n', '/frontend/paginas/ver/id/8', 5, '0', '1', 1),
 (8, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 1),
-(9, 'prueba item deshabilitado', '/noticias/noticias/', 8, '1', '0', 1),
+(9, 'prueba item deshabilitado', '/frontend/noticias/', 8, '1', '0', 1),
 (10, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 1),
 (11, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 1),
 (14, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 1),
-(15, 'Contacto', '/contacto/contacto/', 50, '0', '1', 1),
+(15, 'Contacto', '/frontend/contacto/', 50, '0', '1', 1),
 (18, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 1),
 (19, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 1),
-(20, 'Noticias', '/noticias/noticias/', 1, '0', '1', 1),
+(20, 'Noticias', '/frontend/noticias/', 1, '0', '1', 1),
 (21, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 1),
 (22, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 1),
 (24, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 2),
-(25, 'FAQ', '/faqs/faqs/', 30, '0', '1', 2),
-(66, 'home', '/paginas/paginas/ver/id/19', 0, '0', '1', 3),
+(25, 'FAQ', '/frontend/faqs/', 30, '0', '1', 2),
+(66, 'home', '/frontend/paginas/ver/id/19', 0, '0', '1', 3),
 (27, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 2),
 (28, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 2),
 (29, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 2),
 (30, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 2),
-(31, 'Contacto', '/contacto/contacto/', 50, '0', '1', 2),
+(31, 'Contacto', '/frontend/contacto/', 50, '0', '1', 2),
 (32, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 2),
 (33, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 2),
-(34, 'Noticias', '/noticias/noticias/', 1, '0', '1', 2),
+(34, 'Noticias', '/frontend/noticias/', 1, '0', '1', 2),
 (35, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 2),
 (36, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 2),
 (37, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 3),
-(38, 'FAQ', '/faqs/faqs/', 30, '0', '1', 3),
-(67, 'home', '/paginas/paginas/ver/id/20', 0, '0', '1', 6),
+(38, 'FAQ', '/frontend/faqs/', 30, '0', '1', 3),
+(67, 'home', '/frontend/paginas/ver/id/20', 0, '0', '1', 6),
 (40, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 3),
 (41, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 3),
 (42, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 3),
 (43, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 3),
-(44, 'Contacto', '/contacto/contacto/', 50, '0', '1', 3),
+(44, 'Contacto', '/frontend/contacto/', 50, '0', '1', 3),
 (45, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 3),
 (46, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 3),
-(47, 'Noticias', '/noticias/noticias/', 1, '0', '1', 3),
+(47, 'Noticias', '/frontend/noticias/', 1, '0', '1', 3),
 (48, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 3),
 (49, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 3),
 (50, 'ABM Noticias', '/admin/noticias/', 1, '1', '1', 6),
-(51, 'FAQ', '/faqs/faqs/', 30, '0', '1', 6),
+(51, 'FAQ', '/frontend/faqs/', 30, '0', '1', 6),
 (53, 'ABM MenÃº Principal', '/admin/menu/', 9, '1', '1', 6),
 (54, 'ABM PÃ¡ginas', '/admin/paginas/', 7, '1', '1', 6),
 (55, 'ABM Usuarios', '/admin/usuarios/', 12, '1', '1', 6),
 (56, 'ABM MenÃº Cuadros', '/admin/menus/', 10, '1', '1', 6),
-(57, 'Contacto', '/contacto/contacto/', 50, '0', '1', 6),
+(57, 'Contacto', '/frontend/contacto/', 50, '0', '1', 6),
 (58, 'ABM Configuracion General', '/admin/configuracion/', 16, '1', '1', 6),
 (59, 'ABM FAQ', '/admin/faqs/', 15, '1', '1', 6),
-(60, 'Noticias', '/noticias/noticias/', 1, '0', '1', 6),
+(60, 'Noticias', '/frontend/noticias/', 1, '0', '1', 6),
 (61, 'ABM Archivos', '/admin/archivos/', 17, '1', '1', 6),
 (62, 'ABM Sitios', '/admin/sitios/', 20, '1', '1', 6),
-(64, 'Home', '/paginas/paginas/ver/id/17', 1, '0', '1', 1);
+(64, 'Home', '/frontend/paginas/ver/id/17', 1, '0', '1', 1),
+(68, 'ABM MenÃº', '/admin/menu/', 1, '1', '1', 7),
+(69, 'ABM PÃ¡ginas', '/admin/paginas', 2, '1', '1', 7),
+(70, 'Listado de productos', '/frontend/paginas/ver/id/22', 3, '0', '1', 7);
 
 -- --------------------------------------------------------
 
@@ -205,7 +208,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 --
 
 DROP TABLE IF EXISTS `menus`;
-CREATE TABLE IF NOT EXISTS `menus` (
+CREATE TABLE `menus` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_sitio` int(10) unsigned NOT NULL,
   `nombre` varchar(150) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -214,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
   `privado` char(1) character set utf8 collate utf8_unicode_ci NOT NULL,
   `estado` char(1) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `menus`
@@ -225,7 +228,8 @@ INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `descripcion`, `posicion`, `pri
 (2, 1, 'Subsitios', 'descripciÃ³n subsitios', 1, '0', '1'),
 (3, 1, 'Ayudas', 'Esta es la ayuda principal del sitio de Dinara', 10, '0', '1'),
 (4, 2, 'Apoyo AcuÃ­fero', 'esta es la descripciÃ³n', 1, '0', '1'),
-(5, 6, 'SVNs', 'Los repositorios sVN', 1, '0', '1');
+(5, 6, 'SVNs', 'Los repositorios sVN', 1, '0', '1'),
+(6, 6, 'Proyectos', 'Estos son los proyectos actualmente vigentes', 2, '0', '1');
 
 -- --------------------------------------------------------
 
@@ -234,7 +238,7 @@ INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `descripcion`, `posicion`, `pri
 --
 
 DROP TABLE IF EXISTS `menus_items`;
-CREATE TABLE IF NOT EXISTS `menus_items` (
+CREATE TABLE `menus_items` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_menu` int(10) unsigned NOT NULL,
   `item` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -243,20 +247,21 @@ CREATE TABLE IF NOT EXISTS `menus_items` (
   `privado` char(1) character set utf8 collate utf8_unicode_ci NOT NULL,
   `estado` char(1) character set utf8 collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
 
 --
 -- Volcar la base de datos para la tabla `menus_items`
 --
 
 INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `privado`, `estado`) VALUES
-(1, 1, 'Menus', '/menus/menus', 1, '0', '1'),
+(1, 1, 'Menus', '/frontend/menus', 1, '0', '1'),
 (2, 2, 'Google', 'http://www.google.com', 1, '0', '1'),
-(3, 1, 'Usuarios', '/usuarios/usuarios', 2, '1', '1'),
+(3, 1, 'Usuarios', '/admin/usuarios', 2, '1', '1'),
 (4, 2, 'Inmobiliarias', 'http://rtnils.com', 5, '0', '1'),
 (5, 3, 'prueba', 'http://www.php.net/', 1, '0', '1'),
 (6, 4, 'pruebas seguras', '/admin/', 1, '0', '1'),
-(8, 5, 'home site', 'http://www.surforce.com', 1, '0', '1');
+(8, 5, 'home site', 'http://www.surforce.com', 1, '0', '1'),
+(9, 6, 'surforce-cms', 'http://code.google.com/p/surforce-cms', 1, '0', '1');
 
 -- --------------------------------------------------------
 
@@ -265,7 +270,7 @@ INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `priv
 --
 
 DROP TABLE IF EXISTS `noticias`;
-CREATE TABLE IF NOT EXISTS `noticias` (
+CREATE TABLE `noticias` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -276,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `noticias` (
   `id_usuario` int(11) NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=20 ;
 
 --
 -- Volcar la base de datos para la tabla `noticias`
@@ -288,7 +293,10 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `contenido_ext`, `contenido
 (10, 'Nueva noticia extendida', '<p>Contenido simple</p>', '<p>contenido extendido y con t&iacute;ldes!</p>', '', '', '2008-01-08 22:01:00', 0, 3),
 (12, 'Buscan a Maddie en Chile 3', '<p><span id="_ctl5_lblNota">La polic&iacute;a dijo el viernes que est&aacute; investigando un informe sobre el supuesto avistamiento en el norte de Chile de la ni&ntilde;a brit&aacute;nica Madeleine McCann, desaparecida el 3 de mayo del a&ntilde;o pasado en una playa en Portugal.<br />\r\n</span></p>', '<p>El detective Segundo Leyton, jefe de la brigada especializada en la b&uacute;squeda de personas desaparecidas, dijo a medios locales que la investigaci&oacute;n se inici&oacute; luego de que un ciudadano no identificado dijo a la polic&iacute;a haber visto una pareja de extranjeros con una ni&ntilde;a parecida a la peque&ntilde;a.</p>\r\n<p>El denunciante &quot;se&ntilde;ala que hab&iacute;a visto a una menor de similares caracter&iacute;sticas a la peque&ntilde;a Madeleine y que estaba acompa&ntilde;ada de una persona adulta y una mujer&quot;, dijo Leyton.</p>\r\n<p>Agreg&oacute; que &quot;le llama m&aacute;s la atenci&oacute;n la presencia del sujeto, que lo encuentra muy similar a la persona que aparece en la prensa&quot;, aludiendo a un sospechoso cuyo retrato hablado fue entregado por los padres de la ni&ntilde;a recientemente.</p>\r\n<p>Agreg&oacute; que el hombre dijo que la pareja hablaba un idioma extranjero.<br />\r\nEl informante dijo que la menor estaba en la ciudad de Vicu&ntilde;a, 500 kil&oacute;metros al norte, y que el hombre con ella correspond&iacute;a al retrato hablado del supuesto secuestrador divulgado este mes por los padres de la menor.</p>\r\n<p>El hombre que alert&oacute; a la polic&iacute;a, del que s&oacute;lo se dijo que es un t&eacute;cnico en refrigeraci&oacute;n, dijo a la polic&iacute;a que vio a la pareja y la ni&ntilde;a en el museo de la poetisa chilena Gabriela Mistral.</p>\r\n<p>(AP)</p>', '', '', '2008-01-26 23:19:20', 0, 0),
 (14, 'surforce', '<p>contenido surforce&nbsp;&nbsp;  &nbsp;&nbsp;</p>', '<p>contenido extendido surforce</p>', '', '', '2008-05-01 16:53:55', 0, 6),
-(16, 'Nueva noticia Acuífero', '<p>akdjf&ntilde;al ad</p>', '<p>akdjf&ntilde;al ad</p>', '', '', '2008-05-01 18:03:48', 0, 2);
+(16, 'Nueva noticia Acuífero', '<p>akdjf&ntilde;al ad</p>', '<p>akdjf&ntilde;al ad</p>', '', '', '2008-05-01 18:03:48', 0, 2),
+(17, 'segunda noticia', '<p>cuerpo de la segunda noticia</p>', '<p>contenido extendido de la segunda noticia</p>', '', '', '2008-05-05 23:19:55', 0, 6),
+(18, 'tres', '<p>tres</p>', '<p>trwe</p>', '', '', '2008-05-05 23:20:15', 0, 6),
+(19, 'cuetro', '<p>cuetro</p>', '<p>cuetro</p>', '', '', '2008-05-05 23:21:19', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -297,7 +305,7 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `contenido_ext`, `contenido
 --
 
 DROP TABLE IF EXISTS `paginas`;
-CREATE TABLE IF NOT EXISTS `paginas` (
+CREATE TABLE `paginas` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -305,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `paginas` (
   `id_usuario` int(11) NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
 
 --
 -- Volcar la base de datos para la tabla `paginas`
@@ -328,7 +336,9 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 (17, 'Bienvenido a la Dinara', '<p>Esta es la p&aacute;gina de bienvenida</p>', '2008-05-02 02:14:03', 0, 1),
 (18, 'Bienvenido al AcuÃ­fero', '<p>texto de bienvenida</p>', '2008-05-02 02:22:11', 0, 2),
 (19, 'Bienvenido a FAO', '<p>Bienvenido a FAO</p>', '2008-05-02 02:25:53', 0, 3),
-(20, 'Bienvenido a Surforce', '<p>Bienvenido a Surforce</p>', '2008-05-02 02:26:48', 0, 6);
+(20, 'Bienvenido a Surforce', '<p>Bienvenido a Surforce</p>', '2008-05-02 02:26:48', 0, 6),
+(21, 'PÃ¡gina de Bienvenida de IBM', '<p>Esta es la p&aacute;gina por defecto de la secci&oacute;n / subsitio &quot;IBM&quot;</p>', '2008-05-05 20:13:44', 0, 7),
+(22, 'Listado de productos', '<ul>\r\n    <li>primer producto</li>\r\n    <li>segundo producto</li>\r\n    <li>tercer producto</li>\r\n</ul>', '2008-05-05 21:45:38', 0, 7);
 
 -- --------------------------------------------------------
 
@@ -337,7 +347,7 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 --
 
 DROP TABLE IF EXISTS `paginas_archivos`;
-CREATE TABLE IF NOT EXISTS `paginas_archivos` (
+CREATE TABLE `paginas_archivos` (
   `id_pagina` tinyint(10) NOT NULL,
   `id_archivo` tinyint(10) NOT NULL,
   PRIMARY KEY  (`id_pagina`,`id_archivo`)
@@ -359,7 +369,7 @@ INSERT INTO `paginas_archivos` (`id_pagina`, `id_archivo`) VALUES
 --
 
 DROP TABLE IF EXISTS `paginas_menu`;
-CREATE TABLE IF NOT EXISTS `paginas_menu` (
+CREATE TABLE `paginas_menu` (
   `id_pagina` int(255) NOT NULL,
   `id_menu` int(255) NOT NULL,
   `link` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -387,7 +397,7 @@ INSERT INTO `paginas_menu` (`id_pagina`, `id_menu`, `link`, `titulo`, `alt`) VAL
 --
 
 DROP TABLE IF EXISTS `sitios`;
-CREATE TABLE IF NOT EXISTS `sitios` (
+CREATE TABLE `sitios` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `titulo` varchar(100) collate utf8_spanish_ci NOT NULL,
@@ -395,6 +405,7 @@ CREATE TABLE IF NOT EXISTS `sitios` (
   `fecha_creacion` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `por_defecto` tinyint(1) NOT NULL,
   `orden` tinyint(5) NOT NULL,
+  `url_home` varchar(100) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
@@ -403,12 +414,12 @@ CREATE TABLE IF NOT EXISTS `sitios` (
 -- Volcar la base de datos para la tabla `sitios`
 --
 
-INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`, `por_defecto`, `orden`) VALUES
-(3, 'fao', 'F.A.O', 'Sitio institucional de FAO', '2008-04-20 14:22:33', 0, 3),
-(1, 'dinara', 'Di.Na.R.A.', 'Sitio web de la Dinara', '2008-04-27 10:28:44', 0, 5),
-(2, 'acuifero', 'AcuÃ­fero', 'Sitio Proyecto AcuÃ­fero', '2008-04-27 10:30:43', 0, 4),
-(6, 'surforce', 'SurForce', 'Sitio de prueba de surforce', '2008-05-01 12:55:53', 1, 1),
-(7, 'ibm', 'I.B.M.', 'Sitio de pruebas de IBM', '2008-05-05 11:01:20', 0, 2);
+INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`, `por_defecto`, `orden`, `url_home`) VALUES
+(3, 'fao', 'F.A.O', 'Sitio institucional de FAO', '2008-04-20 14:22:33', 0, 3, '/frontend/paginas/ver/id/19'),
+(1, 'dinara', 'Di.Na.R.A.', 'Sitio web de la Dinara', '2008-04-27 10:28:44', 0, 5, '/frontend/paginas/ver/id/17'),
+(2, 'acuifero', 'AcuÃ­fero', 'Sitio Proyecto AcuÃ­fero', '2008-04-27 10:30:43', 0, 4, '/frontend/paginas/ver/id/18'),
+(6, 'surforce', 'SurForce', 'Sitio de prueba de surforce', '2008-05-01 12:55:53', 1, 1, '/frontend/paginas/ver/id/20'),
+(7, 'ibm', 'I.B.M.', 'Sitio de pruebas de IBM', '2008-05-05 11:01:20', 0, 2, '/frontend/paginas/ver/id/21');
 
 -- --------------------------------------------------------
 
@@ -417,7 +428,7 @@ INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`,
 --
 
 DROP TABLE IF EXISTS `styles_propiedades`;
-CREATE TABLE IF NOT EXISTS `styles_propiedades` (
+CREATE TABLE `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
@@ -557,7 +568,7 @@ INSERT INTO `styles_propiedades` (`id_propiedad`, `propiedad`) VALUES
 --
 
 DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
-CREATE TABLE IF NOT EXISTS `styles_propiedades_x_selectores` (
+CREATE TABLE `styles_propiedades_x_selectores` (
   `id_selector` int(11) NOT NULL,
   `id_propiedad` int(11) NOT NULL,
   `valor` varchar(64) collate utf8_spanish_ci default NULL,
@@ -609,7 +620,7 @@ INSERT INTO `styles_propiedades_x_selectores` (`id_selector`, `id_propiedad`, `v
 --
 
 DROP TABLE IF EXISTS `styles_selectores`;
-CREATE TABLE IF NOT EXISTS `styles_selectores` (
+CREATE TABLE `styles_selectores` (
   `id_selector` int(11) NOT NULL auto_increment,
   `selector` varchar(64) collate utf8_spanish_ci NOT NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
@@ -644,7 +655,7 @@ INSERT INTO `styles_selectores` (`id_selector`, `selector`, `descripcion`) VALUE
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
+CREATE TABLE `usuarios` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `usuario` varchar(32) collate utf8_spanish_ci NOT NULL,
   `password` varchar(32) collate utf8_spanish_ci NOT NULL,
@@ -666,4 +677,4 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nombre`, `apellido`, `mail`, `estado`, `creado`, `modificado`, `id_sitio`) VALUES
 (6, 'eplace', 'pepe', 'Enrique', 'Place de Cuadro', 'enriqueplace@gmail.com', 1, '2007-07-25 23:45:28', '2008-05-02 02:03:29', 6),
 (7, 'admin', 'admin', 'Admin', 'Admins', 'admin@surforce.com', 1, '2008-01-26 21:38:25', '2008-05-02 10:37:15', 1),
-(8, 'pepe', 'pepe', 'Pepe', 'Perez', 'pepe@perez.com', 1, '2008-05-02 02:10:35', '2008-05-02 02:10:35', 6);
+(8, 'pepe', 'pepe', 'Pepe', 'Perez', 'pepe@perez.com', 0, '2008-05-02 02:10:35', '2008-05-05 23:40:38', 6);

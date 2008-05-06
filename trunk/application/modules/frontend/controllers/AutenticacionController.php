@@ -1,43 +1,44 @@
 <?php
-class Autenticacion_AutenticacionController extends Zcms_Generic_Controller {
-
-/*
-    function init(){
-        $this->initView();
-        $this->view->baseUrl = $this->_request->getBaseUrl();
-        $this->view->setScriptPath('./application/views/scripts/');
-    }
-*/
-    function indexAction(){
+class Frontend_AutenticacionController extends Zcms_Generic_Controller 
+{
+    function indexAction()
+    {
         $this->_redirect('/');
     }
-
-    function logoutAction(){
+    function logoutAction()
+    {
         Zend_Auth::getInstance()->clearIdentity();
         $this->_redirect('/');
     }
-
-    function loginAction(){
+    function loginAction()
+    {
         $info = Zend_Registry::get('personalizacion');
         $this->view->message = '';
+        
         if ($this->_request->isPost()) {
 
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $f = new Zend_Filter_StripTags();
-            $usuario = $f->filter($this->_request->getPost('usuario'));
-            $password = $f->filter($this->_request->getPost('password'));
+            
+            $usuario 	= $f->filter($this->_request->getPost('usuario'));
+            $password 	= $f->filter($this->_request->getPost('password'));
 
             if (empty($usuario)) {
                 $this->view->message = $info->sitio->autenticacion->login->msgNombreVacio;
             } else {
 
                 Zend_Loader::loadClass('Zend_Auth_Adapter_DbTable');
+                
                 $dbAdapter = Zend_Registry::get('dbAdapter');
                 $autAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
                 $autAdapter->setTableName('usuarios');
                 $autAdapter->setIdentityColumn('usuario');
                 $autAdapter->setCredentialColumn('password');
-
+				
+                /*
+                 * FIXME: falta no habilitar el login si 
+                 * el usuario es estado = 0 
+                 */
                 $autAdapter->setIdentity($usuario);
                 $autAdapter->setCredential($password);
 
@@ -53,13 +54,9 @@ class Autenticacion_AutenticacionController extends Zcms_Generic_Controller {
                 }
             }
         }
-
         $this->view->title = $info->sitio->autenticacion->login->titulo;
         $this->view->scriptJs = "scriptaculous";
         $this->render();
-
     }
-
-
 }
 ?>

@@ -1,5 +1,13 @@
 <?php echo $this->paginaTitulo($this->subtitle);?>
 
+<?php if ($this->usuarioLogueado): ?>
+    	<div class="menu-admin">
+    		<a href="<?php echo $this->baseUrl; ?>/admin/paginas/modificar/id/<?php echo $this->pagina->id;?>">Modificar</a>
+			<a href="<?php echo $this->baseUrl; ?>/admin/paginas/eliminar/id/<?php echo $this->pagina->id;?>">Eliminar</a>
+		</div>
+		<br>
+<?php endif; ?>
+
 <?php if( $this->pagina ): ?>
 	<?php echo $this->render('paginas/_submenu.phtml'); ?>
 
@@ -12,11 +20,11 @@
   	</div>
 
   	<div id="pagina-archivos">
-    	<?php if( count($this->archivos) > 0 ): // Aquí hay que traer el obj Archivos!?>
+    	<?php if( count($this->archivos) > 0 ):?>
     		<strong>Archivos relacionados</strong>
     		<ul>
     		<?php foreach($this->archivos as $archivo): ?>
-    			<li><a href="<?php echo $this->baseUrl; ?>/archivos/archivos/ver/id/<?php echo $archivo->id_archivo;?>"><?php echo $archivo->id_archivo;?></a></li>
+    			<li><a href="<?php echo $this->baseUrl; ?>/frontend/archivos/ver/id/<?php echo $archivo->id_archivo;?>"><?php echo $archivo->id_archivo;?></a></li>
     		<?php endforeach; ?>
     		</ul>
     	<?php endif; ?>

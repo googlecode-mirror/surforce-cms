@@ -1,5 +1,5 @@
 <?php
-class Contacto_ContactoController extends Zcms_Generic_Controller
+class Frontend_ContactoController extends Zcms_Generic_Controller
 {
     function init()
     {

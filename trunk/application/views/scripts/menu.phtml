@@ -1,3 +1,4 @@
+<?php /*FIXME: ¡esta vista hay que hacerla de CERO!*/ ?>
 <div id="menu">
 
     <?php
@@ -13,7 +14,14 @@
 
 	// Esta porcion de codigo se deja por transicion -------------------------------
     //$sql = 'SELECT * FROM menu WHERE estado = 1 ORDER BY privado, posicion';
-    $sql = 'SELECT * FROM menu WHERE estado = 1 AND id_sitio='.$this->session->sitio->id.' ORDER BY privado, posicion';
+    if(isset($this->session->sitio->id)){
+    	$sql = ' SELECT * FROM menu '. 
+    		' WHERE estado = 1 AND id_sitio='.$this->session->sitio->id.
+    		' ORDER BY privado, posicion ';
+    }else{
+    	die(__FILE__.': error, id de sitio no definido');
+    }
+    
     $stmt = $db->query($sql);
     $enlaces = $stmt->fetchAll();
 
@@ -132,9 +140,9 @@
         <?php if($this->user) : ?>
             <p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre) . " " . $this->escape($this->user->apellido);?>
             <br/><br/>
-            <a href="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/logout">[Cerrar sesión]</a></p>
+            <a href="<?php echo $this->baseUrl ?>/frontend/autenticacion/logout">[Cerrar sesión]</a></p>
         <?php else : ?>
-            <a href="<?php echo $this->baseUrl ?>/autenticacion/autenticacion/login">[Iniciar sesión]</a></p>
+            <a href="<?php echo $this->baseUrl ?>/frontend/autenticacion/login">[Iniciar sesión]</a></p>
         <?php endif; ?>
     </div>
 </div>

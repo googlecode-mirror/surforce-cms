@@ -1,5 +1,5 @@
 <?php
-class Paginas_MenupagController extends Zcms_Generic_Controller {
+class Frontend_MenupagController extends Zcms_Generic_Controller {
 	
 	function init() 
 	{

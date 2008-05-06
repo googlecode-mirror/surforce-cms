@@ -68,6 +68,7 @@ class Admin_UsuariosController extends Zcms_Generic_ControllerAdmin
             $nombre 	= trim($filter->filter($this->_request->getPost('nombre')));
             $apellido 	= trim($filter->filter($this->_request->getPost('apellido')));
             $mail 		= trim($filter->filter($this->_request->getPost('mail')));
+            $estado		= trim($filter->filter($this->_request->getPost('estado')));
             if ($id !== false) {
                 if ($usuario != '' && $password != '' && $nombre != '' && $apellido != '' && $mail != '') {
                     $data = array(
@@ -75,7 +76,8 @@ class Admin_UsuariosController extends Zcms_Generic_ControllerAdmin
                         'password' 	=> $password,
                         'nombre' 	=> $nombre,
                         'apellido' 	=> $apellido,
-                        'mail' 		=> $mail
+                        'mail' 		=> $mail,
+                    	'estado' 	=> $estado
                     );
                     $where = 'id = ' . $id;
                     $eUsuario->update($data, $where);

@@ -1,8 +1,10 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
-    	<div class="menu-admin">
-			<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/modificar/id/<?php echo $this->usuario->id;?>">Modificar</a>
-            <a href="<?php echo $this->baseUrl; ?>/admin/usuarios/eliminar/id/<?php echo $this->usuario->id;?>">Eliminar</a>
-    	</div><br>
+
+<div class="menu-admin">
+	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/modificar/id/<?php echo $this->usuario->id;?>">Modificar</a>
+    <a href="<?php echo $this->baseUrl; ?>/admin/usuarios/eliminar/id/<?php echo $this->usuario->id;?>">Eliminar</a>
+</div><br>
+
 <table>
 	<tr>
 		<th><label for="usuario">Id:&nbsp;</label></th>
@@ -11,10 +13,6 @@
 	<tr>
 		<th><label for="usuario">Usuario:&nbsp;</label></th>
 		<td><?php echo $this->escape(trim($this->usuario->usuario));?></td>	
-	</tr>
-	<tr>
-		<th><label for="password">Password:&nbsp;</label></th>
-		<td><?php echo $this->escape($this->usuario->password);?></td>	
 	</tr>
 	<tr>
 		<th><label for="nombre">Nombre:&nbsp;</label></th>
@@ -30,7 +28,13 @@
 	</tr>
 	<tr>
 		<th><label for="estado">Estado:&nbsp;</label></th>
-		<td><?php echo $this->escape($this->usuario->estado);?></td>	
+		<td>
+			<?php if($this->usuario->estado): ?>
+    			<img border="0"	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->usuario->estado;?>.png"/>
+			<?php else: ?>
+				<img border="0"	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->usuario->estado;?>.png"/>
+    		<?php endif; ?>
+		</td>	
 	</tr>
 	<tr>
 		<th><label for="creado">Creado:&nbsp;</label></th>

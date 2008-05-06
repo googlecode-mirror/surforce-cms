@@ -1,5 +1,5 @@
 <?php
-class Archivos_ArchivosController extends Zcms_Generic_Controller
+class Frontend_ArchivosController extends Zcms_Generic_Controller
 {
     public function init()
     {

@@ -1,4 +1,4 @@
-	<?php echo $this->paginaTitulo($this->subtitle); ?></h2>
+	<h2><?php echo $this->paginaTitulo($this->subtitle); ?></h2>
 	
     <?php if ($this->usuarioLogueado): ?>
     	<div class="menu-admin">
@@ -23,14 +23,21 @@
 			<td><?php echo $this->escape(trim($this->sitio->descripcion));?></td>
 		</tr>
 		<tr>
+			<th>Orden:&nbsp;</th>
+			<td><?php echo $this->escape(trim($this->sitio->orden));?></td>
+		</tr>
+		<tr>
 			<th>Por defecto:&nbsp;</th>
-			<td><?php echo $this->escape($this->sitio->por_defecto);?></td>
+			<td>
+			<?php if($this->sitio->por_defecto): ?>
+    			<img border="0"	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $this->sitio->por_defecto;?>.png"/>
+			<?php else: ?>
+				&nbsp;
+    		<?php endif; ?>
+			</td>
 		</tr>
 		<tr>
 			<th>Creado:&nbsp;</th>
 			<td><?php echo $this->escape($this->sitio->fecha_creacion);?></td>
 		</tr>
 	</table>
-<!-- </div>  -->
-
-

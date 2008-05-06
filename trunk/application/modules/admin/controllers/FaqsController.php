@@ -6,9 +6,12 @@ class Admin_FaqsController extends Zcms_Generic_ControllerAdmin
         parent::init();
         Zend_Loader::loadClass('Faqs');
     }
-    public function indexAction(){
+    public function indexAction()
+    {
         $this->view->subtitle = $this->info->sitio->faqs->index->titulo;		        
-        $this->view->faqs = Faqs::getAll();
+        $this->view->faqs = Faqs::getAll(
+			$this->session->sitio->id
+		);
         $this->render('admin');    
     }
     public function agregarAction()
