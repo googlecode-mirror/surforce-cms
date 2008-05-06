@@ -1,5 +1,5 @@
 <?php
-class Noticias_NoticiasController extends Zcms_Generic_Controller
+class Frontend_NoticiasController extends Zcms_Generic_Controller
 {
     function init()
     {
@@ -10,11 +10,8 @@ class Noticias_NoticiasController extends Zcms_Generic_Controller
 	{
 		$this->view->subtitle = $this->info->sitio->noticias->index->titulo;
 		
-		$limit = 0;
+		$limit = 3;
 		
-		if (!$this->view->usuarioLogueado) {
-			$limit = 3;
-		}
 		$this->view->noticias = Noticias::getAll(
 			$this->session->sitio->id, 
 			$limit
@@ -23,10 +20,10 @@ class Noticias_NoticiasController extends Zcms_Generic_Controller
     function historicoAction()
     {
         $this->view->subtitle = $this->info->sitio->noticias->index->titulo . " histórico ";
-        $noticias = new Noticias();
-        $where = array();
-        $order = "fecha DESC";
-        $this->view->noticias = $noticias->fetchAll($where, $order);
+
+		$this->view->noticias = Noticias::getAll(
+			$this->session->sitio->id
+		);
     }
    function verAction(){
         $this->view->subtitle = $this->info->sitio->noticias->ver->titulo;

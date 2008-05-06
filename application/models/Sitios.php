@@ -6,7 +6,12 @@ class Sitios extends Zend_Db_Table_Abstract
 	public static function getSitioDefault()
 	{
 		$sitios = new Sitios();
-		return $sitios->fetchRow("por_defecto = 1");
+		$sitio_default = $sitios->fetchRow("por_defecto = 1");
+		
+		if( $sitio_default == NULL){
+			$sitio_default = Sitios::getAll(null, 1, "orden");			
+		}	
+		return $sitio_default;
 	}
 	public static function getAll($where = null, $limit = 0, $orden = "id")
 	{

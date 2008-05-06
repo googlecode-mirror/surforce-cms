@@ -1,5 +1,5 @@
 <?php
-class Paginas_PaginasController extends Zcms_Generic_Controller 
+class Frontend_PaginasController extends Zcms_Generic_Controller 
 {
 	public function init() 
 	{

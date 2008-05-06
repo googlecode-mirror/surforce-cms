@@ -36,6 +36,12 @@ $pars_submit = array(
 	'value'  => $this->sitio->id,
 	'submit' => $this->escape ( $this->buttonText )
 );
+$pars_url_home =  array(
+	'label' => 'url_home',
+	'text' => 'url home',
+	'size' => '50',
+	'value' => $this->escape ( trim ( $this->sitio->url_home ) )
+);
 ?>
 
 <form action="<?php	echo $url_action;?>" method="post">
@@ -44,7 +50,7 @@ $pars_submit = array(
 	<?php echo $this->formularioCampo( $pars_campo_titulo );?>
 	<?php echo $this->formularioCampo( $pars_campo_descripcion );?>
 	<?php echo $this->formularioCampo( $pars_orden );?>
-	<?php //echo $this->formularioCampo( $pars_campo_por_defecto );?>
+	<?php echo $this->formularioCampo( $pars_url_home );?>
 
 	<div>
 		<label for="privado">por defecto:</label>

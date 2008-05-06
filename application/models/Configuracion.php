@@ -19,15 +19,12 @@ class Configuracion extends Zend_Db_Table_Abstract
 	public static function getConfiguracion( $id )
 	{
 		$configuracion = new Configuracion();		
-		return $configuracion->fetchRow("id = '$id'");
+		return $configuracion->fetchRow("id = ".$id."");
 	}
 	public static function getConfiguracionDefault()
 	{
 		$sitio = Sitios::getSitioDefault();
 		
-		if( $sitio == NULL){
-			$sitio = Sitios::getAll(null, 1);			
-		}		
 		$configuracion = new Configuracion();
 		$configuracion->fetchRow("id = '$sitio->id'");
 	}

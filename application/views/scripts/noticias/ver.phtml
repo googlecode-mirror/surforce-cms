@@ -1,6 +1,15 @@
 <div id="noticia-titulo">
 	<?php echo $this->escape($this->noticia->titulo);?>
 </div>
+
+ <?php if ($this->usuarioLogueado): ?>
+    	<div class="menu-admin">
+    		<a href="<?php echo $this->baseUrl; ?>/admin/noticias/modificar/id/<?php echo $this->noticia->id;?>">Modificar</a>
+			<a href="<?php echo $this->baseUrl; ?>/admin/noticias/eliminar/id/<?php echo $this->noticia->id;?>">Eliminar</a>
+		</div>
+		<br>
+<?php endif; ?>
+    
 <?php
 // FIXME!
 $fecha = explode(" ", $this->noticia->fecha);

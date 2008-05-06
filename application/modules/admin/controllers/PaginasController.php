@@ -122,7 +122,7 @@ class Admin_PaginasController extends Zcms_Generic_ControllerAdmin
 				}
 			}
 		}
-		$this->_redirect ( '/paginas/paginas/' );
+		$this->_redirect ( '/admin/paginas/' );
 	}	
 	public function verAction() 
 	{

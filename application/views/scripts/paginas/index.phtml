@@ -14,7 +14,7 @@
     <?php foreach( $this->paginas as $pagina ):?>
 		<tr>
 			<td>
-				<a href="<?php echo $this->baseUrl."/paginas/paginas/ver/id/".$pagina->id;?>">
+				<a href="<?php echo $this->baseUrl."/frontend/paginas/ver/id/".$pagina->id;?>">
 					<?php echo $this->escape($pagina->id);?>
 				</A>
 			</td>
@@ -22,7 +22,7 @@
 				<?php echo $this->escape( $this->dateFormat( $pagina->fecha ));?>
 			</td>
 			<td>
-				<a href="<?php echo $this->baseUrl."/paginas/paginas/ver/id/".$pagina->id;?>">
+				<a href="<?php echo $this->baseUrl."/frontend/paginas/ver/id/".$pagina->id;?>">
 					<?php echo $this->escape($pagina->titulo);?>
 				</A>
 			</td>

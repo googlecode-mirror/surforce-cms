@@ -1,5 +1,4 @@
 <?php
-
 abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 {
  	protected $registry = null;
@@ -40,10 +39,18 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 			$this->view->configuracion = Configuracion::getConfiguracion($this->session->sitio->id);
 		}else{
 			$this->view->configuracion = Configuracion::getConfiguracionDefault();
+			$this->session->sitio = Sitios::getSitioDefault();
 		}
 		$this->registrarSitio();
 		$this->cargarMenuHorizontal();
 
+	}
+	function preDispatch() 
+	{
+		$auth = Zend_Auth::getInstance ();
+		if ($auth->hasIdentity ()) {
+			$this->view->usuarioLogueado = true;	
+		}
 	}
 	protected function registrarSitio()
 	{

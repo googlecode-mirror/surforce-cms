@@ -12,7 +12,7 @@
     <?php foreach( $this->paginas as $pagina ) : ?>
 		<tr>
 			<td>
-				<a href="<?php echo $this->baseUrl."/paginas/paginas/ver/id/".$pagina->id;?>">
+				<a href="<?php echo $this->baseUrl."/frontend/paginas/ver/id/".$pagina->id;?>">
 					<?php echo $this->escape($pagina->id);?>
 				</A>
 			</td>
@@ -20,13 +20,13 @@
 				<?php echo $this->escape($this->dateFormat($pagina->fecha));?>
 			</td>
 			<td>
-				<a href="<?php echo $this->baseUrl."/paginas/paginas/ver/id/".$pagina->id;?>">
+				<a href="<?php echo $this->baseUrl."/frontend/paginas/ver/id/".$pagina->id;?>">
 					<?php echo $this->escape($pagina->titulo);?>
 				</A>
 			</td>
             <td nowrap="nowrap">
 				<div class="menu-admin">
-					<a href="<?php echo $this->baseUrl;?>/paginas/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a>
+					<a href="<?php echo $this->baseUrl;?>/frontend/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a>
 					<a href="<?php echo $this->baseUrl;?>/admin/paginas/modificar/id/<?php echo $pagina->id;?>">Modificar</a>
 					<a href="<?php echo $this->baseUrl;?>/admin/paginas/eliminar/id/<?php echo $pagina->id;?>">Eliminar</a>
 					<a href="<?php echo $this->baseUrl;?>/admin/menu/agregar/pagina/<?php echo $pagina->id;?>">Agregar al menú</a>

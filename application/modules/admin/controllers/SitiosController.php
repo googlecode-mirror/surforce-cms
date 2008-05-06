@@ -24,11 +24,12 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 			$filter = new Zend_Filter_StripTags ( );
 
 			/* Parámetros enviados por el Form */
-			$nombre = strtolower(trim( $filter->filter( $this->_request->getPost( 'nombre' ))));
-			$titulo = trim( $this->_request->getPost ( 'titulo' ) );
-			$descripcion = $this->_request->getPost ( 'descripcion' );
-			$por_defecto = $this->_request->getPost ( 'por_defecto' );
-			$orden = $this->_request->getPost ( 'orden' );
+			$nombre 		= strtolower(trim( $filter->filter( $this->_request->getPost( 'nombre' ))));
+			$titulo 		= trim( $this->_request->getPost ( 'titulo' ) );
+			$descripcion 	= $this->_request->getPost ( 'descripcion' );
+			$por_defecto 	= $this->_request->getPost ( 'por_defecto' );
+			$orden 			= $this->_request->getPost ( 'orden' );
+			$url_home 		= $this->_request->getPost ( 'url_home' );
 
 			if ( $nombre != '' && $descripcion != '' ) {
 				$data = array(
@@ -37,6 +38,7 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 					'descripcion' => $descripcion,
 					'por_defecto' => $por_defecto,
 					'orden' => $orden,
+					'url_home' => $url_home
 				);
 				Zend_Loader::loadClass('Sitios');
 				$Sitios = new Sitios();
@@ -55,6 +57,7 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 		$this->view->sitio->descripcion = '';
 		$this->view->sitio->por_defecto = false;
 		$this->view->sitio->orden = 0;
+		$this->view->sitio->url_home = '';
 
 		$this->view->action = "agregar";
 		$this->view->buttonText = "Agregar";
@@ -83,21 +86,23 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 		if ( $this->_request->isPost() ){
 			$filter = new Zend_Filter_StripTags ( );
 
-			$id 		 = (int)$this->_request->getPost('id');
-			$nombre 	 = strtolower(trim($filter->filter($this->_request->getPost('nombre'))));
-			$titulo 	= trim($this->_request->getPost ( 'titulo' ) );
-			$descripcion = trim($filter->filter($this->_request->getPost('descripcion')));
-			$por_defecto = (boolean) $filter->filter($this->_request->getPost('por_defecto'));
-			$orden = (int) $filter->filter($this->_request->getPost('orden'));
+			$id 		 	= (int)$this->_request->getPost('id');
+			$nombre 	 	= strtolower(trim($filter->filter($this->_request->getPost('nombre'))));
+			$titulo 		= trim($this->_request->getPost ( 'titulo' ) );
+			$descripcion 	= trim($filter->filter($this->_request->getPost('descripcion')));
+			$por_defecto 	= (boolean) $filter->filter($this->_request->getPost('por_defecto'));
+			$orden 			= (int) $filter->filter($this->_request->getPost('orden'));
+			$url_home		= $filter->filter($this->_request->getPost('url_home'));
 
 			if ( $id > 0){
 				if ($nombre != '' && $descripcion != '') {
 					$data = array(
-						'nombre' => $nombre,
-						'titulo' => $titulo,
-						'descripcion' => $descripcion,
-						'por_defecto' => $por_defecto,
-						'orden' => $orden,
+						'nombre' 		=> $nombre,
+						'titulo' 		=> $titulo,
+						'descripcion' 	=> $descripcion,
+						'por_defecto' 	=> $por_defecto,
+						'orden' 		=> $orden,
+						'url_home'		=> $url_home
 					);
 					$where = 'id = ' . $id;
 					$Sitios->update($data, $where);

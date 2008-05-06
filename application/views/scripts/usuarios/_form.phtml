@@ -21,7 +21,12 @@
             <label for="mail">Mail:</label>
             <input type="text" name="mail" size="64" value="<?php echo $this->escape($this->usuario->mail);?>"/>
         </div>
-
+		<div>
+			<label for="estado">Estado:</label> 
+			<input type='radio' name="estado" value="1" <?php if ($this->escape($this->usuario->estado) == 1) echo 'checked="checked"'; ?>>Activo
+			<input type='radio' name="estado" value="0" <?php if ($this->escape($this->usuario->estado) == 0) echo 'checked="checked"'; ?>>Inactivo
+		</div>
+	
         <br> (*) Todos los campos son obligatorios <br><br>
 
         <div id="boton_formulario">

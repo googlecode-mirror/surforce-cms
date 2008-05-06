@@ -1,5 +1,5 @@
 <h2>Listado de archivos en el sistema</h2>
- <form action="<?php echo $this->baseUrl ?>/archivos/archivos/<?php echo $this->action; ?>" method="post">
+ <form action="<?php echo $this->baseUrl ?>/frontend/archivos/<?php echo $this->action; ?>" method="post">
 	<table>
 	  <tr>
 	    <th>#</th>
@@ -11,7 +11,10 @@
 	<?php foreach( $this->archivos as $archivo): ?>
 		<tr>
 	    	<td>	    		
-	    		<input type="checkbox" name="asociar<?php echo $archivo->id ?>" value="<?php echo $archivo->id ?>">	    		
+	    		<input 
+	    			type="checkbox" 
+	    			name="asociar<?php echo $archivo->id ?>" 
+	    			value="<?php echo $archivo->id ?>">	    		
 	    	</td>	    	
 	    	<td><?php echo $archivo->nombre;?></td>
 	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>

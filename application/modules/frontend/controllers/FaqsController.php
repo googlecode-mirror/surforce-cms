@@ -1,5 +1,5 @@
 <?php
-class Faqs_FaqsController extends Zcms_Generic_Controller
+class Frontend_FaqsController extends Zcms_Generic_Controller
 {
     public function init()
     {
