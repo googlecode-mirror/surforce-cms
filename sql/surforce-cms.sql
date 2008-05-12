@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-05-2008 a las 23:46:28
+-- Tiempo de generación: 11-05-2008 a las 19:06:19
 -- Versión del servidor: 5.0.45
 -- Versión de PHP: 5.2.4
 
@@ -26,19 +26,21 @@ CREATE TABLE `archivos` (
   `fecha_mod` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
   `descripcion` text collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
+  `ruta` varchar(100) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcar la base de datos para la tabla `archivos`
 --
 
-INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) VALUES
-(1, 'curriculum.pdf', '2008-05-05 10:51:21', 'Primer currÃ­culum del sistema', 1),
-(2, 'novela.doc', '2008-05-01 15:53:54', 'La segunda novela', 2),
-(3, 'cv.ppt', '2008-05-05 10:51:28', 'Nueva presentaciÃ³n ppt', 1),
-(4, 'surforce.jpg', '0000-00-00 00:00:00', 'nuevo archivo de surforce', 6),
-(5, 'surforce.doc', '2008-05-05 23:28:54', 'documento de surforce', 6);
+INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`, `ruta`) VALUES
+(1, 'curriculum.pdf', '2008-05-05 10:51:21', 'Primer currÃ­culum del sistema', 1, ''),
+(2, 'novela.doc', '2008-05-01 15:53:54', 'La segunda novela', 2, ''),
+(3, 'cv.ppt', '2008-05-05 10:51:28', 'Nueva presentaciÃ³n ppt', 1, ''),
+(4, 'surforce.jpg', '0000-00-00 00:00:00', 'nuevo archivo de surforce', 6, ''),
+(5, 'surforce.doc', '2008-05-05 23:28:54', 'documento de surforce', 6, ''),
+(7, 'pdf', '0000-00-00 00:00:00', 'mi pdf', 6, '');
 
 -- --------------------------------------------------------
 

@@ -12,5 +12,10 @@ class Archivos extends Zend_Db_Table {
 		$archivos = new Archivos();
 		return $archivos->fetchAll($where, $order, $limit);		
 	}
+	public static function getArchivo($id)
+	{
+		$archivos = new Archivos();
+		return $archivos->fetchRow('id = '.$id );		
+	}
 }
 ?>
