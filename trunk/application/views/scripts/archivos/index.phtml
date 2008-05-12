@@ -6,7 +6,7 @@
 	  <tr>
 	    <th>id</th>
 	    <th>nombre</th>
-	    <th>modif</th>
+	    <!-- <th>modif</th> -->
 	    <th>descripción</th>
 	    <th>Acciones</th>
 	  </tr>
@@ -14,8 +14,8 @@
 	<?php foreach( $this->archivos as $archivo): ?>
 		<tr>
 	    	<td><?php echo $archivo->id;?></td>
-	    	<td><?php echo $archivo->nombre;?></td>
-	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>
+	    	<td><a href="<?php echo $this->baseUrl.'/userfiles/'.$archivo->nombre;?>"><?php echo $archivo->nombre;?></a></td>
+	    	<!-- <td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td> -->
 	    	<td><?php echo $archivo->descripcion; ?></td>
 	    	<td nowrap="nowrap">
                 	<div class="menu-admin">

@@ -1,15 +1,26 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
-<form action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>" method="post">
+<form action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>"
+	enctype="multipart/form-data"
+	method="post">
+	<!--
 	<div>
     	<label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" size="50" value="<?php echo $this->escape(trim($this->archivo->nombre));?>"/>
+    	<label><?php echo $this->escape(trim($this->archivo->nombre));?><br></label>
 	</div>
+	 -->
+
+	<?php if($this->action != 'modificar'): ?>
+		<div>
+	    	<label for="archivo">Archivo:</label>
+	        <input type="file" name="archivo" value=""/>
+		</div>
+	<?php endif; ?>
 	<div>
     	<label for="descripcion">Descripción:</label>
         <input type="text" name="descripcion" size="50" value="<?php echo $this->escape(trim($this->archivo->descripcion));?>"/>
 	</div>
-	
+
     <div id="boton_formulario">
 	    <input type="hidden" name="id" value="<?php echo $this->archivo->id; ?>" />
 		<input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />

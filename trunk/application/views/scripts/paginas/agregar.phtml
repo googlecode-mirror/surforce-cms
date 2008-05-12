@@ -3,18 +3,15 @@
 <form action="<?php echo $this->baseUrl?>/admin/paginas/<?php echo $this->action;?>" method="post">
 	<div>
 		<label for="titulo">Titulo:</label>
-		<input 
-			type="text" 
-			name="titulo" 
-			size="105" 
+		<input
+			type="text"
+			name="titulo"
+			size="105"
 			value="<?php echo $this->escape(trim($this->pagina->titulo));?>"/>
-	</div>		
-	<div>
-		<?php echo $this->formFCKeditor('contenido', $this->pagina->contenido );?>
 	</div>
-	<?php echo $this->render('paginas/_boton_asociar_archivo.phtml');?>		
+	<?php echo $this->formFCKeditor('contenido', $this->pagina->contenido );?>
 	<div>
-		<input type="hidden" name="id" value="<?php echo $this->pagina->id;?>"/> 
+		<input type="hidden" name="id" value="<?php echo $this->pagina->id;?>"/>
 		<input type="submit" name="add" value="<?php echo $this->escape($this->buttonText);?>"/>
 	</div>
 </form>

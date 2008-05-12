@@ -21,10 +21,14 @@
 
   	<div id="pagina-archivos">
     	<?php if( count($this->archivos) > 0 ):?>
-    		<strong>Archivos relacionados</strong>
+    		<strong>Archivos</strong>
     		<ul>
     		<?php foreach($this->archivos as $archivo): ?>
-    			<li><a href="<?php echo $this->baseUrl; ?>/frontend/archivos/ver/id/<?php echo $archivo->id_archivo;?>"><?php echo $archivo->id_archivo;?></a></li>
+    			<li>
+    				<a href="<?php echo $this->baseUrl; ?>/userfiles/<?php echo $archivo->nombre;?>">
+    					<?php echo $archivo->nombre;?>
+    				</a>&nbsp;-&nbsp;<?php echo $archivo->descripcion;?>
+    			</li>
     		<?php endforeach; ?>
     		</ul>
     	<?php endif; ?>

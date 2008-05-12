@@ -4,26 +4,26 @@
 	  <tr>
 	    <th>#</th>
 	    <th>nombre</th>
-	    <th>modif</th>
-	    <th>descripción</th>	    
+<!--	    <th>modif</th>-->
+	    <th>descripción</th>
 	  </tr>
-	
+
 	<?php foreach( $this->archivos as $archivo): ?>
 		<tr>
-	    	<td>	    		
-	    		<input 
-	    			type="checkbox" 
-	    			name="asociar<?php echo $archivo->id ?>" 
-	    			value="<?php echo $archivo->id ?>">	    		
-	    	</td>	    	
+	    	<td>
+	    		<input
+	    			type="checkbox"
+	    			name="asociar<?php echo $archivo->id ?>"
+	    			value="<?php echo $archivo->id ?>">
+	    	</td>
 	    	<td><?php echo $archivo->nombre;?></td>
-	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>
+<!--	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>-->
 	    	<td><?php echo $archivo->descripcion; ?></td>
 	  	</tr>
 	<?php endforeach; ?>
-	</table>	
+	</table>
 	<div id="boton_formulario">
           <input type="hidden" name="pagina" value="<?php echo $this->pagina; ?>" />
           <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
-    </div>	
-</form> 	
+    </div>
+</form>

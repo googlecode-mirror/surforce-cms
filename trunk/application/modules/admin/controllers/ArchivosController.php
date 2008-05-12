@@ -10,6 +10,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
 	{
 		$this->view->subtitle = "ABM Archivos";		
 		$this->view->archivos = Archivos::getAll($this->session->sitio->id);
+		$this->view->ruta = realpath('.') . DIRECTORY_SEPARATOR  . 'userfiles' . DIRECTORY_SEPARATOR;
 		$this->render();	
 	}
 	public function agregarAction()
@@ -19,12 +20,17 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $filter 	= new Zend_Filter_StripTags();
 
-            $nombre 		= trim($filter->filter($this->_request->getPost('nombre')));
             $descripcion 	= trim( $this->_request->getPost('descripcion') );
-
-            if($nombre){
+            
+			//FIXME: tiene que venir desde la configuración
+            $ruta = realpath('.') . DIRECTORY_SEPARATOR  . 'userfiles' . DIRECTORY_SEPARATOR;
+			
+            if(!move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta . $_FILES['archivo']['name'])){
+            	die('error al mover archivo');
+            }
+            if($descripcion){
                 $data = array(
-                    'nombre' 		=> $nombre,
+                    'nombre' 		=> $_FILES['archivo']['name'],
                     'descripcion' 	=> $descripcion,
                     'id_sitio' 		=> $this->session->sitio->id
                 );
@@ -38,6 +44,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
         $this->view->archivo->id = null;
         $this->view->archivo->nombre = '';
         $this->view->archivo->descripcion = '';
+        $this->view->archivo->ruta = '';
         
         $this->view->action = "agregar";
         $this->view->buttonText = "Agregar";
@@ -53,14 +60,12 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $filter = new Zend_Filter_StripTags();
             
-            $id = 		(int)$this->_request->getPost('id');
-            $nombre 	= trim($filter->filter($this->_request->getPost('nombre')));
+            $id 		= (int)$this->_request->getPost('id');
             $descripcion= trim($filter->filter($this->_request->getPost('descripcion')));
             
             if ($id !== false) {
-                if ($nombre != '') {
+                if ($descripcion != '') {
                     $data = array(
-                        'nombre' 		=> $nombre,
                         'descripcion' 	=> $descripcion
                     );
                     $where = 'id = ' . $id;
