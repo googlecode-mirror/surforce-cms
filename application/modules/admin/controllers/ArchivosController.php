@@ -1,17 +1,17 @@
 <?php
-class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin 
+class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
 {
   	function init()
     {
         parent::init();
         Zend_Loader::loadClass('Archivos');
     }
-	public function indexAction() 
+	public function indexAction()
 	{
-		$this->view->subtitle = "ABM Archivos";		
+		$this->view->subtitle = "ABM Archivos";
 		$this->view->archivos = Archivos::getAll($this->session->sitio->id);
 		$this->view->ruta = realpath('.') . DIRECTORY_SEPARATOR  . 'userfiles' . DIRECTORY_SEPARATOR;
-		$this->render();	
+		$this->render();
 	}
 	public function agregarAction()
 	{
@@ -21,10 +21,10 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
             $filter 	= new Zend_Filter_StripTags();
 
             $descripcion 	= trim( $this->_request->getPost('descripcion') );
-            
+
 			//FIXME: tiene que venir desde la configuración
             $ruta = realpath('.') . DIRECTORY_SEPARATOR  . 'userfiles' . DIRECTORY_SEPARATOR;
-			
+
             if(!move_uploaded_file($_FILES['archivo']['tmp_name'], $ruta . $_FILES['archivo']['name'])){
             	die('error al mover archivo');
             }
@@ -45,7 +45,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
         $this->view->archivo->nombre = '';
         $this->view->archivo->descripcion = '';
         $this->view->archivo->ruta = '';
-        
+
         $this->view->action = "agregar";
         $this->view->buttonText = "Agregar";
         $this->render();
@@ -53,16 +53,16 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
 	public function modificarAction()
     {
         $this->view->subtitle = 'Modificar';
-        
+
         $archivos = new Archivos();
-        
+
         if ($this->_request->isPost()) {
             Zend_Loader::loadClass('Zend_Filter_StripTags');
             $filter = new Zend_Filter_StripTags();
-            
+
             $id 		= (int)$this->_request->getPost('id');
             $descripcion= trim($filter->filter($this->_request->getPost('descripcion')));
-            
+
             if ($id !== false) {
                 if ($descripcion != '') {
                     $data = array(
@@ -90,14 +90,14 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
     {
         $this->view->subtitle = "Eliminar";
         $archivos = new Archivos();
-        
+
         if ($this->_request->isPost()) {
             Zend_Loader::loadClass('Zend_Filter_Alpha');
             $filter = new Zend_Filter_Alpha();
-            
+
             $id = (int)$this->_request->getPost('id');
             $del = $filter->filter($this->_request->getPost('del'));
-            
+
             if ($del == 'Si' && $id > 0) {
                 $where = 'id = ' . $id;
                 $rows_affected = $archivos->delete($where);
@@ -114,5 +114,35 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
         }
         $this->_redirect('/admin/archivos/');
     }
+    public function asociarAction(){
+        if ($this->_request->isPost()) {
+        	Zend_Loader::loadClass ( 'Zend_Filter_StripTags' );
+			$filter = new Zend_Filter_StripTags ( );
+			$pagina = (int)$this->_request->getPost('pagina');
+
+        	/** FIXME: ¿cómo sustituir este $_REQUEST? */
+        	foreach( $_REQUEST as $key => $value){
+        		if (substr_count($key, 'asociar') > 0 ){
+        			echo $key . "=>" . $value . "<br>";
+                	$data = array(
+                    	'id_pagina' 	=> $pagina,
+                    	'id_archivo' 	=> $value
+                	);
+        			if( PaginasArchivos::getAsociacion($pagina, $value) == 0 ){
+        				$PaginaArchivo = new PaginasArchivos();
+                		$PaginaArchivo->insert($data);
+        			}
+        		}
+        	}
+        	$this->_redirect('/admin/paginas/');
+            return;
+        }
+
+
+		$this->view->pagina = (int)$this->_request->getParam('pagina', 0);
+        $this->view->action = "asociar";
+        $this->view->buttonText = "Asociar";
+        $this->view->archivos = Archivos::getAll($this->session->sitio->id);
+	}
 }
 ?>
