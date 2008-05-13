@@ -9,7 +9,23 @@ class Admin_NoticiasController extends Zcms_Generic_ControllerAdmin
     function indexAction()
     {
     	$orden = (string)$this->_request->getParam('orden', 0);
-    	$this->view->noticias = Noticias::getAll($this->session->sitio->id,null,$orden);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+
+		if(empty($orden)){
+    		$orden = "id";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
+
+    	$this->view->noticias = Noticias::getAll(
+    		$this->session->sitio->id,
+    		null,
+    		$orden
+    	);
         $this->view->subtitle = $this->info->sitio->noticias->index->titulo;
         $this->render('admin');
     }

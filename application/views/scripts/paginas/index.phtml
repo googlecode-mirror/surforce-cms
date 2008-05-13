@@ -5,12 +5,12 @@
 
 <table>
 	<tr>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/paginas/index/orden/id">id</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/paginas/index/orden/fecha">fecha</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/paginas/index/orden/titulo">título</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/paginas/index/orden/id/asc/<?php echo !$this->orden_asc;?>">id</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/paginas/index/orden/fecha/asc/<?php echo !$this->orden_asc;?>">fecha</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/paginas/index/orden/titulo/asc/<?php echo !$this->orden_asc;?>">título</a></th>
 		<th colspan="4">Acciones</th>
     </tr>
-    
+
     <?php foreach( $this->paginas as $pagina ):?>
 		<tr>
 			<td>
