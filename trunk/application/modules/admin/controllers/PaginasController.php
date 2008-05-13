@@ -9,8 +9,10 @@ class Admin_PaginasController extends Zcms_Generic_ControllerAdmin
 	}	
 	public function indexAction() 
 	{
+		$orden = (string)$this->_request->getParam('orden', 0);
+		
 		$this->view->subtitle = $this->info->sitio->paginas->index->titulo;		
-		$this->view->paginas = Paginas::getAll($this->session->sitio->id);
+		$this->view->paginas = Paginas::getAll($this->session->sitio->id, null, $orden);
 		$this->render();
 	}
 	public function agregarAction() 

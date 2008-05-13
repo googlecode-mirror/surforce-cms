@@ -7,9 +7,26 @@ class Admin_UsuariosController extends Zcms_Generic_ControllerAdmin
         Zend_Loader::loadClass('Usuarios');
     }
     public function indexAction()
-    {        
+    {
+        $orden = (string)$this->_request->getParam('orden', 0);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+
+    	if(empty($orden)){
+    		$orden = "id";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
+
         $this->view->subtitle = $this->info->sitio->usuarios->index->titulo;
-        $this->view->usuarios = Usuarios::getAll($this->session->sitio->id);
+        $this->view->usuarios = Usuarios::getAll(
+        	$this->session->sitio->id,
+        	0,
+        	$orden
+        );
         $this->render();
     }
     public function agregarAction()

@@ -5,11 +5,29 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
     {
         parent::init();
         Zend_Loader::loadClass('Archivos');
+        Zend_Loader::loadClass('PaginasArchivos');
     }
 	public function indexAction()
 	{
 		$this->view->subtitle = "ABM Archivos";
-		$this->view->archivos = Archivos::getAll($this->session->sitio->id);
+
+		$orden = (string)$this->_request->getParam('orden', 0);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+    	if(empty($orden)){
+    		$orden = "id";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
+
+		$this->view->archivos = Archivos::getAll(
+			$this->session->sitio->id,
+			0,
+			$orden
+		);
 		$this->view->ruta = realpath('.') . DIRECTORY_SEPARATOR  . 'userfiles' . DIRECTORY_SEPARATOR;
 		$this->render();
 	}
@@ -33,6 +51,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
                     'nombre' 		=> $_FILES['archivo']['name'],
                     'descripcion' 	=> $descripcion,
                     'id_sitio' 		=> $this->session->sitio->id
+                    //  'created_on'      => new Zend_Db_Expr('CURDATE()'),
                 );
                 $archivo = new Archivos();
                 $archivo->insert( $data );
@@ -99,6 +118,9 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
             $del = $filter->filter($this->_request->getPost('del'));
 
             if ($del == 'Si' && $id > 0) {
+            	$pa = new PaginasArchivos();
+            	$rows_affected = $pa->delete('id_archivo ='.$id);
+
                 $where = 'id = ' . $id;
                 $rows_affected = $archivos->delete($where);
             }
@@ -115,34 +137,66 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
         $this->_redirect('/admin/archivos/');
     }
     public function asociarAction(){
+
         if ($this->_request->isPost()) {
+
         	Zend_Loader::loadClass ( 'Zend_Filter_StripTags' );
 			$filter = new Zend_Filter_StripTags ( );
+
 			$pagina = (int)$this->_request->getPost('pagina');
+
+			/* Borro todas las relaciones a esa página y reconstruyo
+			a continuación */
+			$pa = new PaginasArchivos();
+            $rows_affected = $pa->delete('id_pagina = ' . $pagina);
 
         	/** FIXME: ¿cómo sustituir este $_REQUEST? */
         	foreach( $_REQUEST as $key => $value){
+
         		if (substr_count($key, 'asociar') > 0 ){
-        			echo $key . "=>" . $value . "<br>";
+
                 	$data = array(
                     	'id_pagina' 	=> $pagina,
                     	'id_archivo' 	=> $value
                 	);
-        			if( PaginasArchivos::getAsociacion($pagina, $value) == 0 ){
-        				$PaginaArchivo = new PaginasArchivos();
-                		$PaginaArchivo->insert($data);
-        			}
+       				$pa->insert($data);
         		}
         	}
         	$this->_redirect('/admin/paginas/');
             return;
         }
-
+		$orden = (string)$this->_request->getParam('orden', 0);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+    	if(empty($orden)){
+    		$orden = "id";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
 
 		$this->view->pagina = (int)$this->_request->getParam('pagina', 0);
         $this->view->action = "asociar";
         $this->view->buttonText = "Asociar";
-        $this->view->archivos = Archivos::getAll($this->session->sitio->id);
+        //$archivos = Archivos::getAllAsociado($this->session->sitio->id);
+        $archivos = Archivos::getAll(
+        	$this->session->sitio->id,
+        	0,
+        	$orden
+        )->toArray();
+
+
+        foreach($archivos as &$value){
+        	$aso = PaginasArchivos::getAsociacion($this->view->pagina, $value['id']);
+        	if(count($aso)>0){
+        		$value['id_pagina'] = $aso->id_pagina;
+        	}else{
+        		$value['id_pagina'] = null;
+        	}
+        }
+        $this->view->archivos = $archivos;
 	}
 }
 ?>

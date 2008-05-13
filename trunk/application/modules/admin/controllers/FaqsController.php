@@ -8,11 +8,26 @@ class Admin_FaqsController extends Zcms_Generic_ControllerAdmin
     }
     public function indexAction()
     {
-        $this->view->subtitle = $this->info->sitio->faqs->index->titulo;		        
+        $this->view->subtitle = $this->info->sitio->faqs->index->titulo;
+
+        $orden = (string)$this->_request->getParam('orden', 0);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+    	if(empty($orden)){
+    		$orden = "fecha";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
+
         $this->view->faqs = Faqs::getAll(
-			$this->session->sitio->id
+			$this->session->sitio->id,
+			0,
+			$orden
 		);
-        $this->render('admin');    
+        $this->render('admin');
     }
     public function agregarAction()
     {
@@ -47,7 +62,7 @@ class Admin_FaqsController extends Zcms_Generic_ControllerAdmin
         $this->render();
     }
     public function modificarAction()
-    {    
+    {
         $this->view->subtitle = $this->info->sitio->faqs->modificar->titulo;
 
         $eFAQ = new Faqs();

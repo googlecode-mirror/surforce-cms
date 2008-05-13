@@ -46,6 +46,7 @@ class Frontend_AutenticacionController extends Zcms_Generic_Controller
                 $result = $aut->authenticate($autAdapter);
 
                 if ($result->isValid()) {
+                	Usuarios::isValid();
                     $data = $autAdapter->getResultRowObject(null, 'password');
                     $aut->getStorage()->write($data);
                     $this->_redirect('/');

@@ -8,9 +8,9 @@
 
 <table>
 	<tr>
-		<th>Id</th>
-		<th>Pregunta</th>		
-		<th>Fecha</th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/faqs/index/orden/id/asc/<?php echo !$this->orden_asc;?>">Id</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/faqs/index/orden/pregunta/asc/<?php echo !$this->orden_asc;?>">Pregunta</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/faqs/index/orden/fecha/asc/<?php echo !$this->orden_asc;?>">Fecha</a></th>
 		<th colspan="3">Acciones</th>
 	</tr>
 	<?php foreach( $this->faqs as $faq ): ?>

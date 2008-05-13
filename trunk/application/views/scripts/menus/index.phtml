@@ -9,11 +9,11 @@
 
 <table>
 	<tr>
-		<th>id</th>
-		<th>Nombre</th>
-		<th>Privado</th>
-		<th>Estado</th>
-		<th>Posición</th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/id/asc/<?php echo !$this->orden_asc;?>">id</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/privado/asc/<?php echo !$this->orden_asc;?>">Privado</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Estado</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/posicion/asc/<?php echo !$this->orden_asc;?>">Posición</a></th>
         <th colspan="4">Acciones</th>
     </tr>
     <?php

@@ -7,7 +7,7 @@ class Zend_View_Helper_FormFCKeditor
    private $_sBasePath;
    private $_oFCKeditor;
 
-	public function formFCKeditor($instanceName = null, $contentValue = null, $width = '100%', $height = '600' )
+	public function formFCKeditor($instanceName = null, $contentValue = null, $width = '100%', $height = '300' )
 	{
    		$this->_instanceName = $instanceName ;
       	$this->_contentValue = $contentValue;

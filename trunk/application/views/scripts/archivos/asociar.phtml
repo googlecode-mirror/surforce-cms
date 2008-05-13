@@ -1,11 +1,11 @@
-<h2>Listado de archivos en el sistema</h2>
+<h2>Listado de archivos</h2>
  <form action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>" method="post">
 	<table>
 	  <tr>
 	    <th>#</th>
-	    <th>nombre</th>
+	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/asociar/pagina/<?php echo $this->pagina;?>/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
 <!--	    <th>modif</th>-->
-	    <th>descripción</th>
+	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/asociar/pagina/<?php echo $this->pagina;?>/orden/descripcion/asc/<?php echo !$this->orden_asc;?>">Descripción</a></th>
 	  </tr>
 
 	<?php foreach( $this->archivos as $archivo): ?>
@@ -13,12 +13,16 @@
 	    	<td>
 	    		<input
 	    			type="checkbox"
-	    			name="asociar<?php echo $archivo->id ?>"
-	    			value="<?php echo $archivo->id ?>">
+	    			name="asociar<?php echo $archivo['id']; ?>"
+	    			value="<?php echo $archivo['id']; ?>"
+	    			<?php if($archivo['id_pagina'] == $this->pagina ): ?>
+	    				checked="checked"
+	    			<?php endif; ?>
+	    		>
 	    	</td>
-	    	<td><?php echo $archivo->nombre;?></td>
+	    	<td><?php echo $archivo['nombre'];?></td>
 <!--	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>-->
-	    	<td><?php echo $archivo->descripcion; ?></td>
+	    	<td><?php echo $archivo['descripcion']; ?></td>
 	  	</tr>
 	<?php endforeach; ?>
 	</table>

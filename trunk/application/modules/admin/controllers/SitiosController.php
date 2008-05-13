@@ -9,7 +9,24 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 	public function indexAction()
 	{
 		$this->view->subtitle = "ABM Sitios";
-		$this->view->sitios = Sitios::getAll();
+
+		$orden = (string)$this->_request->getParam('orden', 0);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+    	if(empty($orden)){
+    		$orden = "id";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
+
+		$this->view->sitios = Sitios::getAll(
+			null,
+			0,
+			$orden
+		);
 		$this->render();
 	}
 	public function agregarAction()
