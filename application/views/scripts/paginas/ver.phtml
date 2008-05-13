@@ -22,7 +22,7 @@
   	<div id="pagina-archivos">
     	<?php if( count($this->archivos) > 0 ):?>
     		<strong>Archivos</strong>
-    		<ul>
+    		<ol>
     		<?php foreach($this->archivos as $archivo): ?>
     			<li>
     				<a href="<?php echo $this->baseUrl; ?>/userfiles/<?php echo $archivo->nombre;?>">
@@ -30,7 +30,7 @@
     				</a>&nbsp;-&nbsp;<?php echo $archivo->descripcion;?>
     			</li>
     		<?php endforeach; ?>
-    		</ul>
+    		</ol>
     	<?php endif; ?>
   	</div>
 <?php else: ?>

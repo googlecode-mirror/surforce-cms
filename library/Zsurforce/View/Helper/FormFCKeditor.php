@@ -23,7 +23,7 @@ class Zsurforce_View_Helper_FormFCKeditor
         $this->_oFCKeditor->Value       = $this->_contentValue;
         $this->_oFCKeditor->Config['CustomConfigurationsPath'] = '../myconfig.js' ;
         $this->_oFCKeditor->Width  = '100%' ;
-        $this->_oFCKeditor->Height = '600' ;
+        $this->_oFCKeditor->Height = '400' ;
 
         return $this->_oFCKeditor->Create();
     }

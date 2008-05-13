@@ -1,0 +1,24 @@
+<h2><?php echo $this->escape($this->subtitle); ?></h2>
+
+<table>
+	<tr>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/contacto/index/orden/id/asc/<?php echo !$this->orden_asc;?>">Id</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/contacto/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/contacto/index/orden/email/asc/<?php echo !$this->orden_asc;?>">Email</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/contacto/index/orden/comentario/asc/<?php echo !$this->orden_asc;?>">Comentario</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/contacto/index/orden/fecha/asc/<?php echo !$this->orden_asc;?>">Fecha</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/contacto/index/orden/telefono/asc/<?php echo !$this->orden_asc;?>">Teléfono</a></th>
+	</tr>
+	<?php foreach( $this->contactos as $contacto ): ?>
+		<tr>
+			<td><?php echo $this->escape($contacto->id);?></td>
+			<td><?php echo $this->escape($contacto->nombre);?></td>
+			<td><a href="mailto:<?php echo $this->escape($contacto->email);?>"><?php echo $this->escape($contacto->email);?></A></td>
+			<td><?php echo $this->escape($contacto->comentario);?></td>
+			<td><?php echo $this->escape($contacto->fecha);?></td>
+			<td><?php echo $this->escape($contacto->telefono);?></td>
+		</tr>
+	<?php endforeach;?>
+</table>
+<br />
+

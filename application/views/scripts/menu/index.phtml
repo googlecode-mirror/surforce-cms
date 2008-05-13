@@ -6,12 +6,12 @@
 <br>
 <table>
 	<tr>
-		<th>id</th>
-		<th>Item</th>
-		<th>Destino</th>
-		<th>Privado</th>
-		<th>Estado</th>
-		<th>Posición</th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menu/index/orden/id/asc/<?php echo !$this->orden_asc;?>">id</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menu/index/orden/item/asc/<?php echo !$this->orden_asc;?>">Item</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menu/index/orden/destino/asc/<?php echo !$this->orden_asc;?>">Destino</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menu/index/orden/privado/asc/<?php echo !$this->orden_asc;?>">Privado</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menu/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Estado</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/menu/index/orden/posicion/asc/<?php echo !$this->orden_asc;?>">Posición</a></th>
 	    <th>Acciones</th>
 	</tr>
 	<?php foreach( $this->menu as $items ):?>

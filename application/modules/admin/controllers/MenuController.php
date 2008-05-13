@@ -8,8 +8,19 @@ class Admin_MenuController extends Zcms_Generic_ControllerAdmin
     }
     public function indexAction()
     {
+    	$orden = (string)$this->_request->getParam('orden', 0);
+    	$asc = (bool)$this->_request->getParam('asc', 0);
+    	if(empty($orden)){
+    		$orden = "id";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
     	$this->view->subtitle = $this->info->sitio->menu->index->titulo;
-        $this->view->menu = Menu::getAll($this->session->sitio->id);        
+        $this->view->menu = Menu::getAll($this->session->sitio->id, null, $orden);
     }
     public function agregarAction()
     {
@@ -120,7 +131,7 @@ class Admin_MenuController extends Zcms_Generic_ControllerAdmin
             #verificar que el item exista para no mostrar error
             $this->view->item = $eItem->fetchRow('id='.$id);
         }else{
-        	
+
             $this->view->item = new stdClass();
             $this->view->item->id = null;
             $this->view->item->item = '';

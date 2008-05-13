@@ -2,15 +2,15 @@
 
 <div class="menu-admin">
 	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar Usuario</a><br><br>
-</div>    
+</div>
 
 <table>
 	<tr>
-    	<th>Usuario</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Email</th>
-        <th>Estado</th>
+    	<th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/usuario/asc/<?php echo !$this->orden_asc;?>">Usuario</a></th>
+        <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
+        <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/apellido/asc/<?php echo !$this->orden_asc;?>">Apellido</a></th>
+        <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/mail/asc/<?php echo !$this->orden_asc;?>">Email</a></th>
+        <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Estado</a></th>
         <th colspan="3">Acciones</th>
     </tr>
     <?php foreach( $this->usuarios as $usuario ) : ?>
@@ -26,7 +26,7 @@
 						<img border="0"	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $usuario->estado;?>.png"/>
     				<?php endif; ?>
     			</td>
-    		
+
                 <td nowrap="nowrap">
                 	<div class="menu-admin">
 	                	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/ver/id/<?php echo $usuario->id;?>">Ver</a>
@@ -39,5 +39,5 @@
     </table>
     <div class="menu-admin">
     	<br><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar Usuario</a><br><br>
-    </div>    
+    </div>
 </div>

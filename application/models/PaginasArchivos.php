@@ -18,5 +18,6 @@ class PaginasArchivos extends Zend_Db_Table {
 		$archivos = new PaginasArchivos();
 		return $archivos->fetchRow('id_pagina = '.$id_pagina.' AND id_archivo = '.$id_archivo);		
 	}
+	
 }
 ?>

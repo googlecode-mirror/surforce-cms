@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.1
+-- version 2.11.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-05-2008 a las 19:06:19
--- Versión del servidor: 5.0.45
--- Versión de PHP: 5.2.4
+-- Tiempo de generación: 13-05-2008 a las 12:29:25
+-- Versión del servidor: 5.0.51
+-- Versión de PHP: 5.2.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -20,27 +20,25 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 DROP TABLE IF EXISTS `archivos`;
-CREATE TABLE `archivos` (
+CREATE TABLE IF NOT EXISTS `archivos` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `fecha_mod` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
   `descripcion` text collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
-  `ruta` varchar(100) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=16 ;
 
 --
 -- Volcar la base de datos para la tabla `archivos`
 --
 
-INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`, `ruta`) VALUES
-(1, 'curriculum.pdf', '2008-05-05 10:51:21', 'Primer currÃ­culum del sistema', 1, ''),
-(2, 'novela.doc', '2008-05-01 15:53:54', 'La segunda novela', 2, ''),
-(3, 'cv.ppt', '2008-05-05 10:51:28', 'Nueva presentaciÃ³n ppt', 1, ''),
-(4, 'surforce.jpg', '0000-00-00 00:00:00', 'nuevo archivo de surforce', 6, ''),
-(5, 'surforce.doc', '2008-05-05 23:28:54', 'documento de surforce', 6, ''),
-(7, 'pdf', '0000-00-00 00:00:00', 'mi pdf', 6, '');
+INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) VALUES
+(1, 'curriculum.pdf', '2008-05-05 10:51:21', 'Primer currÃ­culum del sistema', 1),
+(2, 'novela.doc', '2008-05-01 15:53:54', 'La segunda novela', 2),
+(3, 'cv.ppt', '2008-05-05 10:51:28', 'Nueva presentaciÃ³n ppt', 1),
+(12, 'php_development_best_practices.pdf', '2008-05-12 20:54:22', 'buenas prÃ¡cticas sobre php', 6),
+(13, 'ArgoUML-0.24.tar.gz', '0000-00-00 00:00:00', 'argouml', 6);
 
 -- --------------------------------------------------------
 
@@ -49,7 +47,7 @@ INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`, 
 --
 
 DROP TABLE IF EXISTS `configuracion`;
-CREATE TABLE `configuracion` (
+CREATE TABLE IF NOT EXISTS `configuracion` (
   `id` int(10) NOT NULL,
   `sitio_titulo_color` varchar(10) collate utf8_spanish_ci NOT NULL,
   `sitio_color_fondo` varchar(10) collate utf8_spanish_ci NOT NULL,
@@ -77,7 +75,7 @@ INSERT INTO `configuracion` (`id`, `sitio_titulo_color`, `sitio_color_fondo`, `s
 --
 
 DROP TABLE IF EXISTS `contacto`;
-CREATE TABLE `contacto` (
+CREATE TABLE IF NOT EXISTS `contacto` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci default NULL,
   `email` varchar(50) collate utf8_spanish_ci NOT NULL,
@@ -86,7 +84,7 @@ CREATE TABLE `contacto` (
   `telefono` varchar(30) collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcar la base de datos para la tabla `contacto`
@@ -95,7 +93,9 @@ CREATE TABLE `contacto` (
 INSERT INTO `contacto` (`id`, `nombre`, `email`, `comentario`, `fecha`, `telefono`, `id_sitio`) VALUES
 (1, 'Evariste', 'evari@yahoo.com', 'Fracciones continuas', '2007-01-10 00:00:00', '12', 0),
 (2, 'nombre', 'mail', 'comentario', '2008-01-08 21:04:48', '12', 0),
-(3, 'enrique', 'enriqueplace@gmail.com', 'esta es una prueba', '2008-01-27 17:32:01', '1234', 0);
+(3, 'enrique', 'enriqueplace@gmail.com', 'esta es una prueba', '2008-01-27 17:32:01', '1234', 0),
+(4, 'Enrique', 'enriqueplace@gmail.com', 'prueba de contacto', '2008-05-12 23:46:42', '1111', 6),
+(5, 'Gonzalo', 'g@gmail.com', 'Quiero que me llamen para hacerles una consulta', '2008-05-13 11:40:25', '1341515413', 6);
 
 -- --------------------------------------------------------
 
@@ -104,22 +104,23 @@ INSERT INTO `contacto` (`id`, `nombre`, `email`, `comentario`, `fecha`, `telefon
 --
 
 DROP TABLE IF EXISTS `faqs`;
-CREATE TABLE `faqs` (
+CREATE TABLE IF NOT EXISTS `faqs` (
   `id` int(50) NOT NULL auto_increment,
   `pregunta` varchar(250) character set utf8 collate utf8_unicode_ci NOT NULL,
   `respuesta` text character set utf8 collate utf8_unicode_ci NOT NULL,
   `fecha` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcar la base de datos para la tabla `faqs`
 --
 
 INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
-(4, 'Â¿por quÃ©?', 'Por esto', '2008-05-05 22:21:25', 6),
-(5, 'Â¿Se puede hacer todo esto en Zend?', 'S&iacute;, es viable hacerlo con Zend, tiene toda la informaci&oacute;n necesaria para cumplir con todos los requerimientos.', '2008-05-05 10:52:38', 1);
+(4, 'Â¿por quÃ©?', 'Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto Por esto', '2008-05-13 00:17:48', 6),
+(5, 'Â¿Se puede hacer todo esto en Zend?', 'S&iacute;, es viable hacerlo con Zend, tiene toda la informaci&oacute;n necesaria para cumplir con todos los requerimientos.', '2008-05-05 10:52:38', 1),
+(7, 'Â¿y se puede hacer en Zend?', '<p>S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y S&iacute;, se puede hacer y</p>', '2008-05-13 00:18:26', 6);
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,7 @@ INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
 --
 
 DROP TABLE IF EXISTS `menu`;
-CREATE TABLE `menu` (
+CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `item` varchar(45) collate utf8_spanish_ci NOT NULL,
   `destino` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -137,7 +138,7 @@ CREATE TABLE `menu` (
   `estado` char(1) collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=71 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=72 ;
 
 --
 -- Volcar la base de datos para la tabla `menu`
@@ -201,7 +202,8 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (64, 'Home', '/frontend/paginas/ver/id/17', 1, '0', '1', 1),
 (68, 'ABM MenÃº', '/admin/menu/', 1, '1', '1', 7),
 (69, 'ABM PÃ¡ginas', '/admin/paginas', 2, '1', '1', 7),
-(70, 'Listado de productos', '/frontend/paginas/ver/id/22', 3, '0', '1', 7);
+(70, 'Listado de productos', '/frontend/paginas/ver/id/22', 3, '0', '1', 7),
+(71, 'Listado de Contactos', '/admin/contacto/', 30, '1', '1', 6);
 
 -- --------------------------------------------------------
 
@@ -210,7 +212,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 --
 
 DROP TABLE IF EXISTS `menus`;
-CREATE TABLE `menus` (
+CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_sitio` int(10) unsigned NOT NULL,
   `nombre` varchar(150) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -240,7 +242,7 @@ INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `descripcion`, `posicion`, `pri
 --
 
 DROP TABLE IF EXISTS `menus_items`;
-CREATE TABLE `menus_items` (
+CREATE TABLE IF NOT EXISTS `menus_items` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_menu` int(10) unsigned NOT NULL,
   `item` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -272,7 +274,7 @@ INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `priv
 --
 
 DROP TABLE IF EXISTS `noticias`;
-CREATE TABLE `noticias` (
+CREATE TABLE IF NOT EXISTS `noticias` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -294,11 +296,11 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `contenido_ext`, `contenido
 (9, 'Cienpies exports Card Reader to France', '<p>Cienpies Design is a good example of young, talented Uruguayan people who seek to make their way through the international market.</p>', '<p>adfadf ad fadf adsf ad f</p>', '', '', '2008-01-08 20:46:37', 0, 2),
 (10, 'Nueva noticia extendida', '<p>Contenido simple</p>', '<p>contenido extendido y con t&iacute;ldes!</p>', '', '', '2008-01-08 22:01:00', 0, 3),
 (12, 'Buscan a Maddie en Chile 3', '<p><span id="_ctl5_lblNota">La polic&iacute;a dijo el viernes que est&aacute; investigando un informe sobre el supuesto avistamiento en el norte de Chile de la ni&ntilde;a brit&aacute;nica Madeleine McCann, desaparecida el 3 de mayo del a&ntilde;o pasado en una playa en Portugal.<br />\r\n</span></p>', '<p>El detective Segundo Leyton, jefe de la brigada especializada en la b&uacute;squeda de personas desaparecidas, dijo a medios locales que la investigaci&oacute;n se inici&oacute; luego de que un ciudadano no identificado dijo a la polic&iacute;a haber visto una pareja de extranjeros con una ni&ntilde;a parecida a la peque&ntilde;a.</p>\r\n<p>El denunciante &quot;se&ntilde;ala que hab&iacute;a visto a una menor de similares caracter&iacute;sticas a la peque&ntilde;a Madeleine y que estaba acompa&ntilde;ada de una persona adulta y una mujer&quot;, dijo Leyton.</p>\r\n<p>Agreg&oacute; que &quot;le llama m&aacute;s la atenci&oacute;n la presencia del sujeto, que lo encuentra muy similar a la persona que aparece en la prensa&quot;, aludiendo a un sospechoso cuyo retrato hablado fue entregado por los padres de la ni&ntilde;a recientemente.</p>\r\n<p>Agreg&oacute; que el hombre dijo que la pareja hablaba un idioma extranjero.<br />\r\nEl informante dijo que la menor estaba en la ciudad de Vicu&ntilde;a, 500 kil&oacute;metros al norte, y que el hombre con ella correspond&iacute;a al retrato hablado del supuesto secuestrador divulgado este mes por los padres de la menor.</p>\r\n<p>El hombre que alert&oacute; a la polic&iacute;a, del que s&oacute;lo se dijo que es un t&eacute;cnico en refrigeraci&oacute;n, dijo a la polic&iacute;a que vio a la pareja y la ni&ntilde;a en el museo de la poetisa chilena Gabriela Mistral.</p>\r\n<p>(AP)</p>', '', '', '2008-01-26 23:19:20', 0, 0),
-(14, 'surforce', '<p>contenido surforce&nbsp;&nbsp;  &nbsp;&nbsp;</p>', '<p>contenido extendido surforce</p>', '', '', '2008-05-01 16:53:55', 0, 6),
+(14, 'surforce', '<p>contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp; contenido surforce&nbsp;&nbsp;  &nbsp;</p>', '<p>contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce contenido extendido surforce</p>', '', '', '2008-05-01 16:53:55', 0, 6),
 (16, 'Nueva noticia Acuífero', '<p>akdjf&ntilde;al ad</p>', '<p>akdjf&ntilde;al ad</p>', '', '', '2008-05-01 18:03:48', 0, 2),
-(17, 'segunda noticia', '<p>cuerpo de la segunda noticia</p>', '<p>contenido extendido de la segunda noticia</p>', '', '', '2008-05-05 23:19:55', 0, 6),
-(18, 'tres', '<p>tres</p>', '<p>trwe</p>', '', '', '2008-05-05 23:20:15', 0, 6),
-(19, 'cuetro', '<p>cuetro</p>', '<p>cuetro</p>', '', '', '2008-05-05 23:21:19', 0, 6);
+(17, 'segunda noticia', '<p>segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia segunda noticia</p>', '<p>contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia contenido extendido de la segunda noticia</p>', '', '', '2008-05-05 23:19:55', 0, 6),
+(18, 'TÃ­tulo de la noticia tres', '<p>tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres <strong>tres tres tres </strong>tres tres tres tres tres tres<strong> tres tres tres </strong>tres tres tres tres tres tres tres tres tres tres tres <strong>tres tres tres</strong> tres tres tres tres tres tres <strong>tres tres tres</strong> tres tres tres tres tres tres tres tres tres tres tres <strong>tres tres tres</strong> tres tres tres tres tres tres <strong>tres tres tres</strong> tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres <strong>tres </strong>tres tres tres tres tres tres tres tres tres tres <strong>tres </strong>tres tres tres tres tres tres tres tres tres tres tres tres<strong> tres</strong> tres tres tres tres tres tres tres tres <strong>tres </strong>tres tres tres tres tres tres tres tres tres tres tres tres tres tres <strong>tres </strong>tres tres tres tres tres tres <strong>tres </strong>tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres <strong>tres tres tres tres tres tres</strong> tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres tres</p>', '<p>extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n<img src="/surforce-cms/public/scripts/fckeditor/editor/images/smiley/msn/regular_smile.gif" alt="" />extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres extensi&oacute;n tres</p>', '', '', '2008-05-05 23:20:15', 0, 6),
+(19, 'TÃ­tulo de la noticia cuatro', '<p>cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro cuetro</p>', '<p>extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro extensi&oacute;n cuatro</p>', '', '', '2008-05-05 23:21:19', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -307,7 +309,7 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `contenido_ext`, `contenido
 --
 
 DROP TABLE IF EXISTS `paginas`;
-CREATE TABLE `paginas` (
+CREATE TABLE IF NOT EXISTS `paginas` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -315,7 +317,7 @@ CREATE TABLE `paginas` (
   `id_usuario` int(11) NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=24 ;
 
 --
 -- Volcar la base de datos para la tabla `paginas`
@@ -340,7 +342,8 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 (19, 'Bienvenido a FAO', '<p>Bienvenido a FAO</p>', '2008-05-02 02:25:53', 0, 3),
 (20, 'Bienvenido a Surforce', '<p>Bienvenido a Surforce</p>', '2008-05-02 02:26:48', 0, 6),
 (21, 'PÃ¡gina de Bienvenida de IBM', '<p>Esta es la p&aacute;gina por defecto de la secci&oacute;n / subsitio &quot;IBM&quot;</p>', '2008-05-05 20:13:44', 0, 7),
-(22, 'Listado de productos', '<ul>\r\n    <li>primer producto</li>\r\n    <li>segundo producto</li>\r\n    <li>tercer producto</li>\r\n</ul>', '2008-05-05 21:45:38', 0, 7);
+(22, 'Listado de productos', '<ul>\r\n    <li>primer producto</li>\r\n    <li>segundo producto</li>\r\n    <li>tercer producto</li>\r\n</ul>', '2008-05-05 21:45:38', 0, 7),
+(23, 'Avances', '<p>avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances avances</p>', '2008-05-13 00:42:44', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -349,7 +352,7 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 --
 
 DROP TABLE IF EXISTS `paginas_archivos`;
-CREATE TABLE `paginas_archivos` (
+CREATE TABLE IF NOT EXISTS `paginas_archivos` (
   `id_pagina` tinyint(10) NOT NULL,
   `id_archivo` tinyint(10) NOT NULL,
   PRIMARY KEY  (`id_pagina`,`id_archivo`)
@@ -360,9 +363,9 @@ CREATE TABLE `paginas_archivos` (
 --
 
 INSERT INTO `paginas_archivos` (`id_pagina`, `id_archivo`) VALUES
-(8, 1),
-(8, 3),
-(8, 5);
+(1, 12),
+(20, 12),
+(20, 13);
 
 -- --------------------------------------------------------
 
@@ -371,7 +374,7 @@ INSERT INTO `paginas_archivos` (`id_pagina`, `id_archivo`) VALUES
 --
 
 DROP TABLE IF EXISTS `paginas_menu`;
-CREATE TABLE `paginas_menu` (
+CREATE TABLE IF NOT EXISTS `paginas_menu` (
   `id_pagina` int(255) NOT NULL,
   `id_menu` int(255) NOT NULL,
   `link` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -399,7 +402,7 @@ INSERT INTO `paginas_menu` (`id_pagina`, `id_menu`, `link`, `titulo`, `alt`) VAL
 --
 
 DROP TABLE IF EXISTS `sitios`;
-CREATE TABLE `sitios` (
+CREATE TABLE IF NOT EXISTS `sitios` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `titulo` varchar(100) collate utf8_spanish_ci NOT NULL,
@@ -430,7 +433,7 @@ INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`,
 --
 
 DROP TABLE IF EXISTS `styles_propiedades`;
-CREATE TABLE `styles_propiedades` (
+CREATE TABLE IF NOT EXISTS `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
@@ -570,7 +573,7 @@ INSERT INTO `styles_propiedades` (`id_propiedad`, `propiedad`) VALUES
 --
 
 DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
-CREATE TABLE `styles_propiedades_x_selectores` (
+CREATE TABLE IF NOT EXISTS `styles_propiedades_x_selectores` (
   `id_selector` int(11) NOT NULL,
   `id_propiedad` int(11) NOT NULL,
   `valor` varchar(64) collate utf8_spanish_ci default NULL,
@@ -622,7 +625,7 @@ INSERT INTO `styles_propiedades_x_selectores` (`id_selector`, `id_propiedad`, `v
 --
 
 DROP TABLE IF EXISTS `styles_selectores`;
-CREATE TABLE `styles_selectores` (
+CREATE TABLE IF NOT EXISTS `styles_selectores` (
   `id_selector` int(11) NOT NULL auto_increment,
   `selector` varchar(64) collate utf8_spanish_ci NOT NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
@@ -657,7 +660,7 @@ INSERT INTO `styles_selectores` (`id_selector`, `selector`, `descripcion`) VALUE
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `usuario` varchar(32) collate utf8_spanish_ci NOT NULL,
   `password` varchar(32) collate utf8_spanish_ci NOT NULL,
