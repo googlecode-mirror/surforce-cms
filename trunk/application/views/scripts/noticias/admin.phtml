@@ -4,9 +4,9 @@
 
 <table>
 	<tr>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/noticias/index/orden/id">Id</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/noticias/index/orden/titulo">Titulo</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/noticias/index/orden/fecha">Fecha</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/noticias/index/orden/id/asc/<?php echo !$this->orden_asc;?>">Id</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/noticias/index/orden/titulo/asc/<?php echo !$this->orden_asc;?>">Titulo</a></th>
+		<th><a href="<?php echo $this->baseUrl; ?>/admin/noticias/index/orden/fecha/asc/<?php echo !$this->orden_asc;?>">Fecha</a></th>
 		<th colspan="3">Acciones</th>
 	</tr>
 
