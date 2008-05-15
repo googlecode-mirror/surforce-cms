@@ -1,6 +1,8 @@
 <?php
 class Admin_MenupagController extends Zcms_Generic_ControllerAdmin
 {	
+	const RETORNO = '/admin/menupag/index/pagina/';
+	
 	public function init() 
 	{
 		parent::init ();
@@ -8,16 +10,34 @@ class Admin_MenupagController extends Zcms_Generic_ControllerAdmin
 	}	
 	public function indexAction() 
 	{
-		$this->view->subtitle = $this->info->sitio->paginas->index->titulo;
-		$menus = new PaginasMenu ( );
-		$this->view->paginas->menu = $menus->fetchAll ();
-		$this->render ();
+		$id_pagina 	= (int)$this->_request->getParam('pagina');		
+		$orden 		= (string)$this->_request->getParam('orden',"");
+    	$asc 		= (bool)$this->_request->getParam('asc', 0);
+    	
+		if(empty($orden)){
+    		$orden = "id_pagina";
+    	}
+		if($asc){
+			$orden .= " ASC";
+		}else{
+			$orden .= " DESC";
+		}
+		$this->view->orden_asc = $asc;
+
+		$this->view->id_pagina = $id_pagina;				
+		$this->view->subtitle = $this->info->sitio->paginas->index->titulo;		
+		$this->view->paginasMenues = PaginasMenu::getMenuPagina(
+			$id_pagina,
+			0,
+			$orden
+		);		
+		$this->render();
 	}	
 	public function agregarAction() 
 	{
 		$this->view->buttonText = $this->info->sitio->paginas->agregar->buttonText;
-		$this->view->subtitle = $this->info->sitio->menus->agregar->titulo;
-		$this->view->id = ( int ) $this->_request->getParam ( 'id' );
+		$this->view->subtitle 	= $this->info->sitio->menus->agregar->titulo;
+		$this->view->id_pagina 	= (int)$this->_request->getParam ( 'pagina' );
 		
 		if ($this->_request->isPost ()) {
 			
@@ -40,22 +60,24 @@ class Admin_MenupagController extends Zcms_Generic_ControllerAdmin
 				);
 				$menupag = new PaginasMenu();
 				$menupag->insert($data);
-				$this->_redirect('/admin/paginas/modificar/id/'.$id_pagina);
+				$this->_redirect(self::RETORNO.$id_pagina);
 				return;
 			}
 		}
 		$this->view->menupag = new stdClass();
+		
 		$this->view->menupag->id_menu = null;
-		$this->view->menupag->id_pagina = $this->view->id;
+		$this->view->menupag->id_pagina = $this->view->id_pagina;
 		$this->view->menupag->titulo = '';
 		$this->view->menupag->link = '';
 		$this->view->menupag->alt = '';
+		
 		$this->view->action = "agregar";
 	}
 	function eliminarAction()
 	{
 		
-		$this->view->subtitle = $this->info->sitio->paginas->eliminar->titulo;
+		$this->view->subtitle = "Eliminar ítem del Menú de la Página";
 		$menupag = new PaginasMenu();
 		
 		if ($this->_request->isPost()) {
@@ -82,7 +104,7 @@ class Admin_MenupagController extends Zcms_Generic_ControllerAdmin
 				}
 			}
 		}
-		$this->_redirect ( '/admin/paginas/modificar/id/'.$id );
+		$this->_redirect ( self::RETORNO.$id );
 	}	
 	function modificarAction() 
 	{
@@ -111,7 +133,7 @@ class Admin_MenupagController extends Zcms_Generic_ControllerAdmin
 					'alt' => $alt 
 				);
 				$menupag->update($data, $where);
-				$this->_redirect('/admin/paginas/modificar/id/'.$id_pagina);
+				$this->_redirect(self::RETORNO.$id_pagina);
 				return;
 			} else {
 				$this->view->message = "Deben llenarse todos los campos";

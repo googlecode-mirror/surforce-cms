@@ -40,12 +40,12 @@ class Admin_UsuariosController extends Zcms_Generic_ControllerAdmin
             $nombre 	= trim($filter->filter($this->_request->getPost('nombre')));
             $apellido 	= trim($filter->filter($this->_request->getPost('apellido')));
             $mail 		= trim($filter->filter($this->_request->getPost('mail')));
-            $estado 	= "1";
+            $estado 	= trim($filter->filter($this->_request->getPost('estado')));
             $creado		= date("Y-m-d H:i:s");
             if ($usuario != '' && $password != '' && $nombre != '' && $apellido != '' && $mail != '') {
                 $data = array(
-                    'usuario' 	=> $usuario,
-                    'password' 	=> $password,
+                    'usuario' 	=> strtolower($usuario),
+                    'password' 	=> md5($password),
                     'nombre' 	=> $nombre,
                     'apellido' 	=> $apellido,
                     'mail' 		=> $mail,
@@ -68,6 +68,7 @@ class Admin_UsuariosController extends Zcms_Generic_ControllerAdmin
         $this->view->usuario->nombre = '';
         $this->view->usuario->apellido = '';
         $this->view->usuario->mail = '';
+        $this->view->usuario->estado = 0;
         $this->view->action = $this->info->sitio->usuarios->agregar->action;
         $this->view->buttonText = $this->info->sitio->usuarios->agregar->buttonText;
         $this->render();
@@ -90,7 +91,7 @@ class Admin_UsuariosController extends Zcms_Generic_ControllerAdmin
                 if ($usuario != '' && $password != '' && $nombre != '' && $apellido != '' && $mail != '') {
                     $data = array(
                         'usuario' 	=> $usuario,
-                        'password' 	=> $password,
+                        'password' 	=> md5($password),
                         'nombre' 	=> $nombre,
                         'apellido' 	=> $apellido,
                         'mail' 		=> $mail,

@@ -13,7 +13,7 @@ $subtitulo = $this->escape(trim($this->subtitle));
 			size="100"
 			value="<?php echo $this->pagina->titulo?>"/>
 	</div>
-
+	
 	<?php echo $this->render('paginas/_botones_submenu.phtml');?>
 
     <?php echo $this->formFCKeditor('contenido',$this->pagina->contenido);?>

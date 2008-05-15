@@ -43,6 +43,13 @@ Zend_Layout::startMvc(array(
 ));
 $view = Zend_Layout::getMvcInstance()->getView();
 
+/* Menu: Hay que definir el contenido aquí, 
+ * para luego ser pasado al layout y 
+ * que lo renderee.
+ * 
+$view->menu_items = Menu::getMenuSitio();
+*/
+
 // setup database
 $db = Zend_Db::factory(
 	$config->db->adapter, 

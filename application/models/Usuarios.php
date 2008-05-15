@@ -17,10 +17,12 @@ class Usuarios extends Zend_Db_Table_Abstract
 		$usuario = new Usuarios();
 		return $usuario->fetchRow("id = '$id'");
 	}
-	public static function isValid( $id )
+	public static function isValid( $usuario )
 	{
-		$usuario = new Usuarios();
-		return $usuario->fetchRow("id = '$id' AND estado = 1");
+		$Usuarios = new Usuarios();
+		$result = $Usuarios->fetchRow("usuario = '".$usuario."' AND estado = 1");
+		
+		return $result <> NULL;
 	}
 }
 ?>

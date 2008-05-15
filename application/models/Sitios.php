@@ -33,4 +33,10 @@ class Sitios extends Zend_Db_Table_Abstract
 		$sitios = new Sitios();
 		return $sitios->fetchRow("nombre = '".$nombre."'");
 	}
+	public static function setPorDefecto($id)
+	{
+		$Sitios = new Sitios();
+		$Sitios->update( array('por_defecto' => 0));
+		$Sitios->update( array('por_defecto' => 1), 'id = ' . $id);				
+	}
 }

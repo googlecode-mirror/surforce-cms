@@ -14,7 +14,8 @@ class Zsurforce_View_Helper_HtmlLinkArray
     {
         return
         	'<A href="' . $base . $param['url'].
-        	'" ALT = "' . $param['alt'] .
+        	'" title ="' . $param['alt'] .
         	'">' . $param['text'] . '</A>';
     }
 }
+?>

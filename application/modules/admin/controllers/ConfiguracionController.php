@@ -9,7 +9,11 @@ class Admin_ConfiguracionController extends Zcms_Generic_ControllerAdmin
 	{
 		$this->view->subtitle = "ABM Configuración";
 		
-		$this->view->configuracion = Configuracion::getConfiguracion($this->session->sitio->id);		
+		$conf = Configuracion::getConfiguracionSitio($this->session->sitio->id);
+		if( $conf == null){
+			Configuracion::setConfiguracion($this->session->sitio->id);
+		}
+		$this->view->configuracion = Configuracion::getConfiguracionSitio($this->session->sitio->id);		
 		$this->render('admin');
 	}	
 	function modificarAction() 
@@ -42,7 +46,7 @@ class Admin_ConfiguracionController extends Zcms_Generic_ControllerAdmin
 		}else{
 			$id = (int)$this->_request->getParam('id', 0);
 			if ($id > 0) {
-				$this->view->configuracion = Configuracion::getConfiguracion($id);
+				$this->view->configuracion = Configuracion::getConfiguracionSitio($id);
 			}
 		}
 		$this->view->action = "modificar";

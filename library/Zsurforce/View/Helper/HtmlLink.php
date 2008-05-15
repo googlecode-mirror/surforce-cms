@@ -12,6 +12,7 @@ class Zsurforce_View_Helper_HtmlLink
      */
     public function htmlLink( $url, $text, $alt = '', $base = null)
     {
-        return '<A href="'.$base.$url.'" ALT = "'.$alt.'">'.$text.'</A>';
+        return '<A href="'.$base.$url.'" title ="'.$alt.'">'.$text.'</A>';
     }
 }
+?>

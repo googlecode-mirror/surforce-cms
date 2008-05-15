@@ -16,5 +16,10 @@ class Menu extends Zend_Db_Table_Abstract
 		$menu = new Menu();
 		return $menu->fetchRow("id = '$id'");
 	}
+	public static function getMenuSitio($id)
+	{
+		$Menu = new Menu();
+		return $Menu->fetchAll('estado = 1 AND id_sitio='.$id, 'privado,posicion');
+	}	
 }
 ?>
