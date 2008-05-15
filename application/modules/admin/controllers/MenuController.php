@@ -141,7 +141,7 @@ class Admin_MenuController extends Zcms_Generic_ControllerAdmin
             $this->view->item->estado = '0';
         	if( $this->view->pagina ){
         		$this->view->item->item = $this->view->pagina->titulo;
-            	$this->view->item->destino = '/paginas/paginas/ver/id/'.$this->view->pagina->id;
+            	$this->view->item->destino = '/frontend/paginas/ver/id/'.$this->view->pagina->id;
         	}
         }
         return;
