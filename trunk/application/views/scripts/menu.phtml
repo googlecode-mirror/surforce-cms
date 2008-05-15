@@ -25,6 +25,8 @@
     $stmt = $db->query($sql);
     $enlaces = $stmt->fetchAll();
 
+    //var_dump($enlaces);
+    
     echo "<ul>";
     $tipo_menu = "";
     $tipo_menu_desc = "";

@@ -1,39 +1,46 @@
-<h2><?php echo $this->escape($this->subtitle);?></h2>
-
-<?php echo $this->render('menupag/_boton_agregar.phtml'); ?>
-<br/>
-<table>
-	<tr>
-		<th>id</th>
-		<th>fecha</th>
-		<th>título</th>
-         <th colspan="4">Acciones</th>
-    </tr>
-    <?php foreach( $this->paginas as $pagina ) : ?>
+<h1>Menú de la página</h1>
+<br><br>
+<div class="menu-admin">
+	<?php $url_menu_pag_agregar = $this->baseUrl.'/admin/menupag/agregar/pagina/'.$this->id_pagina;?>
+	<a href="<?php echo $url_menu_pag_agregar;?>">Agregar</a>
+</div>
+<br>
+<?php if($this->paginasMenues):?>
+		  		
+	<table>
 		<tr>
-			<td>
-				<a href="<?php echo $this->baseUrl."/frontend/paginas/ver/id/".$pagina->id;?>">
-					<?php echo $this->escape($pagina->id);?>
-				</A>
-			</td>
-			<td nowrap>
-				<?php echo $this->escape($this->dateFormat($pagina->fecha));?>
-			</td>
-			<td>
-				<a href="<?php echo $this->baseUrl."/frontend/paginas/ver/id/".$pagina->id;?>">
-					<?php echo $this->escape($pagina->titulo);?>
-				</A>
-			</td>
-            <td nowrap="nowrap">
-				<div class="menu-admin">
-					<a href="<?php echo $this->baseUrl;?>/frontend/paginas/ver/id/<?php echo $pagina->id;?>">Ver</a>
-					<a href="<?php echo $this->baseUrl;?>/admin/paginas/modificar/id/<?php echo $pagina->id;?>">Modificar</a>
-					<a href="<?php echo $this->baseUrl;?>/admin/paginas/eliminar/id/<?php echo $pagina->id;?>">Eliminar</a>
-					<a href="<?php echo $this->baseUrl;?>/admin/menu/agregar/pagina/<?php echo $pagina->id;?>">Agregar al menú</a>
-				</div>
-			</td>
+			<th><a href="<?php echo $this->baseUrl; ?>/admin/menupag/index/pagina/<?php echo $this->id_pagina;?>/orden/id_menu/asc/<?php echo !$this->orden_asc;?>">Id</a></th>
+			<th><a href="<?php echo $this->baseUrl; ?>/admin/menupag/index/pagina/<?php echo $this->id_pagina;?>/orden/titulo/asc/<?php echo !$this->orden_asc;?>">Titulo</a></th>
+			<th><a href="<?php echo $this->baseUrl; ?>/admin/menupag/index/pagina/<?php echo $this->id_pagina;?>/orden/link/asc/<?php echo !$this->orden_asc;?>">Link</a></th>
+			<th><a href="<?php echo $this->baseUrl; ?>/admin/menupag/index/pagina/<?php echo $this->id_pagina;?>/orden/alt/asc/<?php echo !$this->orden_asc;?>">Alt</a></th>
+			<th colspan="2">Opciones</th>
 		</tr>
-    <?php endforeach; ?>
-</table>
-<br/>
-<?php echo $this->render('menupag/_boton_agregar.phtml'); ?>
+
+	  	<?php foreach($this->paginasMenues as $paginaMenu):?>
+			<?php
+			$url_menu_pag_modificar = $this->baseUrl.'/admin/menupag/modificar/menu/'.$paginaMenu->id_menu.'/pagina/'.$paginaMenu->id_pagina; 
+			$url_menu_pag_eliminar  = $this->baseUrl.'/admin/menupag/eliminar/menu/'.$paginaMenu->id_menu.'/pagina/'.$paginaMenu->id_pagina;
+			?>
+			<tr>
+				<td nowrap><?php echo $paginaMenu->id_menu; ?></td>
+				<td nowrap><?php echo $paginaMenu->titulo; ?></td>
+				<td nowrap><a href="<?php echo $paginaMenu->link;?>"><?php echo $paginaMenu->link;?></a></td>
+				<td nowrap><?php echo $paginaMenu->alt; ?></td>
+				<td nowrap>
+					<div class="menu-admin">
+						<a href="<?php echo $url_menu_pag_modificar;?>">Modificar</a>
+						<a href="<?php echo $url_menu_pag_eliminar;?>">Eliminar</a>
+					</div>
+				</td>				
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+<br>
+<div class="menu-admin">
+	<?php $url_menu_pag_agregar = $this->baseUrl.'/admin/menupag/agregar/pagina/'.$this->id_pagina;?>
+	<a href="<?php echo $url_menu_pag_agregar;?>">Agregar</a>
+</div>
+<br>
+<?php $url = $this->baseUrl.'/admin/paginas/modificar/id/'.$this->id_pagina;?>
+<a href="<?php echo $url; ?>">Volver a la página</a>

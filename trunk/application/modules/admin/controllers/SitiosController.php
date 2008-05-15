@@ -60,7 +60,7 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 				Zend_Loader::loadClass('Sitios');
 				$Sitios = new Sitios();
 				$Sitios->insert( $data );
-
+				
 				$this->_redirect ( '/admin/sitios/' );
 				return;
 			}else{
@@ -123,6 +123,11 @@ class Admin_SitiosController extends Zcms_Generic_ControllerAdmin
 					);
 					$where = 'id = ' . $id;
 					$Sitios->update($data, $where);
+					
+					if($por_defecto){
+						Sitios::setPorDefecto($id);
+					}
+					
 					$this->_redirect('/admin/sitios/');
 					return;
 				}else{

@@ -31,16 +31,22 @@ class Frontend_AutenticacionController extends Zcms_Generic_Controller
                 
                 $dbAdapter = Zend_Registry::get('dbAdapter');
                 $autAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+                
                 $autAdapter->setTableName('usuarios');
                 $autAdapter->setIdentityColumn('usuario');
                 $autAdapter->setCredentialColumn('password');
 				
+                
+                $autAdapter->setIdentity($usuario);                
                 /*
-                 * FIXME: falta no habilitar el login si 
-                 * el usuario es estado = 0 
+                 * Habilitar el login solo si 
+                 * el usuario es estado = 1 
                  */
-                $autAdapter->setIdentity($usuario);
-                $autAdapter->setCredential($password);
+                if( Usuarios::isValid($usuario) ){
+                	$autAdapter->setCredential(md5($password));
+                }else{
+                	$autAdapter->setCredential('');
+                }
 
                 $aut = Zend_Auth::getInstance();
                 $result = $aut->authenticate($autAdapter);

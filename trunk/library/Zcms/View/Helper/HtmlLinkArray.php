@@ -14,7 +14,8 @@ class Zcms_View_Helper_HtmlLinkArray
     {
         return 
         	'<A href="' . $param['url'] . 
-        	'" ALT = "' . $param['alt'] . 
+        	'" title ="' . $param['alt'] . 
         	'">' . $param['text'] . '</A>';         
     }
 }
+?>

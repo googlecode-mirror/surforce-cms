@@ -1,3 +1,9 @@
+<br>
+<div class="menu-admin">
+	<?php $url_menu_pag_agregar = $this->baseUrl.'/admin/menupag/agregar/id/'.$this->pagina->id;?>
+	<a href="<?php echo $url_menu_pag_agregar;?>">Agregar</a>
+</div>
+<br>
 <strong>Menú de la página:</strong>
   
 <?php if($this->paginasMenues):?>
@@ -28,5 +34,8 @@
 	</table>
 <?php endif; ?>
 <br>
-<?php  echo $this->render('paginas/_agregar_submenu.phtml'); ?>
-<br>	
+<div class="menu-admin">
+	<?php $url_menu_pag_agregar = $this->baseUrl.'/admin/menupag/agregar/id/'.$this->pagina->id;?>
+	<a href="<?php echo $url_menu_pag_agregar;?>">Agregar</a>
+</div>
+<br>

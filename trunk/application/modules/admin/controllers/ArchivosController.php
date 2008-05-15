@@ -11,8 +11,9 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
 	{
 		$this->view->subtitle = "ABM Archivos";
 
-		$orden = (string)$this->_request->getParam('orden', 0);
+		$orden = (string)$this->_request->getParam('orden', '');
     	$asc = (bool)$this->_request->getParam('asc', 0);
+    	
     	if(empty($orden)){
     		$orden = "id";
     	}

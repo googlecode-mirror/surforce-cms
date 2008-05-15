@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.4
+-- version 2.11.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-05-2008 a las 12:29:25
--- Versión del servidor: 5.0.51
--- Versión de PHP: 5.2.5
+-- Tiempo de generación: 15-05-2008 a las 00:56:01
+-- Versión del servidor: 5.0.45
+-- Versión de PHP: 5.2.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -20,7 +20,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 DROP TABLE IF EXISTS `archivos`;
-CREATE TABLE IF NOT EXISTS `archivos` (
+CREATE TABLE `archivos` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `fecha_mod` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
@@ -47,15 +47,15 @@ INSERT INTO `archivos` (`id`, `nombre`, `fecha_mod`, `descripcion`, `id_sitio`) 
 --
 
 DROP TABLE IF EXISTS `configuracion`;
-CREATE TABLE IF NOT EXISTS `configuracion` (
-  `id` int(10) NOT NULL,
+CREATE TABLE `configuracion` (
+  `id` int(10) NOT NULL auto_increment,
   `sitio_titulo_color` varchar(10) collate utf8_spanish_ci NOT NULL,
   `sitio_color_fondo` varchar(10) collate utf8_spanish_ci NOT NULL,
   `sitio_color_cabezal` varchar(10) collate utf8_spanish_ci NOT NULL,
   `sitio_color_pie` varchar(10) collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcar la base de datos para la tabla `configuracion`
@@ -66,7 +66,8 @@ INSERT INTO `configuracion` (`id`, `sitio_titulo_color`, `sitio_color_fondo`, `s
 (2, '#FFFFFF', '#FFFFFF', 'orange', '#FFFFFF', 2),
 (3, '#FFFFFF', '#FFFFFF', 'red', '#FFFFFF', 3),
 (4, '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', 4),
-(6, '#FFFFFF', '', '', '', 6);
+(6, '#FFFFFF', '', '', '', 6),
+(7, '', '', 'yellow', '', 7);
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ INSERT INTO `configuracion` (`id`, `sitio_titulo_color`, `sitio_color_fondo`, `s
 --
 
 DROP TABLE IF EXISTS `contacto`;
-CREATE TABLE IF NOT EXISTS `contacto` (
+CREATE TABLE `contacto` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci default NULL,
   `email` varchar(50) collate utf8_spanish_ci NOT NULL,
@@ -104,7 +105,7 @@ INSERT INTO `contacto` (`id`, `nombre`, `email`, `comentario`, `fecha`, `telefon
 --
 
 DROP TABLE IF EXISTS `faqs`;
-CREATE TABLE IF NOT EXISTS `faqs` (
+CREATE TABLE `faqs` (
   `id` int(50) NOT NULL auto_increment,
   `pregunta` varchar(250) character set utf8 collate utf8_unicode_ci NOT NULL,
   `respuesta` text character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -129,7 +130,7 @@ INSERT INTO `faqs` (`id`, `pregunta`, `respuesta`, `fecha`, `id_sitio`) VALUES
 --
 
 DROP TABLE IF EXISTS `menu`;
-CREATE TABLE IF NOT EXISTS `menu` (
+CREATE TABLE `menu` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `item` varchar(45) collate utf8_spanish_ci NOT NULL,
   `destino` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -138,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `estado` char(1) collate utf8_spanish_ci NOT NULL,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=72 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=73 ;
 
 --
 -- Volcar la base de datos para la tabla `menu`
@@ -203,7 +204,8 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 (68, 'ABM MenÃº', '/admin/menu/', 1, '1', '1', 7),
 (69, 'ABM PÃ¡ginas', '/admin/paginas', 2, '1', '1', 7),
 (70, 'Listado de productos', '/frontend/paginas/ver/id/22', 3, '0', '1', 7),
-(71, 'Listado de Contactos', '/admin/contacto/', 30, '1', '1', 6);
+(71, 'Listado de Contactos', '/admin/contacto/', 30, '1', '1', 6),
+(72, 'Admin ConfiguraciÃ³n', '/admin/configuracion/', 10, '1', '1', 7);
 
 -- --------------------------------------------------------
 
@@ -212,7 +214,7 @@ INSERT INTO `menu` (`id`, `item`, `destino`, `posicion`, `privado`, `estado`, `i
 --
 
 DROP TABLE IF EXISTS `menus`;
-CREATE TABLE IF NOT EXISTS `menus` (
+CREATE TABLE `menus` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_sitio` int(10) unsigned NOT NULL,
   `nombre` varchar(150) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -242,7 +244,7 @@ INSERT INTO `menus` (`id`, `id_sitio`, `nombre`, `descripcion`, `posicion`, `pri
 --
 
 DROP TABLE IF EXISTS `menus_items`;
-CREATE TABLE IF NOT EXISTS `menus_items` (
+CREATE TABLE `menus_items` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `id_menu` int(10) unsigned NOT NULL,
   `item` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
@@ -274,7 +276,7 @@ INSERT INTO `menus_items` (`id`, `id_menu`, `item`, `destino`, `posicion`, `priv
 --
 
 DROP TABLE IF EXISTS `noticias`;
-CREATE TABLE IF NOT EXISTS `noticias` (
+CREATE TABLE `noticias` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -309,7 +311,7 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `contenido_ext`, `contenido
 --
 
 DROP TABLE IF EXISTS `paginas`;
-CREATE TABLE IF NOT EXISTS `paginas` (
+CREATE TABLE `paginas` (
   `id` int(10) NOT NULL auto_increment,
   `titulo` varchar(150) collate utf8_spanish_ci NOT NULL,
   `contenido` text collate utf8_spanish_ci NOT NULL,
@@ -352,7 +354,7 @@ INSERT INTO `paginas` (`id`, `titulo`, `contenido`, `fecha`, `id_usuario`, `id_s
 --
 
 DROP TABLE IF EXISTS `paginas_archivos`;
-CREATE TABLE IF NOT EXISTS `paginas_archivos` (
+CREATE TABLE `paginas_archivos` (
   `id_pagina` tinyint(10) NOT NULL,
   `id_archivo` tinyint(10) NOT NULL,
   PRIMARY KEY  (`id_pagina`,`id_archivo`)
@@ -374,7 +376,7 @@ INSERT INTO `paginas_archivos` (`id_pagina`, `id_archivo`) VALUES
 --
 
 DROP TABLE IF EXISTS `paginas_menu`;
-CREATE TABLE IF NOT EXISTS `paginas_menu` (
+CREATE TABLE `paginas_menu` (
   `id_pagina` int(255) NOT NULL,
   `id_menu` int(255) NOT NULL,
   `link` varchar(255) collate utf8_spanish_ci NOT NULL,
@@ -390,10 +392,12 @@ CREATE TABLE IF NOT EXISTS `paginas_menu` (
 INSERT INTO `paginas_menu` (`id_pagina`, `id_menu`, `link`, `titulo`, `alt`) VALUES
 (6, 1, 'http://infouruguay.codigolibre.net/serron', 'Quieres saber más?', 'Link a ver más'),
 (6, 2, 'http://enriqueplace.blogspot.com', 'Artículos de interés', 'más info'),
-(1, 1, 'http://localhost', 'prueba', 'texto alternativo'),
+(1, 1, 'http://localhost', 'prueba', 'texto alternativo 2'),
 (1, 2, 'http://localhost/surforce-cms/', 'menÃº dos', 'alternativo dos cms dos'),
 (0, 1, '1', '1', '1'),
-(14, 1, 'uno', 'uno', 'uno');
+(14, 1, 'uno', 'uno', 'uno'),
+(0, 3, 'prueba', 'prueba', 'prueba'),
+(1, 3, 'http://localhost/surforce-cms', 'Tres', 'CMS');
 
 -- --------------------------------------------------------
 
@@ -402,7 +406,7 @@ INSERT INTO `paginas_menu` (`id_pagina`, `id_menu`, `link`, `titulo`, `alt`) VAL
 --
 
 DROP TABLE IF EXISTS `sitios`;
-CREATE TABLE IF NOT EXISTS `sitios` (
+CREATE TABLE `sitios` (
   `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(50) collate utf8_spanish_ci NOT NULL,
   `titulo` varchar(100) collate utf8_spanish_ci NOT NULL,
@@ -433,7 +437,7 @@ INSERT INTO `sitios` (`id`, `nombre`, `titulo`, `descripcion`, `fecha_creacion`,
 --
 
 DROP TABLE IF EXISTS `styles_propiedades`;
-CREATE TABLE IF NOT EXISTS `styles_propiedades` (
+CREATE TABLE `styles_propiedades` (
   `id_propiedad` int(11) NOT NULL auto_increment,
   `propiedad` varchar(32) collate utf8_spanish_ci NOT NULL,
   PRIMARY KEY  (`id_propiedad`)
@@ -573,7 +577,7 @@ INSERT INTO `styles_propiedades` (`id_propiedad`, `propiedad`) VALUES
 --
 
 DROP TABLE IF EXISTS `styles_propiedades_x_selectores`;
-CREATE TABLE IF NOT EXISTS `styles_propiedades_x_selectores` (
+CREATE TABLE `styles_propiedades_x_selectores` (
   `id_selector` int(11) NOT NULL,
   `id_propiedad` int(11) NOT NULL,
   `valor` varchar(64) collate utf8_spanish_ci default NULL,
@@ -625,7 +629,7 @@ INSERT INTO `styles_propiedades_x_selectores` (`id_selector`, `id_propiedad`, `v
 --
 
 DROP TABLE IF EXISTS `styles_selectores`;
-CREATE TABLE IF NOT EXISTS `styles_selectores` (
+CREATE TABLE `styles_selectores` (
   `id_selector` int(11) NOT NULL auto_increment,
   `selector` varchar(64) collate utf8_spanish_ci NOT NULL,
   `descripcion` varchar(255) collate utf8_spanish_ci default NULL,
@@ -660,7 +664,7 @@ INSERT INTO `styles_selectores` (`id_selector`, `selector`, `descripcion`) VALUE
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
+CREATE TABLE `usuarios` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `usuario` varchar(32) collate utf8_spanish_ci NOT NULL,
   `password` varchar(32) collate utf8_spanish_ci NOT NULL,
@@ -672,14 +676,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `modificado` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   `id_sitio` tinyint(5) NOT NULL,
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=10 ;
+  UNIQUE KEY `usuario` (`usuario`),
+  UNIQUE KEY `usuario_2` (`usuario`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=13 ;
 
 --
 -- Volcar la base de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nombre`, `apellido`, `mail`, `estado`, `creado`, `modificado`, `id_sitio`) VALUES
-(6, 'eplace', 'pepe', 'Enrique', 'Place de Cuadro', 'enriqueplace@gmail.com', 1, '2007-07-25 23:45:28', '2008-05-02 02:03:29', 6),
-(7, 'admin', 'admin', 'Admin', 'Admins', 'admin@surforce.com', 1, '2008-01-26 21:38:25', '2008-05-02 10:37:15', 1),
-(8, 'pepe', 'pepe', 'Pepe', 'Perez', 'pepe@perez.com', 0, '2008-05-02 02:10:35', '2008-05-05 23:40:38', 6);
+(6, 'eplace', '926e27eecdbc7a18858b3798ba99bddd', 'Enrique', 'Place de Cuadro', 'enriqueplace@gmail.com', 1, '2007-07-25 23:45:28', '2008-05-14 23:31:48', 6),
+(7, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', 'Admins', 'admin@surforce.com', 1, '2008-01-26 21:38:25', '2008-05-14 23:31:09', 1),
+(8, 'pepe', '926e27eecdbc7a18858b3798ba99bddd', 'Pepe', 'Perez', 'pepe@perez.com', 0, '2008-05-02 02:10:35', '2008-05-14 23:32:54', 6),
+(12, 'mperez', 'b97d1e22357f78dcf2657968adc7a009', 'Marcelo', 'Perez', 'mperez@banco.com', 1, '2008-05-15 00:01:10', '2008-05-15 00:03:20', 6);

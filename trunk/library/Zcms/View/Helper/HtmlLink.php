@@ -12,6 +12,7 @@ class Zcms_View_Helper_HtmlLink
      */
     public function htmlLink( $url, $text, $alt = '')
     {
-        return '<A href="'.$url.'" ALT = "'.$alt.'">'.$text.'</A>';         
+        return '<A href="'.$url.'" title ="'.$alt.'">'.$text.'</A>';         
     }
 }
+?>

@@ -35,7 +35,7 @@ class Frontend_ContactoController extends Zcms_Generic_Controller
                     'fecha' 	=> $fecha,
                 	'id_sitio'	=> $this->session->sitio->id
                 );
-                $contacto = new contacto();
+                $contacto = new Contacto();
                 $contacto->insert($data);
                 //Enviamos el correo.
                 $destinatario = $email;

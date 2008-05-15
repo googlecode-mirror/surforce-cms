@@ -1,6 +1,6 @@
 <?php
-class PaginasArchivos extends Zend_Db_Table {
-	
+class PaginasArchivos extends Zend_Db_Table 
+{	
 	protected $_name = 'paginas_archivos';
 
 	public static function getArchivos( $id_pagina)
