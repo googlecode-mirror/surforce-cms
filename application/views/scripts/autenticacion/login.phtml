@@ -2,6 +2,11 @@
 	
 	    <form id="form-login" action="<?php echo $this->baseUrl ?>/frontend/autenticacion/login" method="post">
 	
+			<div>
+	    		Su dirección IP actual es: <strong><?php echo $_SERVER['REMOTE_ADDR']; ?></strong>
+	    	</div>
+	    	<br/>
+	    	
 	        <div>
 	            <label for="usuario">Usuario: </label>
 	            <input type="text" id="usuario" name="usuario" value=""/>
@@ -15,6 +20,7 @@
 	        <div id="formbutton">
 	            <input type="submit" name="login" value="Iniciar Sesión" onclick="login_validar();" />
 	        </div>
+	        
 	    </form>
 	    
 	</div>
