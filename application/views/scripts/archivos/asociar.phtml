@@ -20,7 +20,7 @@
 	    			<?php endif; ?>
 	    		>
 	    	</td>
-	    	<td><?php echo $archivo['nombre'];?></td>
+	    	<td><a href="<?php echo $this->baseUrl.'/userfiles/'.$archivo['nombre'];?>"><?php echo $archivo['nombre'];?></a></td>
 <!--	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>-->
 	    	<td><?php echo $archivo['descripcion']; ?></td>
 	  	</tr>
