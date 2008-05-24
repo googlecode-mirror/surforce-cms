@@ -53,7 +53,9 @@ class Admin_PaginasController extends Zcms_Generic_ControllerAdmin
 				$pagina = new Paginas();
 				$pagina->insert($data);
 				$this->_redirect( '/admin/paginas/' );
-				return;
+				return;			
+			}else{
+				$this->view->message = "[Atención: Debe llenarse el campo título]";
 			}
 		}
 		$this->view->pagina = new stdClass ( );

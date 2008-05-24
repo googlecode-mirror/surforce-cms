@@ -54,7 +54,9 @@ class Admin_NoticiasController extends Zcms_Generic_ControllerAdmin
                 $noticia->insert( $data );
                 $this->_redirect('/admin/noticias/');
                 return;
-            }
+            }else{
+				$this->view->message = "[Atención: Deben llenarse los campos título y el contenido]";
+			}
         }
         $this->view->noticia = new stdClass();
         $this->view->noticia->id = null;
