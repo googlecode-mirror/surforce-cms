@@ -44,7 +44,7 @@ class Admin_PaginasController extends Zcms_Generic_ControllerAdmin
 			$titulo = trim($filter->filter($this->_request->getPost('titulo')));
 			$contenido = $this->_request->getPost('contenido');
 
-			if ($titulo != '' && $contenido) {
+			if ($titulo != '') {
 				$data = array (
 					'titulo' 	=> $titulo,
 					'contenido' => $contenido,
