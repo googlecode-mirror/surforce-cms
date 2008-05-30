@@ -23,6 +23,7 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 		$this->view->baseUrl = $this->_request->getBaseUrl ();
 
 		Zend_Loader::loadClass ( 'Configuracion' );
+		
 		$this->view->user = Zend_Auth::getInstance ()->getIdentity ();
 		$this->info = $this->registry->get('personalizacion');
 		$this->view->title = $this->info->sitio->index->index->titulo;
@@ -35,6 +36,7 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 
 		/* información de sitios y subsitios */
 		$this->view->sitios = Sitios::getAll(null,null,"orden")->toArray();
+		
 		if( isset($this->session->sitio->id)){
 			$this->view->configuracion = Configuracion::getConfiguracion($this->session->sitio->id);
 		}else{
@@ -67,20 +69,28 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 	}
 	protected function cargarMenuHorizontal()
 	{
+
 		$opciones = array();
 
 		/*
     	 * FIXME: eliminar los tildes para las urls ( url => nombre)
     	 */
+		
+		$opciones = Sitios::getAll(null, null, "orden")->toArray();
+		
+		if( isset($opciones) && count($opciones) > 0 ){
 
-		foreach( Sitios::getAll(null, null, "orden")->toArray() as $op ){
-			$opciones[] = array(
-				'url' => '/default/index/index/sitio/'.strtolower($op['nombre']),
-				'alt' =>  strtolower($op['nombre']),
-				'text' => ucfirst($op['titulo'])
-			);
+			foreach( $opciones as $op ){
+				$ret[] = array(
+					'url' => '/default/index/index/sitio/'.strtolower($op['nombre']),
+					'alt' =>  strtolower($op['nombre']),
+					'text' => ucfirst($op['titulo'])
+				);
+			}
+			$this->view->menuHorizontalOpciones = $ret;
+		}else{
+			$this->view->menuHorizontalOpciones = array();
 		}
-		$this->view->menuHorizontalOpciones = $opciones;
 	}
 }
 ?>
