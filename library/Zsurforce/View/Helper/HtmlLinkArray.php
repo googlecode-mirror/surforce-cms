@@ -11,11 +11,16 @@ class Zsurforce_View_Helper_HtmlLinkArray
      * @return string The element XHTML.
      */
     public function htmlLinkArray(array $param, $base = null )
-    {
-        return
-        	'<A href="' . $base . $param['url'].
-        	'" title ="' . $param['alt'] .
-        	'">' . $param['text'] . '</A>';
+    {    	   	
+    	if( count($param) > 0){
+    		$ret = '<A href="' . $base . $param['url'].
+        		'" title ="' . $param['alt'] .
+        		'">' . $param['text'] . '</A>'; 	
+    	}else{
+    		$ret = NULL;
+    	}
+        return $ret;
+        	
     }
 }
 ?>
