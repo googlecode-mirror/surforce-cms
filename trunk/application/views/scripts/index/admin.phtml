@@ -1,0 +1,76 @@
+<h1><?php echo $this->title; ?></h1>
+
+<p>Bienvenido a la sección de administración de SURFORCE-CMS.</p> 
+
+<p>La filosofía del sistema es que <em>"todo es un enlace (link)"</em>, por 
+lo tanto todas las secciones se pueden editar y cada referencia
+a una funcionalidad será siempre un simple enlace.</p>
+
+<p>El sistema cuenta con enlaces genéricos que le permitirán administrar
+todos los sub-sitios / secciones de su sistema, permitiendo a su vez poder 
+incorporar en cada uno el tipo de funcionalidad que necesite, 
+como así también si quiere que sea de acceso público o privado.</p>
+
+<div id="modulos-publicos">
+	<strong>Módulos Por Defecto Públicos</strong>
+	<br/><br/>
+	<table>
+		<tr>
+	    	<th>Noticias</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/frontend/noticias/">/frontend/noticias/</a></td>
+	    	<th>FAQs</th>
+	  	  <td><a href="<?php echo $this->baseUrl; ?>/frontend/faqs/">/frontend/faqs/</a></td>
+		</tr>
+		<tr>    
+	  	  	<th>Contacto</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/frontend/contacto/">/frontend/contacto/</a></td>
+	  	</tr>
+	</table>
+</div>
+<br/><br/>
+<strong>Módulos Por Defecto Privados</strong>
+<br/><br/>
+<div id="modulos-privados">
+
+	<table>
+		<tr>
+	    	<th>ABM Menú Principal</th>
+	  	  	<td><a href="<?php echo $this->baseUrl; ?>/admin/menu/">/admin/menu/</a></td>
+	  	  	<th>ABM Menús Cuadros</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/menus/">/admin/menus/</a></td>	    	
+		</tr>
+		<tr>    
+	  	  	<th>ABM Configuración</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/configuracion/">/admin/configuracion/</a></td>
+	    	<th>ABM Sitios</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/sitios/">/admin/sitios/</a></td>
+	  	</tr>
+	  	<tr>
+	  		<th>ABM Usuarios</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/">/admin/usuarios/</a></td>
+	    	<th>ABM Páginas</th>
+	  	    <td><a href="<?php echo $this->baseUrl; ?>/admin/paginas/">/admin/paginas/</a></td>	    	
+	  	</tr>
+	  	<tr>
+	  		<th>ABM Noticias</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/noticias/">/admin/noticias/</a></td>	    	
+	    	<th>ABM FAQs</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/faqs/">/admin/faqs/</a></td>
+	  	</tr>
+	  	<tr>	    	
+	    	<th>ABM Archivos</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/archivos/">/admin/archivos/</a></td>	  	
+	    	<th>Listado Contactos</th>
+	    	<td><a href="<?php echo $this->baseUrl; ?>/admin/contacto/">/admin/contacto/</a></td>
+	  	</tr>
+	</table>
+	<p>Todos los enlaces que aquí se listan pueden ser agregados en el menú principal (o en cualquier 
+	parte del sistema que requiere un enlace como destino) o directamente ingresando la url en el navegador.</p>
+	 
+	 <strong>Administrar un Sitio en Particular</strong>
+	<p>Para hacerlo en un sitio en particular deberá primero seleccionar el sitio (en la parte superior, donde dice "Secciones") 
+	y luego entrar al <a href="<?php echo $this->baseUrl; ?>/admin/">MENÚ ADMIN</a> (esta página) y posteriormente 
+	a <a href="<?php echo $this->baseUrl; ?>/admin/menu/">ABM Menú Principal</a>.
+
+	</p>
+</div>

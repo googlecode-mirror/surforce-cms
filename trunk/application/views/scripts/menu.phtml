@@ -25,8 +25,11 @@
     $stmt = $db->query($sql);
     $enlaces = $stmt->fetchAll();
 
-    //var_dump($enlaces);
-    
+    if( $this->user ){
+   		echo "<strong><a href='".$this->baseUrl."/admin/'>[MENÚ ADMIN]</A></strong>";
+    }
+    	
+    		
     echo "<ul>";
     $tipo_menu = "";
     $tipo_menu_desc = "";
