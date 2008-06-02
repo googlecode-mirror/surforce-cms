@@ -5,7 +5,7 @@ class Admin_IndexController extends Zcms_Generic_Controller
 	{
 		Zend_Loader::loadClass ( 'Configuracion' );
 		
-		$this->view->title = "Admin";	
+		$this->view->title = "Menú Admin";	
 		$this->render('admin');
 	}
 }
