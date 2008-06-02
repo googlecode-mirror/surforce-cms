@@ -55,7 +55,7 @@ class Frontend_AutenticacionController extends Zcms_Generic_Controller
                 	Usuarios::isValid();
                     $data = $autAdapter->getResultRowObject(null, 'password');
                     $aut->getStorage()->write($data);
-                    $this->_redirect('/');
+                    $this->_redirect('/admin/');
                 } else {
                     $this->view->message = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
                 }
