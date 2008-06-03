@@ -1,35 +1,65 @@
 <h2><?php echo $this->escape ( $this->subtitle );?></h2>
 
-<form action="<?php echo $this->baseUrl?>/admin/configuracion/<?php	echo $this->action;?>" method="post">
+<form action="<?php echo $this->baseUrl;?>/admin/configuracion/<?php	echo $this->action;?>" method="post">
+	
+	
+
 	<table>
 		<tr>
 			<th nowrap>color fondo:</th>
 			<td>
-				<input 
-					type="text" 
-					name="sitio_color_fondo" 
-					size="32" 
-					value="<?php echo $this->escape ( trim ( $this->configuracion->sitio_color_fondo ) );?>" />
+				<label>
+					<img 
+						id="myRainbow" 
+						src="<?php echo $this->baseUrl;?>/public/scripts/mooRainBow/images/rainbow.png" 
+						alt="[r]" 
+						width="16" 
+						height="16" />
+					<input 
+						id="myInput"
+						type="text" 
+						name="sitio_color_fondo" 
+						size="10" 
+						value="<?php echo $this->escape ( trim ( $this->configuracion->sitio_color_fondo ) );?>" />
+				</label>
 			</td>
 		</tr>
 		<tr>
 			<th nowrap>color cabezal:</th>
 			<td>
-				<input 
-					type="text" 
-					name="sitio_color_cabezal" 
-					size="32"
-					value="<?php echo $this->escape ( trim ( $this->configuracion->sitio_color_cabezal ) );?>" />
+				<label>
+					<img 
+						id="myRainbow2" 
+						src="<?php echo $this->baseUrl;?>/public/scripts/mooRainBow/images/rainbow.png" 
+						alt="[r2]" 
+						width="16" 
+						height="16" />
+					<input 
+						id="myInput2"
+						type="text" 
+						name="sitio_color_cabezal" 
+						size="10" 
+						value="<?php echo $this->escape ( trim ( $this->configuracion->sitio_color_cabezal ) );?>" />
+				</label>
 			</td>
 		</tr>
 		<tr>
 			<th nowrap>color pie:</th>
 			<td>
-				<input 
-					type="text" 
-					name="sitio_color_pie" 
-					size="32"
-					value="<?php echo $this->escape ( trim ( $this->configuracion->sitio_color_pie ) );?>" />
+				<label>
+					<img 
+						id="myRainbow3" 
+						src="<?php echo $this->baseUrl;?>/public/scripts/mooRainBow/images/rainbow.png" 
+						alt="[r3]" 
+						width="16" 
+						height="16" />
+					<input 
+						id="myInput3"
+						type="text" 
+						name="sitio_color_pie" 
+						size="10" 
+						value="<?php echo $this->escape ( trim ( $this->configuracion->sitio_color_cabezal ) );?>" />
+				</label>			
 			</td>
 		</tr>
 	</table>

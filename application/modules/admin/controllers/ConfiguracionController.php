@@ -51,6 +51,7 @@ class Admin_ConfiguracionController extends Zcms_Generic_ControllerAdmin
 		}
 		$this->view->action = "modificar";
 		$this->view->buttonText = "Modificar";		
+		$this->view->scriptJs = "mooRainbow";
 	}
 }
 ?>
