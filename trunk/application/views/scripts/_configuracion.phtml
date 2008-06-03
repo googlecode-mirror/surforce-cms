@@ -10,21 +10,21 @@
 	DIV#cabecera{	  
 	  border:1px solid #cccccc;
 	  padding:10px;
-	  background-color:<?php
-	  if( isset($this->configuracion->sitio_color_cabezal)) {
-	  	echo $this->configuracion->sitio_color_cabezal;
+	  <?php // FIXME por invocaciones a traves de js
+	  if($this->configuracion->sitio_color_cabezal != '') {
+	  	echo "background-color:".$this->configuracion->sitio_color_cabezal.";";
 	  }
-	  ?>;
+	  ?>
 	}
 	DIV#pie{
 	  clear:both;
 	  border-top:1px solid #CCCCCC;
 	  text-align:center;
-	  background-color:<?php 
-	  if (isset($this->configuracion->sitio_color_pie)) {
-	  	echo $this->configuracion->sitio_color_pie;
+	  <?php // FIXME por invocaciones a traves de js
+	  if ($this->configuracion->sitio_color_pie != '') {
+	  	echo "background-color:".$this->configuracion->sitio_color_pie.";";
 	  }
-	  ?>;
+	  ?>
 	  padding:5px;
 	}
 </style> 
