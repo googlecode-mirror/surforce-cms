@@ -9,11 +9,13 @@
 		<?php echo $this->render('_scripts.phtml'); ?>
 		<?php echo $this->render('_configuracion.phtml'); ?>	
   	</head>
-  	<body bgcolor="<?php 
-  		if( isset($this->configuracion->sitio_color_fondo)) {
-  			echo $this->configuracion->sitio_color_fondo;
-  		}  		
-  	?>">
+	<?php 
+  	if($this->configuracion->sitio_color_fondo != '') {
+  		echo "<body bgcolor='".$this->configuracion->sitio_color_fondo."'>";
+  	}else{
+		echo "<body>";  		  		
+  	}
+  	?>
 
 		<div id="contenedor">
 		
