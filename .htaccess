@@ -15,3 +15,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*) index.php
 
+# Anular redirección
+RewriteCond %{REQUEST_URI} !/public/scripts/mooRainbow/images/
