@@ -25,9 +25,8 @@
 
 		window.addEvent('domready', function() {
 			var r = new MooRainbow('myRainbow', {
-				imgPath: '/public/scripts/mooRainbow/images/',
-
-                                id: 'rain1',
+				imgPath: '<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/images/',
+                id: 'rain1',
 				'startColor': [58, 142, 246],
 				'onChange': function(color) {
 					$('myInput').value = color.hex;
@@ -37,9 +36,8 @@
 
 		window.addEvent('domready', function() {
 			var r2 = new MooRainbow('myRainbow2', {
-				imgPath: '/public/scripts/mooRainbow/images/',
-                                id: 'rain2',
-
+				imgPath: '<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/images/',
+                id: 'rain2',
 				'startColor': [58, 142, 246],
 				'onChange': function(color2) {
 					$('myInput2').value = color2.hex;
@@ -47,13 +45,11 @@
 			});
 		});
 		window.addEvent('domready', function() {
-
 			var r3 = new MooRainbow('myRainbow3', {
-				imgPath: '/public/scripts/mooRainbow/images/',
-                                id: 'rain3',
+				imgPath: '<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/images/',
+                id: 'rain3',
 				'startColor': [58, 142, 246],
 				'onChange': function(color3) {
-
 					$('myInput3').value = color3.hex;
 				}
 			});
