@@ -77,6 +77,7 @@ DIV#mensaje {
 
 DIV#boton_formulario {
 	width: 205px;
+	margin-left: 150px;
 }
 
 DIV#boton_formulario INPUT {
@@ -120,6 +121,7 @@ DIV#pagina-contenido {
 
 DIV#login {
 	text-align: center;
+	float: center;
 }
 
 DIV#login-form {
@@ -285,8 +287,7 @@ a.squarebutton span{
 	background: transparent url('images/square-orange-right.gif') no-repeat top right;
 	display: block;
 	padding: 4px 9px 4px 0; /*Set 9px below to match value of 'padding-left' value above*/
-	font-weight: bold;
-	
+	font-weight: bold;		
 }
 a.squarebutton:hover{ /* Hover state CSS */
 	background-position: bottom left;
@@ -299,4 +300,41 @@ a.squarebutton:hover span{ /* Hover state CSS */
 	overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
 	width: 100%;
 	
+}
+
+/* Nueva estética para los formularios */
+
+.cssform p{
+width: 300px;
+clear: left;
+margin: 0;
+padding: 5px 0 8px 0;
+padding-left: 155px; /*width of left column containing the label elements*/
+border-top: 1px dashed gray;
+height: 1%;
+}
+
+.cssform label{
+font-weight: bold;
+float: left;
+margin-left: -155px; /*width of left column*/
+width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+
+.cssform input[type="text"]{ /*width of text boxes. IE6 does not understand this attribute*/
+width: 180px;
+}
+
+.cssform textarea{
+width: 250px;
+height: 150px;
+}
+
+/*.threepxfix class below:
+Targets IE6- ONLY. Adds 3 pixel indent for multi-line form contents.
+to account for 3 pixel bug: http://www.positioniseverything.net/explorer/threepxtest.html
+*/
+
+* html .threepxfix{
+margin-left: 3px;
 }

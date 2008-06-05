@@ -1,5 +1,7 @@
 <h2>Listado de archivos</h2>
- <form action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>" method="post">
+ <form class="cssform" action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>" method="post">
+ <p>
+ 
 	<table>
 	  <tr>
 	    <th>#</th>
@@ -30,6 +32,7 @@
           <input type="hidden" name="pagina" value="<?php echo $this->pagina; ?>" />
           <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
     </div>
+    </p>
 </form>
 <br><br><br/>
 <?php $url = $this->baseUrl.'/admin/paginas/modificar/id/'.$this->pagina;?>
