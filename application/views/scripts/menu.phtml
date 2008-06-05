@@ -141,13 +141,25 @@
 
 	?>
 
-    <div id="login">
+    <div id="login" class="buttonwrapper">
         <?php if($this->user) : ?>
-            <p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre) . " " . $this->escape($this->user->apellido);?>
-            <br/><br/>
-            <a href="<?php echo $this->baseUrl ?>/frontend/autenticacion/logout">[Cerrar sesión]</a></p>
+            <p id="logueado">Usuario logueado como <?php echo $this->escape($this->user->nombre)." ".$this->escape($this->user->apellido);?>
+	            <br/><br/>
+	           	
+					<a class="squarebutton" href="<?php echo $this->baseUrl ?>/frontend/autenticacion/logout">
+						<span>Cerrar Sesión</span>
+					</a>
+				
+	        </p>
         <?php else : ?>
-            <a href="<?php echo $this->baseUrl ?>/frontend/autenticacion/login">[Iniciar sesión]</a></p>
+        	
+           		
+					<a class="squarebutton" href="<?php echo $this->baseUrl ?>/frontend/autenticacion/login">
+						<span>Iniciar Sesión</span>
+					</a>
+				
+			
+            
         <?php endif; ?>
     </div>
 </div>

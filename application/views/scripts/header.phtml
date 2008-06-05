@@ -10,7 +10,7 @@
 		<?php echo $this->render('_configuracion.phtml'); ?>	
   	</head>
 	<?php 
-  	if($this->configuracion->sitio_color_fondo != '') {
+  	if( isset($this->configuracion->sitio_color_fondo)) {
   		echo "<body bgcolor='".$this->configuracion->sitio_color_fondo."'>";
   	}else{
 		echo "<body>";  		  		
