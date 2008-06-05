@@ -1,33 +1,33 @@
     <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
-    <form action="<?php echo $this->baseUrl ?>/admin/usuarios/<?php echo $this->action; ?>" method="post">
-        <div>
+    <form class="cssform" action="<?php echo $this->baseUrl ?>/admin/usuarios/<?php echo $this->action; ?>" method="post">
+        <p>
             <label for="usuario">Usuario:</label>
             <input type="text" name="usuario" size="32" value="<?php echo $this->escape(trim($this->usuario->usuario));?>"/>
-        </div>
-        <div>
+        </p>
+        <p>
             <label for="password">Password:</label>
             <input type="password" name="password" size="32" value="<?php echo $this->escape($this->usuario->password);?>"/>
-        </div>
-        <div>
+        </p>
+        <p>
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" size="40" value="<?php echo $this->escape($this->usuario->nombre);?>"/>
-        </div>
-        <div>
+        </p>
+        <p>
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" size="40" value="<?php echo $this->escape($this->usuario->apellido);?>"/>
-        </div>
-        <div>
+        </p>
+        <p>
             <label for="mail">Mail:</label>
             <input type="text" name="mail" size="64" value="<?php echo $this->escape($this->usuario->mail);?>"/>
-        </div>
-		<div>
+        </p>
+		<p>
 			<label for="estado">Estado:</label> 
 			<input type='radio' name="estado" value="1" <?php if ($this->escape($this->usuario->estado) == 1) echo 'checked="checked"'; ?>>Activo
 			<input type='radio' name="estado" value="0" <?php if ($this->escape($this->usuario->estado) == 0) echo 'checked="checked"'; ?>>Inactivo
-		</div>
+		</p>
 	
-        <br> (*) Todos los campos son obligatorios <br><br>
+        <p> (*) Todos los campos son obligatorios </p>
 
         <div id="boton_formulario">
             <input type="hidden" name="id" value="<?php echo $this->usuario->id; ?>" />

@@ -1,6 +1,6 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
-<form action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>"
+<form class="cssform" action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>"
 	enctype="multipart/form-data"
 	method="post">
 	<!--
@@ -11,15 +11,15 @@
 	 -->
 
 	<?php if($this->action != 'modificar'): ?>
-		<div>
+		<p>
 	    	<label for="archivo">Archivo:</label>
 	        <input type="file" name="archivo" value=""/>
-		</div>
+		</p>
 	<?php endif; ?>
-	<div>
+	<p>
     	<label for="descripcion">Descripción:</label>
         <input type="text" name="descripcion" size="50" value="<?php echo $this->escape(trim($this->archivo->descripcion));?>"/>
-	</div>
+	</p>
 
     <div id="boton_formulario">
 	    <input type="hidden" name="id" value="<?php echo $this->archivo->id; ?>" />
