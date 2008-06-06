@@ -2,12 +2,12 @@
 
 <?php if ($this->menupag) :?>
 
-  <form action="<?php echo $this->baseUrl ?>/admin/menupag/eliminar" method="post">
-	<p>¿Está seguro que quiere eliminar el menu de la pagina 
+  <form class="cssform" action="<?php echo $this->baseUrl ?>/admin/menupag/eliminar" method="post">
+	¿Está seguro que quiere eliminar el menu de la pagina 
 		'<?php echo $this->escape($this->menupag->titulo); ?>'?
-	</p>
+<br><br>
 
-	<div id="boton_formulario">
+	<div>
 		<input 
 			type="hidden" 
 			name="id"

@@ -1,20 +1,21 @@
 <h2><?php echo $this->escape ( $this->subtitle );?></h2>
 
-<form action="<?php	echo $this->baseUrl?>/admin/faqs/<?php echo $this->action;?>" method="post">
-	<div>
+<form class="cssform" action="<?php	echo $this->baseUrl?>/admin/faqs/<?php echo $this->action;?>" method="post">
+	<p>
 		<label for="pregunta">Pregunta</label>
 		<input 
 			type="text" 
 			name="pregunta" 
 			size="100"
 			value="<?php echo $this->escape ( trim ( $this->faq->pregunta ) );?>" />
-	</div>
+	</p>
 	<br>	
-	<div>
-		<label for="respuesta">Respuesta</label>    	
+	<p>
+		<label for="respuesta">Respuesta</label>		
+		<br>    	
     	<?php echo $this->formFCKeditor('respuesta', $this->faq->respuesta, '100%', 300 );?>
-    </div>
-	<div id="boton_formulario">
+    </p>
+	<div>
 		<input type="hidden" name="id" value="<?php	echo $this->faq->id;?>"/> 
 		<input type="submit" name="add" value="<?php echo $this->escape ( $this->buttonText );?>" />
 	</div>

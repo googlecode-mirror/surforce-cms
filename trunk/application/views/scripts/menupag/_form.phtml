@@ -1,29 +1,31 @@
 <h2><?php echo $this->escape($this->subtitle);?></h2>
 
-<form action="<?php echo $this->baseUrl?>/admin/menupag/<?php echo $this->action;?>" method="post">
-	<input 
+<form class="cssform" action="<?php echo $this->baseUrl?>/admin/menupag/<?php echo $this->action;?>" method="post">
+	<p>
+		<input 
 		type="hidden" 
 		name="id_pagina" 
 		size="2"
 		value="<?php echo $this->escape(trim($this->menupag->id_pagina));?>"/>
+	</p>
 
-	<div>
+	<p>
 		<label for="id_menu">id menu:</label>
 		<input 
 			type="text"
 			name="id_menu" 
 			size="2"
 			value="<?php echo $this->escape(trim($this->menupag->id_menu));?>"/>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="titulo">Título:</label>
 		<input 
 			type="text" 
 			name="titulo" 
 			size="50"
 			value="<?php echo $this->escape(trim($this->menupag->titulo));?>"/>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="link">Link:</label>
 		<input 
 			type="text" 
@@ -31,8 +33,8 @@
 			size="50" 
 			maxlength="100"
 			value="<?php echo $this->escape(trim($this->menupag->link));?>"/>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="alt">Tooltip:</label>
 		<input 
 			type="text" 
@@ -40,7 +42,7 @@
 			size="50" 
 			maxlength="100"
 			value="<?php echo $this->escape(trim($this->menupag->alt));?>"/>
-	</div>
+	</p>
 	<br>
 	<div>
 		<input type="hidden" name="id_pag" value="<?php	echo $this->id;?>"/>

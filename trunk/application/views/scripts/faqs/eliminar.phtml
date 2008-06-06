@@ -1,8 +1,9 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <?php if ($this->faq):?>
-	<form action="<?php echo $this->baseUrl ?>/admin/faqs/eliminar" method="post">
-		<p>¿Está seguro que quiere eliminar la FAQ '<?php echo $this->escape($this->faq->pregunta); ?>'?</p>
+	<form class="cssform" action="<?php echo $this->baseUrl ?>/admin/faqs/eliminar" method="post">
+		¿Está seguro que quiere eliminar la FAQ '<?php echo $this->escape($this->faq->pregunta); ?>'?
+		<br><br>
 		<div id="boton_formulario">
 			<input type="hidden" name="id" value="<?php echo $this->faq->id; ?>" />
 			<input type="submit" name="del" value="Si"/> 
