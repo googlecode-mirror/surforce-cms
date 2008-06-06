@@ -3,11 +3,9 @@ BODY {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 }
-
 H1 {
 	
 }
-
 A {
 	color: #339933;
 }
@@ -25,7 +23,6 @@ DIV#menu ul,DIV#menu li {
 	margin-left: 10px;
 	padding: 0;
 }
-
 DIV#menu {
 	width: 200px;
 	overflow: hidden;
@@ -34,34 +31,28 @@ DIV#menu {
 	background-color: #FDF7F2;
 	border: 1px dashed #CCCCCC;
 }
-
 DIV#menu-pagina {
 	/*background: #FDF7F2;*/
 	/*border: 1px dashed #CCCCCC;*/
 	width: 100%;
 }
-
 DIV#contenido {
 	width: 600px;
 	padding: 15px;
 	float: left;
 	/*border-left: 1px solid #CCCCCC;*/
 }
-
 TH {
 	background-color: #EEEEEE;
 	padding: 0 3px 0 3px;
 }
-
 TD {
 	border-bottom: 1px solid #CCCCCC;
 	border-right: 1px solid #CCCCCC;
 	padding: 2px;
 }
-
 label {
 	width: 100px;
-	display: block;
 	float: left;
 	text-align: left;
 }
@@ -305,29 +296,31 @@ a.squarebutton:hover span{ /* Hover state CSS */
 /* Nueva estética para los formularios */
 
 .cssform p{
-width: 300px;
-clear: left;
-margin: 0;
-padding: 5px 0 8px 0;
-padding-left: 155px; /*width of left column containing the label elements*/
-border-top: 1px dashed gray;
-height: 1%;
+	width: 300px;
+	clear: left;
+	margin: 0;
+	padding: 5px 0 8px 0;
+	padding-left: 155px; /*width of left column containing the label elements*/
+	border-top: 1px dashed gray;
+	height: 1%;	
 }
 
 .cssform label{
-font-weight: bold;
-float: left;
-margin-left: -155px; /*width of left column*/
-width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+	font-weight: bold;
+	float: left;
+	margin-left: -155px; /*width of left column*/
+	width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+	
 }
 
 .cssform input[type="text"]{ /*width of text boxes. IE6 does not understand this attribute*/
-width: 180px;
+	width: 180px;
+	
 }
 
 .cssform textarea{
-width: 250px;
-height: 150px;
+	width: 250px;
+	height: 150px;
 }
 
 /*.threepxfix class below:
@@ -336,10 +329,11 @@ to account for 3 pixel bug: http://www.positioniseverything.net/explorer/threepx
 */
 
 * html .threepxfix{
-margin-left: 3px;
+	margin-left: 3px;
 }
 
-/* Nuevo menú horizontal */
+/* NUEVO MENU HORIZONTAL */
+
 .arrowlistmenu{
 	width: 180px; /*width of menu*/
 }
@@ -384,3 +378,4 @@ margin-left: 3px;
 	/*color: #A70303;*/
 	background-color: #F3F3F3;
 }
+
