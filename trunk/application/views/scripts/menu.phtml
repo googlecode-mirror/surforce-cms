@@ -28,8 +28,10 @@
     if( $this->user ){
    		echo "<strong><a href='".$this->baseUrl."/admin/'>[MENÚ ADMIN]</A></strong>";
     }
-    	
-    		
+    	?>
+    		<div class="arrowlistmenu">
+    			<h3 class="headerbar">Menú</h3>
+    		<?php
     echo "<ul>";
     $tipo_menu = "";
     $tipo_menu_desc = "";
@@ -67,7 +69,7 @@
         	$menu_pos . $enlace['item'] . ' ' . $tipo_menu . 
         	'</a></li>';
     }
-    echo "</ul>";
+    echo "</ul></div>";
 	//- Menú Cuadros--------------------------------------------------------------------------------
 
 	if( $this->usuarioLogueado){
@@ -106,9 +108,11 @@
 				}
 			}
 			
-			echo '<div style="border:1px solid #cccccc;margin:2px;">';
-			echo '  <div class="titulo_menu">'. $cuadro_pos . $menu['nombre']. $cuadro_tipo . '</div>';
-			echo '  <div class="descripcion_menu">'.$menu['descripcion'].'</div>';
+			//echo '<div style="border:1px solid #cccccc;margin:2px;">';
+?>			<div class="arrowlistmenu"><?php
+			echo '  <h3 class="headerbar">'. $cuadro_pos . $menu['nombre']. $cuadro_tipo . '</h3>';
+			echo '  <div class="descripcion_menu">'.$menu['descripcion'].'</div><br>';
+			
 			echo "    <ul>";
 
 			$cuadro_item_pos = "";
@@ -138,8 +142,9 @@
 		//}
 		
 	}
-
 	?>
+
+	
 <br><br>
     <div id="login" class="buttonwrapper">
         <?php if($this->user) : ?>
