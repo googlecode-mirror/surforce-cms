@@ -2,12 +2,12 @@
 	<?php echo $this->paginaTitulo("Eliminar Sitio");?>
 
 	<?php if ($this->sitio) :?>
-  		<form action="<?php echo $this->baseUrl ?>/admin/sitios/eliminar" method="post">
-			<p>
+  		<form class="cssform" action="<?php echo $this->baseUrl ?>/admin/sitios/eliminar" method="post">
+			
 				¿Esta seguro que quiere eliminar el sitio 
 				'<?php echo $this->escape($this->sitio->nombre); ?>'?
-			</p>
-			<div id="boton_formulario">
+			<br><br>
+			<div>
 				<input type="hidden" name="id" value="<?php echo $this->sitio->id; ?>"/> 
 				<input type="submit" name="del" value="Si"/>
 				<input type="submit" name="del" value="No"/>

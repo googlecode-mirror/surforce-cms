@@ -44,7 +44,7 @@ $pars_url_home =  array(
 );
 ?>
 
-<form action="<?php	echo $url_action;?>" method="post">
+<form class="cssform" action="<?php	echo $url_action;?>" method="post">
 
 	<?php echo $this->formularioCampo( $pars_campo_nombre );?>
 	<?php echo $this->formularioCampo( $pars_campo_titulo );?>
@@ -52,11 +52,11 @@ $pars_url_home =  array(
 	<?php echo $this->formularioCampo( $pars_orden );?>
 	<?php echo $this->formularioCampo( $pars_url_home );?>
 
-	<div>
+	<p>
 		<label for="privado">por defecto:</label>
 		<input type='radio' name="por_defecto" value="1" <?php if ($this->escape($this->sitio->por_defecto) == 1) echo 'checked="checked"'; ?>>Si
 		<input type='radio' name="por_defecto" value="0" <?php if ($this->escape($this->sitio->por_defecto) == 0) echo 'checked="checked"'; ?>>No
-	</div>
+	</p>
 
 	<?php echo $this->formularioSubmit( $pars_submit );?>
 

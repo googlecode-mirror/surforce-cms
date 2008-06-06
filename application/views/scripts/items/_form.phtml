@@ -1,7 +1,7 @@
 <h2><?php echo $this->escape ( $this->subtitle ); ?></h2>
 
-<form action="<?php echo $this->baseUrl?>/admin/items/<?php	echo $this->action;?>" method="post">
-	<div>
+<form class="cssform" action="<?php echo $this->baseUrl?>/admin/items/<?php	echo $this->action;?>" method="post">
+	<p>
 		<label for="item">Item:</label> 
 		<input 
 			type="text" 
@@ -13,8 +13,8 @@
 			echo '<span class="error-campo-formulario">'.$this->messages['item'].'</span>';
 		}
 		?>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="destino">Destino:</label>
 		<input 
 			type="text" 
@@ -26,8 +26,8 @@
 			echo '<span class="error-campo-formulario">'.$this->messages['destino'].'</span>';
 		}
 		?>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="posicion">Posición:</label>
 		<input 
 			type="text" 
@@ -39,8 +39,8 @@
 			echo '<span class="error-campo-formulario">'.$this->messages['posicion'].'</span>';
 		}
 		?>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="privado">Privado:</label>
 		<input type='radio' name="privado" value="1" <?php if ($this->escape($this->item->privado) == 1) echo 'checked="checked"'; ?>>Si
 		<input type='radio' name="privado" value="0" <?php if ($this->escape($this->item->privado) == 0) echo 'checked="checked"'; ?>>No
@@ -49,8 +49,8 @@
 			echo '<span class="error-campo-formulario">'.$this->messages['privado'].'</span>';
 		}
 		?>
-	</div>
-	<div>
+	</p>
+	<p>
 		<label for="estado">Estado:</label>
 		<input type='radio' name="estado" value="1" <?php if ($this->escape($this->item->estado) == 1) echo 'checked="checked"'; ?>>Activo
 		<input type='radio' name="estado" value="0" <?php if ($this->escape($this->item->estado) == 0) echo 'checked="checked"'; ?>>Inactivo
@@ -59,7 +59,7 @@
 			echo '<span class="error-campo-formulario">'.$this->messages['estado'].'</span>';
 		}
 		?>
-	</div>
+	</p>
 
 	<div id="boton_formulario">
 		<input type="hidden" name="id" value="<?php echo $this->item->id;?>"/> 

@@ -1,27 +1,27 @@
 
 	<h2><?php echo $this->escape ( $this->subtitle );?></h2>
 
-	<form action="<?php echo $this->baseUrl?>/admin/noticias/<?php echo $this->action;?>" method="post">
-		<div>
+	<form class="cssform" action="<?php echo $this->baseUrl?>/admin/noticias/<?php echo $this->action;?>" method="post">
+		<p>
 			<label for="titulo">titulo:</label>
 			<input 
 				type="text" 
 				name="titulo" 
 				size="100"
 				value="<?php echo $this->escape ( trim ( $this->noticia->titulo ) );?>" />
-			</div>
+		</p>
 			<br>
-			<div>
-    			contenido breve:
+			<p>
+    			Contenido breve:<br>
         		<?php print $this->formFCKeditor ( 'contenido', $this->noticia->contenido, '100%', 300 );?>
-    		</div>
+    		</p>
+			<br>
+			<p>
+    			Contenido extendido:<br>
+        		<?php print $this->formFCKeditor ( 'contenido_ext', $this->noticia->contenido_ext );?>
+    		</p>
 			<br>
 			<div>
-    			contenido extendido:
-        		<?php print $this->formFCKeditor ( 'contenido_ext', $this->noticia->contenido_ext );?>
-    		</div>
-			<br>
-			<div id="boton_formulario">
 				<input type="hidden" name="id" value="<?php	echo $this->noticia->id;?>" />
 				<input type="submit" name="add" value="<?php echo $this->escape ( $this->buttonText );?>"/>
 			</div>
