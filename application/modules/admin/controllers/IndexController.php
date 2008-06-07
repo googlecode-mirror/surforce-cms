@@ -1,5 +1,5 @@
 <?php
-class Admin_IndexController extends Zcms_Generic_Controller 
+class Admin_IndexController extends Zcms_Generic_ControllerAdmin
 {	
 	function indexAction() 
 	{
