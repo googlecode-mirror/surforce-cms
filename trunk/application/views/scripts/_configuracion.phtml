@@ -13,7 +13,7 @@
 	  border:1px solid #cccccc;
 	  padding:10px;
 	  <?php // FIXME por invocaciones a traves de js
-	  if( isset($this->configuracion->sitio_color_cabezal)) {
+	  if( isset($this->configuracion->sitio_color_cabezal) && $this->configuracion->sitio_color_cabezal != '') {
 	  	echo "background-color:".$this->configuracion->sitio_color_cabezal.";";
 	  }
 	  ?>
@@ -23,7 +23,7 @@
 	  border-top:1px solid #CCCCCC;
 	  text-align:center;
 	  <?php // FIXME por invocaciones a traves de js
-	  if ( isset($this->configuracion->sitio_color_pie) ) {
+	  if ( isset($this->configuracion->sitio_color_pie) && $this->configuracion->sitio_color_pie != '' ) {
 	  	echo "background-color:".$this->configuracion->sitio_color_pie.";";
 	  }
 	  ?>
