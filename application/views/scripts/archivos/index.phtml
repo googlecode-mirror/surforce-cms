@@ -1,21 +1,46 @@
+<h2>Listado de archivos</h2>
 
- 	<h2>Listado de archivos</h2>
-
-	<?php echo $this->render('archivos/_opcion_agregar.phtml'); ?>
+<?php echo $this->render('archivos/_opcion_agregar.phtml'); ?>
 	<table>
 	  <tr>
-	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/id/asc/<?php echo !$this->orden_asc;?>">Id</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
-	    <!-- <th>modif</th> -->
-	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/descripcion/asc/<?php echo !$this->orden_asc;?>">Descripción</a></th>
+	    <th>
+	    	<a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/id/asc/<?php echo !$this->orden_asc;?>">
+	    		Id
+	    	</a>
+	    </th>
+		<th>
+			<a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">
+				Nombre
+			</a>
+		</th>	    
+		<th>
+			<a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">
+				Previsualización
+			</a>
+		</th>
+	    <th>
+	    	<a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/descripcion/asc/<?php echo !$this->orden_asc;?>">
+	    		Descripción
+	    	</a>
+	    </th>
 	    <th>Acciones</th>
 	  </tr>
 
-	<?php foreach( $this->archivos as $archivo): ?>
+	  <?php foreach( $this->archivos as $archivo): ?>
 		<tr>
 	    	<td><?php echo $archivo->id;?></td>
-	    	<td><a href="<?php echo $this->baseUrl.'/userfiles/'.$archivo->nombre;?>"><?php echo $archivo->nombre;?></a></td>
-	    	<!-- <td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td> -->
+	    	<td>
+	    		<a rel="lightbox" href="<?php echo $this->baseUrl.'/userfiles/'.$archivo->nombre;?>"  
+	    			title="<?php echo $archivo->nombre;?>" id="<?php echo $archivo->nombre;?>">
+	    			<?php echo $archivo->nombre;?>
+	    		</a>
+	    	</td>	    	
+	    	<td>
+	    		<a rel="lightbox" href="<?php echo $this->baseUrl.'/userfiles/'.$archivo->nombre;?>"  
+	    			title="<?php echo $archivo->nombre;?>" id="<?php echo $archivo->nombre;?>">
+	    			<img src="<?php echo $this->baseUrl.'/userfiles/'.$archivo->nombre;?>" height="50" width="50">
+	    		</a>
+	    	</td>
 	    	<td><?php echo $archivo->descripcion; ?></td>
 	    	<td nowrap="nowrap">
                 	<div class="menu-admin">

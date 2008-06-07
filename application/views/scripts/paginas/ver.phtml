@@ -25,7 +25,13 @@
     		<ol>
     		<?php foreach($this->archivos as $archivo): ?>
     			<li>
-    				<a href="<?php echo $this->baseUrl; ?>/userfiles/<?php echo $archivo->nombre;?>">
+    				
+    				<a 
+    					rel="lightbox" 
+    					href="<?php echo $this->baseUrl; ?>/userfiles/<?php echo $archivo->nombre;?>"
+    					title="<?php echo $archivo->nombre;?>" 
+    					id="<?php echo $archivo->nombre;?>"
+    					>
     					<?php echo $archivo->nombre;?>
     				</a>&nbsp;-&nbsp;<?php echo $archivo->descripcion;?>
     			</li>

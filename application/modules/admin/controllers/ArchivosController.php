@@ -30,6 +30,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
 			$orden
 		);
 		$this->view->ruta = realpath('.') . DIRECTORY_SEPARATOR  . 'userfiles' . DIRECTORY_SEPARATOR;
+		$this->view->scriptJs = "lightbox";
 		$this->render();
 	}
 	public function agregarAction()
@@ -105,6 +106,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
         }
         $this->view->action = "modificar";
         $this->view->buttonText = "Modificar";
+        $this->view->scriptJs = "lightbox";
     }
  	public function eliminarAction()
     {
@@ -198,6 +200,7 @@ class Admin_ArchivosController extends Zcms_Generic_ControllerAdmin
         	}
         }
         $this->view->archivos = $archivos;
+        $this->view->scriptJs = "lightbox";
 	}
 }
 ?>

@@ -6,7 +6,7 @@
 	  <tr>
 	    <th>#</th>
 	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/asociar/pagina/<?php echo $this->pagina;?>/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
-<!--	    <th>modif</th>-->
+	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/asociar/pagina/<?php echo $this->pagina;?>/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Previsualizar</a></th>
 	    <th><a href="<?php echo $this->baseUrl; ?>/admin/archivos/asociar/pagina/<?php echo $this->pagina;?>/orden/descripcion/asc/<?php echo !$this->orden_asc;?>">Descripción</a></th>
 	  </tr>
 
@@ -22,13 +22,31 @@
 	    			<?php endif; ?>
 	    		>
 	    	</td>
-	    	<td><a href="<?php echo $this->baseUrl.'/userfiles/'.$archivo['nombre'];?>"><?php echo $archivo['nombre'];?></a></td>
-<!--	    	<td nowrap="nowrap"><?php echo $archivo->fecha_mod;?></td>-->
+	    	
+	    	<td>
+	    		<a 
+	    			rel="lightbox" 
+	    			href="<?php echo $this->baseUrl.'/userfiles/'.$archivo['nombre'];?>"
+	    			title="<?php echo $archivo['nombre'];?>" 
+    				id="<?php echo $archivo['nombre'];?>">
+    					<?php echo $archivo['nombre'];?>
+	    		</a>
+	    	</td>
+	    	<td>
+	    		<a 
+	    			rel="lightbox" 
+	    			href="<?php echo $this->baseUrl.'/userfiles/'.$archivo['nombre'];?>"
+	    			title="<?php echo $archivo['nombre'];?>" 
+    				id="<?php echo $archivo['nombre'];?>">
+    					<img src="<?php echo $this->baseUrl.'/userfiles/'.$archivo['nombre'];?>" height="50" width="50">
+	    		</a>
+	    	</td>
+
 	    	<td><?php echo $archivo['descripcion']; ?></td>
 	  	</tr>
 	<?php endforeach; ?>
 	</table>
-	<div id="boton_formulario">
+	<div>
           <input type="hidden" name="pagina" value="<?php echo $this->pagina; ?>" />
           <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
     </div>

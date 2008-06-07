@@ -30,6 +30,7 @@ class Frontend_PaginasController extends Zcms_Generic_Controller
 			}
 			$this->view->archivos = $view_archivos;
 		}
+		$this->view->scriptJs = "lightbox";
 	}
 }
 ?>

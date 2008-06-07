@@ -3,12 +3,17 @@
 <form class="cssform" action="<?php echo $this->baseUrl ?>/admin/archivos/<?php echo $this->action; ?>"
 	enctype="multipart/form-data"
 	method="post">
-	<!--
-	<div>
-    	<label for="nombre">Nombre:</label>
-    	<label><?php echo $this->escape(trim($this->archivo->nombre));?><br></label>
-	</div>
-	 -->
+	
+	<p>
+    	<label for="nombre">Previsualización:</label>
+    	
+    	
+    	<a rel="lightbox" href="<?php echo $this->baseUrl.'/userfiles/'.$this->archivo->nombre;?>"  
+	    			title="<?php echo $this->archivo->nombre;?>" id="<?php echo $this->archivo->nombre;?>">
+	    			<img src="<?php echo $this->baseUrl.'/userfiles/'.$this->archivo->nombre;?>" height="100" width="100">
+	    		</a>
+	</p>
+	
 
 	<?php if($this->action != 'modificar'): ?>
 		<p>
