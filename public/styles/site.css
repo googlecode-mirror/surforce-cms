@@ -20,7 +20,14 @@ A {
 DIV#contenedor {
 	margin: 0 auto;
 }
-
+DIV#cabecera-logo {
+	float: left;
+	
+}
+DIV#cabecera-publicidad {
+	text-align: right;
+	margin-bottom: 5px;
+}
 DIV#menu ul,DIV#menu li {
 	margin-left: 10px;
 	padding: 0;

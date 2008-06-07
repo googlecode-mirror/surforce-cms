@@ -18,11 +18,30 @@
   	?>
 
 		<div id="contenedor">
-		
 		    <div id="cabecera">
-    
-				<h1><?php echo $this->sitio_actual->titulo;?></h1>			
-				<?php echo $this->sitio_actual->descripcion;?><br><br>			
+    			<div id="cabecera-logo">
+    				<h1><?php echo $this->sitio_actual->titulo;?></h1>
+    				<?php echo $this->sitio_actual->descripcion;?><br><br>
+    			</div>
+					<div id="cabecera-publicidad">
+						<?php
+						  $adsense = $this->basePath 
+						  	. DIRECTORY_SEPARATOR
+						  	. 'application'
+						  	. DIRECTORY_SEPARATOR
+						  	. 'views' 
+						  	. DIRECTORY_SEPARATOR
+						  	. 'scripts'
+						  	. DIRECTORY_SEPARATOR
+						  	. 'google_adsense.phtml';
+				  	
+							  if(file_exists( $adsense ) ){
+								echo $this->render("google_adsense.phtml");								
+							  }
+				   		?>
+					
+					</div>		
+							
 				<?php 				
 				echo $this->htmlMenuHorizontal(
 					$this->menuHorizontalOpciones,
