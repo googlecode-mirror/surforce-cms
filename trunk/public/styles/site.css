@@ -61,7 +61,6 @@ TD {
 
 label {
 	width: 100px;
-	display: block;
 	float: left;
 	text-align: left;
 }
@@ -120,7 +119,7 @@ DIV#pagina-contenido {
 }
 
 DIV#login {
-	text-align:center;
+	text-align:center;	
 }
 
 DIV#login-form {
