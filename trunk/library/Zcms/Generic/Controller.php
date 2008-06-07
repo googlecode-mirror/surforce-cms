@@ -21,7 +21,8 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
         $this->view->addBasePath('./public/','');
 
 		$this->view->baseUrl = $this->_request->getBaseUrl ();
-
+		$this->view->basePath = $this->registry->get('base_path');
+		
 		Zend_Loader::loadClass ( 'Configuracion' );
 		
 		$this->view->user = Zend_Auth::getInstance ()->getIdentity ();
