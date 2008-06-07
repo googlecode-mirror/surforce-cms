@@ -17,30 +17,32 @@
   	}
   	?>
 
+	<?php
+		$adsense = $this->basePath 
+			. DIRECTORY_SEPARATOR
+			. 'application'
+			. DIRECTORY_SEPARATOR
+			. 'views' 
+			. DIRECTORY_SEPARATOR
+			. 'scripts'
+			. DIRECTORY_SEPARATOR
+			. 'google_adsense.phtml';
+	?>
 		<div id="contenedor">
 		    <div id="cabecera">
-    			<div id="cabecera-logo">
+		    
+		    <?php if(file_exists( $adsense ) ): ?>
+		    	<div id="cabecera-logo">
     				<h1><?php echo $this->sitio_actual->titulo;?></h1>
     				<?php echo $this->sitio_actual->descripcion;?><br><br>
     			</div>
-					<div id="cabecera-publicidad">
-						<?php
-						  $adsense = $this->basePath 
-						  	. DIRECTORY_SEPARATOR
-						  	. 'application'
-						  	. DIRECTORY_SEPARATOR
-						  	. 'views' 
-						  	. DIRECTORY_SEPARATOR
-						  	. 'scripts'
-						  	. DIRECTORY_SEPARATOR
-						  	. 'google_adsense.phtml';
-				  	
-							  if(file_exists( $adsense ) ){
-								echo $this->render("google_adsense.phtml");								
-							  }
-				   		?>
-					
-					</div>		
+    			<div id="cabecera-publicidad">
+					<?php echo $this->render("google_adsense.phtml"); ?>								    			
+				</div>
+			<?php else:?>
+   				<h1><?php echo $this->sitio_actual->titulo;?></h1>
+   				<?php echo $this->sitio_actual->descripcion;?><br><br>
+			<?php endif;?>
 							
 				<?php 				
 				echo $this->htmlMenuHorizontal(
