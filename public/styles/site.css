@@ -4,37 +4,36 @@ BODY {
 	font-size: 11px;
 }
 
-H1 {
-	
-}
-
 A {
 	color: #339933;
 }
+
 #pie {
 	text-align: left;
 	margin: 0 auto;
 	padding: 15px;
-	
 }
+
 DIV#contenedor {
 	margin: 0 auto;
 }
+
 DIV#cabecera-logo {
 	float: left;
-	
 }
+
 DIV#cabecera-publicidad {
 	text-align: right;
-	margin-bottom: 5px;
+	margin-bottom: 2px;
 }
+
 DIV#menu ul,DIV#menu li {
 	margin-left: 10px;
 	padding: 0;
 }
 
 DIV#menu {
-	width: 200px;
+	width: 177px;
 	overflow: hidden;
 	float: left;
 	padding: 5px;
@@ -42,15 +41,14 @@ DIV#menu {
 	border: 1px dashed #CCCCCC;
 }
 
-DIV#menu-pagina {
-	/*background: #FDF7F2;*/
+DIV#menu-pagina { /*background: #FDF7F2;*/
 	/*border: 1px dashed #CCCCCC;*/
 	width: 100%;
 }
 
 DIV#contenido {
-	width: 600px;
-	padding: 15px;
+	width: 520px;
+	padding: 5px;
 	float: left;
 	/*border-left: 1px solid #CCCCCC;*/
 }
@@ -126,7 +124,7 @@ DIV#pagina-contenido {
 }
 
 DIV#login {
-	text-align:center;	
+	text-align: center;
 }
 
 DIV#login-form {
@@ -173,8 +171,8 @@ TD.mensaje-informativo {
 	color: #ff0000;
 }
 
-.menu-opciones ul,li { 
-	/*list-style-type: none;*/	
+.menu-opciones ul,li { /*list-style-type: none;*/
+	
 }
 
 .menu-opciones ul {
@@ -205,9 +203,8 @@ TD.mensaje-informativo {
 .menu-opciones a:hover {
 	background: #F7DECA;
 }
-/*fin menu */
- 
-/* menu admin */
+
+/*fin menu */ /* menu admin */
 .menu-admin {
 	font: 100% "Trebuchet MS", Arial, Helvetica, sans-serif;
 	width: 250px;
@@ -215,8 +212,8 @@ TD.mensaje-informativo {
 	padding: 3px;
 }
 
-.menu-admin ul,li { 
-	/*list-style-type: none;*/	
+.menu-admin ul,li { /*list-style-type: none;*/
+	
 }
 
 .menu-admin ul {
@@ -238,6 +235,7 @@ TD.mensaje-informativo {
 	border: 1px solid #F7DECA;
 	border-width: 1px 1px 1px 0;
 }
+
 .menu-admin a#primero {
 	border-left: 1px solid #F7DECA;
 }
@@ -245,7 +243,6 @@ TD.mensaje-informativo {
 .menu-admin a:hover {
 	background: #F7DECA;
 }
-
 
 /* FAQ */
 DIV#faq {
@@ -272,106 +269,117 @@ DIV#faq-fecha {
 	clear: both;
 	margin-bottom: 1em;
 }
-/*fin reset*/
 
-/* Nuevo Diseño de Botones */
-a.squarebutton{
-	background: transparent url('images/square-orange-left.gif') no-repeat top left;
+/*fin reset*/ /* Nuevo Diseño de Botones */
+a.squarebutton {
+	background: transparent url('images/square-orange-left.gif') no-repeat
+		top left;
 	display: block;
 	float: left;
 	font: normal 12px Arial; /* Change 12px as desired */
-	line-height: 15px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 23px) */
+	line-height: 15px;
+	/* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 23px) */
 	height: 23px; /* Height of button background height */
 	padding-left: 9px; /* Width of left menu image */
-	text-decoration: none;	
+	text-decoration: none;
 }
-a:link.squarebutton, a:visited.squarebutton, a:active.squarebutton{
+
+a:link .squarebutton,a:visited .squarebutton,a:active .squarebutton {
 	color: #494949; /*button text color*/
 }
-a.squarebutton span{
-	background: transparent url('images/square-orange-right.gif') no-repeat top right;
+
+a.squarebutton span {
+	background: transparent url('images/square-orange-right.gif') no-repeat
+		top right;
 	display: block;
-	padding: 4px 9px 4px 0; /*Set 9px below to match value of 'padding-left' value above*/
-	font-weight: bold;		
+	padding: 4px 9px 4px 0;
+	/*Set 9px below to match value of 'padding-left' value above*/
+	font-weight: bold;
 }
-a.squarebutton:hover{ /* Hover state CSS */
+
+a.squarebutton:hover { /* Hover state CSS */
 	background-position: bottom left;
 }
-a.squarebutton:hover span{ /* Hover state CSS */
+
+a.squarebutton:hover span { /* Hover state CSS */
 	background-position: bottom right;
 	color: black;
 }
-.buttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+
+.buttonwrapper {
+	/* Container you can use to surround a CSS button to clear float */
 	overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
 	width: 100%;
-	
 }
 
 /* Nueva estética para los formularios */
-
-.cssform p{
-width: 300px;
-clear: left;
-margin: 0;
-padding: 5px 0 8px 0;
-padding-left: 155px; /*width of left column containing the label elements*/
-border-top: 1px dashed gray;
-height: 1%;
+.cssform p {
+	width: 300px;
+	clear: left;
+	margin: 0;
+	padding: 5px 0 8px 0;
+	padding-left: 155px;
+	/*width of left column containing the label elements*/
+	border-top: 1px dashed gray;
+	height: 1%;
 }
 
-.cssform label{
-font-weight: bold;
-float: left;
-margin-left: -155px; /*width of left column*/
-width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+.cssform label {
+	font-weight: bold;
+	float: left;
+	margin-left: -155px; /*width of left column*/
+	width: 150px;
+	/*width of labels. Should be smaller than left column (155px) to create some right margin*/
 }
 
-.cssform input[type="text"]{ /*width of text boxes. IE6 does not understand this attribute*/
-width: 180px;
+.cssform input[type="text"] {
+	/*width of text boxes. IE6 does not understand this attribute*/
+	width: 180px;
 }
 
-.cssform textarea{
-width: 250px;
-height: 150px;
+.cssform textarea {
+	width: 250px;
+	height: 150px;
 }
 
 /*.threepxfix class below:
 Targets IE6- ONLY. Adds 3 pixel indent for multi-line form contents.
 to account for 3 pixel bug: http://www.positioniseverything.net/explorer/threepxtest.html
 */
-
-* html .threepxfix{
-margin-left: 3px;
+* html .threepxfix {
+	margin-left: 3px;
 }
 
 /* Nuevo menú horizontal */
-.arrowlistmenu{
+.arrowlistmenu {
 	width: 180px; /*width of menu*/
 }
 
-.arrowlistmenu .headerbar{
+.arrowlistmenu .headerbar {
 	font: bold 14px Arial;
 	color: white;
 	background: black url(images/titlebar.png) repeat-x center left;
-	margin-bottom: 10px; /*bottom spacing between header and rest of content*/
+	margin-bottom: 10px;
+	/*bottom spacing between header and rest of content*/
 	/*text-transform: uppercase;*/
 	padding: 4px 0 4px 10px; /*header text is indented 10px*/
 }
 
-.arrowlistmenu ul{
+.arrowlistmenu ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	margin-bottom: 8px; /*bottom spacing between each UL and rest of content*/
+	margin-bottom: 8px;
+	/*bottom spacing between each UL and rest of content*/
 }
 
-.arrowlistmenu ul li{
+.arrowlistmenu ul li {
 	padding-bottom: 2px; /*bottom spacing between menu items*/
 }
 
-.arrowlistmenu ul li a{
-	/*color: #A70303;*/
-	background: url(images/arrowbullet.png) no-repeat center left; /*custom bullet list image*/
+.arrowlistmenu ul li a { /*color: #A70303;*/
+	background: url(images/arrowbullet.png) no-repeat center left;
+	/*custom bullet list image*/
 	display: block;
 	padding: 2px 0;
 	padding-left: 19px; /*link text is indented 19px*/
@@ -381,11 +389,11 @@ margin-left: 3px;
 	font-size: 90%;
 }
 
-.arrowlistmenu ul li a:visited{
-	/*color: #A70303;*/
+.arrowlistmenu ul li a:visited { /*color: #A70303;*/
+	
 }
 
-.arrowlistmenu ul li a:hover{ /*hover state CSS*/
+.arrowlistmenu ul li a:hover { /*hover state CSS*/
 	color: #A70303;
 	background-color: #F3F3F3;
 }
