@@ -1,20 +1,15 @@
-<div id="login-form">
-	
+<div id="login-form">	
 	<form class="cssform" id="form-login" action="<?php echo $this->baseUrl ?>/frontend/autenticacion/login" method="post">
 	
-		<p>Su dirección IP actual es: <strong><?php echo $_SERVER['REMOTE_ADDR']; ?></strong></p>
-	    <br/>
-	    	
+		<p>Su dirección IP actual es: <strong><?php echo $_SERVER['REMOTE_ADDR']; ?></strong></p><br/>	    	
 	    <p>
 	    	<label for="usuario">Usuario: </label>
 	        <input type="text" id="usuario" name="usuario" value=""/>
-	    </p>
-	
+	    </p>	
 	    <p>
 	    	<label for="password">Clave: </label>
 	        <input type="password" id="password" name="password" value=""/>
-		</p>
-		
+		</p>		
 		<br/>
 	    <div id="boton_formulario">
 	    	<input type="submit" name="login" value="Ingresar" onclick="login_validar();" />
