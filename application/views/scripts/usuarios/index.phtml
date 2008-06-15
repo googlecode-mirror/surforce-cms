@@ -1,7 +1,7 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <div class="menu-admin">
-	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar Usuario</a><br><br>
+	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar</a><br><br>
 </div>
 
 <table>
@@ -10,7 +10,7 @@
         <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
         <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/apellido/asc/<?php echo !$this->orden_asc;?>">Apellido</a></th>
         <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/mail/asc/<?php echo !$this->orden_asc;?>">Email</a></th>
-        <th><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Estado</a></th>
+        <th><a title="Estado" href="<?php echo $this->baseUrl; ?>/admin/usuarios/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Est</a></th>
         <th colspan="3">Acciones</th>
     </tr>
     <?php foreach( $this->usuarios as $usuario ) : ?>
@@ -18,7 +18,7 @@
                 <td><?php echo $this->escape($usuario->usuario);?></td>
                 <td><?php echo $this->escape($usuario->nombre);?></td>
                 <td><?php echo $this->escape($usuario->apellido);?></td>
-                <td><?php echo $this->escape($usuario->mail);?></td>
+                <td><a href="mailto:<?php echo $this->escape($usuario->mail);?>"><?php echo $this->escape($usuario->mail);?></a></td>
                 <td>
                 	<?php if($usuario->estado): ?>
     					<img border="0"	src="<?php echo $this->baseUrl ?>/public/images/estado_<?php echo $usuario->estado;?>.png"/>
@@ -30,14 +30,14 @@
                 <td nowrap="nowrap">
                 	<div class="menu-admin">
 	                	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/ver/id/<?php echo $usuario->id;?>">Ver</a>
-    	            	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/modificar/id/<?php echo $usuario->id;?>">Modificar</a>
-        	        	<a href="<?php echo $this->baseUrl; ?>/admin/usuarios/eliminar/id/<?php echo $usuario->id;?>">Eliminar</a>
+    	            	<a title="Modificar" href="<?php echo $this->baseUrl; ?>/admin/usuarios/modificar/id/<?php echo $usuario->id;?>">Mod</a>
+        	        	<a title="Eliminar" href="<?php echo $this->baseUrl; ?>/admin/usuarios/eliminar/id/<?php echo $usuario->id;?>">Eli</a>
         	        </div>
         	    </td>
             </tr>
     <?php endforeach; ?>
     </table>
     <div class="menu-admin">
-    	<br><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar Usuario</a><br><br>
+    	<br><a href="<?php echo $this->baseUrl; ?>/admin/usuarios/agregar">Agregar</a><br><br>
     </div>
 </div>

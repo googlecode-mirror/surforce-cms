@@ -7,7 +7,7 @@
         <input 
         	type="text" 
         	name="item" 
-        	size="45"
+        	size="40"
 			value="<?php echo $this->escape(trim($this->item->item));?>"/>
 	</p>
 	<p>
@@ -15,7 +15,7 @@
         <input 
         	type="text" 
         	name="destino" 
-        	size="60"
+        	size="40"
 			value="<?php echo $this->escape($this->item->destino);?>"/>
 	</p>
 	<p>
@@ -38,7 +38,7 @@
 		<input type='radio' name="estado" value="0" <?php if ($this->escape($this->item->estado) == 0) echo 'checked="checked"'; ?>>Inactivo
 	</p>
 	<br>
-	<div id="boton_formulario">
+	<div class="menu-admin">
 		<input type="hidden" name="id" value="<?php echo $this->item->id;?>"/>
 		<input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>"/>
 	</div>

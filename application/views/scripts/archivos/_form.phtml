@@ -23,10 +23,10 @@
 	<?php endif; ?>
 	<p>
     	<label for="descripcion">Descripción:</label>
-        <input type="text" name="descripcion" size="50" value="<?php echo $this->escape(trim($this->archivo->descripcion));?>"/>
+        <input type="text" name="descripcion" size="40" value="<?php echo $this->escape(trim($this->archivo->descripcion));?>"/>
 	</p>
 
-    <div id="boton_formulario">
+    <div>
 	    <input type="hidden" name="id" value="<?php echo $this->archivo->id; ?>" />
 		<input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
 	</div>
