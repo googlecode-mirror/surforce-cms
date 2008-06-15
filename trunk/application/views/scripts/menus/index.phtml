@@ -3,7 +3,7 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <div class="menu-admin">
-	<a href="<?php echo $this->baseUrl; ?>/admin/menus/agregar">Agregar menú</a>
+	<a href="<?php echo $this->baseUrl; ?>/admin/menus/agregar">Agregar</a>
 </div>
 <br>
 
@@ -11,9 +11,9 @@
 	<tr>
 		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/id/asc/<?php echo !$this->orden_asc;?>">id</a></th>
 		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/privado/asc/<?php echo !$this->orden_asc;?>">Privado</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Estado</a></th>
-		<th><a href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/posicion/asc/<?php echo !$this->orden_asc;?>">Posición</a></th>
+		<th><a title="Privado" href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/privado/asc/<?php echo !$this->orden_asc;?>">Priv</a></th>
+		<th><a title="Estado" href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/estado/asc/<?php echo !$this->orden_asc;?>">Est</a></th>
+		<th><a title="Posición" href="<?php echo $this->baseUrl; ?>/admin/menus/index/orden/posicion/asc/<?php echo !$this->orden_asc;?>">Pos</a></th>
         <th colspan="4">Acciones</th>
     </tr>
     <?php
@@ -30,8 +30,8 @@
 			<td><?php echo $this->escape($menu->posicion);?></td>
             <td nowrap="nowrap">
 				<div class="menu-admin">
-					<a href="<?php echo $this->baseUrl; ?>/admin/menus/modificar/id/<?php echo $menu->id;?>">Modificar</a>
-					<a href="<?php echo $this->baseUrl; ?>/admin/menus/eliminar/id/<?php echo $menu->id;?>">Eliminar</a>
+					<a title="Modificación" href="<?php echo $this->baseUrl; ?>/admin/menus/modificar/id/<?php echo $menu->id;?>">Mod</a>
+					<a title="Eliminar" href="<?php echo $this->baseUrl; ?>/admin/menus/eliminar/id/<?php echo $menu->id;?>">Eli</a>
 					<a href="<?php echo $this->baseUrl; ?>/admin/items/editar/id/<?php echo $menu->id;?>">Agregar Items</a>
 				</div>
 			</td>
@@ -40,6 +40,6 @@
 </table>
 <br>
 <div class="menu-admin">
-	<a href="<?php echo $this->baseUrl; ?>/admin/menus/agregar">Agregar menú</a>
+	<a href="<?php echo $this->baseUrl; ?>/admin/menus/agregar">Agregar</a>
 </div>
 <br>

@@ -1,13 +1,13 @@
 <h2><?php echo $this->escape($this->subtitle);?></h2>
 
 <form class="cssform" action="<?php echo $this->baseUrl?>/admin/menupag/<?php echo $this->action;?>" method="post">
-	<p>
-		<input 
+	
+	<input 
 		type="hidden" 
 		name="id_pagina" 
 		size="2"
 		value="<?php echo $this->escape(trim($this->menupag->id_pagina));?>"/>
-	</p>
+	
 
 	<p>
 		<label for="id_menu">id menu:</label>
@@ -22,7 +22,7 @@
 		<input 
 			type="text" 
 			name="titulo" 
-			size="50"
+			size="40"
 			value="<?php echo $this->escape(trim($this->menupag->titulo));?>"/>
 	</p>
 	<p>
@@ -30,7 +30,7 @@
 		<input 
 			type="text" 
 			name="link"
-			size="50" 
+			size="40" 
 			maxlength="100"
 			value="<?php echo $this->escape(trim($this->menupag->link));?>"/>
 	</p>
@@ -39,7 +39,7 @@
 		<input 
 			type="text" 
 			name="alt"
-			size="50" 
+			size="40" 
 			maxlength="100"
 			value="<?php echo $this->escape(trim($this->menupag->alt));?>"/>
 	</p>

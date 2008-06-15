@@ -1,7 +1,7 @@
 <h2><?php echo $this->escape($this->subtitle); ?></h2>
 
 <div class="menu-admin">
-	<a href="<?php echo $this->baseUrl; ?>/admin/faqs/agregar">Agregar FAQ</a>
+	<a href="<?php echo $this->baseUrl; ?>/admin/faqs/agregar">Agregar</a>
 </div>
 <div class="div-reset"></div>
 <br />
@@ -21,8 +21,8 @@
 			<td nowrap="nowrap">
 				<div class="menu-admin">
 					<a href="<?php echo $this->baseUrl; ?>/admin/faqs/ver/id/<?php echo $faq->id;?>">Ver</a>
-					<a href="<?php echo $this->baseUrl; ?>/admin/faqs/modificar/id/<?php echo $faq->id;?>">Modificar</a>
-					<a href="<?php echo $this->baseUrl; ?>/admin/faqs/eliminar/id/<?php echo $faq->id;?>">Eliminar</a>
+					<a title="Modificar" href="<?php echo $this->baseUrl; ?>/admin/faqs/modificar/id/<?php echo $faq->id;?>">Mod</a>
+					<a title="Eliminar" href="<?php echo $this->baseUrl; ?>/admin/faqs/eliminar/id/<?php echo $faq->id;?>">Eli</a>
 				</div>
 			</td>
 		</tr>
@@ -30,6 +30,6 @@
 </table>
 <br />
 <div class="menu-admin">
-	<a href="<?php echo $this->baseUrl; ?>/admin/faqs/agregar">Agregar FAQ</a>
+	<a href="<?php echo $this->baseUrl; ?>/admin/faqs/agregar">Agregar</a>
 </div>
 <div class="div-reset"></div>

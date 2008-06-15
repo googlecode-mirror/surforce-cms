@@ -19,7 +19,7 @@
         </p>
         <p>
             <label for="mail">Mail:</label>
-            <input type="text" name="mail" size="64" value="<?php echo $this->escape($this->usuario->mail);?>"/>
+            <input type="text" name="mail" size="40" value="<?php echo $this->escape($this->usuario->mail);?>"/>
         </p>
 		<p>
 			<label for="estado">Estado:</label> 
@@ -29,7 +29,7 @@
 	
         <p> (*) Todos los campos son obligatorios </p>
 
-        <div id="boton_formulario">
+        <div>
             <input type="hidden" name="id" value="<?php echo $this->usuario->id; ?>" />
             <input type="submit" name="add" value="<?php echo $this->escape($this->buttonText); ?>" />
         </div>

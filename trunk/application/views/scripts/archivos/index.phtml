@@ -14,8 +14,8 @@
 			</a>
 		</th>	    
 		<th>
-			<a href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">
-				Previsualización
+			<a title="Previsualización" href="<?php echo $this->baseUrl; ?>/admin/archivos/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">
+				Prev
 			</a>
 		</th>
 	    <th>
@@ -44,8 +44,8 @@
 	    	<td><?php echo $archivo->descripcion; ?></td>
 	    	<td nowrap="nowrap">
                 	<div class="menu-admin">
-    	            	<a href="<?php echo $this->baseUrl; ?>/admin/archivos/modificar/id/<?php echo $archivo->id;?>">Modificar</a>
-        	        	<a href="<?php echo $this->baseUrl; ?>/admin/archivos/eliminar/id/<?php echo $archivo->id;?>">Eliminar</a>
+    	            	<a title="Modificar" href="<?php echo $this->baseUrl; ?>/admin/archivos/modificar/id/<?php echo $archivo->id;?>">Mod</a>
+        	        	<a title="Eliminar" href="<?php echo $this->baseUrl; ?>/admin/archivos/eliminar/id/<?php echo $archivo->id;?>">Eli</a>
         	        </div>
 			</td>
 	  	</tr>

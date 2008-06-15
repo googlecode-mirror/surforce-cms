@@ -9,9 +9,9 @@
     <th><a href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/nombre/asc/<?php echo !$this->orden_asc;?>">Nombre</a></th>
     <th><a href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/titulo/asc/<?php echo !$this->orden_asc;?>">Título</a></th>
     <th><a href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/descripcion/asc/<?php echo !$this->orden_asc;?>">Descripción</a></th>
-    <th><a href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/orden/asc/<?php echo !$this->orden_asc;?>">Orden</a></th>
+    <th><a title="Orden" href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/orden/asc/<?php echo !$this->orden_asc;?>">Ord</a></th>
     <th><a href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/fecha_creacion/asc/<?php echo !$this->orden_asc;?>">Creación</a></th>
-    <th><a href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/por_defecto/asc/<?php echo !$this->orden_asc;?>">Por Defecto</a></th>
+    <th><a title="Por Defecto" href="<?php echo $this->baseUrl; ?>/admin/sitios/index/orden/por_defecto/asc/<?php echo !$this->orden_asc;?>">Def</a></th>
     <th colspan="3">Acciones</th>
   </tr>
 
@@ -34,8 +34,8 @@
     	<td>
     		<div class="menu-admin">
     			<?php echo $this->htmlLink($url_base.'/ver/id/'.$sitio->id, "Ver");?>
-    			<?php echo $this->htmlLink($url_base.'/modificar/id/'.$sitio->id, "Modificar");?>
-    			<?php echo $this->htmlLink($url_base.'/eliminar/id/'.$sitio->id, "Eliminar");?>
+    			<?php echo $this->htmlLink($url_base.'/modificar/id/'.$sitio->id, "Mod");?>
+    			<?php echo $this->htmlLink($url_base.'/eliminar/id/'.$sitio->id, "Eli");?>
 			</div>
     	</td>
   	</tr>
