@@ -4,7 +4,7 @@
 	<form class="cssform" action="<?php echo $this->baseUrl ?>/admin/faqs/eliminar" method="post">
 		¿Está seguro que quiere eliminar la FAQ '<?php echo $this->escape($this->faq->pregunta); ?>'?
 		<br><br>
-		<div id="boton_formulario">
+		<div>
 			<input type="hidden" name="id" value="<?php echo $this->faq->id; ?>" />
 			<input type="submit" name="del" value="Si"/> 
 			<input type="submit" name="del" value="No"/>
