@@ -4,7 +4,7 @@
 
 <div class="menu-admin">
 	<a href="<?php echo $this->baseUrl; ?>/admin/items/agregar/id/<?php echo $this->idMenu;?>">
-		Agregar Item
+		Agregar
 	</a>
 </div>
 <br>
@@ -14,9 +14,9 @@
 		<th>id</th>			
 		<th>Item</th>
 		<th>Destino</th>
-		<th>Privado</th>
-		<th>Estado</th>
-		<th>Posición</th>
+		<th>Priv</th>
+		<th>Est</th>
+		<th>Pos</th>
 		<th colspan="4">Acciones</th>
    	</tr>
     <?php
@@ -34,8 +34,8 @@
 			<td><?php echo $this->escape($item->posicion);?></td>
            	<td nowrap="nowrap">
 				<div class="menu-admin">						
-					<a href="<?php echo $this->baseUrl; ?>/admin/items/modificar/id/<?php echo $item->id;?>">Modificar</a>
-					<a href="<?php echo $this->baseUrl; ?>/admin/items/eliminar/id/<?php echo $item->id;?>">Eliminar</a>						
+					<a title="Modificar" href="<?php echo $this->baseUrl; ?>/admin/items/modificar/id/<?php echo $item->id;?>">Mod</a>
+					<a title="Eliminar" href="<?php echo $this->baseUrl; ?>/admin/items/eliminar/id/<?php echo $item->id;?>">Eli</a>											
 				</div>
 			</td>
 		</tr>
@@ -44,6 +44,6 @@
 <br>
 <div class="menu-admin">
 	<a href="<?php echo $this->baseUrl; ?>/admin/items/agregar/id/<?php echo $this->idMenu;?>">
-		Agregar Item
+		Agregar
 	</a>
 </div>
