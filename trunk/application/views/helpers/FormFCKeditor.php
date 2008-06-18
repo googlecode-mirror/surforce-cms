@@ -1,5 +1,5 @@
 <?php
-require_once "public/scripts/fckeditor/fckeditor.php";
+require_once "html/scripts/fckeditor/fckeditor.php";
 
 class Zend_View_Helper_FormFCKeditor
 {

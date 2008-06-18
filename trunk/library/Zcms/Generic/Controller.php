@@ -11,14 +11,14 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 		$this->registry = Zend_Registry::getInstance();
 
 		$this->initView ();
-
+		//cms
 		$this->view->setScriptPath( './application/views/scripts/' );
-
 		$this->view->setHelperPath( './application/views/helpers/', 'Helper' );
 		$this->view->addHelperPath( './library/Zcms/View/helper/', 'Zcms_View_Helper' );
+        $this->view->addBasePath('./html/','');
+        		
+		//Zsurforce
         $this->view->addHelperPath('./library/Zsurforce/View/Helper/', 'Zsurforce_View_Helper');
-
-        $this->view->addBasePath('./public/','');
 
 		$this->view->baseUrl = $this->_request->getBaseUrl ();
 		$this->view->basePath = $this->registry->get('base_path');

@@ -19,11 +19,11 @@
 
 <?php if( $this->scriptJs == 'mooRainbow' ) :?>
 	<script>google.load("mootools", "1.11");</script>
-	<script src="<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/mooRainbow.js" type="text/javascript"></script>	
+	<script src="<?php echo $this->baseUrl;?>/html/scripts/mooRainbow/mooRainbow.js" type="text/javascript"></script>	
 	<script language="JavaScript" type="text/javascript">
 		window.addEvent('domready', function() {
 			var r = new MooRainbow('myRainbow', {
-				imgPath: '<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/images/',
+				imgPath: '<?php echo $this->baseUrl;?>/html/scripts/mooRainbow/images/',
                 id: 'rain1',
 				'startColor': [58, 142, 246],
 				'onChange': function(color) {
@@ -34,7 +34,7 @@
 
 		window.addEvent('domready', function() {
 			var r2 = new MooRainbow('myRainbow2', {
-				imgPath: '<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/images/',
+				imgPath: '<?php echo $this->baseUrl;?>/html/scripts/mooRainbow/images/',
                 id: 'rain2',
 				'startColor': [58, 142, 246],
 				'onChange': function(color2) {
@@ -44,7 +44,7 @@
 		});
 		window.addEvent('domready', function() {
 			var r3 = new MooRainbow('myRainbow3', {
-				imgPath: '<?php echo $this->baseUrl;?>/public/scripts/mooRainbow/images/',
+				imgPath: '<?php echo $this->baseUrl;?>/html/scripts/mooRainbow/images/',
                 id: 'rain3',
 				'startColor': [58, 142, 246],
 				'onChange': function(color3) {
@@ -61,7 +61,7 @@
 
 <?php if( $this->scriptJs == 'lightbox' ) :?>
 	<script>google.load("mootools", "1.11");</script>
-	<script src="<?php echo $this->baseUrl;?>/public/scripts/lightbox/lightbox.js" type="text/javascript"></script>	
+	<script src="<?php echo $this->baseUrl;?>/html/scripts/lightbox/lightbox.js" type="text/javascript"></script>	
 	<script type="text/javascript">
 			window.addEvent('domready',function(){
 				Lightbox.init({descriptions: '.lightboxDesc', showControls: true});
@@ -69,4 +69,4 @@
 		</script>	
 <?php endif; ?>
 
-<script src="<?php echo $this->baseUrl;?>/public/scripts/cms.js" type="text/javascript"></script>
+<script src="<?php echo $this->baseUrl;?>/html/scripts/cms.js" type="text/javascript"></script>
