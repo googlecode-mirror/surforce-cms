@@ -1,12 +1,9 @@
 <?php
-error_reporting(E_ALL|E_STRICT);
-date_default_timezone_set('America/Montevideo');
-
 set_include_path(	'.' .
     PATH_SEPARATOR . './library/' .
     PATH_SEPARATOR . './application/' .
     PATH_SEPARATOR . './application/models/' .
-    PATH_SEPARATOR . './public/' .
+    PATH_SEPARATOR . './html/' .
     PATH_SEPARATOR . get_include_path()
 );
 
@@ -14,7 +11,6 @@ include "Zend/Loader.php";
 Zend_Loader::registerAutoload();
 
 /** CONFIGURACION **/
-
 $registry = Zend_Registry::getInstance();
 
 $config = new Zend_Config_Ini(
@@ -26,13 +22,18 @@ $personalizacion = new Zend_Config_Ini(
 	'personalizacion'
 );
 
+if($config->debug === 'on'){
+	error_reporting(E_ALL|E_STRICT);	
+}
+date_default_timezone_set($config->timezone);
+
 $registry->set('personalizacion', $personalizacion);
 $registry->set('config', $config);
 $registry->set('base_path', realpath('.') );
 $registry->set('debug', $config->debug);
 
-// Start Session
-$session = new Zend_Session_Namespace('cms');
+/* Start Session */ 
+$session = new Zend_Session_Namespace('app');
 $registry->set('session', $session);
 
 /**
@@ -50,7 +51,7 @@ $view = Zend_Layout::getMvcInstance()->getView();
 $view->menu_items = Menu::getMenuSitio();
 */
 
-// setup database
+/* Setup Database */ 
 $db = Zend_Db::factory(
 	$config->db->adapter, 
 	$config->db->config->toArray()
@@ -58,12 +59,12 @@ $db = Zend_Db::factory(
 Zend_Db_Table::setDefaultAdapter($db);
 Zend_Registry::set('dbAdapter', $db);
 
-// Setup controller
+/* Setup Controller */ 
 $frontController = Zend_Controller_Front::getInstance();
 $frontController->throwExceptions(true);
 $frontController->addModuleDirectory('./application/modules/');
 
-// run!
+/* run! */ 
 try {
 	$frontController->dispatch();
 } catch(Exception $e) {
