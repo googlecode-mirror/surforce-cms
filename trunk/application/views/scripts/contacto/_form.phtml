@@ -4,23 +4,23 @@
 
         <p>
             <label for="nombre">Nombre:</label>
-            <input type="text" name="nombre" size="50" value=""/>
+            <input type="text" name="nombre" size="50" value="<?php echo $this->contacto->nombre;?>"/>
         </p>
 
         <p>
             <label for="email">E-Mail:</label>
-            <input type="text" name="email" size="50" value=""/>
+            <input type="text" name="email" size="50" value="<?php echo $this->contacto->email;?>"/>
         </p>
 
         <p>
             <label for="email">Telefono:</label>
-            <input type="text" name="telefono" size="50" value="">
+            <input type="text" name="telefono" size="50" value="<?php echo $this->contacto->telefono;?>">
         </p>
 
         <p>
             <label for="comentario">Comentario: </label><br>
 
-            <textarea name="comentario" rows="5" cols="50"></textarea>
+            <textarea name="comentario" rows="5" cols="50"><?php echo $this->contacto->comentario;?></textarea>
         </p>
 
         <br>(*) Todos los campos son obligatorios <br><br>
