@@ -1,14 +1,15 @@
 <?php echo $this->paginaTitulo($this->subtitle);?>
 
-<?php if ($this->usuarioLogueado): ?>
-    	<div class="menu-admin">
-    		<a href="<?php echo $this->baseUrl; ?>/admin/paginas/modificar/id/<?php echo $this->pagina->id;?>">Modificar</a>
-			<a href="<?php echo $this->baseUrl; ?>/admin/paginas/eliminar/id/<?php echo $this->pagina->id;?>">Eliminar</a>
-		</div>
-		<br>
-<?php endif; ?>
+<?php if( isset($this->pagina) && count($this->pagina) > 0 ): ?>
 
-<?php if( $this->pagina ): ?>
+	<?php if ($this->usuarioLogueado): ?>
+	        <div class="menu-admin">
+	            <a href="<?php echo $this->baseUrl; ?>/admin/paginas/modificar/id/<?php echo $this->pagina->id;?>">Modificar</a>
+	            <a href="<?php echo $this->baseUrl; ?>/admin/paginas/eliminar/id/<?php echo $this->pagina->id;?>">Eliminar</a>
+	        </div>
+	        <br>
+	<?php endif; ?>
+
 	<?php echo $this->render('paginas/_submenu.phtml'); ?>
 
 	<div id="pagina-titulo">
