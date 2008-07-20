@@ -25,13 +25,14 @@
     $stmt = $db->query($sql);
     $enlaces = $stmt->fetchAll();
 
-    if( $this->user ){
-   		echo "<strong><a href='".$this->baseUrl."/admin/'>[MENÚ ADMIN]</A></strong><br>";
-    }
+    
     	?>
     		<div class="arrowlistmenu">
     			<h3 class="headerbar">Menú</h3>
     		<?php
+    		if( $this->user ){
+        echo "<ul><li><strong><a href='".$this->baseUrl."/admin/'>MENÚ ADMIN</A></strong></li></ul>";
+    }
     echo "<ul>";
     $tipo_menu = "";
     $tipo_menu_desc = "";
