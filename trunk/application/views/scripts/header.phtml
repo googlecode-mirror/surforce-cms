@@ -3,26 +3,26 @@
     	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     	<title><?php
     		if(isset($this->title)){
-    			echo $this->escape($this->title);	 
-    		}    		 
+    			echo $this->escape($this->title);
+    		}
     	?></title>
 		<?php echo $this->render('_scripts.phtml'); ?>
-		<?php echo $this->render('_configuracion.phtml'); ?>	
+		<?php echo $this->render('_configuracion.phtml'); ?>
   	</head>
-	<?php 
+	<?php
   	if( isset($this->configuracion->sitio_color_fondo)) {
   		echo "<body bgcolor='".$this->configuracion->sitio_color_fondo."'>";
   	}else{
-		echo "<body>";  		  		
+		echo "<body>";
   	}
   	?>
 
 	<?php
-		$adsense = $this->basePath 
+		$adsense = $this->basePath
 			. DIRECTORY_SEPARATOR
 			. 'application'
 			. DIRECTORY_SEPARATOR
-			. 'views' 
+			. 'views'
 			. DIRECTORY_SEPARATOR
 			. 'scripts'
 			. DIRECTORY_SEPARATOR
@@ -30,25 +30,29 @@
 	?>
 		<div id="contenedor">
 		    <div id="cabecera">
-		    
+
 		    <?php if(file_exists( $adsense ) ): ?>
 		    	<div id="cabecera-logo">
     				<h1><?php echo $this->sitio_actual->titulo;?></h1>
     				<?php echo $this->sitio_actual->descripcion;?><br><br>
     			</div>
     			<div id="cabecera-publicidad">
-					<?php echo $this->render("google_adsense.phtml"); ?>								    			
+					<?php echo $this->render("google_adsense.phtml"); ?>
 				</div>
 			<?php else:?>
    				<h1><?php echo $this->sitio_actual->titulo;?></h1>
    				<?php echo $this->sitio_actual->descripcion;?><br><br>
 			<?php endif;?>
-							
-				<?php 				
+
+				<?php
 				echo $this->htmlMenuHorizontal(
 					$this->menuHorizontalOpciones,
 					"Secciones",
 					$this->baseUrl
 				);?>
+
+				<div class="div-reset"></div>
+				<?php echo $this->htmlBreadcrum($this->breadCrumOptions, "Ruta", $this->baseUrl); ?>
+
 				<?php // if( $this->user ) echo "usuario: ".$this->escape($this->user->usuario);?>
 			</div>

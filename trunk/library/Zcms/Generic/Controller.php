@@ -16,15 +16,15 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 		$this->view->setHelperPath( './application/views/helpers/', 'Helper' );
 		$this->view->addHelperPath( './library/Zcms/View/helper/', 'Zcms_View_Helper' );
         $this->view->addBasePath('./html/','');
-        		
+
 		//Zsurforce
         $this->view->addHelperPath('./library/Zsurforce/View/Helper/', 'Zsurforce_View_Helper');
 
 		$this->view->baseUrl = $this->_request->getBaseUrl ();
 		$this->view->basePath = $this->registry->get('base_path');
-		
+
 		Zend_Loader::loadClass ( 'Configuracion' );
-		
+
 		$this->view->user = Zend_Auth::getInstance ()->getIdentity ();
 		$this->info = $this->registry->get('personalizacion');
 		$this->view->title = $this->info->sitio->index->index->titulo;
@@ -37,7 +37,7 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 
 		/* información de sitios y subsitios */
 		$this->view->sitios = Sitios::getAll(null,null,"orden")->toArray();
-		
+
 		if( isset($this->session->sitio->id)){
 			$this->view->configuracion = Configuracion::getConfiguracion($this->session->sitio->id);
 		}else{
@@ -47,12 +47,13 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 		$this->registrarSitio();
 		$this->cargarMenuHorizontal();
 
+		$this->_loadBreadcrumItems();
 	}
-	function preDispatch() 
+	function preDispatch()
 	{
 		$auth = Zend_Auth::getInstance ();
 		if ($auth->hasIdentity ()) {
-			$this->view->usuarioLogueado = true;	
+			$this->view->usuarioLogueado = true;
 		}
 	}
 	protected function registrarSitio()
@@ -76,9 +77,9 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 		/*
     	 * FIXME: eliminar los tildes para las urls ( url => nombre)
     	 */
-		
+
 		$opciones = Sitios::getAll(null, null, "orden")->toArray();
-		
+
 		if( isset($opciones) && count($opciones) > 0 ){
 
 			foreach( $opciones as $op ){
@@ -93,5 +94,21 @@ abstract class Zcms_Generic_Controller extends Zend_Controller_Action
 			$this->view->menuHorizontalOpciones = array();
 		}
 	}
+
+
+	protected function _loadBreadcrumItems()
+	{
+		$params = $this->_request->getParams();
+		/*
+			Array ( [module] => frontend [controller] => paginas [action] => ver [id] => 20 )
+		*/
+
+		$this->view->breadCrumOptions = array(
+												0=>array('url'=>'', 'alt'=>'', 'text'=>$params['module']),
+												1=>array('url'=>'', 'alt'=>'', 'text'=>$params['controller']),
+												2=>array('url'=>'', 'alt'=>'', 'text'=>$params['action'])
+											  );
+	}
+
 }
 ?>
