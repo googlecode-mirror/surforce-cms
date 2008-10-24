@@ -25,7 +25,7 @@ $personalizacion = new Zend_Config_Ini(
 if($config->debug === 'on'){
 	error_reporting(E_ALL|E_STRICT);	
 }
-date_default_timezone_set($config->timezone);
+date_default_timezone_set('America/Montevideo');
 
 $registry->set('personalizacion', $personalizacion);
 $registry->set('config', $config);
