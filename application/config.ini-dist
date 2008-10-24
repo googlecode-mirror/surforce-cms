@@ -1,6 +1,6 @@
 ﻿[general]
 debug    = on
-timezone = "America/Montevideo"
+;revisar, no funciona timezone = "America/Montevideo"
 
 db.adapter = PDO_MYSQL
 db.config.host = localhost
