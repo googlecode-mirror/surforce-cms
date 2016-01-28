@@ -1,0 +1,3 @@
+  * [Artículo sugerido por Pablo Rigazzi](http://framework.zend.com/manual/en/zend.controller.modular.html)
+
+  * [Enlace a las pruebas realizadas por Zsamer](http://docs.google.com/View?docid=dhs6w2jn_20f7tfq7&pli=1) - A grandes rasgos por cada módulo hay que crear una carpeta el application/modules/, los controladores se crean dentro de la carpeta controller de cada modulo, el nombre de la clase controladora es: NombreModulo{Namespace}
